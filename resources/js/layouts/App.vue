@@ -64,10 +64,17 @@
                 <div class="navbar-end">
                   <div class="navbar-item">
                     <div class="buttons">
-                      <a class="button is-primary" 
-                      >
-                        <strong>Sign up</strong>
-                      </a>
+
+
+                        <span class="button is-primary">
+                            <router-link
+                              class="nav-link"
+                              data-toggle="collapse"
+                              :to="{ name: 'register' }"
+                            >
+                              Register
+                            </router-link>
+                        </span>
 
                         <span class="button is-warning">
                             <router-link
