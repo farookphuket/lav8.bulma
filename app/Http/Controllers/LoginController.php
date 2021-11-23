@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Hash;
+
+use Auth;
+use DB;
+
 class LoginController extends Controller
 {
+    protected $user_token_table = 'personal_access_tokens';
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +39,39 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+        $valid = request()->validate([
+            "email" => ["required","email"],
+            "password" => ["required"]
+        ]);
+
+        $msg = '';
+        $url = '';
+        $token = '';
+        //check user 
+        if(!Auth::attempt($valid)):
+            
+            $msg = "<span class=\"tag is-medium is-danger\">
+                Sorry! account not found!
+            </span>";
+            $url = '/login';
+        else:
+
+            $msg = "<span class=\"tag is-medium is-success\">
+                Welcome 
+            </span>";
+            $url = '/member/home';
+            $token = Auth::user()->createToken('auth_token')->plainTextToken;
+        endif;
+
+        
+        return response()->json([
+            "msg" => $msg,
+            'url' => $url,
+            'token' => $token
+        ]);
     }
 
     /**
@@ -78,8 +114,18 @@ class LoginController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy()
     {
-        //
+        $u_token = DB::table($this->user_token_table)
+            ->where('tokenable_id',Auth::user()->id)
+            ->get();
+        foreach($u_token as $arr):
+            DB::table($this->user_token_table)
+                ->delete($arr->id);
+        endforeach;
+        $url = '/login';
+        return response()->json([
+            'url' => $url
+        ]);
     }
 }

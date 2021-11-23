@@ -3,7 +3,7 @@
       <div class="hero-body">
         <div class="container">
           <p class="title has-text-centered">
-            bootstrap free!
+          member  section bootstrap free!
           </p>
           <p class="subtitle">
             there is no bootstrap css style on this site
@@ -15,6 +15,6 @@
 
 <script>
 export default {
-    
+   name:"MemberDashboard",
 }
 </script>

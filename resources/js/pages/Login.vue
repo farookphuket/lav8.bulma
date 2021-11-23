@@ -8,27 +8,43 @@
             </li>
           </ul>
         </nav>
-  <h1 class="title">Medium section</h1>
-  <h2 class="subtitle">
-    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-  </h2>
-
         
-        <!-- show login modal START -->
-            <div class="tile is-ancestor">
-              <div class="tile is-vertical is-8">
-                    <div class="box">
-                        <h2 class="title">Login</h2>
+        <!-- 2 columns START -->
+        <div class="columns ">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title">
+                            No log-in require.
+                        </h2>
+                        <h3 class="subtitle">
+                            All those article are posted as public to any one. 
+                        </h3>
                         <div class="msg">
-                            <p>login with your cridential</p>
+                            <p>
+                            but if you have a feeling like you have something 
+                            to contribute so please login.
+                            </p>
                         </div>
                     </div>
-              </div>
-              <div class="tile is-4">
-                   <login-form></login-form>
-              </div>
-            </div>
-        <!-- show login modal END -->
+                    <div class="content">
+                        <h2 class="title">ไม่จำเป็นต้องล๊อคอิน</h2>
+                        <h3 class="subtitle">
+                        ข้อความหรือบทความที่เผยแพร่ทั้งหมดเป็นสาธารณะ
+                        </h3>
+                        <div class="msg">
+                        <p>
+                            แต่ถ้าหากว่าท่านต้องการจะร่วมเป็นผู้เขียนกับเรา ก็ได้โปรดล๊อคอิน
+                            ก่อนนะครับ
+                        </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="column is-4">
+                    <login-form></login-form>
+                </div>
+        </div>
+        <!-- 2 columns END -->
 
 </section>
 </template>

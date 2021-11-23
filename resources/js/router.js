@@ -5,9 +5,14 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Post from './pages/Post.vue';
 import Login from './pages/Login.vue';
+import Logout from './pages/Logout.vue'
 import Register from './pages/Register.vue';
 import UserHasConfirm from './pages/UserHasConfirmed.vue'
 import UserConfirmationFail from './pages/UserConfirmationFail.vue'
+import MemberProfile from './pages/Member/Profile/Profile.vue'
+
+// member 
+import MemHome from './pages/Member/Home.vue'
 
 Vue.use(VueRouter);
 
@@ -38,6 +43,12 @@ const router = new VueRouter({
             component: Login
         },
 
+
+        {
+            path: '/logout',
+            name: 'logout',
+            component: Logout
+        },
         {
             path: '/register',
             name: 'register',
@@ -54,6 +65,17 @@ const router = new VueRouter({
             path: '/user-confirmation-fail',
             name: 'userConfirmationFail',
             component: UserConfirmationFail
+        },
+        {
+            path: '/member/home',
+            name: 'MemberDashboard',
+            component: MemHome
+        },
+
+        {
+            path: '/member/profile',
+            name: 'MemberProfile',
+            component: MemberProfile
         },
     ]
 });
