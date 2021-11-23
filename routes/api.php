@@ -16,7 +16,8 @@ use App\Http\Controllers\RegisterController as Regit;
 */
 
 
-Route::post('/register',[Regit::class,'register'])->name('register');
+Route::post('/register',[Regit::class,'store'])->name('register');
+Route::get('/userHasConfirmed',[Regit::class,'userHasConfirmed']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

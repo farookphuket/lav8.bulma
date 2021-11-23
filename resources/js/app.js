@@ -19,15 +19,29 @@ import JoditVue from 'jodit-vue'
 
 Vue.use(JoditVue)
 
+window.axios = require('axios');
+
+import moment from 'moment';
+
+// ============== 27 June 2021 ================================================
+import Form from './core/Form';
+import CustomText from './core/CustomText';
+
+window.Form = Form;
+window.CustomText = CustomText;
+
+
+// date 10 Jan 2021 start using vue-cookies
+import VueCookies from 'vue-cookies';
+Vue.use(VueCookies)
 
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faCoffee)
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 /**
  * The following block of code may be used to automatically register your
@@ -47,6 +61,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
+const {default : Axios } = require('axios');
+
 
 const app = new Vue({
     router,

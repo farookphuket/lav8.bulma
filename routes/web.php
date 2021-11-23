@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RegisterController as Regit;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ Route::get('/', function () {
     return view('x');
 });
 
-
+route::get('/userHasConfirmed/{token}',[Regit::class,"userHasConfirmed"]);
 
 Route::get('/{any}', function () {
     return view('x');

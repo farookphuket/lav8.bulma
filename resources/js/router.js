@@ -6,6 +6,8 @@ import About from './pages/About.vue';
 import Post from './pages/Post.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
+import UserHasConfirm from './pages/UserHasConfirmed.vue'
+import UserConfirmationFail from './pages/UserConfirmationFail.vue'
 
 Vue.use(VueRouter);
 
@@ -40,6 +42,18 @@ const router = new VueRouter({
             path: '/register',
             name: 'register',
             component: Register
+        },
+
+        {
+            path: '/user-has-confirmed',
+            name: 'userHasConfirmed',
+            component: UserHasConfirm
+        },
+
+        {
+            path: '/user-confirmation-fail',
+            name: 'userConfirmationFail',
+            component: UserConfirmationFail
         },
     ]
 });
