@@ -32,7 +32,7 @@ export default{
              methods:{
                  logout(){
                      let r1 = this.$cookies.get('token');
-                     let url = `/api/logout`
+                     let url = `/api/member/logout`
                          axios.delete(url,{
                              headers:{'Authorization':`Basic ${r1}`}
                                  })

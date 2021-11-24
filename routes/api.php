@@ -22,10 +22,29 @@ Route::get('/userHasConfirmed',[Regit::class,'userHasConfirmed']);
 
 Route::post('/login',[Login::class,"store"]);
 
+/*
 Route::group(['middleware' => ['auth:sanctum']],function(){
-    Route::resource('/profile',MPF::class);
-    Route::delete('/logout',[Login::class,'destroy']);
+
 });
+ */
+
+
+
+
+/* make a route prefix for member group */
+Route::prefix("member")->name("member.")->middleware('auth:sanctum')
+                                        ->group(function(){
+
+    /* ============= member profile 24 Nov 2021 ====================
+     * 
+     * */                                        
+    Route::resource('/profile',MPF::class);
+    Route::post('/check-confirm-key',[MPF::class,'checkConfirmKey'])
+        ->name('check-member-profile-confirm-key');
+
+    /* Logout from member */
+    Route::delete('/logout',[Login::class,'destroy'])->name('logout');
+                                        });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -54,15 +54,6 @@
                             </router-link>
                         </span>
 
-                        <span class="navbar-item">
-                            <router-link
-                              class="nav-link"
-                              data-toggle="collapse"
-                              :to="{ name: 'MemberProfile' }"
-                            >
-                              Profile
-                            </router-link>
-                        </span>
                     </div>
                   </div>
                 </div>
@@ -72,6 +63,15 @@
                     <div class="buttons">
 
 
+                        <span class="button is-info is-outlined">
+                            <router-link
+                              class="nav-link"
+                              data-toggle="collapse"
+                              :to="{ name: 'MemberProfile' }"
+                            >
+                              Profile
+                            </router-link>
+                        </span>
 
                         <span class="button is-outlined is-warning">
                             <router-link

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -15,7 +17,42 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return"hello profile";
+        if(!Auth::user()):
+
+            return redirect('/');
+            exit;
+        endif;
+        
+            return Auth::user();
+    }
+
+    public function checkConfirmKey(){
+        $key = request()->conf_pass;
+        $valid = request()->validate([
+            "conf_pass" => ["required"]
+        ]);
+
+        $user = User::where("id",Auth::user()->id)
+                        ->first();
+        $msg = "";
+        $error = 0;
+        $nkey = Hash::make($key);
+        if(!Hash::check($key,Auth::user()->password)):
+
+
+            $msg = "<span class=\"tag is-medium is-danger\">
+            Error : Wrong password!</span>";
+            $error = 1;
+            else:
+
+            $msg = "<span class=\"tag is-medium is-success\">
+            Success : Confirmed</span>";
+        endif;
+         
+        return response()->json([
+            "msg" => $msg,
+            "error" => $error
+        ]);
     }
 
     /**
@@ -45,9 +82,13 @@ class ProfileController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user_id)
     {
-        //
+        $u = User::find($user_id);
+
+        return response()->json([
+            "user" => $u
+        ]);
     }
 
     /**
@@ -68,9 +109,41 @@ class ProfileController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update($id)
     {
-        //
+        $u = User::find($id);
+            
+        $valid = request()->validate([
+            "name" => ["required","unique:users,name,".Auth::user()->id],
+            "email" => ["required","email","unique:users,email,".Auth::user()->id]
+        ],
+        [
+            "name.unique" => "Error! cannot use this name",
+            "email.unique" => "Error! cannot use this email",
+        ] 
+        );
+
+        $msg = "";
+        $pass = '';
+        if(isset(request()->new_pass) && request()->new_pass != ''):
+            $pass = Hash::make(request()->new_pass);
+            $valid["password"] = $pass; 
+        endif;
+        
+        // unset conf_pass 
+        unset($valid["conf_pass"]);
+        
+        $valid["updated_at"] = now(); 
+        // update user 
+        User::where('id',Auth::user()->id)
+            ->update($valid);
+
+        $msg = "<span class=\"tag is-success\">
+            Success : profile save.</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
+        
     }
 
     /**

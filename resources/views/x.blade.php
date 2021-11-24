@@ -4,7 +4,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" value="{{ csrf_token() }}"/>
-        <title>Laravel</title>
+
+        @hasSection('meta_title')
+            <title>@yield('meta_title')</title>
+        @else 
+
+            @auth
+
+            <title>{{Request::segment(2)}}</title>
+            @else
+
+            <title>{{Request::segment(1)}}</title>
+            @endauth
+        @endif
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,23 +25,14 @@
 
     </head>
     <body class="antialiased">
-        @if (Auth::check())
-            @php
-            $user_auth_data = [
-                'isLoggedin' => true,
-                'user' =>  Auth::user()
-            ];
-            @endphp
-        @else
-            @php
-            $user_auth_data = [
-                'isLoggedin' => false
-            ];
-            @endphp
-        @endif
+
+
+        @auth 
+            
         <script>
-            window.Laravel = JSON.parse(atob('{{ base64_encode(json_encode($user_auth_data)) }}'));
+            var user_id = '{!!Auth::user()->id!!}'
         </script>
+        @endif
         <div id="app">
             
         </div>

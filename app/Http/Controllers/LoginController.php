@@ -123,6 +123,7 @@ class LoginController extends Controller
             DB::table($this->user_token_table)
                 ->delete($arr->id);
         endforeach;
+        request()->session()->flush();
         $url = '/login';
         return response()->json([
             'url' => $url
