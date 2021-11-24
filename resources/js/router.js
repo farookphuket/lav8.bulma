@@ -14,6 +14,12 @@ import MemberProfile from './pages/Member/Profile/Profile.vue'
 // member 
 import MemHome from './pages/Member/Home.vue'
 
+
+// admin 
+import AdminHome from './pages/Admin/Home.vue'
+
+
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -76,6 +82,13 @@ const router = new VueRouter({
             path: '/member/profile',
             name: 'MemberProfile',
             component: MemberProfile
+        },
+
+
+        {
+            path: '/admin/home',
+            name: 'AdminDashboard',
+            component: AdminHome
         },
     ]
 });

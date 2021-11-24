@@ -59,10 +59,14 @@ class LoginController extends Controller
             $url = '/login';
         else:
 
+            if(Auth::user()->is_admin == 1):
+                $url = '/admin/home';
+            else:
+                $url = '/member/home';
+            endif;
             $msg = "<span class=\"tag is-medium is-success\">
                 Welcome 
             </span>";
-            $url = '/member/home';
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
         endif;
 

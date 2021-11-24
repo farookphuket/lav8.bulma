@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as Regit;
 use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
+
+
+/* admin route */
+use App\Http\Controllers\Admin\UserController as AUSER;
+use App\Http\Controllers\Admin\DashboardController as AHOME;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +33,9 @@ Route::group(['middleware' => ['auth:sanctum']],function(){
 });
  */
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 
 
@@ -46,6 +54,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     Route::delete('/logout',[Login::class,'destroy'])->name('logout');
                                         });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
+      ->group(function(){
+    Route::resource('/user',AUSER::class);
+    Route::resource('/home',AHOME::class);
 });

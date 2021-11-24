@@ -73,7 +73,7 @@ methods:{
                     this.token = res.token 
                     this.$cookies.set('token',res.token)
                     location.href=res.url
-                    console.log(`the response token is : ${res.token}`)
+                    console.log(`the response url ${res.url}`)
                     
                         })
                 .catch((err)=>{
