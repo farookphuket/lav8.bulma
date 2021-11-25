@@ -34,3 +34,14 @@ footer {
 
 
 
+@media screen and (min-width: 300px), print {
+  .hero-body {
+    padding: 3rem 3rem;
+  }
+
+    .section {
+      padding: 3rem 1.5rem;
+      margin-bottom:140px;
+    }
+}
+

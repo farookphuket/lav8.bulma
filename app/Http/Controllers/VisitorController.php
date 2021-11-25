@@ -22,7 +22,24 @@ class VisitorController extends Controller
         $visit_this_year = $this->hasVisitedYear();
         $visit_all_time = Visitor::all()->count();
 
-        $msg =  ""; 
+        $your_ip = getUserIp();
+        $your_browser = getUserBrowser();
+        $your_device = getUserDevice();
+        $your_os = getUserOs();
+
+        $data = [
+            "visited_today" => $visited_today,
+            "visit_this_month" => $visit_this_month,
+            "visit_this_year" => $visit_this_year,
+            "visit_all_time" => $visit_all_time,
+            "your_ip" => $your_ip,
+            "your_os" => $your_os,
+            "your_browser" => $your_browser,
+            "your_device" => $your_device,
+        ];
+        return response()->json([
+            "your_data" => $data
+        ]);
     }
 
     /* this method will check if the user this ip 
@@ -37,7 +54,7 @@ class VisitorController extends Controller
 
         $v_data = '';
         // not found create one
-        if(!$visit_today || $visit_today == 0):
+        if(!$visit_today):
             $v_data = [
                 "ip" => getUserIp(),
                 "os" => getUserOs(),

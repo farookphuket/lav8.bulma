@@ -1,5 +1,5 @@
 <template>
-  <wrapper>
+  <div>
         
         <guest-nav v-show="isGuestUser"></guest-nav>
         <member-nav v-show="isUserLogin"></member-nav>
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </footer>
-  </wrapper>
+  </div>
 </template>
 
 <script>

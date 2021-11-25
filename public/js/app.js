@@ -13472,8 +13472,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Visitor"
+  name: "Visitor",
+  data: function data() {
+    return {
+      show_case: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getVisitor();
+  },
+  methods: {
+    getVisitor: function getVisitor() {
+      var _this = this;
+
+      this.show_case = '';
+      var url = "/api/visitor";
+      axios.get(url).then(function (res) {
+        console.log(res.data.your_data);
+        _this.show_case = res.data.your_data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37667,7 +37689,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "wrapper",
+    "div",
     [
       _c("guest-nav", {
         directives: [
@@ -39570,7 +39592,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    visitor\n")])
+  return _c(
+    "div",
+    { staticClass: "tags" },
+    _vm._l(_vm.show_case, function (yy) {
+      return _c("div", { staticClass: "tag" }, [
+        _c("span", { staticClass: "tag is-success" }, [
+          _vm._v(_vm._s(yy.your_ip)),
+        ]),
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1595,10 +1595,6 @@ a.box:active {
     max-width: 1152px;
   }
 }
-
-
-
-
 @media screen and (max-width: 1407px) {
   .container.is-fullhd:not(.is-max-desktop):not(.is-max-widescreen) {
     max-width: 1344px;
@@ -10315,15 +10311,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   .hero-body {
     padding: 3rem 3rem;
   }
-}
-
-
-@media screen and (min-width: 300px), print {
-
-    .section {
-      padding: 3rem 1.5rem;
-      margin-bottom:140px;
-    }
 }
 
 .section {
