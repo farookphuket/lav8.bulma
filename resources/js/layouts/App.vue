@@ -1,20 +1,36 @@
 <template>
-  <div>
+  <wrapper>
         
         <guest-nav v-show="isGuestUser"></guest-nav>
         <member-nav v-show="isUserLogin"></member-nav>
       <router-view></router-view>
-  </div>
+        <footer class="footer">
+            <div class="tiles is-ancestor">
+                <div class="tile is-horizontal">
+
+                    <div class="tile">
+                        <div class="content has-text-centered">
+                            <visitor></visitor>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+  </wrapper>
 </template>
 
 <script>
 import GuestNav from './GuestNav.vue'
 import MemberNav from './MemberNav.vue'
+import Visitor from '../pages/Visitor.vue'
+
 export default {
     name:"App",
              components:{
                  GuestNav,
                  MemberNav,
+                 Visitor,
              },
              data(){
                  return{

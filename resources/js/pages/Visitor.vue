@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h1>admin home</h1>
+        visitor
     </div>
 </template>
 
 <script>
 export default{
-    name:"AdminDashboard"
+    name:"Visitor"
 }
 </script>

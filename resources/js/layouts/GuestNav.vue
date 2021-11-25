@@ -7,7 +7,7 @@
 
               <a role="button" class="navbar-burger" aria-label="menu" 
               aria-expanded="false" data-target="nav-main" 
-             @click.prevent="burgerToggle" :class="{'is-active':isOpen}">
+             @click.prevent="toggleNav" :class="{'is-active':isOpen}">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -99,6 +99,11 @@ export default{
                      isOpen:false,
                  }
              },
+methods:{
+            toggleNav(){
+                this.isOpen = !this.isOpen 
+            },
+        },
 
 }
 </script>

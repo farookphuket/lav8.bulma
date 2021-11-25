@@ -30,10 +30,7 @@ function xx_clean($str){
 function write2text($file,$text){
     // $file = file path
     $f2 = fopen($file,"a+");
-    $content = "\n /* =========== auto script START ".date("Y-m-d H:i:s a",time())
-        ."  ==================== */\n";
-    $content .= " {$text} ";
-    $content .= "\n /* ======== auto script ".date("Y-m-d H:i:s a",time())." END ========= */\n";
+    $content = " {$text} ";
     fwrite($f2,$content);
     fclose($f2);
 

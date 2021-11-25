@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as Regit;
 use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
-
+use App\Http\Controllers\VisitorController as VISIT;
 
 /* admin route */
 use App\Http\Controllers\Admin\UserController as AUSER;
@@ -24,6 +24,9 @@ use App\Http\Controllers\Admin\DashboardController as AHOME;
 
 Route::post('/register',[Regit::class,'store'])->name('register');
 Route::get('/userHasConfirmed',[Regit::class,'userHasConfirmed']);
+
+/* ====== Visitor 25 Nov 2021 */
+Route::resource('/visitor',VISIT::class);
 
 Route::post('/login',[Login::class,"store"]);
 

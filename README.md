@@ -15,8 +15,57 @@
 
 
 
+## ================= date 25 Nov 2021 
+
+> fixed footer position to be absolute bottom.
+
+> code in the file `app.css`
+
+```
+
+@media screen and (min-width: 300px), print {
+
+    .section {
+      padding: 3rem 1.5rem;
+      margin-bottom:140px;
+    }
+}
+
+```
+
+> code in the file `custom_css.css`
 
 
+```
+
+html {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+body {
+    /*background: rgb(230, 230, 220); */
+    overflow-x: hidden;
+    margin: 0px;
+    position: relative;
+    min-height: 100%;
+    height: auto;
+    
+}
+
+
+footer {
+ position: absolute;
+ margin-top:10px;
+ bottom: 0;
+ width: 100%;
+}
+
+
+
+```
 
 
 

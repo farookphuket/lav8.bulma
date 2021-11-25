@@ -10,6 +10,7 @@ import Register from './pages/Register.vue';
 import UserHasConfirm from './pages/UserHasConfirmed.vue'
 import UserConfirmationFail from './pages/UserConfirmationFail.vue'
 import MemberProfile from './pages/Member/Profile/Profile.vue'
+import Visitor from './pages/Visitor.vue'
 
 // member 
 import MemHome from './pages/Member/Home.vue'
@@ -71,6 +72,12 @@ const router = new VueRouter({
             path: '/user-confirmation-fail',
             name: 'userConfirmationFail',
             component: UserConfirmationFail
+        },
+
+        {
+            path: '/visitor',
+            name: 'visitor',
+            component: Visitor
         },
         {
             path: '/member/home',
