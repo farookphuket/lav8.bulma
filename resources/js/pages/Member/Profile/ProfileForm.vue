@@ -23,7 +23,7 @@
                 <input v-model="pForm.new_pass" class="input" type="password" 
                 placeholder="~~~~~~">
 
-                <p class="tag mt-2 is-medium is-warning">
+                <p class="help  is-info">
                     if you do not want to change your password just leave this 
                         field blank!
                 </p>

@@ -28,6 +28,8 @@ Route::get('/userHasConfirmed',[Regit::class,'userHasConfirmed']);
 /* ====== Visitor 25 Nov 2021 */
 Route::resource('/visitor',VISIT::class);
 
+Route::post('/checkpasssport',[Login::class,'checkPassSport'])
+    ->name('checkPassSport');
 Route::post('/login',[Login::class,"store"]);
 
 /*

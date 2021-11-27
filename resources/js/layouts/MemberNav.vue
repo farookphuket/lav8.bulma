@@ -69,7 +69,7 @@
                               data-toggle="collapse"
                               :to="{ name: 'MemberProfile' }"
                             >
-                              Profile
+                              update Profile ({{user_id}})
                             </router-link>
                         </span>
 
@@ -95,7 +95,16 @@ export default{
              data(){
                  return{
                      isOpen:false,
+                     user_id:'',
                  }
              },
+             mounted(){
+                 this.user_id = window.user_id
+             },
+methods:{
+            burgerToggle(){
+                this.isOpen = !this.isOpen
+            },
+        }
 }
 </script>

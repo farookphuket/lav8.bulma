@@ -1,0 +1,31 @@
+/*
+*  ============================================================================
+*               DO NOT DELETE THIS ROW
+*/   
+/* =========================== Insert new id 1 ======================
+ * on 2021-11-28 02:36:17 am START 
+ * */
+INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
+`created_at`,`updated_at`)VALUES(
+    'farook',
+    'farookphuket@gmail.com',
+    '$2y$10$iKi.yWrpeYupRyyC0IpcZeSevb0w7sDXFr6eEN0NFlNnvI3tml4A2',
+    '2021-11-28 02:36:17',
+    '0',
+    '2021-11-28 02:30:29',
+    '2021-11-28 02:36:17');
+/* ============================================================================
+ *                  END OF INSERT COMMAND FOR user id 1
+ * ============================================================================
+ * */
+
+ /*
+*   ===========================================================================
+*       Everything below this comment line has created by the auto script for 
+*  the back-up purpose if you no longer need the below data you can delete 
+*  them ,
+*  but make sure that you have delete everything.
+*  because is the sql command 
+*  ============================================================================
+ */
+ 

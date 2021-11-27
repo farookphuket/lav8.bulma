@@ -41,7 +41,14 @@ footer {
 
     .section {
       padding: 3rem 1.5rem;
-      margin-bottom:140px;
     }
+    footer{
+        flex: 0 0 50px;/*or just height:50px;*/
+        margin-top: auto;
+        bottom:0;
+        position: static;
+    } 
+
+
 }
 

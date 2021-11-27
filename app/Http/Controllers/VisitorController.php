@@ -49,12 +49,11 @@ class VisitorController extends Controller
         
         $visit_today = Visitor::where('ip',getUserIp())
                             ->whereDate('visited_at',"=",date("Y-m-d"))     
-                            ->orWhere('created_at',date("Y-m-d"))
                             ->first();
 
         $v_data = '';
         // not found create one
-        if(!$visit_today):
+        if(!$visit_today || $visit_today == ''):
             $v_data = [
                 "ip" => getUserIp(),
                 "os" => getUserOs(),
@@ -76,14 +75,14 @@ class VisitorController extends Controller
     }
 
     public function hasVisitedMonth(){
-        $get = Visitor::whereDate("created_at","=",date("Y-m"))
+        $get = Visitor::whereMonth("created_at","=",date("m"))
                         ->get();
         // return the number of row
         return count($get);
     }
 
     public function hasVisitedYear(){
-        $get = Visitor::whereDate("created_at","=",date("Y"))
+        $get = Visitor::whereYear("created_at","=",date("Y"))
                         ->get();
         // return the number of row
         return count($get);

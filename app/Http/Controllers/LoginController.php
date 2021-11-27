@@ -23,6 +23,20 @@ class LoginController extends Controller
         //
     }
 
+    public function checkPassSport(){
+        $user = Auth::check();
+        $user_has_confirm_email = false;
+        if($user):
+            $user_has_confirm_email = User::where('id',Auth::user()->id)
+                                ->where('email_verified_at','!=',null)
+                                ->first();
+        endif;
+        return response()->json([
+            "user" => $user,
+            "user_has_confirm_email" => $user_has_confirm_email
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,13 +63,16 @@ class LoginController extends Controller
 
         $msg = '';
         $url = '';
+        $error = false;
         $token = '';
+
         //check user 
         if(!Auth::attempt($valid)):
             
             $msg = "<span class=\"tag is-medium is-danger\">
                 Sorry! account not found!
             </span>";
+            $error = true;
             $url = '/login';
         else:
 
@@ -64,8 +81,9 @@ class LoginController extends Controller
             else:
                 $url = '/member/home';
             endif;
+            $name = Auth::user()->name;
             $msg = "<span class=\"tag is-medium is-success\">
-                Welcome 
+                Welcome {$name}
             </span>";
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
         endif;
@@ -74,6 +92,7 @@ class LoginController extends Controller
         return response()->json([
             "msg" => $msg,
             'url' => $url,
+            'error' => $error,
             'token' => $token
         ]);
     }

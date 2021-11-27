@@ -54,6 +54,7 @@ export default{
                  return{
                      res_status:'',
                      token:'',
+                     err:false,
                     lForm:new Form({
                         email:'',
                         password:''
@@ -72,8 +73,14 @@ methods:{
                     this.res_status = res.msg
                     this.token = res.token 
                     this.$cookies.set('token',res.token)
+
+                    if(res.error != false){
+                     //   console.log(res)
+                       // console.log(res)
+                        return
+                    }
                     location.href=res.url
-                    console.log(`the response url ${res.url}`)
+                    //console.log(`the response url ${res.url}`)
                     
                         })
                 .catch((err)=>{
@@ -83,7 +90,7 @@ methods:{
                         })
             },
             getOld(){
-                console.log(this.$cookies.get('token'))
+                //console.log(this.$cookies.get('token'))
             },
         },
 }

@@ -1,8 +1,14 @@
 <template>
     <div class="tags">
-        <div class="tag" v-for="yy in show_case">
-            <span class="tag is-success">{{yy.your_ip}}</span>
-        </div>
+        
+        <span class="tag is-info">today {{show_case.visited_today}}</span>
+        <span class="tag is-info">this month {{show_case.visit_this_month}}</span>
+        <span class="tag is-info">this year {{show_case.visit_this_year}}</span>
+        <span class="tag is-info">All {{show_case.visit_all_time}}</span>
+        <span class="tag is-info">your ip {{show_case.your_ip}}</span>
+        <span class="tag is-info">your browser {{show_case.your_browser}}</span>
+        <span class="tag is-info">your device {{show_case.your_device}}</span>
+        <span class="tag is-info">your os {{show_case.your_os}}</span>
     </div>
 </template>
 
@@ -23,7 +29,7 @@ export default{
             let url = `/api/visitor`
             axios.get(url)
             .then(res=>{
-                console.log(res.data.your_data)
+              //  console.log(res.data.your_data)
                 this.show_case = res.data.your_data
                     })
         },

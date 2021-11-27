@@ -120,17 +120,16 @@ class RegisterController extends Controller
 
             $url = '/user-has-confirmed';
             // make a backup for this new user 
+            $u = User::where('email',$get->email)
+                        ->first();
+            User::backupUser($u->id,'insert');
         else:
 
             $url = '/user-confirmation-fail';
         endif;
 
-
+        // then load the response page for the user
         return redirect($url);
-      #  return response()->json([
-      #      "url" => $url,
-      #      "msg" => $msg
-      #  ]);
     }
 
     /**
