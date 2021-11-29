@@ -78,6 +78,7 @@ export default {
                      isUserLogin:false,
                      isGuestUser:true,
                      tk:'',
+
                  }
              },
              mounted(){
@@ -85,7 +86,11 @@ export default {
                     this.tk = this.$cookies.get('token')
                     this.checkAuth()
              },
+watch:{
+
+      },
              methods:{
+
                  burgerToggle(){
                     // nav-main 
                     this.isOpen = !this.isOpen
@@ -97,7 +102,7 @@ export default {
                         headers:{'Authorization':`Basic ${this.tk}`},
                             })
                     .then(res=>{
-                       console.log(res.data)
+                       //console.log(res.data)
                         let rD = res.data
                         if(rD.user == false){
                             this.isGuestUser = true

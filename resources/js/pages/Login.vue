@@ -56,5 +56,9 @@ export default{
              components:{
                  LoginForm,
              },
+             mounted(){
+                // console.log(this.$route)
+
+             }
 }
 </script>

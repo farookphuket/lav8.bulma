@@ -23,6 +23,23 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('role_id');
+
+            $table->foreign("user_id")
+                    ->references("id")
+                    ->on("users")
+                    ->onDelete("cascade");
+
+            $table->foreign("role_id")
+                    ->references("id")
+                    ->on("roles")
+                    ->onDelete("cascade");
+        });
+
     }
 
     /**
@@ -33,5 +50,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('role_user');
     }
 }

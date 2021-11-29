@@ -12270,6 +12270,7 @@ __webpack_require__.r(__webpack_exports__);
     this.tk = this.$cookies.get('token');
     this.checkAuth();
   },
+  watch: {},
   methods: {
     burgerToggle: function burgerToggle() {
       // nav-main 
@@ -12285,7 +12286,7 @@ __webpack_require__.r(__webpack_exports__);
           'Authorization': "Basic ".concat(this.tk)
         }
       }).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
         var rD = res.data;
 
         if (rD.user == false) {
@@ -12432,6 +12433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -12700,6 +12702,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "Login",
   components: {
     LoginForm: _LoginForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {// console.log(this.$route)
   }
 });
 
@@ -12771,6 +12775,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       res_status: '',
       token: '',
+      role_user: '',
       err: false,
       lForm: new Form({
         email: '',
@@ -12793,13 +12798,14 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$cookies.set('token', res.token);
 
+        _this.role_user = res.role;
+
         if (res.error != false) {
           //   console.log(res)
-          // console.log(res)
           return;
         }
 
-        location.href = res.url; //console.log(`the response url ${res.url}`)
+        location.href = res.url;
       })["catch"](function (err) {
         _this.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err).join(), "\n                    </span>");
       });
@@ -13238,8 +13244,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _WhatnewForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WhatnewForm.vue */ "./resources/js/pages/Member/WhatnewForm.vue");
-//
-//
 //
 //
 //
@@ -14094,6 +14098,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_13__["default"]({
     name: 'AdminDashboard',
     component: _pages_Admin_Home_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
   }]
+});
+router.beforeEach(function (to, from, next) {
+  document.title = to.name;
+  next();
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
@@ -38551,9 +38559,7 @@ var render = function () {
                       },
                       [
                         _vm._v(
-                          "\n                      update Profile (" +
-                            _vm._s(_vm.user_id) +
-                            ")\n                    "
+                          "\n\n                      Update Profile \n                    "
                         ),
                       ]
                     ),
@@ -39463,46 +39469,44 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c(
-      "div",
-      { staticClass: "card-content" },
-      [
-        _c("div", { staticClass: "buttons is-right" }, [
-          _c(
-            "button",
-            {
-              staticClass: "button is-link",
-              on: {
-                click: function ($event) {
-                  $event.preventDefault()
-                  _vm.isShow = true
-                },
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("div", { staticClass: "buttons is-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "button is-link",
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                _vm.isShow = true
               },
             },
-            [_vm._v("+")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("whatnew-form", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.isShow,
-              expression: "isShow",
-            },
-          ],
-          on: {
-            formToggle: function ($event) {
-              return _vm.formToggle($event)
-            },
           },
-        }),
-      ],
-      1
-    ),
-  ])
+          [_vm._v("+")]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("whatnew-form", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isShow,
+            expression: "isShow",
+          },
+        ],
+        on: {
+          formToggle: function ($event) {
+            return _vm.formToggle($event)
+          },
+        },
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

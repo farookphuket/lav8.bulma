@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -85,9 +86,11 @@ class ProfileController extends Controller
     public function show($user_id)
     {
         $u = User::find($user_id);
-
+        $role = User::where('id',Auth::user()->id)
+                    ->first()->role;
         return response()->json([
-            "user" => $u
+            "user" => $u,
+            "role" => $role
         ]);
     }
 

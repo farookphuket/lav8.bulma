@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
@@ -75,7 +77,10 @@ class LoginController extends Controller
             $error = true;
             $url = '/login';
         else:
-
+            $role = User::where('id',Auth::user()->id)
+                ->first()
+                ->role;
+            
             if(Auth::user()->is_admin == 1):
                 $url = '/admin/home';
             else:
@@ -91,6 +96,7 @@ class LoginController extends Controller
         
         return response()->json([
             "msg" => $msg,
+            "role" => $role,
             'url' => $url,
             'error' => $error,
             'token' => $token

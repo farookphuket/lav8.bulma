@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use DB;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -25,6 +27,7 @@ class User extends Authenticatable
     ];
 
     protected static $user_table = "users";
+    protected static $user_role_table = "role_user";
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,6 +47,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function role(){
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function whatnew(){
+        return $this->hasMany(Whatnew::class);
+    }
 
 
     public static function backupUser($user_id,$cmd=false){
@@ -112,6 +123,64 @@ updated_at='{$u->updated_at}' WHERE id='{$user_id}';
 ";
             break;
             endswitch;
+        write2text($file,$command);
+
+        // backup role for this user 
+        static::backupRoleUser($user_id);
+    }
+
+    public static function backupRoleUser($user_id){
+        /*
+         * the user's role will not be edit as user can have more than one 
+         * role.
+         * so if the first query find some row of the particular user id 
+         * will be delete then re-insert again
+         * */
+
+        // table 
+        $table = static::$user_role_table;
+
+        // file 
+        $file = base_path("DB/role_user_list.sqlite");
+
+        // data  
+        $r = DB::table($table)->where('user_id',$user_id)->get();
+
+        // command
+        $command = "";
+
+        if(count($r) != 0):
+            // delete this row 
+            $command = "
+/* =============================== Delete user id {$user_id} ==================
+ * the user id {$user_id} will delete for re-create on ".date("Y-m-d H:i:s a")." 
+ * START
+ * */
+DELETE FROM `{$table}` WHERE user_id='{$user_id}';
+/* ============================================================================
+ *                  Delete Command END
+ * ============================================================================
+ * */
+";    
+        endif;
+        // create role for user as user can have more than one roles
+        foreach($r as $item):
+            $command = "
+/* ============================= INSERT COMMAND for {$user_id} ================
+ * on date ".date("Y-m-d H:i:s a")."
+ * START
+ * ============================================================================
+ * */
+INSERT INTO `{$table}` (`user_id`,`role_id`)VALUES(
+    '{$item->user_id}',
+    '{$item->role_id}');
+/* ============================================================================
+*                   INSERT COMMAND for user id {$user_id} END
+* =============================================================================
+* */
+";
+        endforeach;
+
         write2text($file,$command);
     }
 

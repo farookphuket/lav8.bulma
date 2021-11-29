@@ -82,7 +82,8 @@ const router = new VueRouter({
         {
             path: '/member/home',
             name: 'MemberDashboard',
-            component: MemHome
+            component: MemHome,
+
         },
 
         {
@@ -99,5 +100,12 @@ const router = new VueRouter({
         },
     ]
 });
+
+
+router.beforeEach((to,from,next)=>{
+
+    document.title = to.name
+    next()
+})
 
 export default router;

@@ -15,7 +15,30 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id");
+            $table->string("p_title");
+            $table->string("slug");
+            $table->text("p_excerpt");
+            $table->text("p_body");
+            $table->boolean("p_is_public");
             $table->timestamps();
+
+            $table->foreign("user_id")
+                    ->references("id")
+                    ->on("users")
+                    ->onDelete("cascade");
+        });
+
+        // tag relationship
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("post_id");
+            $table->foreignId("tag_id");
+
+            $table->foreign("post_id")
+                    ->references("id")
+                    ->on("posts")
+                    ->onDelete("cascade");
         });
     }
 
@@ -27,5 +50,6 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('post_tag');
     }
 }

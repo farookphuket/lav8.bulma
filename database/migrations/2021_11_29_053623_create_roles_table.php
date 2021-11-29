@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWhatnewsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateWhatnewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('whatnews', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
-            $table->string("wn_title");
-            $table->text("wn_body");
-            $table->boolean("is_public");
+            $table->string("role_name");
             $table->timestamps();
         });
-
-
-
     }
 
     /**
@@ -33,6 +27,6 @@ class CreateWhatnewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whatnews');
+        Schema::dropIfExists('roles');
     }
 }

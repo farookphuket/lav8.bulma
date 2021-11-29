@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Eloquent;
 use DB;
-class VisitorSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,10 @@ class VisitorSeeder extends Seeder
      */
     public function run()
     {
-        // make posts table
+        // make roles table
         Eloquent::unguard();
-        $path = 'DB/visitor_list.sqlite';
+        $path = 'DB/role_list.sqlite';
         DB::unprepared(file_get_contents($path));
-        $this->command->info("Visitor has been Created!!");
+        $this->command->info("Role has been Created!!");
     }
 }

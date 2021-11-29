@@ -5,7 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Eloquent;
 use DB;
-class VisitorSeeder extends Seeder
+
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +15,10 @@ class VisitorSeeder extends Seeder
      */
     public function run()
     {
-        // make posts table
+        // make tags table
         Eloquent::unguard();
-        $path = 'DB/visitor_list.sqlite';
+        $path = 'DB/tag_list.sqlite';
         DB::unprepared(file_get_contents($path));
-        $this->command->info("Visitor has been Created!!");
+        $this->command->info("Tag has been Created!!");
     }
 }

@@ -54,6 +54,7 @@ export default{
                  return{
                      res_status:'',
                      token:'',
+                     role_user:'',
                      err:false,
                     lForm:new Form({
                         email:'',
@@ -73,14 +74,13 @@ methods:{
                     this.res_status = res.msg
                     this.token = res.token 
                     this.$cookies.set('token',res.token)
-
+                    this.role_user = res.role
                     if(res.error != false){
                      //   console.log(res)
-                       // console.log(res)
                         return
                     }
                     location.href=res.url
-                    //console.log(`the response url ${res.url}`)
+
                     
                         })
                 .catch((err)=>{

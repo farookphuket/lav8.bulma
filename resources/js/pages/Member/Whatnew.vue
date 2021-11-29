@@ -1,6 +1,5 @@
 <template>
     <div class="card">
-        <div class="card-content">
             <div class="buttons is-right">
                 <button class="button is-link" 
                 @click.prevent="isShow = true">+</button>
@@ -8,7 +7,6 @@
 
            <whatnew-form v-show="isShow" 
            @formToggle="formToggle($event)"></whatnew-form>
-        </div>
 
     </div>
 </template>
