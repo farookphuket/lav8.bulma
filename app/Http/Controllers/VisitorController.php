@@ -62,6 +62,11 @@ class VisitorController extends Controller
                 "visited_at" => now()
             ]; 
             Visitor::create($v_data);
+
+            // get the last row for backup 
+            $v = Visitor::latest()->first();
+            // make backup to file
+            Visitor::backupVisitor($v->id,'insert');
             return true;
         endif;
         return false;
