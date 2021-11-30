@@ -1,0 +1,11 @@
+INSERT INTO `roles`(`role_name`,`created_at`,`updated_at`) VALUES(
+    'admin',
+    '2021-11-28 06:10:12',
+    '2021-11-28 06:10:12');
+
+
+
+INSERT INTO `roles`(`role_name`,`created_at`,`updated_at`) VALUES(
+    'member',
+    '2021-11-28 06:10:12',
+    '2021-11-28 06:10:12');

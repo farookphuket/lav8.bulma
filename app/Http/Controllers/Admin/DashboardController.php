@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Whatnew;
+
+use Auth;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -17,6 +21,15 @@ class DashboardController extends Controller
         //
     }
 
+    public function getWhatnew(){
+        $wn = Whatnew::orderBy('created_at','DESC')
+                        ->with('user')
+                        ->paginate(4);
+
+        return response()->json([
+            "whatnew" => $wn
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController as Regit;
 use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
 use App\Http\Controllers\VisitorController as VISIT;
+use App\Http\Controllers\WhatnewController as WN;
 
 /* admin route */
 use App\Http\Controllers\Admin\UserController as AUSER;
@@ -24,6 +25,11 @@ use App\Http\Controllers\Admin\DashboardController as AHOME;
 
 Route::post('/register',[Regit::class,'store'])->name('register');
 Route::get('/userHasConfirmed',[Regit::class,'userHasConfirmed']);
+
+/* ============ whatnew
+ *
+ * */
+Route::get('/whatnew',[WN::class,'getWhatnew']);
 
 /* ====== Visitor 25 Nov 2021 */
 Route::resource('/visitor',VISIT::class);
@@ -65,4 +71,14 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
       ->group(function(){
     Route::resource('/user',AUSER::class);
     Route::resource('/home',AHOME::class);
+
+    // whatnew 
+    Route::resource('/whatnew',WN::class);
+    
+    // get whatnew will be use dashboard
+    Route::get('/getwhatnew',[AHOME::class,'getWhatnew'])
+        ->name('getWhatnew');
+
+
+
 });

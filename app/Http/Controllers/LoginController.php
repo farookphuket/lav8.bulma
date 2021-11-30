@@ -28,6 +28,7 @@ class LoginController extends Controller
     public function checkPassSport(){
         $user = Auth::check();
         $user_has_confirm_email = false;
+        $user_obj = Auth::user();
         if($user):
             $user_has_confirm_email = User::where('id',Auth::user()->id)
                                 ->where('email_verified_at','!=',null)
@@ -35,6 +36,7 @@ class LoginController extends Controller
         endif;
         return response()->json([
             "user" => $user,
+            "user_obj" => $user_obj,
             "user_has_confirm_email" => $user_has_confirm_email
         ]);
     }
