@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as Regit;
 use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
+use App\Http\Controllers\PostController as Post;
 use App\Http\Controllers\VisitorController as VISIT;
 use App\Http\Controllers\WhatnewController as WN;
 
@@ -37,6 +38,11 @@ Route::resource('/visitor',VISIT::class);
 Route::post('/checkpasssport',[Login::class,'checkPassSport'])
     ->name('checkPassSport');
 Route::post('/login',[Login::class,"store"]);
+
+/* ============ public post route 1 Nov 2021
+ *
+ * */
+Route::get('/getpost',[Post::class,'getPost'])->name('getPost');
 
 /*
 Route::group(['middleware' => ['auth:sanctum']],function(){
@@ -79,6 +85,15 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     Route::get('/getwhatnew',[AHOME::class,'getWhatnew'])
         ->name('getWhatnew');
 
-
+    /* ====================== post section ====================================
+     *
+     * */
+    // post 
+    Route::resource('/post',Post::class);
+    // get post from post controller as admin
+    Route::get('/getpost',[Post::class,'aGetPost'])->name('aGetPost');
+    /* ========================================================================
+     *
+     * */
 
 });

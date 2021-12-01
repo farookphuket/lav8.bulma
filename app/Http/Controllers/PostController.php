@@ -19,6 +19,21 @@ class PostController extends Controller
         //
     }
 
+    public function getPost(){
+        // return json data 
+    }
+
+
+    public function aGetPost(){
+
+        $post = Post::with('user')
+                    ->orderBy('created_at','DESC')
+                    ->paginate(4);
+        // return json data
+        return response()->json([
+            "post" => $post
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,6 +53,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : your post has been created!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**

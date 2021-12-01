@@ -28,6 +28,14 @@
                         </router-link>
                   </span>
 
+                  <span class="navbar-item">
+                        <router-link
+                          data-toggle="collapse"
+                          :to="{ name: 'AdminUser' }"
+                        >
+                          User
+                        </router-link>
+                  </span>
 
                   <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
@@ -48,7 +56,7 @@
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
-                              :to="{ name: 'posts' }"
+                              :to="{ name: 'AdminPost' }"
                             >
                               Post
                             </router-link>

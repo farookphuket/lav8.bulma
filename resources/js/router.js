@@ -18,6 +18,8 @@ import MemHome from './pages/Member/Home.vue'
 
 // admin 
 import AdminHome from './pages/Admin/Home.vue'
+import AdminPost from './pages/Admin/Post/Post.vue'
+import AdminUser from './pages/Admin/User/User.vue'
 
 
 
@@ -97,6 +99,18 @@ const router = new VueRouter({
             path: '/admin/home',
             name: 'AdminDashboard',
             component: AdminHome
+        },
+
+        {
+            path: '/admin/post',
+            name: 'AdminPost',
+            component: AdminPost
+        },
+
+        {
+            path: '/admin/user',
+            name: 'AdminUser',
+            component: AdminUser
         },
     ]
 });
