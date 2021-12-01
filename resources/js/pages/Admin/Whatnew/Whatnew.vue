@@ -2,7 +2,8 @@
     <div class="columns is-multiline ">
 
             <div class="column is-3">
-                    <a class="button is-primary is-block is-alt" href="#">New Post</a>
+                    <a class="button is-primary is-block is-alt" href="#" 
+                    @click.prevent="showForm = true">New Post</a>
 					<aside class="menu">
 						<p class="menu-label">
 							Tags
@@ -20,14 +21,24 @@
             </div>
             <div class="column is-9">
 
-            <whatnew-form @getWhatnew="getWhatnew($event)" 
+            <whatnew-form v-show="showForm" @closeForm="closeForm($event)"
+            :editId="editId" @getWhatnew="getWhatnew($event)" 
             ></whatnew-form>
 
             <whatnew-list :wnList="wnList" 
-            @getWhatnew="getWhatnew($event)" @edit="edit($event)"></whatnew-list>
+            @getWhatnew="getWhatnew($event)" @edit="edit($event)" 
+            @del="del($event)"></whatnew-list>
 
             </div>
 
+        <div class="modal" :class="{'is-active':isShow}">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div v-html="res_status">{{res_status}}</div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" 
+          @click.prevent="isShow = false"></button>
+        </div>
     </div>
 </template>
 
@@ -41,8 +52,11 @@ export default{
                  WhatnewList,
              },
              data(){return{
+                 showForm:false,
                  wnList:'',
                  editId:0,
+                 isShow:'',
+                 res_status:'',
              }},
          mounted(){
             this.tk = this.$cookies.get("token")
@@ -62,12 +76,46 @@ methods:{
                             headers:{"Authorization":`Basic ${this.tk}`}
                                 })
                     .then(res=>{
-                        console.log(res.data)
+                        //console.log(res.data)
                         this.wnList = res.data.whatnew
                             })
             },
             edit(id){
-                alert(`the edit id ${id}`)
+                this.showForm = true
+                this.editId = id
+            },
+            del(id){
+                this.isShow = ''
+                if(id != 0){
+                    if(confirm(`Do you want to delete the id ${id}?`) == true){
+                        let url = `/api/admin/whatnew/${id}`
+                            axios.delete(url,{
+                                headers:{"Authorization":`Basic ${this.tk}`}
+                                    })
+                        .then(res=>{
+                            console.log(res.data)
+                            this.isShow = 'is-active' 
+                            this.res_status = res.data.msg
+                            setTimeout(()=>{
+                                this.closeBox()
+                                    },1200)
+                                })
+                    }
+                }else{
+                    return
+                }
+                
+            },
+            closeBox(){
+                this.isShow = '' 
+                
+                this.res_status = ''
+                    setTimeout(()=>{
+                        this.getWhatnew()
+                            },3200)
+            },
+            closeForm(){
+                this.showForm = false
             },
         },
 }

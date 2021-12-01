@@ -58,6 +58,8 @@ class WhatnewController extends Controller
 
         $is_public = !request()->is_public?0:1;
 
+        $valid["wn_title"] = xx_clean(request()->wn_title);
+        $valid["wn_body"] = xx_clean(request()->wn_body);
         $valid["is_public"] = $is_public;
         $valid["user_id"] = Auth::user()->id;
 
@@ -117,7 +119,37 @@ class WhatnewController extends Controller
      */
     public function update($id)
     {
-        //
+
+        $valid = request()->validate([
+            "wn_title" => ["required","min:8"],
+            "wn_body" => ["required","min:40"]
+        ],[
+            "wn_title.required" => "Error! title is required minimum is 8 letters!",
+            "wn_body.required" => "Error! body text is required minimum is 40 letters!",
+        ]);
+
+
+        $is_public = !request()->is_public?0:1;
+
+        $valid["wn_title"] = xx_clean(request()->wn_title);
+        $valid["wn_body"] = xx_clean(request()->wn_body);
+        $valid["is_public"] = $is_public;
+        $valid["updated_at"] = now();
+
+        // update data 
+        Whatnew::where("id",$id)
+                    ->update($valid);
+
+        // back up 
+        Whatnew::backupWhatnew($id,"edit");
+
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : item id {$id} has been updated</span>";
+        
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -128,6 +160,19 @@ class WhatnewController extends Controller
      */
     public function destroy(Whatnew $whatnew)
     {
-        //
+        $wn = Whatnew::find($whatnew->id);
+
+        // make backup 
+        Whatnew::backupWhatnew($whatnew->id);
+
+        // delete 
+        $wn->delete();
+
+
+        $msg = "<span class=\"tag is-medium is-success\">
+                Success : The item id {$wn->id} has been deleted!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

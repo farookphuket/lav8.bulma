@@ -180,4 +180,454 @@ INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
 /*
  *  END INSERT command for id 2 on 2021-11-30 20:43:14 pm
  * */
+  
+/* ==================== Default delete command for 1 ===================
+ * START on 2021-12-01 04:35:56 am
+ * */
+/* DELETE FROM `whatnews` WHERE id='1'; */
+/* ============================================================================
+ * END DELETE command for id 1 on 2021-12-01 04:35:56 am
+ * ============================================================================
+ * */
+  
+/* ===================== INSERT COMMAND for id 3 =======================
+ *  START on 2021-12-01 04:40:19 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'my tag is cool!',
+    '<section class="section">
+     <div class="container has-text-centered">
+         <h2 class="title">The Band</h2>
+         <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+             aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+             laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+         <div class="columns is-centered" style="padding: 2rem">
+             <div class="column">
+                 <div class="card">
+                     <div class="card-image">
+                         <figure class="image is-2by1">
+                             <img src="https://images.pexels.com/photos/167635/pexels-photo-167635.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Placeholder image">
+                         </figure>
+                     </div>
+                     <div class="card-content">
+                         <div class="media">
+                             <div class="media-content">
+                                 <p class="title is-4">John Smith</p>
+                                 <p class="subtitle is-6">@johnsmith</p>
+                             </div>
+                         </div>
+
+                         <div class="content">
+                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                             <a>@bulmaio</a>.
+                             <a href="#">#css</a>
+                             <a href="#">#responsive</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="column">
+                 <div class="card">
+                     <div class="card-image">
+                         <figure class="image is-2by1">
+                             <img src="https://images.pexels.com/photos/167635/pexels-photo-167635.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Placeholder image">
+                         </figure>
+                     </div>
+                     <div class="card-content">
+                         <div class="media">
+                             <div class="media-content">
+                                 <p class="title is-4">John Smith</p>
+                                 <p class="subtitle is-6">@johnsmith</p>
+                             </div>
+                         </div>
+
+                         <div class="content">
+                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                             <a>@bulmaio</a>.
+                             <a href="#">#css</a>
+                             <a href="#">#responsive</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="column">
+                 <div class="card">
+                     <div class="card-image">
+                         <figure class="image is-2by1">
+                             <img src="https://images.pexels.com/photos/167635/pexels-photo-167635.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Placeholder image">
+                         </figure>
+                     </div>
+                     <div class="card-content">
+                         <div class="media">
+                             <div class="media-content">
+                                 <p class="title is-4">John Smith</p>
+                                 <p class="subtitle is-6">@johnsmith</p>
+                             </div>
+                         </div>
+
+                         <div class="content">
+                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                             <a>@bulmaio</a>.
+                             <a href="#">#css</a>
+                             <a href="#">#responsive</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     
+ </section>',
+    '0',
+    '2021-12-01 04:40:19',
+    '2021-12-01 04:40:19');
+/*
+ *  END INSERT command for id 3 on 2021-12-01 04:40:19 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 4 =======================
+ *  START on 2021-12-01 04:41:43 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'my otheo tag i section',
+    '<section class="section">
+    <div class="container has-text-centered">
+        <h2 class="title">Tour Dates</h2>
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+        </div>
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <figure class="image">
+                        <img src="https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260">
+                    </figure>
+                    <p class="title">New York</p>
+                    <p class="subtitle">Fri 27 Nov 2016</p>
+                    <a class="button">Buy Tickets</a>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container has-text-centered">
+        <h2 class="title">Contact</h2>
+
+        
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Name">
+                            <span class="icon is-small is-left">
+                                
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Email">
+                            <span class="icon is-small is-left">
+                                
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Message us"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">
+                                Send message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</section>',
+    '0',
+    '2021-12-01 04:41:43',
+    '2021-12-01 04:41:43');
+/*
+ *  END INSERT command for id 4 on 2021-12-01 04:41:43 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 5 =======================
+ *  START on 2021-12-01 04:44:42 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'this is show nav',
+    '<!-- START NAV -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <img src="https://cdn.emk.dev/templates/bulma-logo-light.png" alt="Logo">
+            </a>
+
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item is-active">
+                    Home
+                </a>
+                <a class="navbar-item">
+                    Examples
+                </a>
+                <a class="navbar-item">
+                    Features
+                </a>
+                <a class="navbar-item">
+                    Team
+                </a>
+                <a class="navbar-item">
+                    Archives
+                </a>
+                <a class="navbar-item">
+                    Help
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- END NAV -->',
+    '1',
+    '2021-12-01 04:44:42',
+    '2021-12-01 04:44:42');
+/*
+ *  END INSERT command for id 5 on 2021-12-01 04:44:42 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 6 =======================
+ *  START on 2021-12-01 04:52:20 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'test ha a thai',
+    '<p>เมื่อวานแอดมินเพิ่งกลับมาจากงาน Hackathon ครับ ซึ่งงาน <strong>Hackathon คือ การแข่งขันสร้าง Product ในเวลาสั้น ๆ</strong> นั่นเอง โดยจะมีโจทย์ของงานแตกต่างกันไป แน่นอนว่าเราต้องการเครื่องมือที่ทำให้สร้างเว็บไซต์ได้เร็วที่สุดครับ และในด้านของ Frontend การใช้ CSS Framework ก็ตอบโจทย์ได้ดีมาก</p>
+<p><strong>บทความแนะนำ:</strong> <a href="https://www.designil.com/web-design-css-framework-list.html">CSS Framework คืออะไร? มารู้จักกับ CSS Framework ชื่อดังแต่ละตัวกัน</a></p>
+<p>เชื่อว่าหลาย ๆ คนคงรู้จัก Bootstrap / Foundation กันอยู่แล้ว โดยเฉพาะ Bootstrap นี่กลายเป็นเครื่องมือติดตัวที่คนทำเว็บไซต์ส่วนใหญ่เลือกใช้ และส่งผลให้เว็บไซต์ออกมาหน้าตาเหมือนกันหมด</p>
+<p>สำหรับมือใหม่ที่ยังไม่เคยใช้ Bootstrap แอดมินเคยแจก <a href="https://www.designil.com/slide-bootstrap-basic-3-grid.html">สไลด์สอนใช้ Bootstrap 3</a> เอาไว้ในบลอคนะฮะ ส่วน Bootstrap 4 สามารถดูวิธีใช้แบบละเอียดได้ที่บทความ <a href="https://www.designil.com/how-to-use-bootstrap-4.html">คู่มือสอนวิธีใช้ Bootstrap 4 ตั้งแต่เริ่มต้น</a> ได้เลยนะครับ</p>
+<p>ด้วยความที่แอดมินเบื่อหน้า Bootstrap แล้ว และการแข่งขันเมื่อวานมีเวลาน้อย (ปกติ Hackathon จะแข่งกัน 2 วัน 48 ชั่วโมง งานนี้แข่งกันแค่คืนเดียว 24 ชั่วโมง และกว่าจะเริ่มโค้ดได้ก็ต้องมาตีโจทย์กับฝั่ง Business อีกหลายชั่วโมง) จะเขียน Frontend เริ่มจาก 0 ก็ต้องมานั่งดีไซน์ใหม่ ทำไม่ทันแน่นอน</p>
+<p>สุดท้ายเลยมาจบที่การใช้ CSS Framework ตัวใหม่ ชื่อว่า <strong>Bulma ซึ่งเป็น CSS Framework ที่ใช้ Flexbox</strong> !</p>
+<p>ผมใช้แล้วรู้สึกชอบมาก มาดูกันว่า CSS Framework ตัวนี้มีอะไรเด็ดบ้างครับ</p>
+<h2>Bulma กับกริดมหัศจรรย์ (ยืดหดได้)</h2>
+<figure id="attachment_5180" aria-describedby="caption-attachment-5180" style="width: 2440px" class="wp-caption aligncenter"><img class="size-full wp-image-5180" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202440%20466'%3E%3C/svg%3E" alt="เพิ่ม-ลดคอลัมน์ แล้วมันจะย่อ-ขยายให้เอง" width="2440" height="466" data-lazy-srcset="https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column.png 2440w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-300x57.png 300w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-768x147.png 768w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-1024x196.png 1024w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-610x117.png 610w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-335x64.png 335w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-1050x201.png 1050w" data-lazy-sizes="(max-width: 2440px) 100vw, 2440px" data-lazy-src="https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column.png"><noscript><img class="size-full wp-image-5180" src="https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column.png" alt="เพิ่ม-ลดคอลัมน์ แล้วมันจะย่อ-ขยายให้เอง" width="2440" height="466" srcset="https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column.png 2440w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-300x57.png 300w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-768x147.png 768w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-1024x196.png 1024w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-610x117.png 610w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-335x64.png 335w, https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-1050x201.png 1050w" sizes="(max-width: 2440px) 100vw, 2440px" /></noscript>
+    <figcaption id="caption-attachment-5180" class="wp-caption-text">เพิ่ม-ลดคอลัมน์ แล้วมันจะย่อ-ขยายให้เอง</figcaption>
+</figure>
+<p>ความสามารถหนึ่งของ Flexbox คือ มันสามารถยืดหดตามพื้นที่ที่มีได้ ไม่ต้องมานั่งกำหนด class แบบ .col-md-6 เหมือนใน Bootstrap / Foundation แบบเก่า ๆ (หรือจะกำหนดมันก็ Fix ความกว้างให้ได้)</p>
+<p>มาดูตัวอย่างโค้ดถ้าต้องการทำกริด 5 คอลัมน์ (ถ้าสังเกตดี ๆ อันนี้เป็นสิ่งนึงที่ Bootstrap / Foundation ทำไม่ได้ เพราะพวกนั้นใช้ 12 Grid หารห้าคอลัมน์ไม่ลงตัวฮะ ถ้าจะเอาก็ต้องเขียนเอง)</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="html">&lt;div class="columns"&gt;
+  &lt;div class="column"&gt;1&lt;/div&gt;
+  &lt;div class="column"&gt;2&lt;/div&gt;
+  &lt;div class="column"&gt;3&lt;/div&gt;
+  &lt;div class="column"&gt;4&lt;/div&gt;
+  &lt;div class="column"&gt;5&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>จะเห็นว่าไม่มีการกำหนดอะไรเลยว่าแต่ละคอลัมน์กว้างเท่าไหร่ เขียนแค่คลาส “column” เฉย ๆ</p>
+<p>ส่วนอีกความสามารถหนึ่งของ Flexbox คือ มันซัพพอร์ทเฉพาะ Browser ใหม่ ๆ เท่านั้น ใครต้องรองรับ IE9 ก็ลาก่อนครับ 555+ #ในเลขห้ามีน้ำตาซ่อนอยู่แว้บๆ</p>
+<h2>คอลัมน์สูงเท่ากันอัตโนมัติ, ข้อมูลจัดกลางอัตโนมัติ, กล่องเต็มจออัตโนมัติ</h2>
+<p>เชื่อว่าคนที่เคยทำ Frontend (ที่ไม่ได้ดีไซน์เอง) ย่อมต้องเคยเจอปัญหาแบบ <strong>“ทำยังไงให้คอลัมน์สูงเท่ากัน”</strong> โดยปกติก็จะแก้กันด้วย JavaScript ครับ ในที่นี้ผมชอบใช้ <a href="https://github.com/liabru/jquery-match-height" target="_blank" rel="noopener">jQuery MatchHeight</a> เวิร์คมาก ฉลาดมาก แสนรู้ด้วย</p>
+<p><strong>…แต่ Bulma มีฟีเจอร์นี้มาให้เลย !!</strong></p>',
+    '1',
+    '2021-12-01 04:52:20',
+    '2021-12-01 04:52:20');
+/*
+ *  END INSERT command for id 6 on 2021-12-01 04:52:20 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 7 =======================
+ *  START on 2021-12-01 09:30:20 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'my codde foa׳s tejs׳s ׳s',
+    '<section class="section">
+    <div class="columns ">
+        <div class="column">
+            my first code block are you crezy!!</div>
+    </div>
+    <div>
+        <pre>        function addValueInObject(object, key, value) {
+    var res = {};
+    var textObject = JSON.stringify(object);
+    if (textObject === ׳{}׳) {
+        res = JSON.parse(׳{"׳ + key + ׳":"׳ + value + ׳"}׳);
+    } else {
+        res = JSON.parse(׳{׳ + textObject.substring(1, textObject.length - 1) + ׳,"׳ + key + ׳":"׳ + value + ׳"}׳);
+    }
+    return res;
+}
+    </pre>
+    </div>
+    <div>
+        <p>
+            เมื่อวานแอดมินเพิ่งกลับมาจากงาน Hackathon ครับ ซึ่งงาน Hackathon คือ การแข่งขันสร้าง Product ในเวลาสั้น ๆ นั่นเอง โดยจะมีโจทย์ของงานแตกต่างกันไป แน่นอนว่าเราต้องการเครื่องมือที่ทำให้สร้างเว็บไซต์ได้เร็วที่สุดครับ และในด้านของ Frontend การใช้ CSS Framework ก็ตอบโจทย์ได้ดีมาก
+        </p>
+    </div>
+</section>',
+    '0',
+    '2021-12-01 09:30:20',
+    '2021-12-01 09:30:20');
+/*
+ *  END INSERT command for id 7 on 2021-12-01 09:30:20 am
+ * */
+  
+/* ==================== Upadate Command for id 6 =======================
+ * START on 2021-12-01 10:33:03 am
+ * 
+ * */
+UPDATE `whatnews` SET wn_title='test ha a thai แก้ไขนะจ๊ะ',
+wn_body='<p>เมื่อวานแอดมินเพิ่งกลับมาจากงาน Hackathon ครับ ซึ่งงาน <strong>Hackathon คือ การแข่งขันสร้าง Product ในเวลาสั้น ๆ</strong> นั่นเอง โดยจะมีโจทย์ของงานแตกต่างกันไป แน่นอนว่าเราต้องการเครื่องมือที่ทำให้สร้างเว็บไซต์ได้เร็วที่สุดครับ และในด้านของ Frontend การใช้ CSS Framework ก็ตอบโจทย์ได้ดีมาก</p>
+<p><strong>บทความแนะนำ:</strong> <a href="https://www.designil.com/web-design-css-framework-list.html">CSS Framework คืออะไร? มารู้จักกับ CSS Framework ชื่อดังแต่ละตัวกัน</a></p>
+<p>เชื่อว่าหลาย ๆ คนคงรู้จัก Bootstrap / Foundation กันอยู่แล้ว โดยเฉพาะ Bootstrap นี่กลายเป็นเครื่องมือติดตัวที่คนทำเว็บไซต์ส่วนใหญ่เลือกใช้ และส่งผลให้เว็บไซต์ออกมาหน้าตาเหมือนกันหมด</p>
+<p>สำหรับมือใหม่ที่ยังไม่เคยใช้ Bootstrap แอดมินเคยแจก <a href="https://www.designil.com/slide-bootstrap-basic-3-grid.html">สไลด์สอนใช้ Bootstrap 3</a> เอาไว้ในบลอคนะฮะ ส่วน Bootstrap 4 สามารถดูวิธีใช้แบบละเอียดได้ที่บทความ <a href="https://www.designil.com/how-to-use-bootstrap-4.html">คู่มือสอนวิธีใช้ Bootstrap 4 ตั้งแต่เริ่มต้น</a> ได้เลยนะครับ</p>
+<p>ด้วยความที่แอดมินเบื่อหน้า Bootstrap แล้ว และการแข่งขันเมื่อวานมีเวลาน้อย (ปกติ Hackathon จะแข่งกัน 2 วัน 48 ชั่วโมง งานนี้แข่งกันแค่คืนเดียว 24 ชั่วโมง และกว่าจะเริ่มโค้ดได้ก็ต้องมาตีโจทย์กับฝั่ง Business อีกหลายชั่วโมง) จะเขียน Frontend เริ่มจาก 0 ก็ต้องมานั่งดีไซน์ใหม่ ทำไม่ทันแน่นอน</p>
+<p>สุดท้ายเลยมาจบที่การใช้ CSS Framework ตัวใหม่ ชื่อว่า <strong>Bulma ซึ่งเป็น CSS Framework ที่ใช้ Flexbox</strong> !</p>
+<p>ผมใช้แล้วรู้สึกชอบมาก มาดูกันว่า CSS Framework ตัวนี้มีอะไรเด็ดบ้างครับ</p>
+<h2>Bulma กับกริดมหัศจรรย์ (ยืดหดได้)</h2>
+
+
+<figure>
+
+    <img class="size-full wp-image-5180" src="https://www.designil.com/wp-content/uploads/2016/10/bulma-flexbox-column-1024x196.png">
+
+
+
+</figure>
+<p>ความสามารถหนึ่งของ Flexbox คือ มันสามารถยืดหดตามพื้นที่ที่มีได้ ไม่ต้องมานั่งกำหนด class แบบ .col-md-6 เหมือนใน Bootstrap / Foundation แบบเก่า ๆ (หรือจะกำหนดมันก็ Fix ความกว้างให้ได้)</p>
+<p>มาดูตัวอย่างโค้ดถ้าต้องการทำกริด 5 คอลัมน์ (ถ้าสังเกตดี ๆ อันนี้เป็นสิ่งนึงที่ Bootstrap / Foundation ทำไม่ได้ เพราะพวกนั้นใช้ 12 Grid หารห้าคอลัมน์ไม่ลงตัวฮะ ถ้าจะเอาก็ต้องเขียนเอง)</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="html">&lt;div class="columns"&gt;
+  &lt;div class="column"&gt;1&lt;/div&gt;
+  &lt;div class="column"&gt;2&lt;/div&gt;
+  &lt;div class="column"&gt;3&lt;/div&gt;
+  &lt;div class="column"&gt;4&lt;/div&gt;
+  &lt;div class="column"&gt;5&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>จะเห็นว่าไม่มีการกำหนดอะไรเลยว่าแต่ละคอลัมน์กว้างเท่าไหร่ เขียนแค่คลาส “column” เฉย ๆ</p>
+<p>ส่วนอีกความสามารถหนึ่งของ Flexbox คือ มันซัพพอร์ทเฉพาะ Browser ใหม่ ๆ เท่านั้น ใครต้องรองรับ IE9 ก็ลาก่อนครับ 555+ #ในเลขห้ามีน้ำตาซ่อนอยู่แว้บๆ</p>
+<h2>คอลัมน์สูงเท่ากันอัตโนมัติ, ข้อมูลจัดกลางอัตโนมัติ, กล่องเต็มจออัตโนมัติ</h2>
+<p>เชื่อว่าคนที่เคยทำ Frontend (ที่ไม่ได้ดีไซน์เอง) ย่อมต้องเคยเจอปัญหาแบบ <strong>“ทำยังไงให้คอลัมน์สูงเท่ากัน”</strong> โดยปกติก็จะแก้กันด้วย JavaScript ครับ ในที่นี้ผมชอบใช้ <a href="https://github.com/liabru/jquery-match-height" target="_blank" rel="noopener">jQuery MatchHeight</a> เวิร์คมาก ฉลาดมาก แสนรู้ด้วย</p>
+<p><strong>…แต่ Bulma มีฟีเจอร์นี้มาให้เลย !!</strong></p>',
+is_public='1',
+updated_at='2021-12-01 10:33:03' WHERE id='6';
+/* ============================================================================
+*   END UPDATE command for id 6 on 2021-12-01 10:33:03 am
+ * */
  

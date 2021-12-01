@@ -7,7 +7,7 @@
 
                         <div class="control">
                             <input v-model="wForm.wn_title" class="input" 
-                            type="text" placeholder="Title..."
+                            type="text" placeholder="Title..." ref="title"
                             >
                         </div>
                     </div>
@@ -50,7 +50,11 @@
                                 <div class="buttons ">
                                     <button class="button is-outlined 
                                     is-primary" type="submit" 
-                                    @click.prevent="saveWn">Post</button>
+                                    @click.prevent="saveWn(editId)">Post</button>
+                                    <button class="button is-danger is-outlined" 
+                                    @click.prevent="$emit('closeForm')">
+                                        <font-awesome-icon icon="times-circle"></font-awesome-icon>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -66,6 +70,7 @@
 import JoditEditor from 'jodit-vue'
 export default{
     name:"WhatnewForm",
+    props:["editId"],
              data(){
                  return{
                     wForm:new Form({
@@ -80,18 +85,49 @@ export default{
              mounted(){
                  this.tk = this.$cookies.get("token")
              },
+watch:{
+          "editId":function(x){
+              this.getEditData(x)
+          }
+      },
 methods:{
-            saveWn(){
+            getEditData(x){
+                if(x == 0) return
+                this.wForm.is_public = false 
+                this.$refs.title.focus()
+                let url = `/api/admin/whatnew/${x}`
+                axios.get(url)
+                .then(res=>{
+                    let rForm = res.data.whatnew 
+                    this.wForm.wn_title = rForm.wn_title 
+                    this.wForm.wn_body = rForm.wn_body 
+                    if(rForm.is_public != 0) this.wForm.is_public = true
+                        })
+                
+
+            },
+            saveWn(id){
                 let url = `/api/admin/whatnew`
-                let fData = this.wForm
+                let fData = new FormData()
+                    fData.append('wn_title',this.wForm.wn_title)
+                    fData.append('wn_body',this.wForm.wn_body)
+                    fData.append('is_public',this.wForm.is_public)
+
+                    if(id){
+                        url = `/api/admin/whatnew/${id}`
+                        fData.append("_method","PUT")
+                    }
                     axios.post(url,fData,{
                         headers:{"Authorization":`Basic ${this.tk}`}
                             }) 
                 .then(res=>{
                     //console.log(res.data)
                     this.res_status = res.data.msg
-                    setTimeout(()=>{this.$emit('getWhatnew')},3200)
-                    this.getClear()
+                    setTimeout(()=>{
+
+                        this.getClear()
+                            },3200)
+
                         })
                 .catch(err=>{
                     //console.log(err.response.data)
@@ -104,6 +140,8 @@ methods:{
             getClear(){
                 this.wForm.reset()
                 this.res_status = ''
+
+                this.$emit('getWhatnew')
             },
         },
 }

@@ -12828,6 +12828,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -12838,8 +12849,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      showForm: false,
       wnList: '',
-      editId: 0
+      editId: 0,
+      isShow: '',
+      res_status: ''
     };
   },
   mounted: function mounted() {
@@ -12865,12 +12879,50 @@ __webpack_require__.r(__webpack_exports__);
           "Authorization": "Basic ".concat(this.tk)
         }
       }).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
         _this.wnList = res.data.whatnew;
       });
     },
     edit: function edit(id) {
-      alert("the edit id ".concat(id));
+      this.showForm = true;
+      this.editId = id;
+    },
+    del: function del(id) {
+      var _this2 = this;
+
+      this.isShow = '';
+
+      if (id != 0) {
+        if (confirm("Do you want to delete the id ".concat(id, "?")) == true) {
+          var url = "/api/admin/whatnew/".concat(id);
+          axios["delete"](url, {
+            headers: {
+              "Authorization": "Basic ".concat(this.tk)
+            }
+          }).then(function (res) {
+            console.log(res.data);
+            _this2.isShow = 'is-active';
+            _this2.res_status = res.data.msg;
+            setTimeout(function () {
+              _this2.closeBox();
+            }, 1200);
+          });
+        }
+      } else {
+        return;
+      }
+    },
+    closeBox: function closeBox() {
+      var _this3 = this;
+
+      this.isShow = '';
+      this.res_status = '';
+      setTimeout(function () {
+        _this3.getWhatnew();
+      }, 3200);
+    },
+    closeForm: function closeForm() {
+      this.showForm = false;
     }
   }
 });
@@ -12953,9 +13005,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "WhatnewForm",
+  props: ["editId"],
   data: function data() {
     return {
       wForm: new Form({
@@ -12970,32 +13027,59 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.tk = this.$cookies.get("token");
   },
+  watch: {
+    "editId": function editId(x) {
+      this.getEditData(x);
+    }
+  },
   methods: {
-    saveWn: function saveWn() {
+    getEditData: function getEditData(x) {
       var _this = this;
 
+      if (x == 0) return;
+      this.wForm.is_public = false;
+      this.$refs.title.focus();
+      var url = "/api/admin/whatnew/".concat(x);
+      axios.get(url).then(function (res) {
+        var rForm = res.data.whatnew;
+        _this.wForm.wn_title = rForm.wn_title;
+        _this.wForm.wn_body = rForm.wn_body;
+        if (rForm.is_public != 0) _this.wForm.is_public = true;
+      });
+    },
+    saveWn: function saveWn(id) {
+      var _this2 = this;
+
       var url = "/api/admin/whatnew";
-      var fData = this.wForm;
+      var fData = new FormData();
+      fData.append('wn_title', this.wForm.wn_title);
+      fData.append('wn_body', this.wForm.wn_body);
+      fData.append('is_public', this.wForm.is_public);
+
+      if (id) {
+        url = "/api/admin/whatnew/".concat(id);
+        fData.append("_method", "PUT");
+      }
+
       axios.post(url, fData, {
         headers: {
           "Authorization": "Basic ".concat(this.tk)
         }
       }).then(function (res) {
         //console.log(res.data)
-        _this.res_status = res.data.msg;
+        _this2.res_status = res.data.msg;
         setTimeout(function () {
-          _this.$emit('getWhatnew');
+          _this2.getClear();
         }, 3200);
-
-        _this.getClear();
       })["catch"](function (err) {
         //console.log(err.response.data)
-        _this.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
       });
     },
     getClear: function getClear() {
       this.wForm.reset();
       this.res_status = '';
+      this.$emit('getWhatnew');
     }
   }
 });
@@ -13052,16 +13136,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "WhatnewList",
   props: ["wnList"],
   data: function data() {
     return {
-      tk: ''
+      tk: '',
+      user_id: '',
+      moment: moment,
+      theCurrentPage: ''
     };
   },
   mounted: function mounted() {
     this.tk = this.$cookies.get('token');
+    this.user_id = window.user_id;
   },
   methods: {}
 });
@@ -39728,14 +39885,43 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "columns is-multiline " }, [
-    _vm._m(0),
+    _c("div", { staticClass: "column is-3" }, [
+      _c(
+        "a",
+        {
+          staticClass: "button is-primary is-block is-alt",
+          attrs: { href: "#" },
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              _vm.showForm = true
+            },
+          },
+        },
+        [_vm._v("New Post")]
+      ),
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "column is-9" },
       [
         _c("whatnew-form", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showForm,
+              expression: "showForm",
+            },
+          ],
+          attrs: { editId: _vm.editId },
           on: {
+            closeForm: function ($event) {
+              return _vm.closeForm($event)
+            },
             getWhatnew: function ($event) {
               return _vm.getWhatnew($event)
             },
@@ -39751,11 +39937,35 @@ var render = function () {
             edit: function ($event) {
               return _vm.edit($event)
             },
+            del: function ($event) {
+              return _vm.del($event)
+            },
           },
         }),
       ],
       1
     ),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", class: { "is-active": _vm.isShow } }, [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-content" }, [
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+          _vm._v(_vm._s(_vm.res_status)),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "modal-close is-large",
+        attrs: { "aria-label": "close" },
+        on: {
+          click: function ($event) {
+            $event.preventDefault()
+            _vm.isShow = false
+          },
+        },
+      }),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -39763,61 +39973,50 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column is-3" }, [
-      _c(
-        "a",
-        {
-          staticClass: "button is-primary is-block is-alt",
-          attrs: { href: "#" },
-        },
-        [_vm._v("New Post")]
-      ),
+    return _c("aside", { staticClass: "menu" }, [
+      _c("p", { staticClass: "menu-label" }, [
+        _vm._v("\n\t\t\t\t\t\t\tTags\n\t\t\t\t\t\t"),
+      ]),
       _vm._v(" "),
-      _c("aside", { staticClass: "menu" }, [
-        _c("p", { staticClass: "menu-label" }, [
-          _vm._v("\n\t\t\t\t\t\t\tTags\n\t\t\t\t\t\t"),
+      _c("ul", { staticClass: "menu-list" }, [
+        _c("li", [
+          _c("span", { staticClass: "tag is-primary is-medium " }, [
+            _vm._v("Dashboard"),
+          ]),
         ]),
         _vm._v(" "),
-        _c("ul", { staticClass: "menu-list" }, [
-          _c("li", [
-            _c("span", { staticClass: "tag is-primary is-medium " }, [
-              _vm._v("Dashboard"),
-            ]),
+        _c("li", [
+          _c("span", { staticClass: "tag is-link is-medium " }, [
+            _vm._v("Customers"),
           ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-link is-medium " }, [
-              _vm._v("Customers"),
-            ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("span", { staticClass: "tag is-light is-danger is-medium " }, [
+            _vm._v("Authentication"),
           ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-light is-danger is-medium " }, [
-              _vm._v("Authentication"),
-            ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("span", { staticClass: "tag is-dark is-medium " }, [
+            _vm._v("Payments"),
           ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-dark is-medium " }, [
-              _vm._v("Payments"),
-            ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("span", { staticClass: "tag is-success is-medium " }, [
+            _vm._v("Transfers"),
           ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-success is-medium " }, [
-              _vm._v("Transfers"),
-            ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("span", { staticClass: "tag is-warning is-medium " }, [
+            _vm._v("Balance"),
           ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-warning is-medium " }, [
-              _vm._v("Balance"),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("span", { staticClass: "tag is-medium " }, [_vm._v("Question")]),
-          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("span", { staticClass: "tag is-medium " }, [_vm._v("Question")]),
         ]),
       ]),
     ])
@@ -39860,6 +40059,7 @@ var render = function () {
                     expression: "wForm.wn_title",
                   },
                 ],
+                ref: "title",
                 staticClass: "input",
                 attrs: { type: "text", placeholder: "Title..." },
                 domProps: { value: _vm.wForm.wn_title },
@@ -39979,11 +40179,30 @@ var render = function () {
                       on: {
                         click: function ($event) {
                           $event.preventDefault()
-                          return _vm.saveWn.apply(null, arguments)
+                          return _vm.saveWn(_vm.editId)
                         },
                       },
                     },
                     [_vm._v("Post")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-danger is-outlined",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.$emit("closeForm")
+                        },
+                      },
+                    },
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "times-circle" },
+                      }),
+                    ],
+                    1
                   ),
                 ]),
               ]),
@@ -40033,6 +40252,130 @@ var render = function () {
         { staticClass: "card-content" },
         _vm._l(_vm.wnList.data, function (po) {
           return _c("article", { staticClass: "mt-4" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                po.user_id == _vm.user_id
+                  ? _c("div", { staticClass: "tags is-pulled-right" }, [
+                      po.is_public == 0
+                        ? _c(
+                            "div",
+                            { staticClass: "tag is-warning" },
+                            [
+                              _c("font-awesome-icon", {
+                                attrs: { icon: "lock" },
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "ml-2" }, [
+                                _vm._v(
+                                  "\n                                            Private    \n                                        "
+                                ),
+                              ]),
+                            ],
+                            1
+                          )
+                        : _c(
+                            "div",
+                            { staticClass: "tag is-success" },
+                            [
+                              _c("font-awesome-icon", {
+                                attrs: { icon: "lock-open" },
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "ml-2" }, [
+                                _vm._v(
+                                  "\n                                            Public\n                                        "
+                                ),
+                              ]),
+                            ],
+                            1
+                          ),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "media" }, [
+                  _c(
+                    "span",
+                    { staticClass: "icon-text" },
+                    [
+                      _c("font-awesome-icon", { attrs: { icon: "user" } }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(
+                          "\n                                                " +
+                            _vm._s(po.user.name) +
+                            "\n                                            "
+                        ),
+                      ]),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "icon-text ml-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "clock" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "ml-2" }, [
+                    _c(
+                      "a",
+                      { attrs: { href: "", title: _vm.moment(po.created_at) } },
+                      [
+                        _vm._v(
+                          "\n                                                " +
+                            _vm._s(_vm.moment(po.created_at).fromNow()) +
+                            "\n                                            "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c(
+                  "div",
+                  { staticClass: "field is-grouped is-grouped-right" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button is-primary is-outlined",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("edit", po.id)
+                          },
+                        },
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button is-danger is-outlined",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("del", po.id)
+                          },
+                        },
+                      },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "trash-alt" },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("h2", { staticClass: "title has-text-centered" }, [
               _vm._v(_vm._s(po.wn_title)),
             ]),
@@ -40045,56 +40388,90 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                           " +
+                  "\n                               " +
                     _vm._s(po.wn_body) +
-                    " \n                        "
+                    " \n                            "
                 ),
               ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "columns" }, [
-              _c("div", { staticClass: "column" }, [
-                _c("div", { staticClass: "media" }, [
-                  _c(
-                    "span",
-                    { staticClass: "icon-text" },
-                    [
-                      _c("font-awesome-icon", { attrs: { icon: "user" } }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [
-                        _vm._v(
-                          "\n                                            " +
-                            _vm._s(po.user.name) +
-                            "\n                                        "
-                        ),
-                      ]),
-                    ],
-                    1
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _vm._m(0, true),
-            ]),
+            _c("hr", { staticClass: "mb-4" }),
           ])
         }),
         0
       ),
     ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "box" }, [
+      _c(
+        "nav",
+        {
+          staticClass: "pagination is-rounded",
+          attrs: { role: "navigation", "aria-label": "pagination" },
+        },
+        [
+          _c("a", { staticClass: "pagination-previous is-current" }, [
+            _vm._v("All post " + _vm._s(_vm.wnList.total)),
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "pagination-next is-current" }, [
+            _vm._v("page " + _vm._s(_vm.wnList.current_page)),
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.wnList.links, function (ln) {
+            return _c("ul", { staticClass: "pagination-list" }, [
+              ln.url != null && ln.active == false
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "pagination-link",
+                        class: { "is-current": _vm.theCurrentPage },
+                        attrs: {
+                          "aria-label": "Page 1",
+                          "aria-current": "page",
+                        },
+                        domProps: { innerHTML: _vm._s(ln.label) },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("getWhatnew", ln.url)
+                          },
+                        },
+                      },
+                      [_vm._v(_vm._s(ln.label))]
+                    ),
+                  ])
+                : _c("li", [
+                    ln.active == true
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "pagination-link is-current",
+                            attrs: { "aria-label": "", "aria-current": "page" },
+                            domProps: { innerHTML: _vm._s(ln.label) },
+                          },
+                          [_vm._v(_vm._s(ln.label))]
+                        )
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "pagination-link",
+                            attrs: { "aria-label": "", "aria-current": "page" },
+                            domProps: { innerHTML: _vm._s(ln.label) },
+                          },
+                          [_vm._v(_vm._s(ln.label))]
+                        ),
+                  ]),
+            ])
+          }),
+        ],
+        2
+      ),
+    ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column" }, [
-      _c("div", { staticClass: "field is-grouped is-grouped-right" }, [
-        _c("button", { staticClass: "button is-primary" }, [_vm._v("edit")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
