@@ -8,6 +8,8 @@ use App\Http\Controllers\Member\ProfileController as MPF;
 use App\Http\Controllers\PostController as Post;
 use App\Http\Controllers\VisitorController as VISIT;
 use App\Http\Controllers\WhatnewController as WN;
+use App\Http\Controllers\TagController as Tag;
+
 
 /* admin route */
 use App\Http\Controllers\Admin\UserController as AUSER;
@@ -43,6 +45,10 @@ Route::post('/login',[Login::class,"store"]);
  *
  * */
 Route::get('/getpost',[Post::class,'getPost'])->name('getPost');
+Route::get('/post/{post:slug}',[Post::class,'show']);
+
+// tag as public
+Route::get("/tag",[Tag::class,"getTag"])->name("getTag");
 
 /*
 Route::group(['middleware' => ['auth:sanctum']],function(){
@@ -95,5 +101,9 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     /* ========================================================================
      *
      * */
+
+    // tag 
+    Route::resource('/tag',Tag::class);
+    Route::get('/gettag',[Tag::class,"mGetTag"])->name("mGetTag");
 
 });

@@ -53,6 +53,41 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $valid = request()->validate([
+            "p_title" => ["required","min:8","string","max:80"],
+            "p_excerpt" => ["required","min:40"],
+        ],
+        [
+            "p_title.required" => "Error! the title is required min 8 max 80 
+            characters please",
+        ] 
+        );
+
+        // prepare data 
+        $valid["user_id"] = Auth::user()->id;
+        $valid["p_is_public"] = !request()->p_is_public?0:1;
+        $valid["p_title"] = xx_clean(request()->p_title);
+
+        // just to make sure there will be no - at the end of field
+        $valid["slug"] = rtrim(request()->slug,"-"); 
+        
+        $valid["p_excerpt"] = xx_clean(request()->p_excerpt);
+        $valid["p_body"] = xx_clean(request()->p_body);
+        
+        // create post 
+        Post::create($valid);
+
+        // get the last row 
+        $p = Post::latest()->first();
+
+        // create tag link
+        $tags = request()->tags;
+        $p->tag()->attach($tags);
+
+        // make a backup 
+        Post::backupPost($p->id,"insert");
+
+
         $msg = "<span class=\"tag is-medium is-success\">
             Success : your post has been created!</span>";
         return response()->json([
@@ -68,7 +103,13 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $po = Post::with('user')
+                    ->with("tag")
+                    ->where("slug",$post->slug)
+                    ->first();
+        return response()->json([
+            "post" => $po
+        ]);
     }
 
     /**

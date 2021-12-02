@@ -1,0 +1,8 @@
+ 
+/* ================= INSERT COMMAND for post id 2 ====================
+ * START on  2021-12-02 09:22:34 am
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '1',
+    '1');
+ 

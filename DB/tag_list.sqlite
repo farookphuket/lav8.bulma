@@ -1,0 +1,25 @@
+ 
+/* ==================== INSERT COMMAND for tag id 1 ===================
+ * START on 2021-12-02 08:17:47 am
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'my tag',
+    '2021-12-02 08:17:47',
+    '2021-12-02 08:17:47');
+/* ============================================================================
+*  INSERT COMMAND for tag id 1 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 2 ===================
+ * START on 2021-12-02 08:23:13 am
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'my tag 2',
+    '2021-12-02 08:23:13',
+    '2021-12-02 08:23:13');
+/* ============================================================================
+*  INSERT COMMAND for tag id 2 END 
+* */
+ 

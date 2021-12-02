@@ -9,7 +9,11 @@
                             type="text" ref="p_title" @keyup.prevent="getSlug"
                             placeholder="Title...">
 
-                            <p class="mt-4">{{theSlug.thaiSlug(pForm.p_title)}}</p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="tag is-medium is-success" v-show="isSlug">
+                            <p class="mt-4 mb-4" >{{theSlug.thaiSlug(pForm.p_title)}}</p>
                         </div>
                     </div>
 
@@ -31,20 +35,40 @@
 
                         <div class="column is-9">
                             <div class="tags">
-                                <span class="tag is-medium is-rounded is-info">
-                                    <input id="" type="checkbox" name=""> 
-                                    <span class="ml-2">tag 1</span>
+                                <span class="tag is-medium is-rounded is-info" 
+                                v-for="ta in tag_all">
+                                    <input v-model="user_select_tag" type="checkbox" 
+                                    name="" :value="ta.id"> 
+                                    <span class="ml-2">{{ta.tag_name}}</span>
                                 </span>
                             </div>
                         </div>
                         <div class="column is-3">
                             <div class="field">
-                                <label class="label" for="">New Tag</label>
+                                <label class="label" for="">
+                                    <span class="mr-4">
+                                        New Tag 
+                                    </span>
+                                </label>
                                 <div class="control">
                                     <input v-model="pForm.new_tag" 
                                     class="input" type="text" name="" 
-                                    placeholder="Enter new tag..."
-                                    ref="new_tag">
+                                    placeholder="hit Enter to save"
+                                    ref="new_tag" @keypress.enter.prevent="addTag">
+                                    <div class="help is-success">
+
+                                        <span class="icon is-pulled-right">
+                                            <span>
+                                            <a href="" class="tag is-bold" title="Enter the tag then hit enter to create you can leave this field blank">
+                                                WTF
+                                            </a>
+                                            </span>
+                                            <span class="icon-text">
+                                                <font-awesome-icon icon="question"></font-awesome-icon>
+                                            </span>
+
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +126,10 @@ export default{
     props:["editId"],
     data(){return{
         res_status:'',
-
+        isSlug:false,
+        tag_all:'',
+        user_select_tag:[],
+        tag_with_post:'',
         theSlug:new CustomText(),
         pForm:new Form({
            p_title:'',
@@ -114,7 +141,7 @@ export default{
         }),
     }},
     mounted(){
-
+        this.getTag()
 
     },
     methods:{
@@ -127,6 +154,7 @@ export default{
              fData.append("p_excerpt",this.pForm.p_excerpt)
              fData.append("p_body",this.pForm.p_body)
              fData.append("p_is_public",this.pForm.p_is_public)
+             fData.append("tags",this.user_select_tag)
              if(id){
                  url = `/api/admin/post/${id}`
                  fData.append("_method","PUT")
@@ -146,12 +174,51 @@ export default{
                      })
          },
          getSlug(){
+             this.isSlug = false
             this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
+            if(this.$refs.p_title.value != '') this.isSlug = true
          },
          getClear(){
              this.res_status = ''
+                this.isSlug = false
              this.pForm.reset()
              this.$emit('getPost')
+         },
+         getTag(){
+             this.$refs.new_tag.value = ''
+             let url = `/api/tag`
+             axios.get(url)
+             .then(res=>{
+                 //console.log(res.data)
+                 let tag_all = res.data.tag_all 
+                 let tag_post = res.data.tag_with_post
+                    this.tag_all = tag_all
+                     })
+         },
+         addTag(){
+             this.res_status = ''
+
+             if(this.$refs.new_tag.value != ''){
+                 //alert(`will be ${this.$refs.new_tag.value}`)
+                 let url = `/api/admin/tag`
+                 let fData = new FormData()
+                 fData.append("new_tag",this.$refs.new_tag.value)
+                 axios.post(url,fData)
+                 .then(res=>{
+                   //  console.log(res.data)
+                     this.res_status = res.data.msg
+                     setTimeout(()=>{
+                         this.getTag()
+                             },3200)
+                         })
+                 .catch(err=>{
+                     this.res_status = `<span class="tag is-medium is-danger">
+                     ${Object.values(err.response.data.errors).join()}</span>`
+                     setTimeout(()=>{
+                        this.res_status = ''
+                             },5200)
+                         })
+             }
          },
     },
 }

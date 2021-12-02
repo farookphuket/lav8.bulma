@@ -8,19 +8,29 @@
             </li>
           </ul>
         </nav>
-  <h1 class="title">Medium section</h1>
-  <h2 class="subtitle">
-    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-  </h2>
 
-        
+       <post-view></post-view>
 
 </section>
 
 </template>
 
 <script>
+import PostView from './PostView.vue'
 export default{
     name:"Post",
+             components:{
+                 PostView,
+             },
+             data(){
+                 return{
+
+                 }
+             },
+methods:{
+            post(url){
+                alert(url)
+            },
+        }
 }
 </script>

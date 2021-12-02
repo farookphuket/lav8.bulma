@@ -24,6 +24,9 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function tag(){
+        return $this->belongsToMany(Tag::class);
+    }
     /* ======================= Backup section =================================
      * 
      * */
@@ -54,9 +57,12 @@ INSERT INTO `{$table}`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
     '{$p->slug}',
     '{$p->p_excerpt}',
     '{$p->p_body}',
+    '{$p->p_is_public}',
     '{$p->created_at}',
     '{$p->updated_at}');
 ";
+
+                static::backupPostTagLink($post_id);
             break;
             case"edit":
                 $command = "
@@ -72,6 +78,8 @@ p_is_public='{$p->p_is_public}' WHERE id='{$post_id}';
  * END UPDATE COMMAND for id {$post_id}
  * */
 ";
+
+                static::backupPostTagLink($post_id);
             break;
             default:
                 $command = "
@@ -103,6 +111,9 @@ p_is_public='{$p->p_is_public}' WHERE id='{$post_id}';
         $po = DB::table($table)
                     ->where("post_id",$post_id)
                     ->get();
+        // command 
+        $command = "";
+
         if(count($po) != 0):
             $command = "
 /* ===================== Default DELETE command ===============================

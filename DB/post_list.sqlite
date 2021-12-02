@@ -1,0 +1,16 @@
+ 
+/* ======================= INSERT COMMAND for id 2 ===================
+ * START on 2021-12-02 09:22:34 am
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'this is $$dffg $5 $',
+    'this-is-dffg-5-',
+    '<p>test 1 hafsre</p>',
+    '<p>this is test 2</p>',
+    '1',
+    '2021-12-02 09:22:34',
+    '2021-12-02 09:22:34');
+ 
