@@ -9,27 +9,47 @@
           </ul>
         </nav>
 
-       <post-view></post-view>
-
+        <post-list v-show="isShowListPost" :postList="postList" 
+        @openPost="openPost($event)"></post-list>
 </section>
 
 </template>
 
 <script>
-import PostView from './PostView.vue'
+import PostList from './PostList.vue'
 export default{
     name:"Post",
              components:{
-                 PostView,
+                 PostList,
              },
              data(){
                  return{
-
+                    isShowListPost:true,
+                    postList:'',
                  }
              },
+             mounted(){
+                 this.getPost()
+             },
 methods:{
-            post(url){
-                alert(url)
+            getPost(page){
+                this.isShowSinglePost = false 
+                let url = ''
+                if(page){
+                    url = page
+                    this.$cookies.set('pub_post_old_page',url)
+                }
+                url = this.$cookies.get('pub_post_old_page')
+                if(!url) url = `/api/getpost`
+                axios.get(url)
+                    .then(res=>{
+                        console.log(res.data)
+                        this.postList = res.data.post
+                            })
+            },
+            openPost(slug){
+                this.isShowListPost = false
+                console.log(slug)
             },
         }
 }

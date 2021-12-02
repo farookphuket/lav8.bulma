@@ -37,8 +37,10 @@ export default{
                              headers:{'Authorization':`Basic ${r1}`}
                                  })
                      .then(res=>{
-                         console.log(res.data)
+                         //console.log(res.data)
                          this.$cookies.set('token','')
+                         console.log(window.$cookies.keys)
+                         window.$cookies.remove
                          location.href=res.data.url
                              })
                  },

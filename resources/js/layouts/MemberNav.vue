@@ -48,7 +48,7 @@
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
-                              :to="{ name: 'posts' }"
+                              :to="{ name: 'post' }"
                             >
                               Post
                             </router-link>

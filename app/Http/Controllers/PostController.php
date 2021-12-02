@@ -21,6 +21,13 @@ class PostController extends Controller
 
     public function getPost(){
         // return json data 
+        $po = Post::with('user')
+                    ->with('tag')
+                    ->orderBy('created_at','DESC')
+                    ->paginate(2);
+        return response()->json([
+            "post" => $po
+        ]);
     }
 
 
