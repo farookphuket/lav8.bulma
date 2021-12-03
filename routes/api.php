@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController as Regit;
 use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
+use App\Http\Controllers\Member\DashboardController as MHOME;
 use App\Http\Controllers\PostController as Post;
 use App\Http\Controllers\VisitorController as VISIT;
 use App\Http\Controllers\WhatnewController as WN;
@@ -65,6 +66,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /* make a route prefix for member group */
 Route::prefix("member")->name("member.")->middleware('auth:sanctum')
                                         ->group(function(){
+
+    // member dashboard
+    Route::resource('/dashboard',MHOME::class);
+
+    // get whatnew will get from dashboard
+    Route::get('/getwhatnew',[MHOME::class,'getWhatnew'])
+        ->name("getWhatnew");
+
+    // CRUD with whatnew
+    Route::resource('/whatnew',WN::class);
+
 
     /* ============= member profile 24 Nov 2021 ====================
      * 

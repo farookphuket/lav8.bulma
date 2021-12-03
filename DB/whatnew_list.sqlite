@@ -144,4 +144,22 @@ INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
 /*
  *  END INSERT command for id 5 on 2021-12-03 15:01:13 pm
  * */
+  
+/* ===================== INSERT COMMAND for id 6 =======================
+ *  START on 2021-12-03 21:52:45 pm
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '2',
+    'thi dh my tets $׳s ha',
+    '<p>thid kf the tets of my choice</p>
+<p>
+    this will be more text on this test section
+</p>',
+    '1',
+    '2021-12-03 21:52:45',
+    '2021-12-03 21:52:45');
+/*
+ *  END INSERT command for id 6 on 2021-12-03 21:52:45 pm
+ * */
  
