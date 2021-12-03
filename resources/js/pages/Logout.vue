@@ -19,6 +19,7 @@
 </section>
 </template>
 <script>
+
 export default{
     name:"Logout",
              data(){
@@ -39,9 +40,7 @@ export default{
                      .then(res=>{
                          //console.log(res.data)
                          this.$cookies.set('token','')
-                         console.log(window.$cookies.keys)
-                         window.$cookies.remove
-                         location.href=res.data.url
+                            location.href="/"
                              })
                  },
              },

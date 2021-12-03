@@ -13973,9 +13973,7 @@ __webpack_require__.r(__webpack_exports__);
         //console.log(res.data)
         _this.$cookies.set('token', '');
 
-        console.log(window.$cookies.keys);
-        window.$cookies.remove;
-        location.href = res.data.url;
+        location.href = "/";
       });
     }
   }
