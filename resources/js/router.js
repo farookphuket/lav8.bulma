@@ -119,6 +119,11 @@ const router = new VueRouter({
             name: 'AdminUser',
             component: AdminUser
         },
+
+        {
+            path:'*',
+            redirect:'/login'
+        },
     ]
 });
 

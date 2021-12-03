@@ -30,26 +30,21 @@
                             <h2 class="has-text-centered">
                                 contact
                             </h2>
-                            <div class="tags">
-                                <p>
-                                name
-                                <span class="tag is-info">
-                                    farook 
-                                </span>
-                                </p>
-                                <p>
-                                e-mail
-                                <span class="tag is-info">
-                                email@me.com
-                                </span></p>
-                            </div>
                             <ol class="tags is-roman">
                                 <li class="tag is-info">
                                 name farok
                                 </li>
 
                                 <li class="tag is-info">
-                                e-mail farok
+                                e-mail farookphuket@gmail.com
+                                </li>
+                                <li class="tag is-info">
+                                    <span class="icon-text">
+                                        <font-awesome-icon icon="phone"></font-awesome-icon>
+                                    </span>
+                                    <span class="ml-2">
+                                        +66 95 9543920
+                                    </span>
                                 </li>
                             </ol>
                         </div>

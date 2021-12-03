@@ -16,3 +16,132 @@ INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
  *  END INSERT command for id 1 on 2021-11-30 18:14:29 pm
  * */
   
+ 
+/* ===================== INSERT COMMAND for id 2 =======================
+ *  START on 2021-12-03 10:50:13 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'this is anotyher wn',
+    '<div class="mt-4">
+    <img src="https://assets.whichcar.com.au/image/upload/s--TALGjpAk--/c_fill,f_auto,q_auto:good/v1/archive/whichcar/2021/04/23/Misc/hongqi-S9.jpg">
+    <p>this is my car</p>
+</div>',
+    '1',
+    '2021-12-03 10:50:13',
+    '2021-12-03 10:50:13');
+/*
+ *  END INSERT command for id 2 on 2021-12-03 10:50:13 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 3 =======================
+ *  START on 2021-12-03 10:57:22 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'let show the video׳s me',
+    '<div>
+    <h2>this is my video ha ah</h2>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/j0kmuQv7asA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <p>
+        this is the car video car this is my car
+    </p>
+</div>',
+    '1',
+    '2021-12-03 10:57:22',
+    '2021-12-03 10:57:22');
+/*
+ *  END INSERT command for id 3 on 2021-12-03 10:57:22 am
+ * */
+  
+/* ===================== INSERT COMMAND for id 4 =======================
+ *  START on 2021-12-03 11:36:18 am
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'โควิดวันนี้ ไทยพบผู้ติดเชื้อเพิ่ม 4,912 ราย เสียชีวิตอีก 33 ราย(3 ธ.ค. 2564)',
+    '<div>
+    <p>
+        วันนี้ (3 ธ.ค.) เมื่อเวลา 07.30 น. ศูนย์ปฏิบัติการภาวะฉุกเฉิน กรมควบคุมโรค กระทรวงสาธารณสุข เผยตัวเลขสถานการณ์การแพร่ระบาดของโควิด-19 ในประเทศไทย ว่า
+
+        ล่าสุด สถานการณ์การแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) หรือ โควิด-19 ในไทยวันนี้ พบผู้ติดเชื้อรายใหม่เพิ่ม 4,912 ราย ยอดติดเชื้อรวมระลอกเมษายน 2,101,778 ราย รวมยอดติดเชื้อสะสม 2,130,641 ราย เสียชีวิตเพิ่ม 33 ราย เสียชีวิตสะสม 20,880 ราย หายป่วยเพิ่ม 5,844 ราย หายป่วยสะสมระลอกเมษายน 2,009,574 ราย ผู้ป่วยกำลังรักษา 72,761 ราย
+
+    </p>
+    <div class="box">
+        <figure class="image ">
+        <img src="https://s.isanook.com/ns/0/rp/r/w728/ya0xa0m1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL25zLzAvdWQvMTY5Ni84NDgzNTA2LzI2MjQwMjg0OF80NTgyOTEyNzU3ODkyMDJfMjMwLmpwZw==.jpg">
+        </figure>
+
+        <p class="tag is-medium has-text-centered">
+            รูปภาพก๊อปปี้มาจาก https://www.sanook.com/news/8483506/
+        </p>
+    </div>
+
+    <p class="subtitle mt-4">
+        รายละเอียดผู้ป่วยโควิด-19 รายใหม่ จำนวน 4,912 ราย มีดังนี้
+    </p>
+    <ul>
+        <li>
+            ผู้ป่วยจากระบบเฝ้าระวังฯ 4,606 ราย
+        </li>
+        <li>
+            ผู้ป่วยจากการค้นหาเชิงรุก 136 ราย
+        </li>
+        <li>
+            ผู้ป่วยภายในเรือนจำ/ที่ต้องขัง 157 ราย
+        </li>
+        <li>
+            ผู้ป่วยมาจากต่างประเทศ 13 ราย
+        </li>
+    </ul>
+    <p>
+        ดูข่าวนี้ต้นฉบับ :
+        <a href="https://www.sanook.com/news/8483506/" class="button is-link">
+            คลิกที่นี่
+        </a>
+    </p>
+</div>',
+    '1',
+    '2021-12-03 11:36:18',
+    '2021-12-03 11:36:18');
+/*
+ *  END INSERT command for id 4 on 2021-12-03 11:36:18 am
+ * */
+ 
+ 
+/* ===================== INSERT COMMAND for id 5 =======================
+ *  START on 2021-12-03 15:01:13 pm
+ * */
+INSERT INTO `whatnews`(`user_id`,`wn_title`,`wn_body`,`is_public`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'มันไม่สามารถหาวิธีเอา last array from object',
+    '<p>
+    this is great a ha
+</p>
+<p>
+    this is the secound row
+</p>
+<p>
+    วันนี้ (3 ธ.ค.) เมื่อเวลา 07.30 น. ศูนย์ข้อมูลโควิด-19 รายงานตัวเลขผู้ติดเชื้อโควิด-19 สะสมของประเทศไทย ประจำวันที่ 3 ธันวาคม 2564 ดังนี้
+
+    พบจํานวนผู้ติดเชื้อโควิด-19 รายใหม่ เพิ่มขึ้น 4,912 ราย แบ่งเป็นผู้ติดเชื้อรายใหม่ 4,755 ราย ผู้ติดเชื้อในเรือนจำ / ที่ต้องขัง 157 ราย มีผู้เสียชีวิตเพิ่ม 33 คน ทำให้จำนวนผู้ติดเชื้อสะสมในช่วงการระบาดระลอกใหม่ตั้งแต่เดือนเมษายน 2564 ตั้งแต่ 1 เมษายน - 2 ธันวาคม 2564 มีจำนวน 2,101,778 ราย เสียชีวิตสะสม 20,786 คน
+
+    ส่วนผู้ติดเชื้อสะสมนับตั้งแต่เริ่มมีการระบาดเมื่อต้นปี 2563 มีจำนวน 2,130,641 ราย ยอดผู้เสียชีวิตสะสม 20,880 คน ทำให้ประเทศไทยมีจำนวนผู้ติดเชื้อยืนยันสะสมอยู่ในอันดับที่ 23 ของโลก
+
+    ศูนย์ข้อมูลโควิด-19 รายงานเพิ่มเติมว่า ยอดผู้หายป่วยจากโควิด-19 ในประเทศ ผู้หายป่วยรายใหม่วันนี้ 5,844 ราย ผู้หายป่วยสะสม 2,009,574 ราย (ตั้งแต่ 1 เมษายน - 2 ธันวาคม 2564) หายป่วยสะสมนับตั้งแต่เริ่มมีการระบาดเมื่อต้นปี 2563 มีจำนวน 2,031,000 ราย ผู้ติดเชื้อที่อยู่ระหว่างการรักษาตัว 72,751 ราย
+
+    สำหรับรายละเอียดเพิ่มเติม ศูนย์บริหารสถานการณ์การแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 หรือ ศบค.จะเป็นผู้รายงานสถานการณ์เพิ่มเติมเวลา 12.30 น.
+</p>',
+    '1',
+    '2021-12-03 15:01:13',
+    '2021-12-03 15:01:13');
+/*
+ *  END INSERT command for id 5 on 2021-12-03 15:01:13 pm
+ * */
+ 

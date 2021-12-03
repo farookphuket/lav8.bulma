@@ -26,8 +26,10 @@ class DashboardController extends Controller
                         ->with('user')
                         ->paginate(4);
 
+        $wt = Whatnew::latest()->first();
         return response()->json([
-            "whatnew" => $wn
+            "whatnew" => $wn,
+            "meta_title" => $wt->wn_title
         ]);
     }
     /**

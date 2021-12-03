@@ -78,6 +78,7 @@ methods:{
                     .then(res=>{
                         //console.log(res.data)
                         this.wnList = res.data.whatnew
+                        document.title = res.data.meta_title
                             })
             },
             edit(id){

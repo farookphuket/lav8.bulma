@@ -2,7 +2,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
               <a class="navbar-item" href="https://bulma.io">
-              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+              <img src="/img/see_logo_3-nov-2021.png">
               </a>
 
               <a role="button" class="navbar-burger" aria-label="menu" 
@@ -27,10 +27,11 @@
                         </router-link>
                   </span>
 
+<!--
                   <a class="navbar-item" href="https://bulma.io/documentation/">
                     Bulma Documentation
                   </a>
-
+-->
                   <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                       Pages

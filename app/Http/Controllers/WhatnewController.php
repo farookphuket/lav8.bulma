@@ -21,11 +21,16 @@ class WhatnewController extends Controller
 
 
     public function getWhatnew(){
-        $wn = Whatnew::where('is_public',"!=",0)
+        $wn = Whatnew::with('user')
+                        ->where('is_public',"!=",0)
+                        ->orderBy("created_at","DESC")
                         ->paginate(4);
 
+        $meta_title = Whatnew::latest()->first();
+
         return response()->json([
-            "whatnew" => $wn
+            "whatnew" => $wn,
+            "meta_title" => $meta_title->wn_title
         ]);
     }
     /**

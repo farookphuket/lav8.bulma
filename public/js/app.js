@@ -12376,11 +12376,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -12460,6 +12455,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -13360,6 +13356,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         //console.log(res.data)
         _this.wnList = res.data.whatnew;
+        document.title = res.data.meta_title;
       });
     },
     edit: function edit(id) {
@@ -13731,7 +13728,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "Home",
+  data: function data() {
+    return {
+      wn: '',
+      moment: moment
+    };
+  },
+  mounted: function mounted() {
+    this.getWn();
+  },
+  methods: {
+    getWn: function getWn(page) {
+      var _this = this;
+
+      var url = '';
+
+      if (page) {
+        url = page;
+        this.$cookies.set('pub_old_wn', url);
+      }
+
+      url = this.$cookies.get('pub_old_wn');
+      if (!url) url = "/api/whatnew";
+      axios.get(url).then(function (res) {
+        //console.log(res.data)
+        _this.wn = res.data.whatnew;
+        document.title = res.data.meta_title;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -15343,6 +15406,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_16__["default"]({
     path: '/admin/user',
     name: 'AdminUser',
     component: _pages_Admin_User_User_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }, {
+    path: '*',
+    redirect: '/login'
   }]
 });
 router.beforeEach(function (to, from, next) {
@@ -40308,7 +40374,44 @@ var render = function () {
             _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "tile is-2" }, [
+              _c("div", { staticClass: "content" }, [
+                _c("h2", { staticClass: "has-text-centered" }, [
+                  _vm._v(
+                    "\n                              contact\n                          "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("ol", { staticClass: "tags is-roman" }, [
+                  _c("li", { staticClass: "tag is-info" }, [
+                    _vm._v(
+                      "\n                              name farok\n                              "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "tag is-info" }, [
+                    _vm._v(
+                      "\n                              e-mail farookphuket@gmail.com\n                              "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "tag is-info" }, [
+                    _c(
+                      "span",
+                      { staticClass: "icon-text" },
+                      [_c("font-awesome-icon", { attrs: { icon: "phone" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-2" }, [
+                      _vm._v(
+                        "\n                                      +66 95 9543920\n                                  "
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
           ]),
         ]),
       ]),
@@ -40327,58 +40430,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "box" }, [
           _c("p", [_vm._v("company limited")]),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tile is-2" }, [
-      _c("div", { staticClass: "content" }, [
-        _c("h2", { staticClass: "has-text-centered" }, [
-          _vm._v(
-            "\n                              contact\n                          "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "tags" }, [
-          _c("p", [
-            _vm._v(
-              "\n                              name\n                              "
-            ),
-            _c("span", { staticClass: "tag is-info" }, [
-              _vm._v(
-                "\n                                  farook \n                              "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                              e-mail\n                              "
-            ),
-            _c("span", { staticClass: "tag is-info" }, [
-              _vm._v(
-                "\n                              email@me.com\n                              "
-              ),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("ol", { staticClass: "tags is-roman" }, [
-          _c("li", { staticClass: "tag is-info" }, [
-            _vm._v(
-              "\n                              name farok\n                              "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "tag is-info" }, [
-            _vm._v(
-              "\n                              e-mail farok\n                              "
-            ),
-          ]),
         ]),
       ]),
     ])
@@ -40462,19 +40513,14 @@ var render = function () {
                   {
                     attrs: { "data-toggle": "collapse", to: { name: "home" } },
                   },
-                  [_vm._v("\n                  Home\n                ")]
+                  [
+                    _vm._v(
+                      "\n                          Home\n                        "
+                    ),
+                  ]
                 ),
               ],
               1
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "navbar-item",
-                attrs: { href: "https://bulma.io/documentation/" },
-              },
-              [_vm._v("\n            Bulma Documentation\n          ")]
             ),
             _vm._v(" "),
             _c(
@@ -40482,7 +40528,7 @@ var render = function () {
               { staticClass: "navbar-item has-dropdown is-hoverable" },
               [
                 _c("a", { staticClass: "navbar-link" }, [
-                  _vm._v("\n              Pages\n            "),
+                  _vm._v("\n                      Pages\n                    "),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "navbar-dropdown" }, [
@@ -40501,7 +40547,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                      About\n                    "
+                            "\n                              About\n                            "
                           ),
                         ]
                       ),
@@ -40524,7 +40570,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                      Post\n                    "
+                            "\n                              Post\n                            "
                           ),
                         ]
                       ),
@@ -40554,7 +40600,7 @@ var render = function () {
                       },
                       [
                         _vm._v(
-                          "\n                      Register\n                    "
+                          "\n                              Register\n                            "
                         ),
                       ]
                     ),
@@ -40577,7 +40623,7 @@ var render = function () {
                       },
                       [
                         _vm._v(
-                          "\n                      Login\n                    "
+                          "\n                              Login\n                            "
                         ),
                       ]
                     ),
@@ -40600,15 +40646,7 @@ var staticRenderFns = [
     return _c(
       "a",
       { staticClass: "navbar-item", attrs: { href: "https://bulma.io" } },
-      [
-        _c("img", {
-          attrs: {
-            src: "https://bulma.io/images/bulma-logo.png",
-            width: "112",
-            height: "28",
-          },
-        }),
-      ]
+      [_c("img", { attrs: { src: "/img/see_logo_3-nov-2021.png" } })]
     )
   },
 ]
@@ -42305,27 +42343,123 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "container" }, [
+      _c("div", { staticClass: "columns" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "column is-9" },
+          [
+            _vm._l(_vm.wn.data, function (w) {
+              return _c("article", { staticClass: "box" }, [
+                _c("h2", { staticClass: "title has-text-centered" }, [
+                  _vm._v(_vm._s(w.wn_title)),
+                ]),
+                _vm._v(" "),
+                _c("div", { domProps: { innerHTML: _vm._s(w.wn_body) } }, [
+                  _vm._v(_vm._s(w.wn_body)),
+                ]),
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "box" }, [
+              _c(
+                "nav",
+                {
+                  staticClass: "pagination is-rounded",
+                  attrs: { role: "navigation", "aria-label": "pagination" },
+                },
+                [
+                  _c("a", { staticClass: "pagination-previous is-current" }, [
+                    _vm._v("All post " + _vm._s(_vm.wn.total)),
+                  ]),
+                  _vm._v(" "),
+                  _c("a", { staticClass: "pagination-next is-current" }, [
+                    _vm._v("page " + _vm._s(_vm.wn.current_page)),
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.wn.links, function (ln) {
+                    return _c("ul", { staticClass: "pagination-list" }, [
+                      ln.url != null && ln.active == false
+                        ? _c("li", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "pagination-link",
+                                attrs: {
+                                  "aria-label": "Page 1",
+                                  "aria-current": "page",
+                                },
+                                domProps: { innerHTML: _vm._s(ln.label) },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.getWn(ln.url)
+                                  },
+                                },
+                              },
+                              [_vm._v(_vm._s(ln.label))]
+                            ),
+                          ])
+                        : _c("li", [
+                            ln.active == true
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "pagination-link is-current",
+                                    attrs: {
+                                      "aria-label": "",
+                                      "aria-current": "page",
+                                    },
+                                    domProps: { innerHTML: _vm._s(ln.label) },
+                                  },
+                                  [_vm._v(_vm._s(ln.label))]
+                                )
+                              : _c(
+                                  "a",
+                                  {
+                                    staticClass: "pagination-link",
+                                    attrs: {
+                                      "aria-label": "",
+                                      "aria-current": "page",
+                                    },
+                                    domProps: { innerHTML: _vm._s(ln.label) },
+                                  },
+                                  [_vm._v(_vm._s(ln.label))]
+                                ),
+                          ]),
+                    ])
+                  }),
+                ],
+                2
+              ),
+            ]),
+          ],
+          2
+        ),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "hero is-success is-halfheight" }, [
-      _c("div", { staticClass: "hero-body" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("p", { staticClass: "title has-text-centered" }, [
-            _vm._v("\n        bootstrap free!\n      "),
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "subtitle" }, [
-            _vm._v(
-              "\n        there is no bootstrap css style on this site\n      "
-            ),
-          ]),
-        ]),
-      ]),
+    return _c("section", { staticClass: "hero is-success is-fullheight" }, [
+      _c("div", { staticClass: "hero-body" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column is-3" }, [
+      _c("h2", { staticClass: "title" }, [_vm._v("see-southern 2022")]),
     ])
   },
 ]
