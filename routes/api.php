@@ -94,6 +94,8 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
       ->group(function(){
     Route::resource('/user',AUSER::class);
+    Route::get('/getuser',[AUSER::class,"getUser"])->name("getUser");
+
     Route::resource('/home',AHOME::class);
 
     // whatnew 

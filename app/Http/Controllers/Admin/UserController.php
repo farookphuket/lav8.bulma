@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 use Auth;
 
 class UserController extends Controller
@@ -23,6 +26,15 @@ class UserController extends Controller
         return Auth::user();
     }
 
+
+    public function getUser(){
+        $u = User::with('role')
+                    ->latest()
+                    ->paginate(4);
+        return response()->json([
+            "user" => $u
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -39,9 +51,37 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $valid = request()->validate([
+            "name" => ["required","min:4"],
+            "email" => ["required","email"]
+        ]);
+
+
+        // unset user_roles from valid 
+        unset($valid["user_roles"]);
+
+        $user_roles = request()->user_roles;
+        // password 
+        $valid["password"] = Hash::make(request()->password);
+        $valid["email_verified_at"] = now();
+
+        // create user 
+        User::create($valid);
+
+        // save user role 
+        $u = User::latest()->first();
+        $u->role()->attach($user_roles);
+
+        // backup 
+        User::backupUser($u->id,"insert");
+
+        $msg = "<span class=\"tag is-medium\">
+            Success : user has been created!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -52,7 +92,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $u = User::with('role')
+                    ->where('id',$user->id)
+                    ->first();
+        return response()->json([
+            "user" => $u
+        ]);
     }
 
     /**
@@ -73,9 +118,36 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(User $user)
     {
         //
+        $u = User::find($user->id);
+
+        $user_roles = request()->user_roles;
+
+        $valid = request()->validate([
+            "name" => ["required","min:4"],
+            "email" => ["required","email"]
+        ]);
+
+        $valid["updated_at"] = now();
+
+        // create user 
+        User::where('id',$user->id)
+                    ->update($valid);
+
+        // update user role 
+        $u->role()->sync($user_roles);
+
+        // backup 
+        User::backupUser($u->id,"insert");
+
+
+        $msg = "<span class=\"tag is-medium\">
+            Success : user id {$user->id} has been updated!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -87,5 +159,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+
+
+        $msg = "<span class=\"tag is-medium\">
+            Success : user id {$user->id} has been deleted!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }
