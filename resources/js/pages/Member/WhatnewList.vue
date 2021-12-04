@@ -15,11 +15,13 @@
                         </span>
 
                        <div class="button is-pulled-right">
-                            <button class="button is-outlined is-info">
+                            <button class="button is-outlined is-info" 
+                            @click.prevent="$emit('edit',wn.id)">
                                 <font-awesome-icon icon="edit"></font-awesome-icon>
                             </button>
 
-                            <button class="button is-outlined is-danger">
+                            <button class="button is-outlined is-danger" 
+                            @click.prevent="$emit('del',wn.id)">
                                 <font-awesome-icon icon="trash-alt"></font-awesome-icon>
                             </button>
                        </div>

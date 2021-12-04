@@ -34,7 +34,8 @@
 
                               <div class="control">
                                 <label class="is-checkbox is-info is-rounded">
-                                  <input type="checkbox" v-model="wnForm.is_public">
+                                  <input type="checkbox" v-model="wnForm.is_public" 
+                                  name="is_public">
                                     <span  class="icon is-large checkmark">
                                         <i class="fa fa-check"></i>
                                     </span>
@@ -93,13 +94,36 @@ export default{
                         }),
                     }
              },
+watch:{
+          "editId":function(x){
+              this.getEditData(x)
+          }
+      },
              methods:{
+                         getEditData(x){
+                             this.wnForm.reset()
+                             if(x != 0){
+                                 this.$refs.wn_title.focus()
+                                let url = `/api/member/whatnew/${x}`
+                                axios.get(url)
+                                .then(res=>{
+                                    console.log(res.data)
+                                    let rData = res.data.whatnew
+                                    this.wnForm.wn_title = rData.wn_title
+                                    this.wnForm.wn_body = rData.wn_body
+
+                                    if(rData.is_public != 0) this.wnForm.is_public = true
+
+                                })
+                             }
+                         },
                          saveWn(id){
                              let url = `/api/member/whatnew`
                              let fData = new FormData()
+                             let is_public = !this.wnForm.is_public?0:1
                              fData.append('wn_title',this.wnForm.wn_title)
                              fData.append('wn_body',this.wnForm.wn_body)
-                             fData.append('is_public',this.wnForm.is_public)
+                             fData.append('is_public',is_public)
 
                              if(id){
                                  fData.append("_method","PUT")
@@ -107,13 +131,22 @@ export default{
                              }
                             axios.post(url,fData)
                                 .then(res=>{
-                                    console.log(res.data)
+                                    //console.log(res.data)
+                                    this.res_status = res.data.msg
+                                    setTimeout(()=>{
+                                        this.formClear()
+                                            },2300)
                                         })
                             .catch(err=>{
                                 this.res_status = `<span class="tag is-medium is-danger">
                                 ${Object.values(err.response.data.errors).join()}
                                 </span>`
                                     })
+                         },
+                         formClear(){
+                             this.res_status = ''
+                             this.wnForm.reset()
+                            this.$emit('getWhatnew')
                          },
              },
 }

@@ -13,7 +13,28 @@
                 <article class="box" 
                 v-for="w in wn.data">
                    <h2 class="title has-text-centered">{{w.wn_title}}</h2>
-                   <div v-html="w.wn_body">{{w.wn_body}}</div>
+
+                        <div class="columns">
+                            <div class="column ">
+                                <div class="content is-pulled-right pr-2">
+
+                                    <span class="icon-text">
+                                        <font-awesome-icon icon="calendar-day">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span class="ml-2 mr-2">{{moment(w.created_at)}}</span>
+                                    &middot;
+                                    <span class="ml-2 mr-2">{{moment(w.created_at).fromNow()}}</span>
+                                    <span class="icon-text">
+                                        <font-awesome-icon icon="user">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span class="ml-2">{{w.user.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                   <div class="mt-2" v-html="w.wn_body">{{w.wn_body}}</div>
                    
                 </article>
                 <div class="box">

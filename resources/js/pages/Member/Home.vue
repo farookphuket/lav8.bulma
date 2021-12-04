@@ -21,5 +21,23 @@ export default {
             components:{
                 Whatnew,
             },
+            data(){return{
+                tk:''
+            }},
+            mounted(){
+                this.checkPassSport()
+            },
+            methods:{
+                checkPassSport(){
+                    let url = `/api/checkpasssport`
+                    axios.post(url)
+                    .then(res=>{
+                        //console.log(res.data)
+                        if(res.data.user == false){
+                            location.href='/'
+                        }
+                    })
+                },
+            },
 }
 </script>

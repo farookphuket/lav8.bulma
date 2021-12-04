@@ -13761,6 +13761,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -14077,6 +14098,25 @@ __webpack_require__.r(__webpack_exports__);
   name: "MemberDashboard",
   components: {
     Whatnew: _Whatnew_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      tk: ''
+    };
+  },
+  mounted: function mounted() {
+    this.checkPassSport();
+  },
+  methods: {
+    checkPassSport: function checkPassSport() {
+      var url = "/api/checkpasssport";
+      axios.post(url).then(function (res) {
+        //console.log(res.data)
+        if (res.data.user == false) {
+          location.href = '/';
+        }
+      });
+    }
   }
 });
 
@@ -14415,6 +14455,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -14427,7 +14492,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isShow: false,
       tk: '',
-      wn: ''
+      wn: '',
+      editId: 0,
+      res_status: '',
+      modalActive: ''
     };
   },
   mounted: function mounted() {
@@ -14438,6 +14506,7 @@ __webpack_require__.r(__webpack_exports__);
     getWhatnew: function getWhatnew(page) {
       var _this = this;
 
+      this.formToggle();
       var url = '';
 
       if (page) {
@@ -14457,6 +14526,26 @@ __webpack_require__.r(__webpack_exports__);
     },
     formToggle: function formToggle() {
       this.isShow = false;
+    },
+    edit: function edit(id) {
+      this.isShow = true;
+      this.editId = id;
+    },
+    del: function del(id) {
+      var _this2 = this;
+
+      if (id != 0 && confirm("Delete item id ".concat(id, "?")) == true) {
+        var url = "/api/member/whatnew/".concat(id);
+        axios["delete"](url).then(function (res) {
+          _this2.modalActive = 'is-active';
+          _this2.res_status = res.data.msg;
+        });
+        setTimeout(function () {
+          _this2.getWhatnew();
+        }, 2300);
+      }
+
+      return;
     }
   }
 });
@@ -14554,6 +14643,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "WhatnewForm",
@@ -14569,15 +14659,38 @@ __webpack_require__.r(__webpack_exports__);
       })
     };
   },
+  watch: {
+    "editId": function editId(x) {
+      this.getEditData(x);
+    }
+  },
   methods: {
-    saveWn: function saveWn(id) {
+    getEditData: function getEditData(x) {
       var _this = this;
+
+      this.wnForm.reset();
+
+      if (x != 0) {
+        this.$refs.wn_title.focus();
+        var url = "/api/member/whatnew/".concat(x);
+        axios.get(url).then(function (res) {
+          console.log(res.data);
+          var rData = res.data.whatnew;
+          _this.wnForm.wn_title = rData.wn_title;
+          _this.wnForm.wn_body = rData.wn_body;
+          if (rData.is_public != 0) _this.wnForm.is_public = true;
+        });
+      }
+    },
+    saveWn: function saveWn(id) {
+      var _this2 = this;
 
       var url = "/api/member/whatnew";
       var fData = new FormData();
+      var is_public = !this.wnForm.is_public ? 0 : 1;
       fData.append('wn_title', this.wnForm.wn_title);
       fData.append('wn_body', this.wnForm.wn_body);
-      fData.append('is_public', this.wnForm.is_public);
+      fData.append('is_public', is_public);
 
       if (id) {
         fData.append("_method", "PUT");
@@ -14585,10 +14698,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post(url, fData).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
+        _this2.res_status = res.data.msg;
+        setTimeout(function () {
+          _this2.formClear();
+        }, 2300);
       })["catch"](function (err) {
-        _this.res_status = "<span class=\"tag is-medium is-danger\">\n                                ".concat(Object.values(err.response.data.errors).join(), "\n                                </span>");
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                                ".concat(Object.values(err.response.data.errors).join(), "\n                                </span>");
       });
+    },
+    formClear: function formClear() {
+      this.res_status = '';
+      this.wnForm.reset();
+      this.$emit('getWhatnew');
     }
   }
 });
@@ -14606,6 +14728,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -41137,11 +41261,7 @@ var staticRenderFns = [
       { staticClass: "navbar-item", attrs: { href: "https://bulma.io" } },
       [
         _c("img", {
-          attrs: {
-            src: "https://bulma.io/images/bulma-logo.png",
-            width: "112",
-            height: "28",
-          },
+          attrs: { src: "/img/see-logo_lap1.png", width: "112", height: "28" },
         }),
       ]
     )
@@ -42635,9 +42755,52 @@ var render = function () {
                   _vm._v(_vm._s(w.wn_title)),
                 ]),
                 _vm._v(" "),
-                _c("div", { domProps: { innerHTML: _vm._s(w.wn_body) } }, [
-                  _vm._v(_vm._s(w.wn_body)),
+                _c("div", { staticClass: "columns" }, [
+                  _c("div", { staticClass: "column " }, [
+                    _c("div", { staticClass: "content is-pulled-right pr-2" }, [
+                      _c(
+                        "span",
+                        { staticClass: "icon-text" },
+                        [
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "calendar-day" },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2 mr-2" }, [
+                        _vm._v(_vm._s(_vm.moment(w.created_at))),
+                      ]),
+                      _vm._v(
+                        "\n                                ·\n                                "
+                      ),
+                      _c("span", { staticClass: "ml-2 mr-2" }, [
+                        _vm._v(_vm._s(_vm.moment(w.created_at).fromNow())),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "icon-text" },
+                        [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(_vm._s(w.user.name)),
+                      ]),
+                    ]),
+                  ]),
                 ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "mt-2",
+                    domProps: { innerHTML: _vm._s(w.wn_body) },
+                  },
+                  [_vm._v(_vm._s(w.wn_body))]
+                ),
               ])
             }),
             _vm._v(" "),
@@ -43465,6 +43628,7 @@ var render = function () {
             expression: "isShow",
           },
         ],
+        attrs: { editId: _vm.editId },
         on: {
           getWhatnew: function ($event) {
             return _vm.getWhatnew($event)
@@ -43482,9 +43646,78 @@ var render = function () {
               getWhatnew: function ($event) {
                 return _vm.getWhatnew($event)
               },
+              edit: function ($event) {
+                return _vm.edit($event)
+              },
+              del: function ($event) {
+                return _vm.del($event)
+              },
             },
           })
         : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal", class: { "is-active": _vm.modalActive } },
+        [
+          _c("div", { staticClass: "modal-background" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "card-content",
+                  domProps: { innerHTML: _vm._s(_vm.res_status) },
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.res_status) +
+                      "\n            "
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "field is-grouped is-grouped-right pr-2 pb-2" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-info is-outlined",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          _vm.modalActive = ""
+                        },
+                      },
+                    },
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "check-circle" },
+                      }),
+                    ],
+                    1
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "modal-close is-large",
+            attrs: { "aria-label": "close" },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                _vm.modalActive = ""
+              },
+            },
+          }),
+        ]
+      ),
     ],
     1
   )
@@ -43605,7 +43838,7 @@ var render = function () {
                             expression: "wnForm.is_public",
                           },
                         ],
-                        attrs: { type: "checkbox" },
+                        attrs: { type: "checkbox", name: "is_public" },
                         domProps: {
                           checked: Array.isArray(_vm.wnForm.is_public)
                             ? _vm._i(_vm.wnForm.is_public, null) > -1
@@ -43783,7 +44016,15 @@ var render = function () {
                       _c("div", { staticClass: "button is-pulled-right" }, [
                         _c(
                           "button",
-                          { staticClass: "button is-outlined is-info" },
+                          {
+                            staticClass: "button is-outlined is-info",
+                            on: {
+                              click: function ($event) {
+                                $event.preventDefault()
+                                return _vm.$emit("edit", wn.id)
+                              },
+                            },
+                          },
                           [
                             _c("font-awesome-icon", {
                               attrs: { icon: "edit" },
@@ -43794,7 +44035,15 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "button",
-                          { staticClass: "button is-outlined is-danger" },
+                          {
+                            staticClass: "button is-outlined is-danger",
+                            on: {
+                              click: function ($event) {
+                                $event.preventDefault()
+                                return _vm.$emit("del", wn.id)
+                              },
+                            },
+                          },
                           [
                             _c("font-awesome-icon", {
                               attrs: { icon: "trash-alt" },

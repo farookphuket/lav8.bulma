@@ -26,7 +26,9 @@ class WhatnewController extends Controller
                         ->orderBy("created_at","DESC")
                         ->paginate(4);
 
-        $meta_title = Whatnew::latest()->first();
+        $meta_title = Whatnew::where('is_public','!=',0)
+                                ->latest()
+                                ->first();
 
         return response()->json([
             "whatnew" => $wn,

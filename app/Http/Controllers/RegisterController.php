@@ -123,6 +123,7 @@ class RegisterController extends Controller
             $u = User::where('email',$get->email)
                         ->first();
             User::backupUser($u->id,'insert');
+
         else:
 
             $url = '/user-confirmation-fail';
