@@ -47,3 +47,21 @@ INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
 *  ============================================================================
  */
  
+  
+/* =========================== Insert new id 3 ======================
+ * on 2021-12-05 06:14:29 am START 
+ * */
+INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
+`created_at`,`updated_at`)VALUES(
+    'crist มี',
+    'crist@me.me',
+    '$2y$10$.D3TFvhm2BJnIk.dSX7K/.VEencAgbqkuOoM3hDzBJkTAvkaE5i0W',
+    '',
+    '0',
+    '2021-12-05 06:14:29',
+    '2021-12-05 06:14:29');
+/* ============================================================================
+ *                  END OF INSERT COMMAND FOR user id 3
+ * ============================================================================
+ * */
+ 

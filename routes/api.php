@@ -7,6 +7,10 @@ use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
 use App\Http\Controllers\Member\DashboardController as MHOME;
 use App\Http\Controllers\PostController as Post;
+
+// user role 
+use App\Http\Controllers\RoleController as uRole;
+
 use App\Http\Controllers\VisitorController as VISIT;
 use App\Http\Controllers\WhatnewController as WN;
 use App\Http\Controllers\TagController as Tag;
@@ -15,6 +19,7 @@ use App\Http\Controllers\TagController as Tag;
 /* admin route */
 use App\Http\Controllers\Admin\UserController as AUSER;
 use App\Http\Controllers\Admin\DashboardController as AHOME;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -115,6 +120,10 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     /* ========================================================================
      *
      * */
+
+    Route::resource('/role',uRole::class);
+    Route::get('/getrole',[uRole::class,'getUserRole'])
+        ->name('getUserRole');
 
     // tag 
     Route::resource('/tag',Tag::class);

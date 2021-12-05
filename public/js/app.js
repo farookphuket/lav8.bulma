@@ -13260,6 +13260,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -13271,7 +13274,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       uList: '',
-      editId: 0
+      editId: 0,
+      showForm: false
     };
   },
   mounted: function mounted() {
@@ -13294,6 +13298,16 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data);
         _this.uList = res.data.user;
       });
+    },
+    edit: function edit(id) {
+      this.editId = id;
+      this.showForm = true;
+    },
+    del: function del(id) {
+      alert("del id ".concat(id));
+    },
+    closeForm: function closeForm() {
+      this.showForm = !this.showForm;
     }
   }
 });
@@ -13316,8 +13330,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "UserForm"
+  name: "UserForm",
+  props: ['editId'],
+  data: function data() {
+    return {
+      res_status: '',
+      user_roles: [],
+      user_select_roles: [],
+      uForm: new Form({
+        name: '',
+        email: '',
+        password: ''
+      })
+    };
+  },
+  mounted: function mounted() {
+    this.getRole();
+  },
+  methods: {
+    getRole: function getRole() {
+      var _this = this;
+
+      var url = "/api/admin/getrole";
+      axios.get(url).then(function (res) {
+        //    console.log(res.data)
+        _this.user_roles = res.data.role;
+      });
+    },
+    saveUser: function saveUser(id) {
+      var _this2 = this;
+
+      var url = '/api/admin/user';
+      var fData = new FormData();
+      fData.append("user_roles", this.user_select_roles);
+      fData.append("name", this.uForm.name);
+      fData.append("email", this.uForm.email);
+      fData.append("password", this.uForm.password);
+
+      if (id && id != 0) {
+        url = "/api/admin/user/".concat(id);
+        fData.append("_method", "PUT");
+      }
+
+      axios.post(url, fData).then(function (res) {
+        _this2.res_status = res.data.msg;
+      })["catch"](function (err) {
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), " \n                    </span>");
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -13338,9 +13460,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UserList",
-  props: ["uList"]
+  props: ["uList"],
+  data: function data() {
+    return {
+      moment: moment
+    };
+  }
 });
 
 /***/ }),
@@ -42316,18 +42480,53 @@ var render = function () {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "is-pulled-right" }, [
-        _c(
-          "button",
-          { staticClass: "button is-outlined is-link" },
-          [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
-          1
-        ),
+      _c("div", { staticClass: "content" }, [
+        _c("div", { staticClass: "is-pulled-right mb-4" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-outlined is-link",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  _vm.showForm = true
+                },
+              },
+            },
+            [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+            1
+          ),
+        ]),
       ]),
       _vm._v(" "),
-      _c("user-form"),
+      _c("user-form", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showForm,
+            expression: "showForm",
+          },
+        ],
+        attrs: { editId: _vm.editId },
+        on: {
+          closeForm: function ($event) {
+            return _vm.closeForm($event)
+          },
+        },
+      }),
       _vm._v(" "),
-      _c("user-list", { attrs: { uList: _vm.uList } }),
+      _c("user-list", {
+        attrs: { uList: _vm.uList },
+        on: {
+          edit: function ($event) {
+            return _vm.edit($event)
+          },
+          del: function ($event) {
+            return _vm.del($event)
+          },
+        },
+      }),
     ],
     1
   )
@@ -42378,15 +42577,212 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "mb-4" }, [
+    _c("form", { attrs: { action: "" } }, [
+      _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "control" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.uForm.name,
+                expression: "uForm.name",
+              },
+            ],
+            staticClass: "input",
+            attrs: { type: "text", name: "", placeholder: "user name..." },
+            domProps: { value: _vm.uForm.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.uForm, "name", $event.target.value)
+              },
+            },
+          }),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "control" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.uForm.email,
+                expression: "uForm.email",
+              },
+            ],
+            staticClass: "input",
+            attrs: { type: "email", name: "", placeholder: "user email..." },
+            domProps: { value: _vm.uForm.email },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.uForm, "email", $event.target.value)
+              },
+            },
+          }),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "control" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.uForm.password,
+                expression: "uForm.password",
+              },
+            ],
+            staticClass: "input",
+            attrs: { type: "password", name: "", placeholder: "~~~~~~" },
+            domProps: { value: _vm.uForm.password },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.uForm, "password", $event.target.value)
+              },
+            },
+          }),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field is-pulled-left" }, [
+            _c(
+              "div",
+              {
+                staticClass: "pl-2",
+                domProps: { innerHTML: _vm._s(_vm.res_status) },
+              },
+              [_vm._v(_vm._s(_vm.res_status))]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field is-pulled-right" }, [
+            _c(
+              "div",
+              { staticClass: "control" },
+              [
+                _vm._l(_vm.user_roles, function (r) {
+                  return _c(
+                    "label",
+                    { staticClass: "is-checkbox is-warning is-rounded" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user_select_roles,
+                            expression: "user_select_roles",
+                          },
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          value: r.id,
+                          checked: Array.isArray(_vm.user_select_roles)
+                            ? _vm._i(_vm.user_select_roles, r.id) > -1
+                            : _vm.user_select_roles,
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.user_select_roles,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = r.id,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (_vm.user_select_roles = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.user_select_roles = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.user_select_roles = $$c
+                            }
+                          },
+                        },
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(r.role_name) +
+                            "\n                                "
+                        ),
+                      ]),
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "button is-outlined is-info",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.saveUser(_vm.editId)
+                      },
+                    },
+                  },
+                  [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "button is-danger is-outlined",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.$emit("closeForm")
+                      },
+                    },
+                  },
+                  [
+                    _c("font-awesome-icon", {
+                      attrs: { icon: "hand-middle-finger" },
+                    }),
+                  ],
+                  1
+                ),
+              ],
+              2
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("h2", [_vm._v("user form")]),
+    return _c("span", { staticClass: "icon is-medium checkmark" }, [
+      _c("i", { staticClass: "fa fa-check" }),
     ])
   },
 ]
@@ -42412,18 +42808,88 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "content" },
+    [
+      _vm._l(_vm.uList.data, function (u) {
+        return _c("div", { staticClass: "box" }, [
+          _c("div", { staticClass: "filed is-pulled-right" }, [
+            _c("div", [
+              _c(
+                "span",
+                { staticClass: "icon-text" },
+                [_c("font-awesome-icon", { attrs: { icon: "calendar-day" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "ml-2" }, [
+                _vm._v(_vm._s(_vm.moment(u.created_at).fromNow())),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button is-primary",
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.$emit("edit", u.id)
+                  },
+                },
+              },
+              [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button is-danger",
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.$emit("del", u.id)
+                  },
+                },
+              },
+              [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+              1
+            ),
+          ]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [_vm._v(_vm._s(u.name))]),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(u.email))]),
+            _vm._v(" "),
+            _c("li", { staticClass: "tags" }, [
+              _vm._v(" Role\n                "),
+              _c(
+                "ul",
+                _vm._l(u.role, function (ro) {
+                  return _c("li", { staticClass: "tag is-medium is-info" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(ro.role_name) +
+                        "\n                    "
+                    ),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]),
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [_vm._v("\n        pagination\n    ")]),
+    ],
+    2
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("h2", [_vm._v("user list")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42729,45 +43195,49 @@ var render = function () {
               ]),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "column" }, [
-              _c("div", { staticClass: "field is-grouped is-grouped-right" }, [
-                _c("div", { staticClass: "buttons " }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "button is-outlined \n                                is-primary",
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.saveWn(_vm.editId)
+            _c("div", { staticClass: "column " }, [
+              _c(
+                "div",
+                { staticClass: "field is-grouped is-grouped-right pb-4" },
+                [
+                  _c("div", { staticClass: "buttons " }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "button is-outlined \n                                is-primary",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.saveWn(_vm.editId)
+                          },
                         },
                       },
-                    },
-                    [_vm._v("Post")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "button is-danger is-outlined",
-                      on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.$emit("closeForm")
+                      [_vm._v("Post")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button is-danger is-outlined",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("closeForm")
+                          },
                         },
                       },
-                    },
-                    [
-                      _c("font-awesome-icon", {
-                        attrs: { icon: "times-circle" },
-                      }),
-                    ],
-                    1
-                  ),
-                ]),
-              ]),
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "times-circle" },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]
+              ),
             ]),
           ]),
         ]),

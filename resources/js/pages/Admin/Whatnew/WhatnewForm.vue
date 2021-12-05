@@ -43,9 +43,9 @@
                             </div>
                         </div>
 
-                        <div class="column">
+                        <div class="column ">
 
-                            <div class="field is-grouped is-grouped-right">
+                            <div class="field is-grouped is-grouped-right pb-4">
 
                                 <div class="buttons ">
                                     <button class="button is-outlined 

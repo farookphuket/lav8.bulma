@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
@@ -31,8 +32,12 @@ class UserController extends Controller
         $u = User::with('role')
                     ->latest()
                     ->paginate(4);
+
+        $role = Role::all();
+
         return response()->json([
-            "user" => $u
+            "user" => $u,
+            "role" => $role
         ]);
     }
     /**
@@ -55,7 +60,8 @@ class UserController extends Controller
     {
         $valid = request()->validate([
             "name" => ["required","min:4"],
-            "email" => ["required","email"]
+            "email" => ["required","email"],
+            "password" => ["required","min:4"]
         ]);
 
 
@@ -77,7 +83,7 @@ class UserController extends Controller
         // backup 
         User::backupUser($u->id,"insert");
 
-        $msg = "<span class=\"tag is-medium\">
+        $msg = "<span class=\"tag is-success is-medium\">
             Success : user has been created!</span>";
         return response()->json([
             "msg" => $msg
@@ -143,7 +149,7 @@ class UserController extends Controller
         User::backupUser($u->id,"insert");
 
 
-        $msg = "<span class=\"tag is-medium\">
+        $msg = "<span class=\"tag is-medium is-success\">
             Success : user id {$user->id} has been updated!</span>";
         return response()->json([
             "msg" => $msg
@@ -159,9 +165,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $u = User::with('role')->find($user->id);
+        $u->role()->detach();
+        $u->delete();
 
 
-        $msg = "<span class=\"tag is-medium\">
+        $msg = "<span class=\"tag is-medium is-success\">
             Success : user id {$user->id} has been deleted!</span>";
         return response()->json([
             "msg" => $msg

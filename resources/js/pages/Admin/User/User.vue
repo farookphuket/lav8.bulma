@@ -9,14 +9,17 @@
               </ul>
 
             </nav>
-
-            <div class="is-pulled-right">
-                <button class="button is-outlined is-link">
-                    <font-awesome-icon icon="plus"></font-awesome-icon>
-                </button>
+            <div class="content">
+                <div class="is-pulled-right mb-4">
+                    <button class="button is-outlined is-link" @click.prevent="showForm = true">
+                        <font-awesome-icon icon="plus"></font-awesome-icon>
+                    </button>
+                </div>
             </div>
-            <user-form></user-form>
-            <user-list :uList="uList"></user-list>
+            <user-form :editId="editId" @closeForm="closeForm($event)" 
+            v-show="showForm"></user-form>
+            <user-list :uList="uList" 
+            @edit="edit($event)" @del="del($event)"></user-list>
     </section>
 </template>
 
@@ -32,6 +35,7 @@ export default{
              data(){return{
                  uList:'',
                  editId:0,
+                 showForm:false,
              }},
              mounted(){
                  this.getUser()
@@ -50,6 +54,16 @@ methods:{
                             console.log(res.data)
                             this.uList = res.data.user
                         })
+            },
+            edit(id){
+                this.editId = id
+                this.showForm = true
+            },
+            del(id){
+                alert(`del id ${id}`)
+            },
+            closeForm(){
+                this.showForm = !this.showForm
             },
         }
 }

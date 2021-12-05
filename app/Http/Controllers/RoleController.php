@@ -19,6 +19,12 @@ class RoleController extends Controller
         //
     }
 
+    public function getUserRole(){
+        $role = Role::all();
+        return response()->json([
+            "role" => $role
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
