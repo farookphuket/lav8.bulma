@@ -48,20 +48,97 @@ INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
  */
  
   
-/* =========================== Insert new id 3 ======================
- * on 2021-12-05 06:14:29 am START 
+  
+/* =========================== Insert new id 8 ======================
+ * on 2021-12-06 10:10:29 am START 
  * */
 INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
 `created_at`,`updated_at`)VALUES(
-    'crist มี',
-    'crist@me.me',
-    '$2y$10$.D3TFvhm2BJnIk.dSX7K/.VEencAgbqkuOoM3hDzBJkTAvkaE5i0W',
+    'colume',
+    'colme@me.me',
+    '$2y$10$WRf8EQpW1r3OsiqTbkL.DOhwwfEdE1R5SefJ14wnocq/9sUOMRKcu',
     '',
     '0',
-    '2021-12-05 06:14:29',
-    '2021-12-05 06:14:29');
+    '2021-12-06 10:10:29',
+    '2021-12-06 10:10:29');
 /* ============================================================================
- *                  END OF INSERT COMMAND FOR user id 3
+ *                  END OF INSERT COMMAND FOR user id 8
+ * ============================================================================
+ * */
+   
+/* =========================== Insert new id 9 ======================
+ * on 2021-12-06 10:11:08 am START 
+ * */
+INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
+`created_at`,`updated_at`)VALUES(
+    'grim',
+    'grim@mel.me',
+    '$2y$10$pBYZH/OyNFj09VRedWkxFusNRFk/8R1NLBg9Kj3.ZoMtdZvMOP0r2',
+    '',
+    '0',
+    '2021-12-06 10:11:08',
+    '2021-12-06 10:11:08');
+/* ============================================================================
+ *                  END OF INSERT COMMAND FOR user id 9
+ * ============================================================================
+ * */
+   
+/* =========================== Insert new id 10 ======================
+ * on 2021-12-06 10:11:32 am START 
+ * */
+INSERT INTO `users`(`name`,`email`,`password`,`email_verified_at`,`is_admin`,
+`created_at`,`updated_at`)VALUES(
+    'opene',
+    'open@re.th',
+    '$2y$10$Asm0Z4QGqXQafOIlasb8uuhR1jbFQoPoBzejkl2BZBkWDAfChlSMK',
+    '',
+    '0',
+    '2021-12-06 10:11:32',
+    '2021-12-06 10:11:32');
+/* ============================================================================
+ *                  END OF INSERT COMMAND FOR user id 10
+ * ============================================================================
+ * */
+  
+/* =========================== Update id 10 ===========================
+ * on 2021-12-06 10:12:00 am
+ * ============================================================================
+ * */
+UPDATE `users` SET name='opene',
+password='$2y$10$Asm0Z4QGqXQafOIlasb8uuhR1jbFQoPoBzejkl2BZBkWDAfChlSMK', 
+email='open@re.th',
+email_verified_at='',
+updated_at='2021-12-06 10:12:00' WHERE id='10';
+/* ============================================================================
+ *                      END UPDATE COMMAND FOR user id 10
+ * ============================================================================
+ * */
+  
+/* =========================== Update id 9 ===========================
+ * on 2021-12-06 10:12:14 am
+ * ============================================================================
+ * */
+UPDATE `users` SET name='grim',
+password='$2y$10$pBYZH/OyNFj09VRedWkxFusNRFk/8R1NLBg9Kj3.ZoMtdZvMOP0r2', 
+email='grim@mel.me',
+email_verified_at='',
+updated_at='2021-12-06 10:12:14' WHERE id='9';
+/* ============================================================================
+ *                      END UPDATE COMMAND FOR user id 9
+ * ============================================================================
+ * */
+  
+/* =========================== Update id 8 ===========================
+ * on 2021-12-06 10:12:21 am
+ * ============================================================================
+ * */
+UPDATE `users` SET name='colume',
+password='$2y$10$WRf8EQpW1r3OsiqTbkL.DOhwwfEdE1R5SefJ14wnocq/9sUOMRKcu', 
+email='colme@me.me',
+email_verified_at='',
+updated_at='2021-12-06 10:12:21' WHERE id='8';
+/* ============================================================================
+ *                      END UPDATE COMMAND FOR user id 8
  * ============================================================================
  * */
  

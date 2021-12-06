@@ -33,7 +33,7 @@
                               <label class="is-checkbox is-warning is-rounded" 
                               v-for="r in user_roles">
                                   <input type="checkbox" v-model="user_select_roles" 
-                                  :value="r.id">
+                                  :value="r.id" name="user_roles">
                                     <span  class="icon is-medium checkmark">
                                         <i class="fa fa-check"></i>
                                     </span>
@@ -44,7 +44,7 @@
                                 </label>
                                 <button class="button is-outlined is-info" 
                                 type="submit" 
-                                @click.prevent="saveUser(editId)">
+                                @click.prevent="saveU(editId)">
                                     <font-awesome-icon icon="check"></font-awesome-icon>
                                 </button>
                                 <button class="button is-danger is-outlined" 
@@ -81,7 +81,34 @@ export default{
              mounted(){
                 this.getRole()
              },
+    watch:{
+        "editId":function(x){
+            this.getEditData(x)
+        }
+    },
 methods:{
+    getEditData(x){
+        if(x != 0){
+            this.uForm.reset()
+            this.res_status = ''
+            this.user_select_roles = []
+            let url = `/api/admin/user/${x}`
+            axios.get(url)
+                .then(res=>{
+                    let rData = res.data.user 
+                    this.uForm.name = rData.name
+                    this.uForm.email = rData.email
+
+                    rData.role.forEach((val)=>{
+                        this.user_select_roles.push(val.id)
+                        console.log(val.id)
+
+                    })
+
+
+                })
+        }
+    },
             getRole(){
 
                 let url = `/api/admin/getrole`
@@ -91,6 +118,8 @@ methods:{
                     this.user_roles = res.data.role
                         })
             },
+    /*
+            this method not working when submit with 2 roles
             saveUser(id){
                 let url = '/api/admin/user'
                 let fData = new FormData()
@@ -106,6 +135,10 @@ methods:{
                 axios.post(url,fData,)
                     .then(res=>{
                         this.res_status = res.data.msg
+                        this.clearForm()
+                        setTimeout(()=>{
+                            this.$emit('getUser')
+                        },2500)
                             })
                 .catch(err=>{
                     this.res_status = `<span class="tag is-medium is-danger">
@@ -113,6 +146,55 @@ methods:{
                     </span>`
                         })
             },
+    */
+    saveU(id){
+        let data = {
+           user_roles:this.user_select_roles,
+            name:this.uForm.name,
+            email:this.uForm.email,
+            password:this.uForm.password
+        }
+        let url = `/api/admin/user`
+        if(id && id != 0){
+            url = `/api/admin/user/${id}`
+            axios.put(url,data)
+                .then(res=>{
+                    //console.log(res.data)
+                    this.res_status = res.data.msg
+                    
+                    setTimeout(()=>{
+                        this.clearForm()
+                        this.$emit('getUser')
+                    },750)
+                })
+                .catch(err=>{
+                    this.res_status = `<span class="tag is-medium is-danger">
+                        ${Object.values(err.response.data.errors).join()}
+                    </span>`
+                })
+        }else{
+            axios.post(url,data)
+                .then(res=>{
+                    //console.log(res.data)
+                    this.res_status = res.data.msg
+                    setTimeout(()=>{
+                        this.clearForm()
+                        this.$emit('getUser')
+                    },750)
+                })
+                .catch(err=>{
+                    this.res_status = `<span class="tag is-medium is-danger">
+                        ${Object.values(err.response.data.errors).join()}
+                    </span>`
+                })
+        }
+    },
+    clearForm(){
+        this.res_status = ''
+        this.uForm.reset()
+        this.user_select_roles = []
+
+    },
         },
 
 }

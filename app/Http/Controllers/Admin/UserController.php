@@ -11,14 +11,17 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 use Auth;
+use DB;
 
 class UserController extends Controller
 {
+    protected $role_user_table = "role_user";
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         if(!Auth::user()->is_admin):
@@ -114,7 +117,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $u = User::with('role')->where('id',$user->id)->first();
+        return response()->json([
+            "user" => $u
+        ]);
     }
 
     /**
@@ -127,30 +133,41 @@ class UserController extends Controller
     public function update(User $user)
     {
         //
-        $u = User::find($user->id);
-
-        $user_roles = request()->user_roles;
-
+        $u = User::with('role')
+                    ->where('id',$user->id)
+                    ->first();
         $valid = request()->validate([
             "name" => ["required","min:4"],
             "email" => ["required","email"]
         ]);
 
+        $user_roles = request()->user_roles;
+        $pas = request()->password;
+        if(isset($pas)):
+            $pas = Hash::make(request()->password);
+            $valid["password"] = $pas;
+        else:
+            unset($valid["password"]);
+        endif;
+
+
         $valid["updated_at"] = now();
 
-        // create user 
+        // update user 
         User::where('id',$user->id)
                     ->update($valid);
 
-        // update user role 
+
         $u->role()->sync($user_roles);
 
+
+
         // backup 
-        User::backupUser($u->id,"insert");
+        User::backupUser($user->id,"edit");
 
 
         $msg = "<span class=\"tag is-medium is-success\">
-            Success : user id {$user->id} has been updated!</span>";
+            Success : user {$user->id} has been updated!</span>";
         return response()->json([
             "msg" => $msg
         ]);

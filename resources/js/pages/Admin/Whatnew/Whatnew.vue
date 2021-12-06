@@ -38,6 +38,17 @@
           </div>
           <button class="modal-close is-large" aria-label="close" 
           @click.prevent="isShow = false"></button>
+          <div class="columns">
+              <div class="column">
+                <div class="field is-pulled-right">
+                    <button class="button is-success is-outlined" 
+                    @click.prevent="isShow = ''">
+                        <font-awesome-icon icon="check"></font-awesome-icon>
+                    </button>
+
+                </div>
+              </div>
+          </div>
         </div>
     </div>
 </template>
@@ -94,7 +105,7 @@ methods:{
                                 headers:{"Authorization":`Basic ${this.tk}`}
                                     })
                         .then(res=>{
-                            console.log(res.data)
+                            //console.log(res.data)
                             this.isShow = 'is-active' 
                             this.res_status = res.data.msg
                             setTimeout(()=>{

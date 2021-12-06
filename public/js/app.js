@@ -13263,6 +13263,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -13275,7 +13302,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       uList: '',
       editId: 0,
-      showForm: false
+      showForm: false,
+      res_status: '',
+      isShow: ''
     };
   },
   mounted: function mounted() {
@@ -13285,6 +13314,7 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser(page) {
       var _this = this;
 
+      this.closeForm();
       var url = '';
 
       if (page) {
@@ -13295,7 +13325,7 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('auser_old_page');
       if (!url) url = "/api/admin/getuser";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //                          console.log(res.data)
         _this.uList = res.data.user;
       });
     },
@@ -13304,10 +13334,27 @@ __webpack_require__.r(__webpack_exports__);
       this.showForm = true;
     },
     del: function del(id) {
-      alert("del id ".concat(id));
+      var _this2 = this;
+
+      if (id && id != 0 && confirm("This will delete the user id ".concat(id)) == true) {
+        var url = "/api/admin/user/".concat(id);
+        axios["delete"](url).then(function (res) {
+          _this2.res_status = res.data.msg;
+          _this2.isShow = true;
+          setTimeout(function () {
+            _this2.isShow = '';
+
+            _this2.getUser();
+          }, 2000);
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+
+      return;
     },
     closeForm: function closeForm() {
-      this.showForm = !this.showForm;
+      this.showForm = false;
     }
   }
 });
@@ -13408,36 +13455,112 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getRole();
   },
+  watch: {
+    "editId": function editId(x) {
+      this.getEditData(x);
+    }
+  },
   methods: {
-    getRole: function getRole() {
+    getEditData: function getEditData(x) {
       var _this = this;
+
+      if (x != 0) {
+        this.uForm.reset();
+        this.res_status = '';
+        this.user_select_roles = [];
+        var url = "/api/admin/user/".concat(x);
+        axios.get(url).then(function (res) {
+          var rData = res.data.user;
+          _this.uForm.name = rData.name;
+          _this.uForm.email = rData.email;
+          rData.role.forEach(function (val) {
+            _this.user_select_roles.push(val.id);
+
+            console.log(val.id);
+          });
+        });
+      }
+    },
+    getRole: function getRole() {
+      var _this2 = this;
 
       var url = "/api/admin/getrole";
       axios.get(url).then(function (res) {
         //    console.log(res.data)
-        _this.user_roles = res.data.role;
+        _this2.user_roles = res.data.role;
       });
     },
-    saveUser: function saveUser(id) {
-      var _this2 = this;
 
-      var url = '/api/admin/user';
-      var fData = new FormData();
-      fData.append("user_roles", this.user_select_roles);
-      fData.append("name", this.uForm.name);
-      fData.append("email", this.uForm.email);
-      fData.append("password", this.uForm.password);
+    /*
+            this method not working when submit with 2 roles
+            saveUser(id){
+                let url = '/api/admin/user'
+                let fData = new FormData()
+                fData.append("user_roles",this.user_select_roles)
+                fData.append("name",this.uForm.name)
+                fData.append("email",this.uForm.email)
+                fData.append("password",this.uForm.password)
+                 if(id && id != 0){
+                    url = `/api/admin/user/${id}`
+                    fData.append("_method","PUT")
+                }
+                axios.post(url,fData,)
+                    .then(res=>{
+                        this.res_status = res.data.msg
+                        this.clearForm()
+                        setTimeout(()=>{
+                            this.$emit('getUser')
+                        },2500)
+                            })
+                .catch(err=>{
+                    this.res_status = `<span class="tag is-medium is-danger">
+                    ${Object.values(err.response.data.errors).join()} 
+                    </span>`
+                        })
+            },
+    */
+    saveU: function saveU(id) {
+      var _this3 = this;
+
+      var data = {
+        user_roles: this.user_select_roles,
+        name: this.uForm.name,
+        email: this.uForm.email,
+        password: this.uForm.password
+      };
+      var url = "/api/admin/user";
 
       if (id && id != 0) {
         url = "/api/admin/user/".concat(id);
-        fData.append("_method", "PUT");
-      }
+        axios.put(url, data).then(function (res) {
+          //console.log(res.data)
+          _this3.res_status = res.data.msg;
+          setTimeout(function () {
+            _this3.clearForm();
 
-      axios.post(url, fData).then(function (res) {
-        _this2.res_status = res.data.msg;
-      })["catch"](function (err) {
-        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), " \n                    </span>");
-      });
+            _this3.$emit('getUser');
+          }, 750);
+        })["catch"](function (err) {
+          _this3.res_status = "<span class=\"tag is-medium is-danger\">\n                        ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        });
+      } else {
+        axios.post(url, data).then(function (res) {
+          //console.log(res.data)
+          _this3.res_status = res.data.msg;
+          setTimeout(function () {
+            _this3.clearForm();
+
+            _this3.$emit('getUser');
+          }, 750);
+        })["catch"](function (err) {
+          _this3.res_status = "<span class=\"tag is-medium is-danger\">\n                        ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        });
+      }
+    },
+    clearForm: function clearForm() {
+      this.res_status = '';
+      this.uForm.reset();
+      this.user_select_roles = [];
     }
   }
 });
@@ -13495,6 +13618,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -13502,8 +13651,12 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   props: ["uList"],
   data: function data() {
     return {
-      moment: moment
+      moment: moment,
+      user_id: ''
     };
+  },
+  mounted: function mounted() {
+    this.user_id = window.user_id;
   }
 });
 
@@ -42474,14 +42627,12 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "section" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _c("div", { staticClass: "is-pulled-right mb-4" }, [
+  return _c("section", { staticClass: "section" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column is-3" }, [
+        _c("div", { staticClass: "content" }, [
           _c(
             "button",
             {
@@ -42493,43 +42644,99 @@ var render = function () {
                 },
               },
             },
-            [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+            [
+              _c("font-awesome-icon", { attrs: { icon: "plus" } }),
+              _vm._v(" "),
+              _c("span", { staticClass: "ml-2" }, [_vm._v("Add new User")]),
+            ],
             1
           ),
         ]),
       ]),
       _vm._v(" "),
-      _c("user-form", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showForm,
-            expression: "showForm",
-          },
+      _c(
+        "div",
+        { staticClass: "column is-9" },
+        [
+          _c("user-form", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.showForm,
+                expression: "showForm",
+              },
+            ],
+            attrs: { editId: _vm.editId },
+            on: {
+              closeForm: function ($event) {
+                return _vm.closeForm($event)
+              },
+              getUser: function ($event) {
+                return _vm.getUser($event)
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("user-list", {
+            attrs: { uList: _vm.uList },
+            on: {
+              getUser: function ($event) {
+                return _vm.getUser($event)
+              },
+              edit: function ($event) {
+                return _vm.edit($event)
+              },
+              del: function ($event) {
+                return _vm.del($event)
+              },
+            },
+          }),
         ],
-        attrs: { editId: _vm.editId },
-        on: {
-          closeForm: function ($event) {
-            return _vm.closeForm($event)
-          },
-        },
-      }),
+        1
+      ),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", class: { "is-active": _vm.isShow } }, [
+      _c("div", { staticClass: "modal-background" }),
       _vm._v(" "),
-      _c("user-list", {
-        attrs: { uList: _vm.uList },
+      _c("div", { staticClass: "modal-content" }, [
+        _c("div", { staticClass: "box" }, [
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+            _vm._v(_vm._s(_vm.res_status)),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field is-pulled-right " }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-outlined is-success",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  _vm.isShow = ""
+                },
+              },
+            },
+            [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+            1
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "modal-close is-large",
+        attrs: { "aria-label": "close" },
         on: {
-          edit: function ($event) {
-            return _vm.edit($event)
-          },
-          del: function ($event) {
-            return _vm.del($event)
+          click: function ($event) {
+            $event.preventDefault()
+            _vm.isShow = false
           },
         },
       }),
-    ],
-    1
-  )
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -42689,7 +42896,7 @@ var render = function () {
                             expression: "user_select_roles",
                           },
                         ],
-                        attrs: { type: "checkbox" },
+                        attrs: { type: "checkbox", name: "user_roles" },
                         domProps: {
                           value: r.id,
                           checked: Array.isArray(_vm.user_select_roles)
@@ -42741,7 +42948,7 @@ var render = function () {
                     on: {
                       click: function ($event) {
                         $event.preventDefault()
-                        return _vm.saveUser(_vm.editId)
+                        return _vm.saveU(_vm.editId)
                       },
                     },
                   },
@@ -42843,20 +43050,36 @@ var render = function () {
               1
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "button is-danger",
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.$emit("del", u.id)
+            _vm.user_id == u.id
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "button is-danger",
+                    attrs: { disabled: "" },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.$emit("del", u.id)
+                      },
+                    },
                   },
-                },
-              },
-              [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
-              1
-            ),
+                  [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+                  1
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass: "button is-danger",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.$emit("del", u.id)
+                      },
+                    },
+                  },
+                  [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+                  1
+                ),
           ]),
           _vm._v(" "),
           _c("ul", [
@@ -42884,7 +43107,78 @@ var render = function () {
         ])
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "box" }, [_vm._v("\n        pagination\n    ")]),
+      _c("div", { staticClass: "box" }, [
+        _c(
+          "nav",
+          {
+            staticClass: "pagination is-rounded",
+            attrs: { role: "navigation", "aria-label": "pagination" },
+          },
+          [
+            _c("a", { staticClass: "pagination-previous is-current" }, [
+              _vm._v("All user " + _vm._s(_vm.uList.total)),
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "pagination-next is-current" }, [
+              _vm._v("on page " + _vm._s(_vm.uList.current_page)),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.uList.links, function (ln) {
+              return _c("ul", { staticClass: "pagination-list" }, [
+                ln.url != null && ln.active == false
+                  ? _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "pagination-link",
+                          attrs: {
+                            "aria-label": "Page 1",
+                            "aria-current": "page",
+                          },
+                          domProps: { innerHTML: _vm._s(ln.label) },
+                          on: {
+                            click: function ($event) {
+                              $event.preventDefault()
+                              return _vm.$emit("getUser", ln.url)
+                            },
+                          },
+                        },
+                        [_vm._v(_vm._s(ln.label))]
+                      ),
+                    ])
+                  : _c("li", [
+                      ln.active == true
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link is-current",
+                              attrs: {
+                                "aria-label": "",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          )
+                        : _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link",
+                              attrs: {
+                                "aria-label": "",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          ),
+                    ]),
+              ])
+            }),
+          ],
+          2
+        ),
+      ]),
     ],
     2
   )
