@@ -34,6 +34,7 @@ class PostController extends Controller
     public function aGetPost(){
 
         $post = Post::with('user')
+                    ->with('tag')
                     ->orderBy('created_at','DESC')
                     ->paginate(4);
         // return json data
@@ -137,9 +138,49 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
         //
+        $valid = request()->validate([
+            "p_title" => ["required","min:8","string","max:80"],
+            "p_excerpt" => ["required","min:40"],
+        ],
+        [
+            "p_title.required" => "Error! the title is required min 8 max 80 
+            characters please",
+        ] 
+        );
+
+        // prepare data 
+        $valid["p_is_public"] = !request()->p_is_public?0:1;
+        $valid["p_title"] = xx_clean(request()->p_title);
+
+        // just to make sure there will be no - at the end of field
+        $valid["slug"] = rtrim(request()->slug,"-"); 
+        
+        $valid["p_excerpt"] = xx_clean(request()->p_excerpt);
+        $valid["p_body"] = xx_clean(request()->p_body);
+        
+        // create post 
+        Post::where("id",$post->id)
+            ->update($valid);
+
+        // get the last row 
+        $p = Post::find($post->id);
+
+        // create tag link
+        $tags = request()->tags;
+        $p->tag()->sync($tags);
+
+        // make a backup 
+        Post::backupPost($p->id,"edit");
+
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : your post id {$post->id} has been updated!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -151,5 +192,17 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $p = Post::find($post->id);
+
+        //unlink tag
+        $p->tag()->detach();
+
+        $p->delete();
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : your post id {$post->id} has been deleted!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

@@ -8,10 +8,20 @@
             </li>
           </ul>
         </nav>
-  <h1 class="title">Medium section</h1>
-  <h2 class="subtitle">
-    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-  </h2>
+
+    <div class="mt-4">
+
+      <h1 class="title">Medium section</h1>
+      <h2 class="subtitle">
+        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
+      </h2>
+      <p>this is the default data to show in this page</p>
+      <div class="content">
+        <p>
+            this is the tag in p tag div.content
+        </p>
+      </div>
+    </div>
 
         
 
@@ -21,6 +31,11 @@
 
 <script>
 export default {
-    
+    name:"AboutPage",
+             data(){
+                 return{
+                    isShowDefaultData:true,
+                 }
+             },
 }
 </script>

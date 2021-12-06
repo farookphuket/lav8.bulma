@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="content">
+    <div class="container">
         <h2 class="title has-text-centered">{{thePost.p_title}}</h2>
         <div class="box" v-html="thePost.p_excerpt">{{thePost.p_excerpt}}</div>
         <div class="box" v-html="thePost.p_body">{{thePost.p_body}}</div>

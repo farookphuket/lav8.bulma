@@ -6,52 +6,8 @@
         <admin-nav v-show="showAdminNav"></admin-nav>
       <router-view></router-view>
         <footer class="footer">
-            <div class="tiles is-ancestor">
-                <div class="tile is-horizontal">
+            <visitor></visitor>
 
-                    <div class="tile">
-                        <div class="content has-text-centered">
-                            <visitor></visitor>
-                        </div>
-                    </div>
-
-                    <div class="tile is-parent is-6">
-                        <div class="content is-6">
-                            <h2>Company</h2>
-                            <div class="box">
-                                <p>company limited</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    <div class="tile is-2">
-                        <div class="content">
-                            <h2 class="has-text-centered">
-                                contact
-                            </h2>
-                            <ol class="tags is-roman">
-                                <li class="tag is-info">
-                                name farok
-                                </li>
-
-                                <li class="tag is-info">
-                                e-mail farookphuket@gmail.com
-                                </li>
-                                <li class="tag is-info">
-                                    <span class="icon-text">
-                                        <font-awesome-icon icon="phone"></font-awesome-icon>
-                                    </span>
-                                    <span class="ml-2">
-                                        +66 95 9543920
-                                    </span>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </footer>
   </div>
 </template>

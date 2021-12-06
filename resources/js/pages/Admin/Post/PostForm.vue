@@ -101,7 +101,7 @@
                                 <div class="buttons ">
                                     <button class="button is-outlined 
                                     is-primary" type="submit" 
-                                    @click.prevent="savePost(editId)">Post</button>
+                                    @click.prevent="saveP(editId)">Post</button>
                                     <button class="button is-danger is-outlined" 
                                     @click.prevent="$emit('closeForm')">
                                         <font-awesome-icon icon="times-circle"></font-awesome-icon>
@@ -140,11 +140,18 @@ export default{
             new_tag:'',   
         }),
     }},
+watch:{
+          "editId":function(x){
+            this.getEditData(x)
+          }
+      },
     mounted(){
         this.getTag()
 
     },
     methods:{
+
+    /*
          savePost(id){
              this.res_status = ''
              let url = `/api/admin/post`
@@ -161,7 +168,7 @@ export default{
              }
              axios.post(url,fData)
                  .then(res=>{
-                     console.log(res.data)
+                    // console.log(res.data)
                      this.res_status = res.data.msg 
                      setTimeout(()=>{
                          this.getClear()
@@ -173,6 +180,71 @@ export default{
                  </span>`
                      })
          },
+         */
+                getEditData(x){
+                    if(x != 0){
+                        this.user_select_tag = []
+                        this.$refs.p_title.focus()
+                        let url = `/api/admin/post/${x}`
+                        axios.get(url)
+                        .then(res=>{
+
+                            let rData = res.data.post
+                            this.pForm.p_title = rData.p_title
+                            this.pForm.p_excerpt = rData.p_excerpt
+                            this.pForm.p_body = rData.p_body
+                            this.isSlug = true
+                            if(rData.p_is_public != 0) this.pForm.p_is_public = true
+                            rData.tag.forEach((val)=>{
+                                //console.log(val)
+                                this.user_select_tag.push(val.pivot.tag_id)
+                                    })
+                                })
+                    }
+                },
+         saveP(id){
+            let url = `/api/admin/post`
+                let fData = {
+                   p_title:this.pForm.p_title,
+                   p_excerpt:this.pForm.p_excerpt,
+                   p_body:this.pForm.p_body,
+                   slug:this.pForm.slug,
+                   p_is_public:this.pForm.p_is_public,
+                   tags:this.user_select_tag,
+                }
+            if(id){
+                url = `/api/admin/post/${id}`
+                axios.put(url,fData)
+                .then(res=>{
+                    this.res_status = res.data.msg
+                    setTimeout(()=>{
+                        this.getClear()
+                        this.$emit('getPost')
+                    },1500)
+                })
+                .catch(err=>{
+                     this.res_status = `<span class="tag is-medium is-danger">
+                        ${Object.values(err.response.data.errors).join()}
+                     </span>`
+                })
+            }else{
+
+                axios.post(url,fData)
+                .then(res=>{
+                    this.res_status = res.data.msg
+                    setTimeout(()=>{
+                        this.getClear()
+
+                        this.$emit('getPost')
+                    },1500)
+                })
+                .catch(err=>{
+                     this.res_status = `<span class="tag is-medium is-danger">
+                        ${Object.values(err.response.data.errors).join()}
+                     </span>`
+                })
+            }
+         },
          getSlug(){
              this.isSlug = false
             this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
@@ -181,10 +253,11 @@ export default{
          getClear(){
              this.res_status = ''
                 this.isSlug = false
+            this.user_select_tag = []
              this.pForm.reset()
-             this.$emit('getPost')
          },
          getTag(){
+            this.res_status = ''
              this.$refs.new_tag.value = ''
              let url = `/api/tag`
              axios.get(url)
@@ -208,6 +281,8 @@ export default{
                    //  console.log(res.data)
                      this.res_status = res.data.msg
                      setTimeout(()=>{
+
+                         this.$refs.p_title.focus()
                          this.getTag()
                              },3200)
                          })

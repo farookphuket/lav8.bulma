@@ -6,3 +6,18 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '1',
     '1');
  
+ 
+/* ================= INSERT COMMAND for post id 2 ====================
+ * START on  2021-12-06 18:27:04 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '2',
+    '1');
+  
+/* ================= INSERT COMMAND for post id 3 ====================
+ * START on  2021-12-06 19:25:11 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '2',
+    '2');
+  

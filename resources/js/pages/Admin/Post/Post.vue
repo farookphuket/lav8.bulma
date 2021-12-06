@@ -27,9 +27,27 @@
                     @closeForm="closeForm($event)"></post-form>
 
 
-                <post-list :postList="postList" 
+                <post-list :postList="postList" @edit="edit($event)" 
+                @del="del($event)"
                 @openPost="openPost($event)"></post-list>
             </div>
+        </div>
+
+        <div class="modal" :class="{'is-active':showModal}">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="content box">
+                <div v-html="res_status" class="mb-6">{{res_status}}</div>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" 
+          @click.prevent="showModal = ''"></button>
+
+            <button class="button is-success is-outlined " 
+            @click.prevent="showModal=''">
+                <font-awesome-icon icon="check"></font-awesome-icon>
+            </button>
+
         </div>
     </section>
 </template>
@@ -48,7 +66,7 @@ export default{
         showForm:false,
         editId:0,
         postList:'',
-        showForm:false,
+        showModal:'',
      }},
      mounted(){
          this.getPost()
@@ -84,6 +102,25 @@ export default{
                 console.log(openUrl)
                 location.href=openUrl
                     })
+        },
+        edit(id){
+            this.showForm = true
+            this.editId = id
+        },
+        del(id){ 
+            if(id && id != 0 && confirm(`This will delete the post id ${id} ,Are you sure ?`) == true){
+                let url = `/api/admin/post/${id}`
+                axios.delete(url)
+                .then(res=>{
+                    this.res_status = res.data.msg
+                    this.showModal = true
+                    setTimeout(()=>{
+                        this.getPost()
+                        this.showModal = ''
+                    },2000) 
+                })
+            }
+            return
         },
     },
 

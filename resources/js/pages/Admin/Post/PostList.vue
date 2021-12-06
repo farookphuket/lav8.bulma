@@ -1,5 +1,7 @@
 <template>
     <div class="content">
+
+
        <div class="box mt-2" v-for="po in postList.data">
             <h2 class="has-text-centered">{{po.p_title}}</h2>
             <p class="subtitle">
@@ -17,8 +19,19 @@
                     {{moment(po.created_at).fromNow()}}
                 </span>
             </p>
-            <div v-html="po.p_excerpt">{{po.p_excerpt}}</div>
+            <div class="mb-6" v-html="po.p_excerpt">{{po.p_excerpt}}</div>
             <div class="columns" >
+                <div class="column">
+                    <div class="field is-pulled-left">
+                        <p class="subtitle">
+                            <font-awesome-icon icon="tags"></font-awesome-icon> : 
+                            <span class="tag is-info " v-for="t in po.tag">
+                                {{t.tag_name}}
+                            </span>
+
+                        </p>
+                    </div>
+                </div>
                 <div class="column">
                     <div class="field is-grouped is-grouped-right" v-if="po.user_id == user_id">
                         <div class="tags">
@@ -42,11 +55,13 @@
                             @click.prevent="$emit('openPost',po.slug)">
                                 <font-awesome-icon icon="eye"></font-awesome-icon>
                             </button>
-                            <button class="button is-warning is-outlined">
+                            <button class="button is-warning is-outlined" 
+                            @click.prevent="$emit('edit',po.id)">
                                 <font-awesome-icon icon="edit"></font-awesome-icon>
                             </button>
 
-                            <button class="button is-danger is-outlined">
+                            <button class="button is-danger is-outlined" 
+                            @click.prevent="$emit('del',po.id)">
                                 <font-awesome-icon icon="trash-alt"></font-awesome-icon>
                             </button>
                         </div>
@@ -54,7 +69,7 @@
                 </div>
 
             </div>
-
+            
        </div><!-- end of div.box -->
         <div class="box mt-4">
             <p>pagination</p>
