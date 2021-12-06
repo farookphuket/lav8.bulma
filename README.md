@@ -9,8 +9,34 @@
 
 
 
+## ================= how to setup 
+
+> this code will not work on your project as you're expected unless you're know 
+> what you're doing
+
+> so please watch this video 
+
+[![watch how to setup ](http://img.youtube.com/vi/kzNHfPahoo8/0.jpg)](http://www.youtube.com/watch?v=kzNHfPahoo8 "")
+
+
+
+## ================ Admin view user
+
+> this is the admin preview user section I will make more video about this 
+> for later
+
+[![watch admin view user section ](http://img.youtube.com/vi/WPWzR5RrlPY/0.jpg)](http://www.youtube.com/watch?v=WPWzR5RrlPY "")
+
+
+
+
 [lav8-bulma-1]:https://i.ibb.co/znGF6Sb/lav8-bulma-1.png
 !["the first image from new project"][lav8-bulma-1]
+
+## ================= date 6 Dec 2021 
+
+> added admin manage user section 
+
 
 
 ## ================= date 30 Nov 2021 
