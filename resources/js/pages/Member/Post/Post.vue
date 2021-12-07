@@ -35,6 +35,15 @@
 
                    <post-list :postList="postList" @edit="edit($event)" 
                    @del="del($event)" @getPost="getPost($event)" ></post-list>
+
+                <!-- show tag START -->
+                   <div class="box">
+                        <ul class="tags">
+
+                        </ul>
+                   </div>
+                <!-- show tag START -->
+
                </div>
            </div>
         </section>
@@ -72,6 +81,7 @@ name:"MPost",
          data(){return{
             editId:'',
             postList:'',
+            post_with_category:'',
             res_status:'',
             isFormOpen:false,
             isModalOpen:'',
@@ -93,8 +103,9 @@ methods:{
                     if(!url) url = `/api/member/getpost`
                     axios.get(url)
                         .then(res=>{
-
+                        console.log(res.data)
                         this.postList = res.data.post
+                        this.post_with_category = res.data.post_with_category
                         document.title = res.data.meta_title
                     })
             },

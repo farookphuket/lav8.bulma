@@ -15,7 +15,7 @@ import Visitor from './pages/Visitor.vue'
 
 // member 
 import MemHome from './pages/Member/Home.vue'
-
+import MPost from './pages/Member/Post/Post.vue'
 
 // admin 
 import AdminHome from './pages/Admin/Home.vue'
@@ -92,6 +92,13 @@ const router = new VueRouter({
             path: '/member/home',
             name: 'MemberDashboard',
             component: MemHome,
+
+        },
+
+        {
+            path: '/member/post',
+            name: 'MPost',
+            component: MPost,
 
         },
 

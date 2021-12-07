@@ -16,7 +16,7 @@ class Category extends Model
     protected static $cat_table = "categories";
 
     public function post(){
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
 

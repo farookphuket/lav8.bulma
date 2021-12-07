@@ -83,6 +83,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     // CRUD with whatnew
     Route::resource('/whatnew',WN::class);
 
+    // Post 
+    Route::resource('/post',Post::class);
+    Route::get('/getpost',[Post::class,'mGetPost'])
+        ->name('mGetPost');
 
     /* ============= member profile 24 Nov 2021 ====================
      * 

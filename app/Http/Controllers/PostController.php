@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 
 use Auth;
@@ -21,12 +23,19 @@ class PostController extends Controller
 
     public function getPost(){
         // return json data 
-        $po = Post::with('user')
+        $po = Post::where("p_is_public","!=",0)
+                    ->with('user')
                     ->with('tag')
                     ->orderBy('created_at','DESC')
                     ->paginate(2);
+
+        $cat_with_post = Category::has('post')
+                                ->latest()
+                                ->paginate(4);
+
         return response()->json([
-            "post" => $po
+            "post" => $po,
+            "post_with_category" => $cat_with_post
         ]);
     }
 
@@ -38,13 +47,21 @@ class PostController extends Controller
                     ->latest()
                     ->paginate(4);
 
+
+        $cat_with_post = Post::where("p_is_public","!=",0)
+                                ->orWhere("user_id",Auth::user()->id)
+                                ->has('category')
+                                ->latest()
+                                ->get();
+
         $t = Post::where('p_is_public','!=',0)
                     ->orWhere("user_id",Auth::user()->id)
                     ->latest()
                     ->first();
         return response()->json([
             "post" => $p,
-            "meta_title" => $t->p_title
+            "meta_title" => $t->p_title,
+            "post_with_category" => $cat_with_post
         ]);
     }
 

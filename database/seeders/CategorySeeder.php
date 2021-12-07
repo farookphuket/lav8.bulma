@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Eloquent;
+use DB;
 
 class CategorySeeder extends Seeder
 {
@@ -14,5 +16,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         //
+
+        // make category table
+        Eloquent::unguard();
+        $path = 'DB/category_list.sqlite';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info("Category has been Created!!");
     }
 }

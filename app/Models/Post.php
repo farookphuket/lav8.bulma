@@ -30,7 +30,7 @@ class Post extends Model
 
 
     public function category(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     /* ======================= Backup section =================================
@@ -56,8 +56,9 @@ class Post extends Model
  * START on ".date("Y-m-d H:i:s a")."
  * ============================================================================
  * */
-INSERT INTO `{$table}`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+INSERT INTO `{$table}`(`category_id`,`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
 `p_is_public`,`created_at`,`updated_at`) VALUES(
+    '{$p->category_id}',
     '{$p->user_id}',
     '{$p->p_title}',
     '{$p->slug}',
@@ -75,7 +76,8 @@ INSERT INTO `{$table}`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
 /* ============================= UPDATE COMMAND id {$post_id} =================
  * START on ".date("Y-m-d H:i:s a")."
  * */
-UPDATE `{$table}` SET p_title='{$p->p_title}',
+UPDATE `{$table}` SET category_id='{$p->category_id}'
+,p_title='{$p->p_title}',
 slug='{$p->slug}',
 p_excerpt='{$p->p_excerpt}',
 p_body='{$p->p_body}',
