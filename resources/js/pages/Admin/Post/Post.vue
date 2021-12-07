@@ -7,18 +7,19 @@
                     <a href="#" aria-current="page">Post</a>
                 </li>
               </ul>
-
             </nav>
         <div class="columns">
             <div class="column is-3">
 
                     <a class="button is-primary is-block is-alt" href="#" 
                     @click.prevent="showForm = true">New Post</a>
-					<aside class="menu">
-						<p class="menu-label">
-							Tags
-						</p>
-					</aside>
+                    <aside class="mt-4 menu">
+                        <p class="title">
+                                Tags
+                        </p>
+                        <p class="subtitle">the available tags now</p>
+                        <tag></tag>
+                    </aside>
             </div>
             <div class="column is-9">
 
@@ -49,17 +50,22 @@
             </button>
 
         </div>
+
+
     </section>
 </template>
 
 <script>
 import PostForm from './PostForm.vue'
 import PostList from './PostList.vue'
+import Tag from '../Tag/Tag.vue'
+
 export default{
     name:"AdminPost",
      components:{
          PostForm,
          PostList,
+         Tag,
      },
      data(){return{
         res_status:'',

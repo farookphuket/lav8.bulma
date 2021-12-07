@@ -30,6 +30,23 @@ class PostController extends Controller
         ]);
     }
 
+    public function mGetPost(){
+        $p = Post::where('p_is_public','!=',0)
+                    ->orWhere('user_id',Auth::user()->id)
+                    ->with('tag')
+                    ->with('user')
+                    ->latest()
+                    ->paginate(4);
+
+        $t = Post::where('p_is_public','!=',0)
+                    ->orWhere("user_id",Auth::user()->id)
+                    ->latest()
+                    ->first();
+        return response()->json([
+            "post" => $p,
+            "meta_title" => $t->p_title
+        ]);
+    }
 
     public function aGetPost(){
 

@@ -11,13 +11,43 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
  * START on  2021-12-06 18:27:04 pm
  * */
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '1',
+    '2');
+  
+ 
+/* ================= INSERT COMMAND for post id 4 ====================
+ * START on  2021-12-07 06:56:05 am
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2',
     '1');
   
-/* ================= INSERT COMMAND for post id 3 ====================
- * START on  2021-12-06 19:25:11 pm
+/* ================= INSERT COMMAND for post id 1 ====================
+ * START on  2021-12-07 06:57:31 am
  * */
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2',
     '2');
+ 
+ 
+/* ================= INSERT COMMAND for post id 4 ====================
+ * START on  2021-12-07 18:23:27 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '4',
+    '2');
   
+/* ================= INSERT COMMAND for post id 4 ====================
+ * START on  2021-12-07 19:10:00 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '4',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 4 ====================
+ * START on  2021-12-07 19:11:37 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '4',
+    '2');
+ 

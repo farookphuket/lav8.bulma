@@ -72,7 +72,27 @@
             
        </div><!-- end of div.box -->
         <div class="box mt-4">
-            <p>pagination</p>
+            <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                <a class="pagination-previous is-current">All post {{postList.total}}</a>
+                <a class="pagination-next is-current">page {{postList.current_page}}</a>
+              <ul class="pagination-list" v-for="ln in postList.links">
+                <li v-if="ln.url != null && ln.active == false">
+                  <a class="pagination-link" 
+                  aria-label="Page 1" aria-current="page" v-html="ln.label" 
+                  @click.prevent="$emit('getPost',ln.url)">{{ln.label}}</a>
+                </li>
+                <li v-else>
+                  <a class="pagination-link is-current"  v-if="ln.active == true" 
+                  aria-label="" aria-current="page" v-html="ln.label" 
+                  >{{ln.label}}</a>
+
+                  <a class="pagination-link"  v-else 
+                  aria-label="" aria-current="page" v-html="ln.label" 
+                  >{{ln.label}}</a>
+                </li>
+
+              </ul>
+            </nav>
         </div>
 
     </div> <!-- end of div.content -->
