@@ -45,6 +45,24 @@ class CreatePostsTable extends Migration
                     ->on("tags")
                     ->onDelete("cascade");
         });
+
+        // category relationship
+        Schema::create('category_post', function (Blueprint $table) {
+
+            $table->id();
+            $table->foreignId("category_id");
+            $table->foreignId("post_id");
+
+            $table->foreign("post_id")
+                  ->references("id")
+                    ->on("posts")
+                    ->onDelete("cascade");
+
+            $table->foreign("category_id")
+                    ->references("id")
+                    ->on("category")
+                    ->onDelete("cascade");
+        });
     }
 
     /**
@@ -56,5 +74,6 @@ class CreatePostsTable extends Migration
     {
         Schema::dropIfExists('posts');
         Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('category_post');
     }
 }

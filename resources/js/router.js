@@ -21,7 +21,7 @@ import MemHome from './pages/Member/Home.vue'
 import AdminHome from './pages/Admin/Home.vue'
 import AdminPost from './pages/Admin/Post/Post.vue'
 import AdminUser from './pages/Admin/User/User.vue'
-
+import AdminCategory from './pages/Admin/Category/Category.vue'
 
 
 Vue.use(VueRouter);
@@ -119,6 +119,13 @@ const router = new VueRouter({
             name: 'AdminUser',
             component: AdminUser
         },
+
+        {
+            path: '/admin/category',
+            name: 'AdminCategory',
+            component: AdminCategory
+        },
+
 
         {
             path:'*',

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController as Login;
 use App\Http\Controllers\Member\ProfileController as MPF;
 use App\Http\Controllers\Member\DashboardController as MHOME;
 use App\Http\Controllers\PostController as Post;
+use App\Http\Controllers\CategoryController as Cat;
 
 // user role 
 use App\Http\Controllers\RoleController as uRole;
@@ -117,6 +118,17 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     Route::resource('/post',Post::class);
     // get post from post controller as admin
     Route::get('/getpost',[Post::class,'aGetPost'])->name('aGetPost');
+    /* ========================================================================
+     *
+     * */
+
+    /* ================== Category ============================================
+     *
+     * */
+    Route::resource("/category",Cat::class);
+    Route::get('/getcategory',[Cat::class,'aGetCategory'])
+        ->name('aGetCategory');
+
     /* ========================================================================
      *
      * */

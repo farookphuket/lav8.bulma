@@ -62,6 +62,16 @@
                             </router-link>
                         </span>
 
+                        <span class="navbar-item">
+                            <router-link
+                              class="nav-link"
+                              data-toggle="collapse"
+                              :to="{ name: 'AdminCategory' }"
+                            >
+                              Category
+                            </router-link>
+                        </span>
+
                     </div>
                   </div>
                 </div>
