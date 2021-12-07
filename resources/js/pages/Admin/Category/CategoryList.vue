@@ -1,8 +1,19 @@
 <template>
     <div>
-        <div class="content">
+        <div class="content mt-6">
             <article class="box" v-for="ca in catList.data">
                 <h2 class="title has-text-centered">{{ca.cat_name}}</h2>
+                <div class="content is-pulled-right">
+                    <button class="button is-outlined is-info" 
+                    @click.prevent="$emit('edit',ca.id)">
+                        <font-awesome-icon icon="edit"></font-awesome-icon>
+                    </button>
+
+                    <button class="button is-outlined is-danger" 
+                    @click.prevent="$emit('del',ca.id)">
+                        <font-awesome-icon icon="trash"></font-awesome-icon>
+                    </button>
+                </div>
             </article>
 
             <div class="box">

@@ -77,7 +77,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $ca = Category::find($category->id);
+
+        return response()->json([
+            "category" => $ca
+        ]);
     }
 
     /**
@@ -98,9 +102,34 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Category $category)
     {
         //
+        $ca = Category::find($category->id);
+
+        
+        $valid = request()->validate([
+            "cat_name" => ["required","min:4"]
+        ],
+        [
+            "cat_name.required" => "Error! Category Name is Required!"
+        ]);
+
+
+        // create category 
+        Category::where("id",$category->id)
+                    ->update($valid);
+
+
+        Category::backupCategory($ca->id,"edit"); 
+        
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : category id '{$category->id}' has updated!</span>";
+
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -112,5 +141,12 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : category id '{$category->id}' has deleted!</span>";
+
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

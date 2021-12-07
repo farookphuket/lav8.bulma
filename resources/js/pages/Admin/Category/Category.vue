@@ -53,6 +53,7 @@ name:"AdminCategory",
             catList:'',
             editId:0,
             isShowModal:'',
+            res_status:'',
          }},
          mounted(){
             this.getCategory()
@@ -69,12 +70,13 @@ methods:{
                 if(!url) url = `/api/admin/getcategory`
                 axios.get(url)
                 .then(res=>{
-                    console.log(res.data)
+                    //console.log(res.data)
                     this.catList = res.data.category
                 })
             },
             edit(id){
                 this.editId = id
+                
             },
             del(id){
                 if(id && id != 0 && confirm(`This will delete category id ${id} 
@@ -84,7 +86,7 @@ methods:{
                      .then(res=>{
                         this.res_status = res.data.msg
                         this.isShowModal = 'is-active'
-                             })
+                    })
                 }
             },
         },

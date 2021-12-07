@@ -50,7 +50,8 @@ case"edit":
 /* =================== UPDATE COMMAND for category in {$id} ===================
  * on ".date("Y-m-d H:i:s a")."
  * */
-UPDATE `{$table}` SET cat_name='{$c->cat_name}' WHERE id='{$id}';
+UPDATE `{$table}` SET cat_name='{$c->cat_name}',
+updated_at='{$c->updated_at}' WHERE id='{$id}';
 ";
     break;
 default:

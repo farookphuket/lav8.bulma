@@ -12774,7 +12774,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       catList: '',
       editId: 0,
-      isShowModal: ''
+      isShowModal: '',
+      res_status: ''
     };
   },
   mounted: function mounted() {
@@ -12795,7 +12796,7 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get("acat_old_page");
       if (!url) url = "/api/admin/getcategory";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
         _this.catList = res.data.category;
       });
     },
@@ -12859,6 +12860,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CategoryForm",
   props: ["editId"],
@@ -12867,12 +12869,35 @@ __webpack_require__.r(__webpack_exports__);
       cForm: new Form({
         cat_name: ''
       }),
-      res_status: ''
+      res_status: '',
+      tk: ''
     };
   },
+  watch: {
+    "editId": function editId(x) {
+      this.getEditData(x);
+    }
+  },
+  mounted: function mounted() {
+    this.tk = this.$cookies.get('token');
+  },
   methods: {
-    saveC: function saveC(id) {
+    getEditData: function getEditData(x) {
       var _this = this;
+
+      this.res_status = '';
+
+      if (x != 0) {
+        this.$refs.cat_name.focus();
+        var url = "/api/admin/category/".concat(x);
+        axios.get(url).then(function (res) {
+          var rData = res.data.category;
+          _this.cForm.cat_name = rData.cat_name;
+        });
+      }
+    },
+    saveC: function saveC(id) {
+      var _this2 = this;
 
       var url = "/api/admin/category";
       var fData = new FormData();
@@ -12883,16 +12908,20 @@ __webpack_require__.r(__webpack_exports__);
         fData.append("_method", "PUT");
       }
 
-      axios.post(url, fData).then(function (res) {
+      axios.post(url, fData, {
+        headers: {
+          "Authorization": "Basic ".concat(this.tk)
+        }
+      }).then(function (res) {
         //console.log(res.data)
-        _this.res_status = res.data.msg;
+        _this2.res_status = res.data.msg;
         setTimeout(function () {
-          _this.clearForm();
+          _this2.clearForm();
 
-          _this.$emit('getCategory');
+          _this2.$emit('getCategory');
         }, 2300);
       })["catch"](function (err) {
-        _this.res_status = "<span class=\"tag is-medium is-danger\">\n                     ".concat(Object.values(err.response.data.errors).join(), "\n                     </span>");
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                         ".concat(Object.values(err.response.data.errors).join(), "\n                         </span>");
       });
     },
     clearForm: function clearForm() {
@@ -12915,6 +12944,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42622,6 +42662,7 @@ var render = function () {
                   expression: "cForm.cat_name",
                 },
               ],
+              ref: "cat_name",
               staticClass: "input",
               attrs: {
                 type: "text",
@@ -42662,7 +42703,16 @@ var render = function () {
             _c("div", { staticClass: "filed is-pulled-right" }, [
               _c(
                 "button",
-                { staticClass: "button" },
+                {
+                  staticClass: "button is-success is-outlined",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.saveC(_vm.editId)
+                    },
+                  },
+                },
                 [_c("font-awesome-icon", { attrs: { icon: "check" } })],
                 1
               ),
@@ -42699,12 +42749,44 @@ var render = function () {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "content" },
+      { staticClass: "content mt-6" },
       [
         _vm._l(_vm.catList.data, function (ca) {
           return _c("article", { staticClass: "box" }, [
             _c("h2", { staticClass: "title has-text-centered" }, [
               _vm._v(_vm._s(ca.cat_name)),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "content is-pulled-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-outlined is-info",
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.$emit("edit", ca.id)
+                    },
+                  },
+                },
+                [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "button is-outlined is-danger",
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.$emit("del", ca.id)
+                    },
+                  },
+                },
+                [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+                1
+              ),
             ]),
           ])
         }),
