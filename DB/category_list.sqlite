@@ -32,17 +32,3 @@ INSERT INTO `categories`(`cat_name`,`created_at`,`updated_at`) VALUES(
     '2021-12-07 12:57:49');
   
  
-/* =================== INSERT COMMAND for category id 1 ===================
- * on 2021-12-07 15:52:03 pm
- * */
-INSERT INTO `categories`(`cat_name`,`created_at`,`updated_at`) VALUES(
-    'my cat 1',
-    '2021-12-07 15:52:03',
-    '2021-12-07 15:52:03');
-  
-/* =================== UPDATE COMMAND for category in 1 ===================
- * on 2021-12-07 15:52:12 pm
- * */
-UPDATE `categories` SET cat_name='my cat 1 edit',
-updated_at='2021-12-07 15:52:12' WHERE id='1';
- 

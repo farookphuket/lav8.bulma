@@ -30,24 +30,3 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2');
  
  
-/* ================= INSERT COMMAND for post id 4 ====================
- * START on  2021-12-07 18:23:27 pm
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '4',
-    '2');
-  
-/* ================= INSERT COMMAND for post id 4 ====================
- * START on  2021-12-07 19:10:00 pm
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '4',
-    '2');
-  
-/* ================= INSERT COMMAND for post id 4 ====================
- * START on  2021-12-07 19:11:37 pm
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '4',
-    '2');
- 
