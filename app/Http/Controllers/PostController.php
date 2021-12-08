@@ -29,7 +29,9 @@ class PostController extends Controller
                     ->orderBy('created_at','DESC')
                     ->paginate(2);
 
-        $cat_with_post = Category::has('post')
+        $cat_with_post = Post::has('category')
+                                ->where('p_is_public','!=',0)
+                                ->with('category')
                                 ->latest()
                                 ->paginate(4);
 
@@ -126,6 +128,10 @@ class PostController extends Controller
         $tags = request()->tags;
         $p->tag()->attach($tags);
 
+        // category 
+        $cat = request()->category;
+        $p->category()->attach($cat);
+
         // make a backup 
         Post::backupPost($p->id,"insert");
 
@@ -149,6 +155,9 @@ class PostController extends Controller
                     ->with("tag")
                     ->where("slug",$post->slug)
                     ->first();
+
+        Post::postHasRead($post->id);
+
         return response()->json([
             "post" => $po
         ]);

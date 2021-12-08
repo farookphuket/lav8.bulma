@@ -1,11 +1,9 @@
- 
 /* ======================= INSERT COMMAND for id 2 ===================
  * START on 2021-12-02 09:22:34 am
  * ============================================================================
  * */
-INSERT INTO `posts`(`category_id`,`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
 `p_is_public`,`created_at`,`updated_at`) VALUES(
-    '1',
     '1',
     'see-southern on 2022',
     'see-southern-on-2022',
@@ -25,10 +23,9 @@ INSERT INTO `posts`(`category_id`,`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body
  * START on 2021-12-06 18:27:04 pm
  * ============================================================================
  * */
-INSERT INTO `posts`(`category_id`,`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
 `p_is_public`,`created_at`,`updated_at`) VALUES(
     '1',
-    '2',
     'this si my new post 2 tags',
     'this-si-my-new-post-2-tags',
     '<div>
@@ -45,3 +42,4 @@ INSERT INTO `posts`(`category_id`,`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body
     '2021-12-06 18:27:04',
     '2021-12-06 18:27:04');
   
+ 

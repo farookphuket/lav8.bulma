@@ -2,6 +2,23 @@
     <div>
         <div class="mb-6">
             <form action="">
+                <div class="box">
+                    <div class="content">
+                        <p>please select the category for your post</p>
+                    </div>
+                    <div class="select">
+                        <select id="" name="" 
+                        ref="show_cat_list" v-model="pForm.category"
+                        @change.prevent="setCategory">
+                            <option value="0">--- Select Category ---</option>
+                            <option :value="ca.id" 
+                                v-for="ca in cat_list" 
+                                >{{ca.cat_name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="field">
                     <label class="label" for="">Title</label>
                     <div class="control">
@@ -120,12 +137,14 @@ export default{
     theSlug:new CustomText(),
     tagList:[],
     user_select_tag:[],
+    cat_list:'',
     pForm:new Form({
         p_title:'',
         p_body:'',
         p_excerpt:'',
         p_is_public:'',
         slug:'',
+        category:0,
       }),
       res_status:'',
     }},
@@ -136,6 +155,7 @@ watch:{
       },
     mounted(){
        this.getTag() 
+       this.getCategory()
     },
 methods:{
             getEditData(x){
@@ -165,6 +185,7 @@ methods:{
                     p_body:this.pForm.p_body,
                     p_is_public:this.pForm.p_is_public,
                     slug:this.pForm.slug,
+                    category:this.pForm.category,
                     tags:this.user_select_tag
                 } 
 
@@ -217,6 +238,20 @@ methods:{
                     this.tagList = res.data.tag_all
                     console.log(res.data)
                         })
+            },
+            getCategory(){
+                this.cat_list = []
+                let url = `/api/category`
+                axios.get(url)
+                .then(res=>{
+                    this.cat_list = res.data.category
+                        })
+            },
+            setCategory(){
+                //alert(this.$refs.show_cat_list.value)
+                let cat = this.$refs.show_cat_list.value
+                this.pForm.category = this.$refs.show_cat_list.value
+                console.log(`set the category to ${cat}`)
             },
             clearForm(){
                 this.pForm.reset()

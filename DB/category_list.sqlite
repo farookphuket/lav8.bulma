@@ -1,17 +1,18 @@
- 
 /* =================== INSERT COMMAND for category id 2 ===================
  * on 2021-12-07 12:51:31 pm
  * */
-INSERT INTO `categories`(`cat_name`,`created_at`,`updated_at`) VALUES(
+INSERT INTO `categories`(`cat_name`,`cat_method`,`created_at`,`updated_at`) VALUES(
     'again',
+    'againx',
     '2021-12-07 12:51:31',
     '2021-12-07 12:51:31');
   
 /* =================== INSERT COMMAND for category id 3 ===================
  * on 2021-12-07 12:57:15 pm
  * */
-INSERT INTO `categories`(`cat_name`,`created_at`,`updated_at`) VALUES(
+INSERT INTO `categories`(`cat_name`,`cat_method`,`created_at`,`updated_at`) VALUES(
     'tets new',
+    'tetsnew',
     '2021-12-07 12:57:15',
     '2021-12-07 12:57:15');
   

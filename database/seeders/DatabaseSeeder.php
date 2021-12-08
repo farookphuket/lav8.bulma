@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
+            ReadSeeder::class,
             TagSeeder::class,
             VisitorSeeder::class,
             WhatnewSeeder::class,
@@ -47,6 +48,16 @@ class DatabaseSeeder extends Seeder
         $post_tag_file = 'DB/post_tag_list.sqlite'; 
         DB::unprepared(file_get_contents($post_tag_file));
         $this->command->info("Post Tag Link has been Created!!");
+
+        Eloquent::unguard();
+        $post_category_file = 'DB/post_category_link.sqlite'; 
+        DB::unprepared(file_get_contents($post_category_file));
+        $this->command->info("Post Category Link has been Created!!");
+
+        Eloquent::unguard();
+        $post_read_file = 'DB/post_read_list.sqlite'; 
+        DB::unprepared(file_get_contents($post_read_file));
+        $this->command->info("Post Read Link has been Created!!");
 
     }
 }

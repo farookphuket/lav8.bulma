@@ -9,14 +9,15 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "cat_name"
+        "cat_name",
+        "cat_method"
     ];
 
 
     protected static $cat_table = "categories";
 
     public function post(){
-        return $this->hasMany(Post::class);
+        return $this->belongsToMany(Post::class);
     }
 
 

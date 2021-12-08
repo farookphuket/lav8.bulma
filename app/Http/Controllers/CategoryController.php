@@ -17,6 +17,13 @@ class CategoryController extends Controller
     
     }
 
+    public function getCategory(){
+        $c = Category::latest()->get();
+
+        return response()->json([
+            "category" => $c
+        ]);
+    }
 
     public function aGetCategory(){
         $c = Category::latest()

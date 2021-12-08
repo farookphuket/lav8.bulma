@@ -15,13 +15,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("category_id");
             $table->foreignId("user_id");
             $table->string("p_title");
             $table->string("slug");
             $table->text("p_excerpt");
             $table->text("p_body");
             $table->boolean("p_is_public");
+            $table->integer("p_has_read_count")->default(0);
             $table->timestamps();
 
             $table->foreign("user_id")
@@ -29,10 +29,6 @@ class CreatePostsTable extends Migration
                     ->on("users")
                     ->onDelete("cascade");
 
-            $table->foreign("category_id")
-                    ->references("id")
-                    ->on("categories")
-                    ->onDelete("cascade");
         });
 
         // tag relationship
@@ -53,6 +49,41 @@ class CreatePostsTable extends Migration
         });
 
 
+        // category link table for post 
+        Schema::create('category_post', function (Blueprint $table) {
+
+            $table->id();
+            $table->foreignId("category_id");
+            $table->foreignId("post_id");
+
+            $table->foreign("category_id")
+                    ->references("id")
+                    ->on("categories")
+                    ->onDelete("cascade");
+
+            $table->foreign("post_id")
+                  ->references("id")
+                    ->on("posts")
+                    ->onDelete("cascade");
+        });
+
+
+        // read link table for post 
+        Schema::create('post_read', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("post_id");
+            $table->foreignId("read_id");
+
+            $table->foreign("post_id")
+                  ->references("id")
+                    ->on("posts")
+                    ->onDelete("cascade");
+
+            $table->foreign("read_id")
+                  ->references("id")
+                    ->on("reads")
+                    ->onDelete("cascade");
+        });
 
     }
 
@@ -65,5 +96,7 @@ class CreatePostsTable extends Migration
     {
         Schema::dropIfExists('posts');
         Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('category_post');
+        Schema::dropIfExists('post_read');
     }
 }

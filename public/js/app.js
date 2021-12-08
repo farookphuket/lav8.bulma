@@ -15293,6 +15293,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostForm",
@@ -15303,12 +15320,14 @@ __webpack_require__.r(__webpack_exports__);
       theSlug: new CustomText(),
       tagList: [],
       user_select_tag: [],
+      cat_list: '',
       pForm: new Form({
         p_title: '',
         p_body: '',
         p_excerpt: '',
         p_is_public: '',
-        slug: ''
+        slug: '',
+        category: 0
       }),
       res_status: ''
     };
@@ -15320,6 +15339,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getTag();
+    this.getCategory();
   },
   methods: {
     getEditData: function getEditData(x) {
@@ -15351,6 +15371,7 @@ __webpack_require__.r(__webpack_exports__);
         p_body: this.pForm.p_body,
         p_is_public: this.pForm.p_is_public,
         slug: this.pForm.slug,
+        category: this.pForm.category,
         tags: this.user_select_tag
       };
 
@@ -15395,6 +15416,21 @@ __webpack_require__.r(__webpack_exports__);
         _this3.tagList = res.data.tag_all;
         console.log(res.data);
       });
+    },
+    getCategory: function getCategory() {
+      var _this4 = this;
+
+      this.cat_list = [];
+      var url = "/api/category";
+      axios.get(url).then(function (res) {
+        _this4.cat_list = res.data.category;
+      });
+    },
+    setCategory: function setCategory() {
+      //alert(this.$refs.show_cat_list.value)
+      var cat = this.$refs.show_cat_list.value;
+      this.pForm.category = this.$refs.show_cat_list.value;
+      console.log("set the category to ".concat(cat));
     },
     clearForm: function clearForm() {
       this.pForm.reset();
@@ -16285,6 +16321,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Post",
@@ -16294,7 +16344,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isShowListPost: true,
-      postList: ''
+      postList: '',
+      post_in_cat_length: 0,
+      cat_name: ''
     };
   },
   mounted: function mounted() {
@@ -16315,7 +16367,12 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('pub_post_old_page');
       if (!url) url = "/api/getpost";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
+        var cate = res.data.post_with_category.data;
+        _this.post_in_cat_length = Object.keys(cate).length;
+        cate.forEach(function (ca) {
+          _this.cat_name = ca.category;
+        });
         _this.postList = res.data.post;
       });
     },
@@ -46596,6 +46653,65 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "mb-6" }, [
       _c("form", { attrs: { action: "" } }, [
+        _c("div", { staticClass: "box" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pForm.category,
+                    expression: "pForm.category",
+                  },
+                ],
+                ref: "show_cat_list",
+                attrs: { id: "", name: "" },
+                on: {
+                  change: [
+                    function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.pForm,
+                        "category",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                    function ($event) {
+                      $event.preventDefault()
+                      return _vm.setCategory.apply(null, arguments)
+                    },
+                  ],
+                },
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [
+                  _vm._v("--- Select Category ---"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.cat_list, function (ca) {
+                  return _c("option", { domProps: { value: ca.id } }, [
+                    _vm._v(_vm._s(ca.cat_name)),
+                  ])
+                }),
+              ],
+              2
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "field" }, [
           _c("label", { staticClass: "label", attrs: { for: "" } }, [
             _vm._v("Title"),
@@ -46821,7 +46937,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _vm._m(0),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c("span", [
                     _vm._v(
@@ -46879,6 +46995,14 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("p", [_vm._v("please select the category for your post")]),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -48112,31 +48236,57 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "section" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("post-list", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.isShowListPost,
-            expression: "isShowListPost",
+  return _c("div", [
+    _c(
+      "section",
+      { staticClass: "section" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("post-list", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.isShowListPost,
+              expression: "isShowListPost",
+            },
+          ],
+          attrs: { postList: _vm.postList },
+          on: {
+            openPost: function ($event) {
+              return _vm.openPost($event)
+            },
           },
-        ],
-        attrs: { postList: _vm.postList },
-        on: {
-          openPost: function ($event) {
-            return _vm.openPost($event)
-          },
-        },
-      }),
-    ],
-    1
-  )
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "box mt-4 mb-4" }, [
+          _c(
+            "ul",
+            { staticClass: "tags" },
+            _vm._l(_vm.cat_name, function (ca) {
+              return _c("li", { staticClass: "tag is-medium" }, [
+                _c("b", { staticClass: "has-text-success" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(ca.cat_name) +
+                      " \n                        "
+                  ),
+                ]),
+                _vm._v(
+                  " \n                        (" +
+                    _vm._s(_vm.post_in_cat_length) +
+                    ")\n                   "
+                ),
+              ])
+            }),
+            0
+          ),
+        ]),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {

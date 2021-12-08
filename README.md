@@ -33,6 +33,13 @@
 [lav8-bulma-1]:https://i.ibb.co/znGF6Sb/lav8-bulma-1.png
 !["the first image from new project"][lav8-bulma-1]
 
+
+## ================= date 7 Dec 2021 
+> make a read count ,category,tag system for post using `many to many` 
+> (`return $this->belongsToMany()`) relationship.
+
+
+
 ## ================= date 6 Dec 2021 
 
 > added admin manage user section 

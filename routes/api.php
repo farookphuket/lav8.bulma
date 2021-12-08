@@ -57,6 +57,9 @@ Route::get('/post/{post:slug}',[Post::class,'show']);
 // tag as public
 Route::get("/tag",[Tag::class,"getTag"])->name("getTag");
 
+// public category 
+Route::get('/category',[Cat::class,'getCategory'])->name('getCategory');
+
 /*
 Route::group(['middleware' => ['auth:sanctum']],function(){
 
