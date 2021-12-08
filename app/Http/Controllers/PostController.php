@@ -26,6 +26,7 @@ class PostController extends Controller
         $po = Post::where("p_is_public","!=",0)
                     ->with('user')
                     ->with('tag')
+                    ->with('category')
                     ->orderBy('created_at','DESC')
                     ->paginate(2);
 
@@ -35,9 +36,15 @@ class PostController extends Controller
                                 ->latest()
                                 ->paginate(4);
 
+        $t = Post::where("p_is_public","!=",0)
+                    ->latest()
+                    ->first();
+        $meta_title = $t->p_title;
+
         return response()->json([
             "post" => $po,
-            "post_with_category" => $cat_with_post
+            "post_with_category" => $cat_with_post,
+            "meta_title" => $meta_title
         ]);
     }
 
@@ -153,6 +160,7 @@ class PostController extends Controller
     {
         $po = Post::with('user')
                     ->with("tag")
+                    ->with("category")
                     ->where("slug",$post->slug)
                     ->first();
 
@@ -214,6 +222,11 @@ class PostController extends Controller
         // create tag link
         $tags = request()->tags;
         $p->tag()->sync($tags);
+
+
+        // category 
+        $cat = request()->category;
+        $p->category()->sync($cat);
 
         // make a backup 
         Post::backupPost($p->id,"edit");

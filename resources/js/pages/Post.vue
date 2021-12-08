@@ -10,7 +10,7 @@
               </ul>
             </nav>
 
-            <post-list v-show="isShowListPost" :postList="postList" 
+            <post-list  :postList="postList" :post_with_category="post_with_category" 
             @openPost="openPost($event)"></post-list>
             
             <div class="box mt-4 mb-4">
@@ -38,8 +38,8 @@ export default{
              },
              data(){
                  return{
-                    isShowListPost:true,
                     postList:'',
+                    post_with_category:'',
                     post_in_cat_length:0,
                     cat_name:'',
                  }
@@ -50,7 +50,6 @@ export default{
 methods:{
             getPost(page){
                 
-                this.isShowSinglePost = false 
                 let url = ''
                 if(page){
                     url = page
@@ -61,19 +60,16 @@ methods:{
                 axios.get(url)
                     .then(res=>{
                         //console.log(res.data)
+                        document.title = res.data.meta_title
                         let cate = res.data.post_with_category.data
                         this.post_in_cat_length = Object.keys(cate).length
-
+                        this.post_with_category = res.data.post_with_category
                         cate.forEach((ca)=>{
 
                             this.cat_name = ca.category
                         })
                         this.postList = res.data.post
                     })
-            },
-            openPost(slug){
-                this.isShowListPost = false
-                console.log(slug)
             },
         }
 }

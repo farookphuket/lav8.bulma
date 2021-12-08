@@ -34,6 +34,25 @@
 !["the first image from new project"][lav8-bulma-1]
 
 
+
+## =============== Post page
+
+> post page last update `8 Dec 2021`
+
+[post_list_page]:https://i.ibb.co/hCNR0kG/post-list-8-dec-2021.png
+[post_view_page]:https://i.ibb.co/rQNKYGv/read-post-8-dec-2021.png
+
+
+> post list page 
+
+![post list][post_list_page]
+
+
+
+> post read page 
+
+![post view page][post_view_page]
+
 ## ================= date 7 Dec 2021 
 > make a read count ,category,tag system for post using `many to many` 
 > (`return $this->belongsToMany()`) relationship.

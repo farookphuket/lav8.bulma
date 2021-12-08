@@ -16343,8 +16343,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isShowListPost: true,
       postList: '',
+      post_with_category: '',
       post_in_cat_length: 0,
       cat_name: ''
     };
@@ -16356,7 +16356,6 @@ __webpack_require__.r(__webpack_exports__);
     getPost: function getPost(page) {
       var _this = this;
 
-      this.isShowSinglePost = false;
       var url = '';
 
       if (page) {
@@ -16368,17 +16367,15 @@ __webpack_require__.r(__webpack_exports__);
       if (!url) url = "/api/getpost";
       axios.get(url).then(function (res) {
         //console.log(res.data)
+        document.title = res.data.meta_title;
         var cate = res.data.post_with_category.data;
         _this.post_in_cat_length = Object.keys(cate).length;
+        _this.post_with_category = res.data.post_with_category;
         cate.forEach(function (ca) {
           _this.cat_name = ca.category;
         });
         _this.postList = res.data.post;
       });
-    },
-    openPost: function openPost(slug) {
-      this.isShowListPost = false;
-      console.log(slug);
     }
   }
 });
@@ -16417,9 +16414,118 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostList",
   props: ["postList"],
+  data: function data() {
+    return {
+      moment: moment
+    };
+  },
   methods: {
     openPost: function openPost(slug) {
       var url = "/".concat(slug);
@@ -16452,12 +16558,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostView",
   data: function data() {
     return {
       theUrl: '',
-      thePost: ''
+      thePost: '',
+      moment: moment
     };
   },
   mounted: function mounted() {
@@ -48244,15 +48419,10 @@ var render = function () {
         _vm._m(0),
         _vm._v(" "),
         _c("post-list", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.isShowListPost,
-              expression: "isShowListPost",
-            },
-          ],
-          attrs: { postList: _vm.postList },
+          attrs: {
+            postList: _vm.postList,
+            post_with_category: _vm.post_with_category,
+          },
           on: {
             openPost: function ($event) {
               return _vm.openPost($event)
@@ -48334,48 +48504,240 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "content" },
-    _vm._l(_vm.postList.data, function (po) {
-      return _c("div", { staticClass: "box mt-2" }, [
-        _c("h2", { staticClass: "has-text-centered" }, [
-          _c(
-            "a",
-            {
-              attrs: { href: "" },
-              on: {
-                click: function ($event) {
-                  $event.preventDefault()
-                  return _vm.openPost(po.slug)
+    [
+      _vm._l(_vm.postList.data, function (po) {
+        return _c("article", { staticClass: "box" }, [
+          _c("div", { staticClass: "content" }, [
+            _c("h2", { staticClass: "has-text-centered has-text-success" }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.openPost(po.slug)
+                    },
+                  },
                 },
-              },
-            },
-            [
-              _vm._v(
-                "\n                " + _vm._s(po.p_title) + "\n            "
+                [
+                  _c("span", { staticClass: "ml-2" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(po.p_title) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "external-link-alt" },
+                      }),
+                    ],
+                    1
+                  ),
+                ]
               ),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("span", { staticClass: "icon" }, [
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("p", { staticClass: "subtitle has-text-info" }, [
+                  _vm._v(_vm._s(po.slug)),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "is-pulled-right" }, [
+                  _c("ul", { staticClass: "tags" }, [
+                    _c("li", { staticClass: "tag" }),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "tag is-info" }, [
+                      _c(
+                        "span",
+                        [
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "calendar-day" },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(_vm._s(_vm.moment(po.created_at))),
+                      ]),
+                      _vm._v(
+                        "\n                                ·\n                                "
+                      ),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(_vm._s(_vm.moment(po.created_at).fromNow())),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "tag is-info" }, [
+                      _c(
+                        "span",
+                        [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(_vm._s(po.user.name)),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c(
-              "span",
-              { staticClass: "icon-text" },
-              [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
-              1
+              "div",
+              {
+                staticClass: "mb-4 mt-4",
+                domProps: { innerHTML: _vm._s(po.p_excerpt) },
+              },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(po.p_excerpt) + "\n            "
+                ),
+              ]
             ),
             _vm._v(" "),
-            _c("span", [_vm._v("Read")]),
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "is-pulled-left" }, [
+                  _c(
+                    "ul",
+                    { staticClass: "tags" },
+                    _vm._l(po.category, function (ca) {
+                      return _c("li", { staticClass: "tag is-info" }, [
+                        _c(
+                          "span",
+                          { staticClass: "mr-2" },
+                          [
+                            _c("font-awesome-icon", {
+                              attrs: { icon: "bookmark" },
+                            }),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(ca.cat_name))]),
+                      ])
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "is-pulled-right" }, [
+                  _c(
+                    "ul",
+                    { staticClass: "tags" },
+                    _vm._l(po.tag, function (ta) {
+                      return _c("li", { staticClass: "tag ml-2" }, [
+                        _c(
+                          "span",
+                          { staticClass: "mr-2" },
+                          [_c("font-awesome-icon", { attrs: { icon: "tag" } })],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(ta.tag_name) +
+                              "\n                                "
+                          ),
+                        ]),
+                      ])
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
+            ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { domProps: { innerHTML: _vm._s(po.p_excerpt) } }, [
-          _vm._v(_vm._s(po.p_excerpt)),
-        ]),
-      ])
-    }),
-    0
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "box" }, [
+        _c(
+          "nav",
+          {
+            staticClass: "pagination is-rounded",
+            attrs: { role: "navigation", "aria-label": "pagination" },
+          },
+          [
+            _c("a", { staticClass: "pagination-previous is-current" }, [
+              _vm._v("All post " + _vm._s(_vm.postList.total)),
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "pagination-next is-current" }, [
+              _vm._v("page " + _vm._s(_vm.postList.current_page)),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.postList.links, function (ln) {
+              return _c("ul", { staticClass: "pagination-list" }, [
+                ln.url != null && ln.active == false
+                  ? _c("li", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "pagination-link",
+                          attrs: {
+                            "aria-label": "Page 1",
+                            "aria-current": "page",
+                          },
+                          domProps: { innerHTML: _vm._s(ln.label) },
+                          on: {
+                            click: function ($event) {
+                              $event.preventDefault()
+                              return _vm.$emit("getPost", ln.url)
+                            },
+                          },
+                        },
+                        [_vm._v(_vm._s(ln.label))]
+                      ),
+                    ])
+                  : _c("li", [
+                      ln.active == true
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link is-current",
+                              attrs: {
+                                "aria-label": "",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          )
+                        : _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link",
+                              attrs: {
+                                "aria-label": "",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          ),
+                    ]),
+              ])
+            }),
+          ],
+          2
+        ),
+      ]),
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -48401,29 +48763,133 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("section", { staticClass: "section" }, [
     _c("div", { staticClass: "container" }, [
-      _c("h2", { staticClass: "title has-text-centered" }, [
-        _vm._v(_vm._s(_vm.thePost.p_title)),
+      _c("div", { staticClass: "content" }, [
+        _c("h2", { staticClass: "title has-text-centered" }, [
+          _vm._v(_vm._s(_vm.thePost.p_title)),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "subtitle" }, [
+          _vm._v(_vm._s(_vm.thePost.slug)),
+        ]),
+        _vm._v(" "),
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.thePost.p_excerpt) } }, [
+          _vm._v(_vm._s(_vm.thePost.p_excerpt)),
+        ]),
+        _vm._v(" "),
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.thePost.p_body) } }, [
+          _vm._v(_vm._s(_vm.thePost.p_body)),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "is-pulled-left" }, [
+              _c(
+                "ul",
+                { staticClass: "tags" },
+                _vm._l(_vm.thePost.category, function (ca) {
+                  return _c("li", { staticClass: "tag is-info" }, [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "bookmark" },
+                        }),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(ca.cat_name) +
+                          "\n                           "
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "is-pulled-right" }, [
+              _c(
+                "ul",
+                { staticClass: "tags" },
+                _vm._l(_vm.thePost.tag, function (ta) {
+                  return _c("li", { staticClass: "tag is-primary" }, [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "tag" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(ta.tag_name) +
+                          "\n                           "
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-6" }, [
+            _c("div", { staticClass: "is-pulled-right" }, [
+              _c("ul", { staticClass: "tags" }, [
+                _c("li", { staticClass: "tag" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "calendar-day" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.moment(_vm.thePost.created_at)) +
+                        "\n                            "
+                    ),
+                  ]),
+                  _vm._v(
+                    " \n                            · \n                            "
+                  ),
+                  _c("span", { staticClass: "ml-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.moment(_vm.thePost.created_at).fromNow())
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "tag" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.thePost.user.name))]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "box",
-          domProps: { innerHTML: _vm._s(_vm.thePost.p_excerpt) },
-        },
-        [_vm._v(_vm._s(_vm.thePost.p_excerpt))]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "box",
-          domProps: { innerHTML: _vm._s(_vm.thePost.p_body) },
-        },
-        [_vm._v(_vm._s(_vm.thePost.p_body))]
-      ),
     ]),
   ])
 }
