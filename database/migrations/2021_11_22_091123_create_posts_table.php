@@ -71,8 +71,10 @@ class CreatePostsTable extends Migration
         // read link table for post 
         Schema::create('post_read', function (Blueprint $table) {
             $table->id();
+            $table->string("ip");
             $table->foreignId("post_id");
             $table->foreignId("read_id");
+            $table->timestamps();
 
             $table->foreign("post_id")
                   ->references("id")

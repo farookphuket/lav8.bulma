@@ -44,12 +44,19 @@ class Post extends Model
      * */
     public static function postHasRead($post_id){
 
+        // table 
+        $table = static::$post_read_table;
+
         $post = Post::find($post_id);
 
-        $has_read = Read::where("ip",getUserIp())
+        $has_read = DB::table($table)
+                        ->where("post_id",$post_id)
+                        ->where("ip" ,getUserIp())
                         ->whereDate("created_at","=",date("Y-m-d"))
                         ->get();
+
         if(count($has_read) == 0):
+
             $read_data = [
                 "ip" => getUserIp(),
                 "os" => getUserOs(),
@@ -63,7 +70,17 @@ class Post extends Model
 
             Read::backupRead($r->id,"insert");
 
-            $post->read()->attach($r->id);
+            /*
+             * use DB to insert data as the attch cannot create the date value
+             * */
+            //$post->read()->attach($r->id);
+            DB::table($table)->insert([
+                "post_id" => $post_id,
+                "read_id" => $r->id,
+                "ip" => getUserIp(),
+                "created_at" => now(),
+                "updated_at" => now()
+            ]);
             
             static::backupPostReadLink($post_id);
         endif;
@@ -246,9 +263,12 @@ INSERT INTO `{$table}`(`category_id`,`post_id`) VALUES(
  * LINK post id {$post_id} to read id {$item->read_id}
  * on ".date("Y-m-d H:i:s a")."
  * */
-INSERT INTO `{$table}`(`post_id`,`read_id`) VALUES(
+INSERT INTO `{$table}`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '{$item->ip}',
     '{$item->post_id}',
-    '{$item->read_id}');
+    '{$item->read_id}',
+    '{$item->created_at}',
+    '{$item->updated_at}');
 ";
         endforeach;
 

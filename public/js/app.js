@@ -16397,6 +16397,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Post",
@@ -16408,11 +16442,14 @@ __webpack_require__.r(__webpack_exports__);
       postList: '',
       post_with_category: '',
       post_in_cat_length: 0,
-      cat_name: ''
+      cat_name: '',
+      category: '',
+      tag: ''
     };
   },
   mounted: function mounted() {
     this.getPost();
+    this.showTagHasContent();
   },
   methods: {
     getPost: function getPost(page) {
@@ -16437,6 +16474,18 @@ __webpack_require__.r(__webpack_exports__);
           _this.cat_name = ca.category;
         });
         _this.postList = res.data.post;
+      });
+    },
+    showTagHasContent: function showTagHasContent() {
+      var _this2 = this;
+
+      var url = "/api/getpost";
+      axios.get(url).then(function (res) {
+        var cp = res.data.cp;
+        _this2.category = cp;
+        console.log(res.data);
+        var ta = res.data.ta;
+        _this2.tag = ta;
       });
     }
   }
@@ -48641,28 +48690,80 @@ var render = function () {
           },
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "box mt-4 mb-4" }, [
-          _c(
-            "ul",
-            { staticClass: "tags" },
-            _vm._l(_vm.cat_name, function (ca) {
-              return _c("li", { staticClass: "tag is-medium" }, [
-                _c("b", { staticClass: "has-text-success" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(ca.cat_name) +
-                      " \n                        "
-                  ),
-                ]),
-                _vm._v(
-                  " \n                        (" +
-                    _vm._s(_vm.post_in_cat_length) +
-                    ")\n                   "
-                ),
-              ])
-            }),
-            0
-          ),
+        _c("div", { staticClass: "columns mt-6" }, [
+          _c("div", { staticClass: "column is-4" }, [
+            _c("div", { staticClass: "field is-pulled-left" }, [
+              _c(
+                "ul",
+                { staticClass: "tags" },
+                _vm._l(_vm.category, function (ca) {
+                  return _c("li", { staticClass: "tag is-medium" }, [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "bookmark" },
+                        }),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("b", { staticClass: "has-text-success" }, [
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(ca.cat_name) +
+                            " \n                                    "
+                        ),
+                      ]),
+                      _vm._v(
+                        "  \n                                    (" +
+                          _vm._s(Object.values(ca.post).length) +
+                          ") \n                                "
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-8" }, [
+            _c("div", { staticClass: "field is-pulled-right" }, [
+              _c(
+                "ul",
+                { staticClass: "tags" },
+                _vm._l(_vm.tag, function (ta) {
+                  return _c("li", { staticClass: "tag" }, [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "tag" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("b", { staticClass: "has-text-info" }, [
+                        _vm._v(
+                          "\n                                        " +
+                            _vm._s(ta.tag_name) +
+                            "\n                                    "
+                        ),
+                      ]),
+                      _vm._v(
+                        " \n                                    (" +
+                          _vm._s(Object.values(ta.post).length) +
+                          ")\n                                "
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]),
         ]),
       ],
       1

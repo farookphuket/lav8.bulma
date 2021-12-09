@@ -15,17 +15,51 @@
             :post_with_category="post_with_category" 
             @openPost="openPost($event)" ></post-list>
             
-            <div class="box mt-4 mb-4">
-               <ul class="tags">
-                   <li class="tag is-medium" 
-                   v-for="ca in cat_name">
-                        <b class="has-text-success">
-                            {{ca.cat_name}} 
-                        </b> 
-                        ({{post_in_cat_length}})
-                   </li>
-               </ul>
+
+            <!-- show category and tag START -->
+            <div class="columns mt-6">
+                <div class="column is-4">
+                    <div class="field is-pulled-left">
+                       <ul class="tags">
+                           <li class="tag is-medium" 
+                           v-for="ca in category"
+                           >
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="bookmark"></font-awesome-icon>
+                                </span>
+                                <span>
+                                    <b class="has-text-success">
+                                        {{ca.cat_name}} 
+                                    </b>  
+                                    ({{Object.values(ca.post).length}}) 
+                                </span>
+
+                           </li>
+                       </ul>
+                    </div>
+                </div>
+                <div class="column is-8">
+                    <div class="field is-pulled-right">
+                        
+                       <ul class="tags">
+                            <li class="tag" v-for="ta in tag">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="tag">
+                                    </font-awesome-icon>
+                                </span>
+                                <span>
+                                    <b class="has-text-info">
+                                        {{ta.tag_name}}
+                                    </b> 
+                                    ({{Object.values(ta.post).length}})
+                                </span>
+                                
+                            </li>
+                       </ul>
+                    </div>
+                </div>
             </div>
+            <!-- show category and tag END -->
     </section>
 </div>
 
@@ -44,10 +78,14 @@ export default{
                     post_with_category:'',
                     post_in_cat_length:0,
                     cat_name:'',
+
+                    category:'',
+                    tag:'',
                  }
              },
              mounted(){
                  this.getPost()
+                 this.showTagHasContent()
              },
 methods:{
             getPost(page){
@@ -72,6 +110,20 @@ methods:{
                         })
                         this.postList = res.data.post
                     })
+            },
+            showTagHasContent(){
+               let url = `/api/getpost`
+               axios.get(url)
+               .then(res=>{
+
+                    let cp = res.data.cp 
+                    this.category = cp
+                    console.log(res.data)
+                    let ta = res.data.ta
+                    this.tag = ta
+                    
+
+                })
             },
         }
 }

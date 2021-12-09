@@ -4,7 +4,7 @@
  * */
 INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
 VALUES(
-'127.0.0.1',
+'127.0.10.1',
 'Linux ',
 'Chrome 95.0.4638.69',
 'WebKit',
@@ -20,7 +20,7 @@ VALUES(
  * */
 INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
 VALUES(
-'127.0.0.1',
+'127.0.05.1',
 'Linux ',
 'Chrome 95.0.4638.69',
 'WebKit',
@@ -35,7 +35,7 @@ VALUES(
  * */
 INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
 VALUES(
-'127.0.0.1',
+'127.0.0.12',
 'Linux ',
 'Chrome 95.0.4638.69',
 'WebKit',
@@ -45,8 +45,9 @@ VALUES(
  *
  * */
   
+ 
 /* ======================= Insert command for read id 4 ==============
- * on 2021-12-09 06:32:55 am
+ * on 2021-12-09 11:36:11 am
  * */
 INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
 VALUES(
@@ -54,8 +55,38 @@ VALUES(
 'Linux ',
 'Chrome 95.0.4638.69',
 'WebKit',
-'2021-12-09 06:32:55',
-'2021-12-09 06:32:55');
+'2021-12-09 11:36:11',
+'2021-12-09 11:36:11');
+/* ============================================================================
+ *
+ * */
+  
+/* ======================= Insert command for read id 5 ==============
+ * on 2021-12-09 11:37:44 am
+ * */
+INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
+VALUES(
+'127.0.0.1',
+'Linux ',
+'Chrome 95.0.4638.69',
+'WebKit',
+'2021-12-09 11:37:44',
+'2021-12-09 11:37:44');
+/* ============================================================================
+ *
+ * */
+  
+/* ======================= Insert command for read id 6 ==============
+ * on 2021-12-09 11:38:22 am
+ * */
+INSERT INTO `reads`(`ip`,`os`,`browser`,`device`,`created_at`,`updated_at`) 
+VALUES(
+'127.0.0.1',
+'Linux ',
+'Chrome 95.0.4638.69',
+'WebKit',
+'2021-12-09 11:38:22',
+'2021-12-09 11:38:22');
 /* ============================================================================
  *
  * */

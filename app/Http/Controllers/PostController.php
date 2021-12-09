@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
@@ -36,6 +37,13 @@ class PostController extends Controller
                                 ->with('category')
                                 ->latest()
                                 ->paginate(4);
+        $cp = Category::has('post')
+                        ->with('post')
+                        ->get();
+
+        $ta = Tag::has('post')
+                    ->with('post')
+                    ->get();
 
         $t = Post::where("p_is_public","!=",0)
                     ->latest()
@@ -45,7 +53,9 @@ class PostController extends Controller
         return response()->json([
             "post" => $po,
             "post_with_category" => $cat_with_post,
-            "meta_title" => $meta_title
+            "meta_title" => $meta_title,
+            "cp" => $cp,
+            "ta" => $ta
         ]);
     }
 
