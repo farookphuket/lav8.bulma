@@ -15132,7 +15132,7 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('mpost_old_page');
       if (!url) url = "/api/member/getpost";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //    console.log(res.data)
         _this.postList = res.data.post;
         _this.post_with_category = res.data.post_with_category;
         document.title = res.data.meta_title;
@@ -15413,8 +15413,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = "/api/tag";
       axios.get(url).then(function (res) {
-        _this3.tagList = res.data.tag_all;
-        console.log(res.data);
+        _this3.tagList = res.data.tag_all; //            console.log(res.data)
       });
     },
     getCategory: function getCategory() {
@@ -15453,6 +15452,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16516,6 +16571,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -16624,6 +16690,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -16643,6 +16718,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       var _this = this;
 
       this.theUrl = "/api/post".concat(this.$route.path);
+      console.log(this.theUrl);
       axios.get(this.theUrl).then(function (res) {
         //console.log(res.data)
         _this.thePost = res.data.post;
@@ -47251,17 +47327,88 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column is-8" }, [
+              _c("ul", { staticClass: "tags" }, [
+                _c("li", { staticClass: "tag" }, [
+                  _c("span", { staticClass: "has-text-success" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(po.slug) +
+                        "\n                            "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "tag is-success" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(Object.values(po.read).length))]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column is-4" }, [
+              _c("div", { staticClass: "field is-pulled-right pr-4" }, [
+                _c(
+                  "ul",
+                  { staticClass: "tags" },
+                  _vm._l(po.category, function (cat) {
+                    return _c("li", { staticClass: "tag is-primary" }, [
+                      _c(
+                        "span",
+                        { staticClass: "mr-2" },
+                        [
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "bookmark" },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(cat.cat_name))]),
+                    ])
+                  }),
+                  0
+                ),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "content mb-4 mt-4",
+              domProps: { innerHTML: _vm._s(po.p_excerpt) },
+            },
+            [_vm._v("\n            " + _vm._s(po.p_excerpt) + "\n            ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
             _c("div", { staticClass: "column is-3" }, [
               _c(
                 "ul",
                 { staticClass: "tags" },
                 _vm._l(po.tag, function (ta) {
                   return _c("li", { staticClass: "tag is-info" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(ta.tag_name) +
-                        "\n                        "
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "tag" } })],
+                      1
                     ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(ta.tag_name) +
+                          "\n                            "
+                      ),
+                    ]),
                   ])
                 }),
                 0
@@ -47269,13 +47416,35 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "column is-5" }, [
-              _c("p", [
-                _vm._v(
-                  _vm._s(_vm.moment(po.created_at)) +
-                    " \n                    ·\n                    " +
-                    _vm._s(_vm.moment(po.created_at).fromNow()) +
-                    "\n                    "
-                ),
+              _c("ul", { staticClass: "tags" }, [
+                _c("li", { staticClass: "tag" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "calendar-day" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "mr-2" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.moment(po.created_at)) +
+                        "\n                            "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                                (" +
+                        _vm._s(_vm.moment(po.created_at).fromNow()) +
+                        ")\n                            "
+                    ),
+                  ]),
+                ]),
               ]),
             ]),
             _vm._v(" "),
@@ -48544,16 +48713,37 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "columns" }, [
               _c("div", { staticClass: "column" }, [
-                _c("p", { staticClass: "subtitle has-text-info" }, [
-                  _vm._v(_vm._s(po.slug)),
+                _c("ul", { staticClass: "tags" }, [
+                  _c("li", { staticClass: "tag has-text-success" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(po.slug) +
+                        "\n                        "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "tag is-warning" }, [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(Object.values(po.read).length) +
+                          "\n                            "
+                      ),
+                    ]),
+                  ]),
                 ]),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "column" }, [
                 _c("div", { staticClass: "is-pulled-right" }, [
                   _c("ul", { staticClass: "tags" }, [
-                    _c("li", { staticClass: "tag" }),
-                    _vm._v(" "),
                     _c("li", { staticClass: "tag is-info" }, [
                       _c(
                         "span",
@@ -48871,6 +49061,23 @@ var render = function () {
                   _c("span", { staticClass: "ml-2" }, [
                     _vm._v(
                       _vm._s(_vm.moment(_vm.thePost.created_at).fromNow())
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "tag is-warning" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(Object.values(_vm.thePost.read).length) +
+                        "\n                            "
                     ),
                   ]),
                 ]),

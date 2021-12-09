@@ -9,7 +9,7 @@ INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
 
 INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
     '2',
-    '1'
+    '2'
 );
  
 /* ============================================================================

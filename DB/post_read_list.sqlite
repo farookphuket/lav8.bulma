@@ -8,3 +8,28 @@ INSERT INTO `post_read`(`post_id`,`read_id`) VALUES(
     '1');
   
  
+ 
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 2 to read id 2
+ * on 2021-12-09 04:57:00 am
+ * */
+INSERT INTO `post_read`(`post_id`,`read_id`) VALUES(
+    '2',
+    '2');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 2 to read id 3
+ * on 2021-12-09 06:28:31 am
+ * */
+INSERT INTO `post_read`(`post_id`,`read_id`) VALUES(
+    '2',
+    '3');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 1 to read id 4
+ * on 2021-12-09 06:32:55 am
+ * */
+INSERT INTO `post_read`(`post_id`,`read_id`) VALUES(
+    '1',
+    '4');
+ 

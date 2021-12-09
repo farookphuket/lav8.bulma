@@ -20,14 +20,25 @@
                 <!-- show user,post date info in the same row -->
                 <div class="columns">
                     <div class="column">
-                        <p class="subtitle has-text-info">{{po.slug}}</p>
+                        <ul class="tags">
+                            <li class="tag has-text-success">
+                                {{po.slug}}
+                            </li>
+                            <li class="tag is-warning">
+                                <span class="mr-2">
+                                    <font-awesome-icon 
+                                    icon="eye"></font-awesome-icon>
+                                </span>
+                                <span>
+                                    {{Object.values(po.read).length}}
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                     <div class="column">
 
                         <div class="is-pulled-right">
                             <ul class="tags">
-                                <li class="tag">
-                                </li>
                                 <li class="tag is-info">
                                     <span>
                                         <font-awesome-icon icon="calendar-day"></font-awesome-icon>

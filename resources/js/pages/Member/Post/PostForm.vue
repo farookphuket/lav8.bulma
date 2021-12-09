@@ -236,7 +236,7 @@ methods:{
                 axios.get(url)
                 .then(res=>{
                     this.tagList = res.data.tag_all
-                    console.log(res.data)
+        //            console.log(res.data)
                         })
             },
             getCategory(){

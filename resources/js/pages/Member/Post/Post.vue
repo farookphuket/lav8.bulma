@@ -103,7 +103,7 @@ methods:{
                     if(!url) url = `/api/member/getpost`
                     axios.get(url)
                         .then(res=>{
-                        console.log(res.data)
+                    //    console.log(res.data)
                         this.postList = res.data.post
                         this.post_with_category = res.data.post_with_category
                         document.title = res.data.meta_title

@@ -15,20 +15,76 @@
 
                 </h2>
 
+                <!-- show category START -->
+                <div class="columns">
+                    <div class="column is-8">
+                        <ul class="tags">
+                            <li class="tag">
+                                <span class="has-text-success">
+                                    {{po.slug}}
+                                </span>
+                            </li>
+                            <li class="tag is-success">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="eye">
+                                    </font-awesome-icon>
+                                </span>
+                                <span>{{Object.values(po.read).length}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column is-4">
+                        <div class="field is-pulled-right pr-4">
+                            <ul class="tags">
+                                <li class="tag is-primary" 
+                                v-for="cat in po.category">
+                                    <span class="mr-2">
+                                        <font-awesome-icon
+                                        icon="bookmark"></font-awesome-icon>
+                                    </span>
+                                    <span>{{cat.cat_name}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- show category END -->
+
+                <div class="content mb-4 mt-4" 
+                v-html="po.p_excerpt">
+                {{po.p_excerpt}}
+                </div>
+
                 <!-- show tags,date create START -->
                 <div class="columns">
                     <div class="column is-3">
                         <ul class="tags">
                             <li class="tag is-info" v-for="ta in po.tag">
-                                {{ta.tag_name}}
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="tag"></font-awesome-icon>
+                                </span>
+                                <span>
+                                    {{ta.tag_name}}
+                                </span>
                             </li>
                         </ul>
                     </div>
                     <div class="column is-5">
-                        <p>{{moment(po.created_at)}} 
-                        &middot;
-                        {{moment(po.created_at).fromNow()}}
-                        </p>    
+                        <ul class="tags">
+                            <li class="tag">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="calendar-day">
+                                    </font-awesome-icon>
+                                </span>
+                                <span class="mr-2">
+                                    {{moment(po.created_at)}}
+                                </span>
+
+                                <span>
+                                    ({{moment(po.created_at).fromNow()}})
+                                </span>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="column is-4" v-if="user_id == po.user_id">

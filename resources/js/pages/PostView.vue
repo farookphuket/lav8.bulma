@@ -57,6 +57,15 @@
                                 <span class="ml-2">{{moment(thePost.created_at).fromNow()}}</span>
                             </li>
 
+                            <li class="tag is-warning">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="eye"></font-awesome-icon>
+                                </span>
+                                <span>
+                                    {{Object.values(thePost.read).length}}
+                                </span>
+                            </li>
+
                             <li class="tag">
                                 <span class="mr-2">
                                     <font-awesome-icon icon="user">
@@ -90,6 +99,7 @@ export default{
 methods:{
             getUrl(){
                 this.theUrl = `/api/post${this.$route.path}`
+                console.log(this.theUrl)
                 axios.get(this.theUrl)
                 .then(res=>{
                     //console.log(res.data)

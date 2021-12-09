@@ -27,6 +27,7 @@ class PostController extends Controller
                     ->with('user')
                     ->with('tag')
                     ->with('category')
+                    ->with('read')
                     ->orderBy('created_at','DESC')
                     ->paginate(2);
 
@@ -53,6 +54,8 @@ class PostController extends Controller
                     ->orWhere('user_id',Auth::user()->id)
                     ->with('tag')
                     ->with('user')
+                    ->with('read')
+                    ->with('category')
                     ->latest()
                     ->paginate(4);
 
@@ -60,6 +63,7 @@ class PostController extends Controller
         $cat_with_post = Post::where("p_is_public","!=",0)
                                 ->orWhere("user_id",Auth::user()->id)
                                 ->has('category')
+                                ->with('category')
                                 ->latest()
                                 ->get();
 
@@ -67,6 +71,7 @@ class PostController extends Controller
                     ->orWhere("user_id",Auth::user()->id)
                     ->latest()
                     ->first();
+
         return response()->json([
             "post" => $p,
             "meta_title" => $t->p_title,
@@ -161,10 +166,11 @@ class PostController extends Controller
         $po = Post::with('user')
                     ->with("tag")
                     ->with("category")
+                    ->with('read')
                     ->where("slug",$post->slug)
                     ->first();
 
-        Post::postHasRead($post->id);
+        Post::postHasRead($po->id);
 
         return response()->json([
             "post" => $po

@@ -53,9 +53,20 @@
 
 ![post view page][post_view_page]
 
+
+
+
 ## ================= date 7 Dec 2021 
 > make a read count ,category,tag system for post using `many to many` 
 > (`return $this->belongsToMany()`) relationship.
+
+
+
+> An Error on page `PostView.vue`
+
+[![ Error on page PostView.vue ](http://img.youtube.com/vi/3DEK17rwfuU/0.jpg)](http://www.youtube.com/watch?v=3DEK17rwfuU "")
+
+
 
 
 
