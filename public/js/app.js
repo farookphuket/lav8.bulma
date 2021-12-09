@@ -16395,6 +16395,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Post",
@@ -48630,6 +48632,9 @@ var render = function () {
             post_with_category: _vm.post_with_category,
           },
           on: {
+            getPost: function ($event) {
+              return _vm.getPost($event)
+            },
             openPost: function ($event) {
               return _vm.openPost($event)
             },

@@ -10,8 +10,10 @@
               </ul>
             </nav>
 
-            <post-list  :postList="postList" :post_with_category="post_with_category" 
-            @openPost="openPost($event)"></post-list>
+            <post-list  :postList="postList" 
+            @getPost="getPost($event)"
+            :post_with_category="post_with_category" 
+            @openPost="openPost($event)" ></post-list>
             
             <div class="box mt-4 mb-4">
                <ul class="tags">
