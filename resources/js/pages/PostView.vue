@@ -1,112 +1,145 @@
 <template>
-    <section class="section">
-    <div class="container">
-        <div class="content">
-            <h2 class="title has-text-centered">{{thePost.p_title}}</h2>
-            <p class="subtitle">{{thePost.slug}}</p>
-            <div  v-html="thePost.p_excerpt">{{thePost.p_excerpt}}</div>
-            <div  v-html="thePost.p_body">{{thePost.p_body}}</div>
+    <div>
+        <section class="section">
+           <article>
+                <h2 class="title has-text-centered">
+                    <span>
+                        {{post.p_title}}
+                    </span>
+                </h2>
 
-            <!-- show tag,category START -->
-            <div class="columns">
-                <div class="column">
-                    <div class="is-pulled-left">
+                <!-- START show user,date create info div.columns -->
+                <div class="columns">
+                    <div class="column">
                         <ul class="tags">
-                            <li class="tag is-info" v-for="ca in thePost.category">
-                               <span class="mr-2">
-                                 <font-awesome-icon icon="bookmark"></font-awesome-icon>
-                               </span>
-                               <span>
-                                    {{ca.cat_name}}
-                               </span>
+                            <li class="tag">
+                                <span class="ml-2">
+                                    <font-awesome-icon icon="calendar-day"></font-awesome-icon>
+                                </span>
+                                <span class="ml-2">
+                                    {{moment(post.created_at)}}
+                                </span>
+
                             </li>
+                            <li class="tag">
+                                <span class="ml-2">
+                                    {{moment(post.created_at).fromNow()}}
+                                </span>
+                            </li>
+
                         </ul>
+                    </div>
+                    <div class="column">
+                       <div class="is-pulled-right">
+                            <ul class="tags">
+
+                                <li class="tag">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="eye">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span>{{post_has_read_times}}</span>
+                                </li>
+                                <li class="tag">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="user">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span>
+                                        {{writer_name}}
+                                    </span>
+                                </li>
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+                <!-- end div.columns -->
+                <div class="content">
+                    <span class="subtitle has-text-info">
+                        {{post.slug}}
+                    </span>
+                    <div v-html="post.p_excerpt">
+                        {{post.p_excerpt}}
+                    </div>
+                    <div class="mt-4" v-html="post.p_body">
+                        {{post.p_body}}
                     </div>
                 </div>
 
-                <div class="column">
-                    
-                    <div class="is-pulled-right">
-                        <ul class="tags">
-                            <li class="tag is-primary" v-for="ta in thePost.tag">
-                               <span class="mr-2">
-                                 <font-awesome-icon icon="tag"></font-awesome-icon>
-                               </span>
-                               <span>
+                <!-- show tag,category div.colums START -->
+                <div class="columns">
+                    <div class="column">
+                        <ul class="tags mt-4">
+
+                            <li class="tag">
+                                <span class="tags">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="tag">
+                                        </font-awesome-icon>
+                                    </span>
+                                   <span class="tag is-info" 
+                                   v-for="ta in tag">
                                     {{ta.tag_name}}
-                               </span>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="column is-6">
-                    <div class="is-pulled-right">
-                        <ul class="tags">
-
-                            <li class="tag">
-                                <span class="mr-2">
-                                    <font-awesome-icon icon="calendar-day">
-                                    </font-awesome-icon>
-                                </span>
-                                <span>
-                                {{moment(thePost.created_at)}}
-                                </span> 
-                                &middot; 
-                                <span class="ml-2">{{moment(thePost.created_at).fromNow()}}</span>
-                            </li>
-
-                            <li class="tag is-warning">
-                                <span class="mr-2">
-                                    <font-awesome-icon icon="eye"></font-awesome-icon>
-                                </span>
-                                <span>
-                                    {{Object.values(thePost.read).length}}
+                                   </span>
                                 </span>
                             </li>
 
                             <li class="tag">
                                 <span class="mr-2">
-                                    <font-awesome-icon icon="user">
-                                    </font-awesome-icon>
+                                    <font-awesome-icon icon="bookmark"></font-awesome-icon>
                                 </span>
-                                <span>{{thePost.user.name}}</span>
+                                <span class="tags">
+                                    <span class="tag is-success" v-for="ca in category">
+                                        {{ca.cat_name}}
+                                    </span>
+                                </span>
+
                             </li>
                         </ul>
                     </div>
                 </div>
+                <!-- show tag,category div.colums END -->
 
-            </div><!-- end div.columns -->
-            <!-- show tag,category END -->
 
-        </div>
+           </article>
+        </section>
     </div>
-    </section>
+
 </template>
+
 <script>
 var moment = require('moment')
 export default{
-    name:"PostView",
-             data(){return{
-                 theUrl:'',
-                thePost:'',
-                moment:moment,
-             }},
-             mounted(){
-                 this.getUrl()
-             },
+name:"PostView",
+         data(){return{
+            moment:moment,
+            post:'',
+            writer_name:'',
+            category:'',
+            tag:'',
+            post_has_read_times:0,
+            theGetUrl:'',
+         }},
+         mounted(){
+            this.theGetUrl = this.$route.path
+            this.getThePost()
+         },
 methods:{
-            getUrl(){
-                this.theUrl = `/api/post${this.$route.path}`
-                console.log(this.theUrl)
-                axios.get(this.theUrl)
+            getThePost(){
+                let url = `/api/post${this.theGetUrl}`
+                axios.get(url)
                 .then(res=>{
                     //console.log(res.data)
-                    this.thePost = res.data.post
-                    document.title = res.data.post.p_title
+                    let rData = res.data.post
+                    this.post = res.data.post
+                    this.writer_name = this.post.user.name
+                    this.tag = rData.tag 
+                    this.category = rData.category
+                    this.post_has_read_times = Object.values(rData.read).length
+                    document.title = this.post.p_title
                         })
             },
         },
 }
+
 </script>

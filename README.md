@@ -1,4 +1,6 @@
 # lav8.bulma
+ 
+
 
 ## start on date 22 Nov 2021
 > I know a little bit of laravel and I use laravel8 for my web app project but this project will be my first time that I will focus on a single page app
@@ -52,6 +54,181 @@
 > post read page 
 
 ![post view page][post_view_page]
+
+## ================= date 9 Dec 2021 
+
+> The Error on page `PostView.vue` has been fixed by re-write the code in the 
+> whole page as shown here 
+
+
+> file `/resources/js/pages/PostView.vue`
+
+``` 
+
+<template>
+    <div>
+        <section class="section">
+           <article>
+                <h2 class="title has-text-centered">
+                    <span>
+                        {{post.p_title}}
+                    </span>
+                </h2>
+
+                <!-- START show user,date create info div.columns -->
+                <div class="columns">
+                    <div class="column">
+                        <ul class="tags">
+                            <li class="tag">
+                                <span class="ml-2">
+                                    <font-awesome-icon icon="calendar-day"></font-awesome-icon>
+                                </span>
+                                <span class="ml-2">
+                                    {{moment(post.created_at)}}
+                                </span>
+
+                            </li>
+                            <li class="tag">
+                                <span class="ml-2">
+                                    {{moment(post.created_at).fromNow()}}
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="column">
+                       <div class="is-pulled-right">
+                            <ul class="tags">
+
+                                <li class="tag">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="eye">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span>{{post_has_read_times}}</span>
+                                </li>
+                                <li class="tag">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="user">
+                                        </font-awesome-icon>
+                                    </span>
+                                    <span>
+                                        {{writer_name}}
+                                    </span>
+                                </li>
+                            </ul>
+                       </div>
+                    </div>
+                </div>
+                <!-- end div.columns -->
+                <div class="content">
+                    <span class="subtitle has-text-info">
+                        {{post.slug}}
+                    </span>
+                    <div v-html="post.p_excerpt">
+                        {{post.p_excerpt}}
+                    </div>
+                    <div class="mt-4" v-html="post.p_body">
+                        {{post.p_body}}
+                    </div>
+                </div>
+
+                <!-- show tag,category div.colums START -->
+                <div class="columns">
+                    <div class="column">
+                        <ul class="tags mt-4">
+
+                            <li class="tag">
+                                <span class="tags">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="tag">
+                                        </font-awesome-icon>
+                                    </span>
+                                   <span class="tag is-info" 
+                                   v-for="ta in tag">
+                                    {{ta.tag_name}}
+                                   </span>
+                                </span>
+                            </li>
+
+                            <li class="tag">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="bookmark"></font-awesome-icon>
+                                </span>
+                                <span class="tags">
+                                    <span class="tag is-success" v-for="ca in category">
+                                        {{ca.cat_name}}
+                                    </span>
+                                </span>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- show tag,category div.colums END -->
+
+
+           </article>
+        </section>
+    </div>
+
+</template>
+
+<script>
+var moment = require('moment')
+export default{
+name:"PostView",
+         data(){return{
+            moment:moment,
+            post:'',
+            writer_name:'',
+            category:'',
+            tag:'',
+            post_has_read_times:0,
+            theGetUrl:'',
+         }},
+         mounted(){
+            this.theGetUrl = this.$route.path
+            this.getThePost()
+         },
+methods:{
+            getThePost(){
+                let url = `/api/post${this.theGetUrl}`
+                axios.get(url)
+                .then(res=>{
+                    //console.log(res.data)
+                    let rData = res.data.post
+                    this.post = res.data.post
+                    this.writer_name = this.post.user.name
+                    this.tag = rData.tag 
+                    this.category = rData.category
+                    this.post_has_read_times = Object.values(rData.read).length
+                    document.title = this.post.p_title
+                        })
+            },
+        },
+}
+
+</script>
+
+
+
+
+```
+
+
+
+
+> Error has been fixed.
+
+
+
+
+[err_9-12_fiexed]:https://i.ibb.co/bvSJGZk/error-on-page-has-fixed.png
+
+![error has been fixed][err_9-12_fiexed]
+
+
 
 
 
@@ -121,16 +298,16 @@ $button-padding-horizontal: 0.75em !default;
 $radius-small: 3px;
 
 $size-small: .75rem;
-  $radius-small: 2px;
-  $size-medium: 1.25rem;
-  $size-large: 1.5rem;
-  
+$radius-small: 2px;
+$size-medium: 1.25rem;
+$size-large: 1.5rem;
+
 
 @mixin button-small {
-  font-size: $size-small;
+font-size: $size-small;
 }
 @mixin  button-medium {
-  font-size: $size-medium;
+font-size: $size-medium;
 }
 @mixin button-large {
 font-size: $size-large
@@ -138,127 +315,127 @@ font-size: $size-large
 
 // Here starts the real code
 label.is-checkbox {
-  background: $link;
-  &.is-primary {
-    background: $primary;
- }
-  &.is-info {
-    background: $info;
-    
-  }
-  &.is-danger {
-    background: $danger;
-  }
-   &.is-warning {
-    background: $warning;
-     color: $text;
-     .checkmark:before {
-       background: rgba($light, 0.8);
-     }
-  } 
-  &.is-success {
-    background: $success;
-  }
-  &.is-static {
-    background-color: $button-static-background-color;
-    border-color: $button-static-border-color;
-    color: $button-static-color;
-    box-shadow: none;
-    pointer-events: none;
-         .checkmark:before {
-       background: rgba($button-static-color,0.3);
-     }
-  }
-  border: $button-border-width solid transparent;
-  color: $white;
-  text-align: center;
-  white-space: nowrap;
-  display: inline-flex;
-  justify-content:center;
-  &.is-primary {
-    background: $primary;
-  }
-  padding: $button-padding-vertical $button-padding-horizontal;
-  border-radius: $radius-small;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+background: $link;
+&.is-primary {
+background: $primary;
+}
+&.is-info {
+background: $info;
 
-  .checkmark {
-    color: transparent;
-    position: relative;
-    i {
-      z-index: 1;
-      
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      right: 0;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      z-index: 0;
-      border-radius: $radius-small;
-      background: rgba($dark, 0.3);
-      border: 1px solid rgba($dark, 0.2);
-    }
-  }
-  input[type="checkbox"] {
-    position: absolute;
-    visibility: hidden;
-    cursor: pointer;    
-    &:checked ~ .checkmark {
-      color: inherit;
-      
-    }
-  }
-  
-  &.is-rounded {
-     border-radius: 9999px;
-    .checkmark:before {
-      border-radius: 9999px;
-    }
-  }
-  
-  &:hover {
-    box-shadow: inset 0px 0px 9999px rgba(black, 0.05);
-  }
-  &:active {
-    box-shadow: inset 0px 0px 9999px rgba(black, 0.1);
-  }
-  &.is-small {
-    @include button-small;
-  }
-    &.is-medium {
-    @include button-medium;
-  }
-    &.is-large {
-    @include button-large;
-  }
- .icon {
-    &, &.is-small, &.is-medium, &.is-large {
-        height: 1.5em;
-        width: 1.5em;
-        margin-left: -0.35em;
-        margin-right: 0.35em;
-    }
+}
+&.is-danger {
+background: $danger;
+}
+&.is-warning {
+background: $warning;
+color: $text;
+.checkmark:before {
+background: rgba($light, 0.8);
+}
+} 
+&.is-success {
+background: $success;
+}
+&.is-static {
+background-color: $button-static-background-color;
+border-color: $button-static-border-color;
+color: $button-static-color;
+box-shadow: none;
+pointer-events: none;
+.checkmark:before {
+background: rgba($button-static-color,0.3);
+}
+}
+border: $button-border-width solid transparent;
+color: $white;
+text-align: center;
+white-space: nowrap;
+display: inline-flex;
+justify-content:center;
+&.is-primary {
+background: $primary;
+}
+padding: $button-padding-vertical $button-padding-horizontal;
+border-radius: $radius-small;
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 
-    
-    &:first-child:not(:last-child) {
-        margin-right: 0.1875em;
-        margin-left:calc(-01.375em - #{$button-border-width});
-    }
-    &:last-child:not(:first-child) {
-        margin-left: 0.1875em;
-        
-        margin-right:calc(-0.375em - #{$button-border-width});
-    }
-    &:first-child:last-child {
-        margin-left:calc(-0.575em - #{$button-border-width});
-    }
+.checkmark {
+color: transparent;
+position: relative;
+i {
+z-index: 1;
+
+}
+&:before {
+content: '';
+position: absolute;
+right: 0;
+left: 0;
+top: 0;
+bottom: 0;
+z-index: 0;
+border-radius: $radius-small;
+background: rgba($dark, 0.3);
+border: 1px solid rgba($dark, 0.2);
+}
+}
+input[type="checkbox"] {
+position: absolute;
+visibility: hidden;
+cursor: pointer;    
+&:checked ~ .checkmark {
+color: inherit;
+
+}
+}
+
+&.is-rounded {
+border-radius: 9999px;
+.checkmark:before {
+border-radius: 9999px;
+}
+}
+
+&:hover {
+box-shadow: inset 0px 0px 9999px rgba(black, 0.05);
+}
+&:active {
+box-shadow: inset 0px 0px 9999px rgba(black, 0.1);
+}
+&.is-small {
+@include button-small;
+}
+&.is-medium {
+@include button-medium;
+}
+&.is-large {
+@include button-large;
+}
+.icon {
+&, &.is-small, &.is-medium, &.is-large {
+height: 1.5em;
+width: 1.5em;
+margin-left: -0.35em;
+margin-right: 0.35em;
+}
+
+
+&:first-child:not(:last-child) {
+margin-right: 0.1875em;
+margin-left:calc(-01.375em - #{$button-border-width});
+}
+&:last-child:not(:first-child) {
+margin-left: 0.1875em;
+
+margin-right:calc(-0.375em - #{$button-border-width});
+}
+&:first-child:last-child {
+margin-left:calc(-0.575em - #{$button-border-width});
+}
 }
 }
 
@@ -275,10 +452,10 @@ label.is-checkbox {
 
 @media screen and (min-width: 300px), print {
 
-    .section {
-      padding: 3rem 1.5rem;
-      margin-bottom:140px;
-    }
+.section {
+padding: 3rem 1.5rem;
+margin-bottom:140px;
+}
 }
 
 ```
@@ -289,28 +466,28 @@ label.is-checkbox {
 ```
 
 html {
-    position: relative;
-    min-height: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+position: relative;
+min-height: 100%;
+height: 100%;
+overflow-x: hidden;
+overflow-y: scroll;
 }
 body {
-    /*background: rgb(230, 230, 220); */
-    overflow-x: hidden;
-    margin: 0px;
-    position: relative;
-    min-height: 100%;
-    height: auto;
-    
+/*background: rgb(230, 230, 220); */
+overflow-x: hidden;
+margin: 0px;
+position: relative;
+min-height: 100%;
+height: auto;
+
 }
 
 
 footer {
- position: absolute;
- margin-top:10px;
- bottom: 0;
- width: 100%;
+position: absolute;
+margin-top:10px;
+bottom: 0;
+width: 100%;
 }
 
 
@@ -330,49 +507,49 @@ footer {
 ```
 /* make a route prefix for member group */
 Route::prefix("member")->name("member.")->middleware('auth:sanctum')
-                                        ->group(function(){
+->group(function(){
 
-    /* ============= member profile 24 Nov 2021 ====================
+/* ============= member profile 24 Nov 2021 ====================
      * 
      * */                                        
-    Route::resource('/profile',MPF::class);
-    Route::post('/check-confirm-key',[MPF::class,'checkConfirmKey'])
-        ->name('check-member-profile-confirm-key');
+     Route::resource('/profile',MPF::class);
+     Route::post('/check-confirm-key',[MPF::class,'checkConfirmKey'])
+     ->name('check-member-profile-confirm-key');
 
-    /* Logout from member */
-    Route::delete('/logout',[Login::class,'destroy'])->name('logout');
+     /* Logout from member */
+     Route::delete('/logout',[Login::class,'destroy'])->name('logout');
 
-      });
-```
+     });
+     ```
 
-> try to update user profile to make sure that the `name`,`email` will be unique
-> code in the controller
+     > try to update user profile to make sure that the `name`,`email` will be unique
+     > code in the controller
 
-```
-$valid = request()->validate([
-    "name" => ["required","unique:users,name,".Auth::user()->id],
-    "email" => ["required","email","unique:users,email,".Auth::user()->id]
-],
-[
-    "name.unique" => "Error : cannot use this name",
-    "email.unique" => "Error : cannot use this email",
-]);
+     ```
+     $valid = request()->validate([
+     "name" => ["required","unique:users,name,".Auth::user()->id],
+     "email" => ["required","email","unique:users,email,".Auth::user()->id]
+     ],
+     [
+     "name.unique" => "Error : cannot use this name",
+     "email.unique" => "Error : cannot use this email",
+     ]);
 
-```
+     ```
 
-> to validate the password with Hash the first argument will be plain text 
-> and the secound argument will the hash password version from DB.
+     > to validate the password with Hash the first argument will be plain text 
+     > and the secound argument will the hash password version from DB.
 
-> to hash the password use bcrypt or hash `Hash::make(request()->password)`
+     > to hash the password use bcrypt or hash `Hash::make(request()->password)`
 
-```
-if(!Hash::check(request()->password,Auth::user()->password)):
-    // false response
-    else:
-        // true response
-endif;
+     ```
+     if(!Hash::check(request()->password,Auth::user()->password)):
+     // false response
+     else:
+     // true response
+     endif;
 
-```
+     ```
 
 
 
