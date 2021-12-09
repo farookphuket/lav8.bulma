@@ -31,3 +31,11 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
  
  
  
+ 
+/* ================= INSERT COMMAND for post id 3 ====================
+ * START on  2021-12-09 09:36:44 am
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '3',
+    '1');
+  

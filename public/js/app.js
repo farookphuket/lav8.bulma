@@ -15351,12 +15351,17 @@ __webpack_require__.r(__webpack_exports__);
         axios.get(url).then(function (res) {
           var rData = res.data.post;
           _this.pForm.p_title = rData.p_title;
+          _this.isShowSlug = true;
           _this.pForm.p_excerpt = rData.p_excerpt;
           _this.pForm.p_body = rData.p_body;
           _this.pForm.slug = rData.slug;
           if (rData.p_is_public != 0) _this.pForm.p_is_public = true;
           rData.tag.forEach(function (val) {
             _this.user_select_tag.push(val.pivot.tag_id);
+          });
+          rData.category.forEach(function (ca) {
+            //console.log(ca.cat_name)
+            _this.pForm.category = ca.id;
           });
         });
       }

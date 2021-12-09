@@ -166,6 +166,7 @@ methods:{
                     .then(res=>{
                         let rData = res.data.post
                         this.pForm.p_title = rData.p_title 
+                        this.isShowSlug = true
                         this.pForm.p_excerpt = rData.p_excerpt 
                         this.pForm.p_body = rData.p_body 
                         this.pForm.slug = rData.slug
@@ -173,7 +174,13 @@ methods:{
 
                         rData.tag.forEach((val)=>{
                             this.user_select_tag.push(val.pivot.tag_id)
-                                }) 
+                        }) 
+
+                        rData.category.forEach((ca)=>{
+                            //console.log(ca.cat_name)
+                            this.pForm.category = ca.id
+                        })
+
                     })
                 }
             },
