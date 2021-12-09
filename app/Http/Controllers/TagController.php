@@ -65,9 +65,10 @@ class TagController extends Controller
     {
         //
         $valid = request()->validate([
-            "new_tag" => ["string","nullable","min:4","max:10"]
+            "new_tag" => ["string","nullable","min:4","max:10","unique:tags,tag_name"]
         ],[
-            "new_tag.string" => "Error! new Tag field allow text only!"
+            "new_tag.string" => "Error! new Tag field allow text only!",
+            "new_tag.unique" => "Error! This Tag has existed"
         ]);
 
         // prepare data 
@@ -101,7 +102,11 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        $ta = Tag::find($tag->id);
+
+        return response()->json([
+            "tag" => $ta
+        ]);
     }
 
     /**
@@ -122,9 +127,39 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Tag $tag)
     {
+
         //
+        $valid = request()->validate([
+            "new_tag" => ["string","nullable","min:4","max:10","unique:tags,tag_name,".$tag->id]
+        ],[
+            "new_tag.string" => "Error! new Tag field allow text only!",
+            "new_tag.unique" => "Error! This Tag has existed"
+        ]);
+
+        // prepare data 
+        $valid["tag_name"] = request()->new_tag;
+
+        // unset new_tag 
+        unset($valid["new_tag"]);
+
+        // created new tag 
+        Tag::where("id",$tag->id)
+            ->update($valid);
+
+        // get the last tag 
+        $ta = Tag::find($tag->id);
+
+        // make backup 
+        Tag::backupTag($ta->id,"edit");
+
+        // return response 
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : tag id {$ta->id} has been updated</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -135,6 +170,14 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $ta = Tag::find($tag->id);
+        $ta->delete();
+
+        // return response 
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : tag id {$ta->id} has been deleted</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

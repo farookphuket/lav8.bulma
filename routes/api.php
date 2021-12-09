@@ -91,6 +91,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     Route::get('/getpost',[Post::class,'mGetPost'])
         ->name('mGetPost');
 
+
+    // Tag 
+    Route::resource("/tag",Tag::class);
+
     /* ============= member profile 24 Nov 2021 ====================
      * 
      * */                                        

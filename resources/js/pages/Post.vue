@@ -118,7 +118,7 @@ methods:{
 
                     let cp = res.data.cp 
                     this.category = cp
-                    console.log(res.data)
+                    //console.log(res.data)
                     let ta = res.data.ta
                     this.tag = ta
                     

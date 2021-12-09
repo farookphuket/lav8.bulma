@@ -23,3 +23,97 @@ VALUES(
 *  INSERT COMMAND for tag id 2 END 
 * */
   
+ 
+/* ==================== INSERT COMMAND for tag id 3 ===================
+ * START on 2021-12-09 16:58:32 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'minx',
+    '2021-12-09 16:58:32',
+    '2021-12-09 16:58:32');
+/* ============================================================================
+*  INSERT COMMAND for tag id 3 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 1 ===================
+ * START on 2021-12-09 19:50:38 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'minx',
+    '2021-12-02 08:17:47',
+    '2021-12-09 19:50:38');
+/* ============================================================================
+*  INSERT COMMAND for tag id 1 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 3 ===================
+ * START on 2021-12-09 19:52:20 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'mini',
+    '2021-12-09 16:58:32',
+    '2021-12-09 19:52:20');
+/* ============================================================================
+*  INSERT COMMAND for tag id 3 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 4 ===================
+ * START on 2021-12-09 20:10:00 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'maxi',
+    '2021-12-09 20:10:00',
+    '2021-12-09 20:10:00');
+/* ============================================================================
+*  INSERT COMMAND for tag id 4 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 5 ===================
+ * START on 2021-12-09 20:12:30 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'metag',
+    '2021-12-09 20:12:30',
+    '2021-12-09 20:12:30');
+/* ============================================================================
+*  INSERT COMMAND for tag id 5 END 
+* */
+  
+/* ================= UPDATE COMMAND for tag id 3 ======================
+ * START on 2021-12-09 20:13:01 pm
+ * */
+UPDATE `tags` SET tag_name='minyt',
+updated_at='2021-12-09 20:13:01' WHERE id='3';
+/* ============================================================================
+*  UPDATE COMMAND for tag id 3 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 6 ===================
+ * START on 2021-12-09 20:27:37 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'my new',
+    '2021-12-09 20:27:37',
+    '2021-12-09 20:27:37');
+/* ============================================================================
+*  INSERT COMMAND for tag id 6 END 
+* */
+  
+/* ==================== INSERT COMMAND for tag id 7 ===================
+ * START on 2021-12-09 20:30:20 pm
+ * */
+INSERT INTO `tags`(`tag_name`,`created_at`,`updated_at`)
+VALUES(
+    'maxi',
+    '2021-12-09 20:30:20',
+    '2021-12-09 20:30:20');
+/* ============================================================================
+*  INSERT COMMAND for tag id 7 END 
+* */
+ 

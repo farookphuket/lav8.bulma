@@ -51,13 +51,15 @@ class CategoryController extends Controller
     public function store()
     {
         $valid = request()->validate([
-            "cat_name" => ["required","min:4"]
+            "cat_name" => ["required","min:4","max:15"]
         ],
         [
-            "cat_name.required" => "Error! Category Name is Required!"
+            "cat_name.required" => "Error! Category Name is Required!",
+            "cat_name.max" => "Error! Category Name is too long!",
         ]);
 
-
+        // lower case for method
+        $valid["cat_method"] = rtrim(request()->cat_method,"-");
         // create category 
         Category::create($valid);
 
@@ -116,14 +118,18 @@ class CategoryController extends Controller
 
         
         $valid = request()->validate([
-            "cat_name" => ["required","min:4"]
+            "cat_name" => ["required","min:4","max:15"]
         ],
         [
-            "cat_name.required" => "Error! Category Name is Required!"
+            "cat_name.required" => "Error! Category Name is Required!",
+            "cat_name.max" => "Error! Category Name is too long!",
         ]);
 
 
-        // create category 
+        // lower case for method
+        $valid["cat_method"] = rtrim(request()->cat_method,"-");
+        $valid["updated_at"] = now();
+        // update category 
         Category::where("id",$category->id)
                     ->update($valid);
 

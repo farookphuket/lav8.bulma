@@ -233,6 +233,11 @@ methods:{
 
 
 
+[![ Error has been fixed ](http://img.youtube.com/vi/G7yRrWLmzXU/0.jpg)](http://www.youtube.com/watch?v=G7yRrWLmzXU "")
+
+
+
+
 ## ================= date 7 Dec 2021 
 > make a read count ,category,tag system for post using `many to many` 
 > (`return $this->belongsToMany()`) relationship.

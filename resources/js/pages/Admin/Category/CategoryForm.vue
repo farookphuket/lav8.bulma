@@ -6,9 +6,18 @@
                     <div class="control">
                         <input v-model="cForm.cat_name" class="input" 
                         type="text" name="cat_name" ref="cat_name"
-                        placeholder="Enter category title..."
+                        placeholder="Enter category title..." 
+                        @keyup.prevent="setSlug"
                         @keydown.enter.prevent="saveC(editId)">
                     </div>
+
+                </div>
+                <div class="field" v-show="isShowSlug">
+                    <p class="pt-2 has-text-success">
+                        <b>
+                            {{theSlug.thaiSlug(cForm.cat_name)}} ({{cForm.cat_name.length}})
+                        </b>
+                    </p>
                 </div>
 
                 <div class="columns">
@@ -35,10 +44,13 @@ name:"CategoryForm",
 props:["editId"],
          data(){return{
             cForm:new Form({
-                cat_name:''
+                cat_name:'',
+                cat_method:'',
             }),
             res_status:'',
             tk:'',
+            theSlug: new CustomText(),
+            isShowSlug:false,
          }},
 watch:{
           "editId":function(x){
@@ -53,11 +65,13 @@ methods:{
                 this.res_status = ''
                 if(x != 0){
                     this.$refs.cat_name.focus()
+                    this.isShowSlug = true
                     let url = `/api/admin/category/${x}`
                     axios.get(url)
                     .then(res=>{
                         let rData = res.data.category
                         this.cForm.cat_name = rData.cat_name
+                        this.cForm.cat_method = rData.cat_method
                     })
                 }
             },
@@ -65,6 +79,7 @@ methods:{
                 let url = `/api/admin/category`
                     let fData = new FormData()
                     fData.append("cat_name",this.cForm.cat_name)
+                    fData.append("cat_method",this.cForm.cat_method)
 
                     if(id){
                         url = `/api/admin/category/${id}`
@@ -90,6 +105,13 @@ methods:{
             clearForm(){
                 this.res_status = ''
                 this.cForm.reset()
+            },
+            setSlug(){
+                this.isShowSlug = false
+                if(this.$refs.cat_name.value != ''){
+                    this.isShowSlug = true                
+                    this.cForm.cat_method = this.theSlug.thaiSlug(this.cForm.cat_name)
+                }
             },
         },
 }

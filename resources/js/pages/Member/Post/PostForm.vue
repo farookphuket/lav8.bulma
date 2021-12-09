@@ -74,6 +74,30 @@
                           </li>  
                         </ul>
                     </div>
+
+                    <div class="column is-3">
+                        <div class="field">
+                            <label class="label" for="">
+                                new tage 
+                                <a class="is-link is-warning" href="" 
+                                title="Type in your new tag then hit Enter to save">
+                                    <span class="mr-2">
+                                        <font-awesome-icon icon="question"></font-awesome-icon>
+                                    </span>
+                                </a>
+
+                            </label>
+                            <div class="control">
+                                <input v-model="pForm.new_tag" class="input" 
+                                type="text" name="new_tag" 
+                                placeholder="Enter new tag" 
+                                ref="new_tag" @keydown.enter.prevent="addTag">
+                            </div>
+                            <p class="help">*type tag name then hit Enter to 
+                            save</p>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- div.columns tags,new_tag END -->
 
@@ -145,6 +169,7 @@ export default{
         p_is_public:'',
         slug:'',
         category:0,
+        new_tag:'',
       }),
       res_status:'',
     }},
@@ -161,6 +186,7 @@ methods:{
             getEditData(x){
                 if(x != 0){
                     this.$refs.p_title.focus()
+                    this.res_status = ''
                     let url = `/api/member/post/${x}`
                     axios.get(url)
                     .then(res=>{
@@ -246,6 +272,27 @@ methods:{
         //            console.log(res.data)
                         })
             },
+            addTag(){
+                let nTag = this.$refs.new_tag.value
+                this.pForm.new_tag = ''
+                if(nTag != ''){
+                   let url = `/api/member/tag` 
+                   let data = { new_tag: nTag }
+                   axios.post(url,data)
+                       .then(res=>{
+                        this.res_status = res.data.msg
+                            setTimeout(()=>{
+                                this.res_status = ''
+                                this.getTag()
+                            },700)
+                        })
+                   .catch(err=>{
+                        this.res_status = `<span class="tag is-medium is-danger">
+                        ${Object.values(err.response.data.errors).join()}
+                        </span>`
+                           })
+                }
+            },
             getCategory(){
                 this.cat_list = []
                 let url = `/api/category`
@@ -258,7 +305,7 @@ methods:{
                 //alert(this.$refs.show_cat_list.value)
                 let cat = this.$refs.show_cat_list.value
                 this.pForm.category = this.$refs.show_cat_list.value
-                console.log(`set the category to ${cat}`)
+                //console.log(`set the category to ${cat}`)
             },
             clearForm(){
                 this.pForm.reset()
