@@ -184,6 +184,7 @@ watch:{
                 getEditData(x){
                     if(x != 0){
                         this.user_select_tag = []
+                        this.pForm.reset()
                         this.$refs.p_title.focus()
                         let url = `/api/admin/post/${x}`
                         axios.get(url)

@@ -40,8 +40,9 @@ class Category extends Model
 /* =================== INSERT COMMAND for category id {$id} ===================
  * on ".date("Y-m-d H:i:s a")."
  * */
-INSERT INTO `{$table}`(`cat_name`,`created_at`,`updated_at`) VALUES(
+INSERT INTO `{$table}`(`cat_name`,`cat_method`,`created_at`,`updated_at`) VALUES(
     '{$c->cat_name}',
+    '{$c->cat_method}',
     '{$c->created_at}',
     '{$c->updated_at}');
 ";
@@ -52,6 +53,7 @@ case"edit":
  * on ".date("Y-m-d H:i:s a")."
  * */
 UPDATE `{$table}` SET cat_name='{$c->cat_name}',
+cat_method='{$c->cat_method}',
 updated_at='{$c->updated_at}' WHERE id='{$id}';
 ";
     break;

@@ -39,3 +39,4 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '3',
     '1');
   
+          

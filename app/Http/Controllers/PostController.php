@@ -25,6 +25,7 @@ class PostController extends Controller
     public function getPost(){
         // return json data 
         $po = Post::where("p_is_public","!=",0)
+                    ->where('p_title','!=','about')
                     ->with('user')
                     ->with('tag')
                     ->with('category')
@@ -33,6 +34,7 @@ class PostController extends Controller
                     ->paginate(2);
 
         $cat_with_post = Post::has('category')
+                                ->where('p_title','!=','about')
                                 ->where('p_is_public','!=',0)
                                 ->with('category')
                                 ->latest()
@@ -46,6 +48,7 @@ class PostController extends Controller
                     ->get();
 
         $t = Post::where("p_is_public","!=",0)
+                    ->where('p_title','!=','about')
                     ->latest()
                     ->first();
         $meta_title = $t->p_title;
@@ -59,8 +62,18 @@ class PostController extends Controller
         ]);
     }
 
+    public function getAbout(){
+        $ab = Post::where('p_title','about')
+                        ->first();
+
+        return response()->json([
+            "about" => $ab
+        ]);
+    }
+
     public function mGetPost(){
         $p = Post::where('p_is_public','!=',0)
+                    ->where('p_title','!=','about')
                     ->orWhere('user_id',Auth::user()->id)
                     ->with('tag')
                     ->with('user')
@@ -71,6 +84,7 @@ class PostController extends Controller
 
 
         $cat_with_post = Post::where("p_is_public","!=",0)
+                                ->where('p_title','!=','about')
                                 ->orWhere("user_id",Auth::user()->id)
                                 ->has('category')
                                 ->with('category')
@@ -78,6 +92,7 @@ class PostController extends Controller
                                 ->get();
 
         $t = Post::where('p_is_public','!=',0)
+                    ->where('p_title','!=','about')
                     ->orWhere("user_id",Auth::user()->id)
                     ->latest()
                     ->first();

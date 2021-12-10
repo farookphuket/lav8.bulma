@@ -93,7 +93,7 @@ methods:{
             getPost(page){
                 this.isFormOpen = false
                 this.res_status = ''
-                
+                this.editId = 0                
                 let url = ''
                     if(page){
                         url = page 

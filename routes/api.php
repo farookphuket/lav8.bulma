@@ -20,6 +20,7 @@ use App\Http\Controllers\TagController as Tag;
 /* admin route */
 use App\Http\Controllers\Admin\UserController as AUSER;
 use App\Http\Controllers\Admin\DashboardController as AHOME;
+use App\Http\Controllers\Admin\AboutController as AB;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,10 @@ Route::post('/login',[Login::class,"store"]);
  *
  * */
 Route::get('/getpost',[Post::class,'getPost'])->name('getPost');
+
+// get about page on 10 Dec 2021
+Route::get('/getabout',[Post::class,'getAbout'])->name('getAbout');
+
 Route::get('/post/{post:slug}',[Post::class,'show']);
 
 // tag as public
@@ -114,6 +119,8 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     Route::get('/getuser',[AUSER::class,"getUser"])->name("getUser");
 
     Route::resource('/home',AHOME::class);
+
+    Route::resource('/about',AB::class);
 
     // whatnew 
     Route::resource('/whatnew',WN::class);

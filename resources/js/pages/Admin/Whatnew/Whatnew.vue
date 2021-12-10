@@ -71,6 +71,8 @@ export default{
 methods:{
             getWhatnew(page){
                 this.wnList = ''
+                this.editId = 0
+
                 let url = ''
                     if(page){
                         url = page 

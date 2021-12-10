@@ -2,7 +2,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
               <a class="navbar-item" href="https://bulma.io">
-              <img src="/img/see_logo_3-nov-2021.png">
+              <img src="/img/logo_006.png">
               </a>
 
               <a role="button" class="navbar-burger" aria-label="menu" 

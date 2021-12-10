@@ -79,3 +79,4 @@ INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
     '2021-12-09 09:36:44',
     '2021-12-09 09:36:44');
   
+ 

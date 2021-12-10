@@ -60,6 +60,7 @@ name:"AdminCategory",
          },
 methods:{
             getCategory(page){
+                this.editId = 0
                 this.isShowModal = ''
                 let url = ''
                     if(page){

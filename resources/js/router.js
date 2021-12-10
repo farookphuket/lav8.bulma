@@ -21,6 +21,7 @@ import MPost from './pages/Member/Post/Post.vue'
 import AdminHome from './pages/Admin/Home.vue'
 import AdminPost from './pages/Admin/Post/Post.vue'
 import AdminUser from './pages/Admin/User/User.vue'
+import AdminAbout from './pages/Admin/About.vue'
 import AdminCategory from './pages/Admin/Category/Category.vue'
 
 
@@ -113,6 +114,12 @@ const router = new VueRouter({
             path: '/admin/home',
             name: 'AdminDashboard',
             component: AdminHome
+        },
+
+        {
+            path: '/admin/about',
+            name: 'AdminAbout',
+            component: AdminAbout
         },
 
         {
