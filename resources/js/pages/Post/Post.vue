@@ -11,10 +11,12 @@
             </nav>
 
             <by-tag :tagId="tagId" v-show="isShowByTag" 
-            @getPost="getPost($event)"></by-tag>
+            @getPost="getPost($event)" 
+            @openPost="openPost($event)"></by-tag>
 
             <by-cat :catId="catId" v-show="isShowByCat" 
-                @getPost="getPost($event)"></by-cat>
+                @getPost="getPost($event)" 
+                @openPost="openPost($event)"></by-cat>
 
             <post-list  :postList="postList" 
             @getPost="getPost($event)" v-show="isShowDefaultList"
@@ -158,6 +160,10 @@ methods:{
                 this.clearSet()
                 this.isShowByCat = true 
                 this.catId = id
+            },
+            openPost(slug){
+                let url = `/${slug}`
+                location.href=url
             },
             clearSet(){
                 this.isShowDefaultList = false 

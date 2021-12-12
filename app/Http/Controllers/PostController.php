@@ -71,7 +71,8 @@ class PostController extends Controller
             $query->where('p_is_public','!=',0)
             ->where('p_title','!=','about')
             ])
-            ->where('id',request()->tag_id)->get();
+            ->where('id',request()->tag_id)
+            ->paginate(4);
         return response()->json([
             "ta" => $ta
         ]);

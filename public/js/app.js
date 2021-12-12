@@ -15510,6 +15510,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ByTag",
   props: ["tagId"],
@@ -15532,8 +15554,12 @@ __webpack_require__.r(__webpack_exports__);
       var url = "/api/postbytag?tag_id=".concat(tag_id);
       axios.get(url).then(function (res) {
         _this.postList = res.data.ta;
-        console.log(res.data);
+        console.log(_this.postList);
       });
+    },
+    openPost: function openPost(slug) {
+      var url = "/".concat(slug);
+      location.href = url;
     }
   }
 });
@@ -15554,6 +15580,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ByTag_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ByTag.vue */ "./resources/js/pages/Member/Post/ByTag.vue");
 /* harmony import */ var _PostForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostForm.vue */ "./resources/js/pages/Member/Post/PostForm.vue");
 /* harmony import */ var _PostList_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostList.vue */ "./resources/js/pages/Member/Post/PostList.vue");
+//
+//
 //
 //
 //
@@ -15719,9 +15747,7 @@ __webpack_require__.r(__webpack_exports__);
     getPost: function getPost(page) {
       var _this = this;
 
-      this.isFormOpen = false;
-      this.res_status = '';
-      this.editId = 0;
+      this.clearSet();
       var url = '';
 
       if (page) {
@@ -15771,6 +15797,14 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return;
+    },
+    clearSet: function clearSet() {
+      this.isShowDefaultList = true;
+      this.editId = 0;
+      this.isShowByTag = false;
+      this.isShowByCat = false;
+      this.isModalOpen = '';
+      this.res_status = '';
     }
   }
 });
@@ -17103,6 +17137,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -17181,6 +17217,10 @@ __webpack_require__.r(__webpack_exports__);
       this.isShowByCat = true;
       this.catId = id;
     },
+    openPost: function openPost(slug) {
+      var url = "/".concat(slug);
+      location.href = url;
+    },
     clearSet: function clearSet() {
       this.isShowDefaultList = false;
       this.isShowByCat = false;
@@ -17258,10 +17298,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data);
         _this.category = res.data.category;
       });
-    },
-    openPost: function openPost(slug) {
-      var url = "/".concat(slug);
-      location.href = url;
     }
   }
 });
@@ -17284,9 +17320,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ByTag",
-  props: ["tagId"]
+  props: ["tagId"],
+  data: function data() {
+    return {
+      tagContent: ''
+    };
+  },
+  watch: {
+    "tagId": function tagId() {
+      this.getTagOpen();
+    }
+  },
+  methods: {
+    getTagOpen: function getTagOpen(page) {
+      var _this = this;
+
+      var url = "";
+
+      if (page) {
+        url = page;
+        this.$cookies.set('p_old_tag_page', url);
+      }
+
+      url = this.$cookies.get('p_old_tag_page');
+      if (!url) url = "/api/postbytag?tag_id=".concat(this.tagId);
+      axios.get(url).then(function (res) {
+        //console.log(res.data)
+        _this.tagContent = res.data.ta;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -48535,11 +48624,68 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("article", { staticClass: "box" }, [
-      _vm._v("\n       " + _vm._s(_vm.tagId) + " \n    "),
-    ]),
-  ])
+  return _c(
+    "div",
+    _vm._l(_vm.postList.data, function (ta) {
+      return _c("article", { staticClass: "box" }, [
+        _c("div", { staticClass: "field is-pulled-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-outlined is-danger",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("getPost")
+                },
+              },
+            },
+            [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "title has-text-centered" }, [
+          _vm._v(_vm._s(ta.tag_name)),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c(
+            "ol",
+            { attrs: { type: "1" } },
+            _vm._l(ta.post, function (po) {
+              return _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "" },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.openPost(po.slug)
+                      },
+                    },
+                  },
+                  [
+                    _c("span", [_vm._v(_vm._s(po.p_title))]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "ml-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                      1
+                    ),
+                  ]
+                ),
+              ])
+            }),
+            0
+          ),
+        ]),
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48707,6 +48853,11 @@ var render = function () {
                 },
               ],
               attrs: { tagId: _vm.tagId },
+              on: {
+                getPost: function ($event) {
+                  return _vm.getPost($event)
+                },
+              },
             }),
             _vm._v(" "),
             _c("post-list", {
@@ -50676,6 +50827,9 @@ var render = function () {
             getPost: function ($event) {
               return _vm.getPost($event)
             },
+            openPost: function ($event) {
+              return _vm.openPost($event)
+            },
           },
         }),
         _vm._v(" "),
@@ -50692,6 +50846,9 @@ var render = function () {
           on: {
             getPost: function ($event) {
               return _vm.getPost($event)
+            },
+            openPost: function ($event) {
+              return _vm.openPost($event)
             },
           },
         }),
@@ -50907,7 +51064,7 @@ var render = function () {
                   on: {
                     click: function ($event) {
                       $event.preventDefault()
-                      return _vm.openPost(po.slug)
+                      return _vm.$emit("openPost", po.slug)
                     },
                   },
                 },
@@ -50951,7 +51108,73 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("article", [_vm._v(_vm._s(_vm.tagId))])])
+  return _c(
+    "div",
+    _vm._l(_vm.tagContent.data, function (ta) {
+      return _c("article", { staticClass: "box" }, [
+        _c("div", { staticClass: "field is-pulled-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-danger is-outlined",
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.$emit("getPost")
+                },
+              },
+            },
+            [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "title has-text-centered" }, [
+          _vm._v("\n            " + _vm._s(ta.tag_name) + "\n        "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c(
+            "ol",
+            { attrs: { type: "1" } },
+            _vm._l(ta.post, function (po) {
+              return _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "" },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.$emit("openPost", po.slug)
+                      },
+                    },
+                  },
+                  [
+                    _c("span", { staticClass: "ml-2" }, [
+                      _vm._v(
+                        "\n                           " +
+                          _vm._s(po.p_title) +
+                          " \n                        "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      [_c("font-awesome-icon", { attrs: { icon: "eye" } })],
+                      1
+                    ),
+                  ]
+                ),
+              ])
+            }),
+            0
+          ),
+        ]),
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -14,7 +14,7 @@
             <ul>
                 <li v-for="po in ca.post">
                     <a href="" 
-                    @click.prevent="openPost(po.slug)">
+                    @click.prevent="$emit('openPost',po.slug)">
                         {{po.p_title}}
                     </a>
 
@@ -54,10 +54,7 @@ methods:{
                     this.category = res.data.category
                 })
             },
-            openPost(slug){
-                let url = `/${slug}`
-                location.href=url
-            },
+
         },
 }
 </script>

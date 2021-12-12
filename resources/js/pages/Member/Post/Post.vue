@@ -65,7 +65,9 @@
                     @getPost="getPost($event)" 
                     @formToggle="formToggle($event)"></post-form>
 
-                    <by-tag v-show="isShowByTag" :tagId="tagId"></by-tag>
+                    <by-tag v-show="isShowByTag" 
+                    @getPost="getPost($event)"
+                    :tagId="tagId"></by-tag>
 
                    <post-list v-show="isShowDefaultList"
                    :postList="postList" @edit="edit($event)" 
@@ -160,9 +162,7 @@ name:"MPost",
          },
 methods:{
             getPost(page){
-                this.isFormOpen = false
-                this.res_status = ''
-                this.editId = 0                
+                this.clearSet()
                 let url = ''
                     if(page){
                         url = page 
@@ -213,6 +213,14 @@ methods:{
                     })
                 }
                 return
+            },
+            clearSet(){
+                this.isShowDefaultList = true
+                this.editId = 0
+                this.isShowByTag = false
+                this.isShowByCat = false
+                this.isModalOpen = ''
+                this.res_status = ''
             },
         },
 }
