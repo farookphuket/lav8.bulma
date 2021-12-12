@@ -62,6 +62,35 @@ class PostController extends Controller
         ]);
     }
 
+    public function postByTag(){
+        /*
+         * code from https://dev.to/othmane_nemli/laravel-wherehas-and-with-550o 
+         * on 11 Dec 2021
+         * */
+        $ta = Tag::with(['post' =>fn($query) => 
+            $query->where('p_is_public','!=',0)
+            ->where('p_title','!=','about')
+            ])
+            ->where('id',request()->tag_id)->get();
+        return response()->json([
+            "ta" => $ta
+        ]);
+    }
+
+    public function postByCat(){
+        $ca = Category::where("id",request()->cat_id)
+            ->with(["post" => fn($query) => 
+            $query->where("p_is_public","!=",0)
+            ->where("p_title","!=","about")
+            ])
+                ->paginate(2);
+
+
+        return response()->json([
+            "category" => $ca
+        ]);
+    }
+
     public function getAbout(){
         $ab = Post::where('p_title','about')
                         ->first();
@@ -91,6 +120,14 @@ class PostController extends Controller
                                 ->latest()
                                 ->get();
 
+        $cp = Category::has('post')
+                        ->with('post')
+                        ->get();
+
+        $ta = Tag::has('post')
+                    ->with('post')
+                    ->get();
+
         $t = Post::where('p_is_public','!=',0)
                     ->where('p_title','!=','about')
                     ->orWhere("user_id",Auth::user()->id)
@@ -100,7 +137,9 @@ class PostController extends Controller
         return response()->json([
             "post" => $p,
             "meta_title" => $t->p_title,
-            "post_with_category" => $cat_with_post
+            "post_with_category" => $cat_with_post,
+            "cp" => $cp,
+            "ta" => $ta
         ]);
     }
 

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string("slug");
             $table->text("p_excerpt");
             $table->text("p_body");
-            $table->boolean("p_is_public");
+            $table->boolean("p_is_public")->default(1);
             $table->integer("p_has_read_count")->default(0);
             $table->timestamps();
 

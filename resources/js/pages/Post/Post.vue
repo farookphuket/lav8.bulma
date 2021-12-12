@@ -10,8 +10,14 @@
               </ul>
             </nav>
 
+            <by-tag :tagId="tagId" v-show="isShowByTag" 
+            @getPost="getPost($event)"></by-tag>
+
+            <by-cat :catId="catId" v-show="isShowByCat" 
+                @getPost="getPost($event)"></by-cat>
+
             <post-list  :postList="postList" 
-            @getPost="getPost($event)"
+            @getPost="getPost($event)" v-show="isShowDefaultList"
             :post_with_category="post_with_category" 
             @openPost="openPost($event)" ></post-list>
             
@@ -29,7 +35,11 @@
                                 </span>
                                 <span>
                                     <b class="has-text-success">
-                                        {{ca.cat_name}} 
+                                            <a href="" 
+                                            @click.prevent="byCat(ca.id)">
+                                                {{ca.cat_name}}
+                                            </a>                                 
+
                                     </b>  
                                     ({{Object.values(ca.post).length}}) 
                                 </span>
@@ -49,7 +59,11 @@
                                 </span>
                                 <span>
                                     <b class="has-text-info">
-                                        {{ta.tag_name}}
+
+                                        <a href="" @click.prevent="byTag(ta.id)">
+                                            {{ta.tag_name}}
+                                        </a>
+                                        
                                     </b> 
                                     ({{Object.values(ta.post).length}})
                                 </span>
@@ -66,11 +80,15 @@
 </template>
 
 <script>
+import ByTag from './PostByTag.vue'
+import ByCat from './PostByCat.vue'
 import PostList from './PostList.vue'
 export default{
     name:"Post",
              components:{
                  PostList,
+                 ByTag,
+                 ByCat,
              },
              data(){
                  return{
@@ -78,7 +96,11 @@ export default{
                     post_with_category:'',
                     post_in_cat_length:0,
                     cat_name:'',
-
+                    isShowDefaultList:true,
+                    isShowByTag:false,
+                    tagId:0,
+                    isShowByCat:false,
+                    catId:0,
                     category:'',
                     tag:'',
                  }
@@ -89,7 +111,9 @@ export default{
              },
 methods:{
             getPost(page){
-                
+                this.clearSet()
+               this.isShowDefaultList = true 
+
                 let url = ''
                 if(page){
                     url = page
@@ -125,6 +149,22 @@ methods:{
 
                 })
             },
-        }
+            byTag(id){
+                this.clearSet()
+                this.isShowByTag = true 
+                this.tagId = id
+            },
+            byCat(id){
+                this.clearSet()
+                this.isShowByCat = true 
+                this.catId = id
+            },
+            clearSet(){
+                this.isShowDefaultList = false 
+                this.isShowByCat = false 
+                this.isShowByTag = false
+
+            }
+        },
 }
 </script>

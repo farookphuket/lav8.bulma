@@ -62,6 +62,13 @@ Route::get('/post/{post:slug}',[Post::class,'show']);
 // tag as public
 Route::get("/tag",[Tag::class,"getTag"])->name("getTag");
 
+// get the post by tag
+Route::get('/postbytag',[Post::class,'postByTag'])->name('postByTag');
+
+// get post by category 
+Route::get('/postbycat',[Post::class,'postByCat'])
+    ->name('postByCat');
+
 // public category 
 Route::get('/category',[Cat::class,'getCategory'])->name('getCategory');
 

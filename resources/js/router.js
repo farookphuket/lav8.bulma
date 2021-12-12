@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
-import Post from './pages/Post.vue';
-import PostView from './pages/PostView.vue'
+import Post from './pages/Post/Post.vue';
+import PostView from './pages/Post/PostView.vue'
 import Login from './pages/Login.vue';
 import Logout from './pages/Logout.vue'
 import Register from './pages/Register.vue';
