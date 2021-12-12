@@ -65,7 +65,7 @@ class TagController extends Controller
     {
         //
         $valid = request()->validate([
-            "new_tag" => ["string","nullable","min:4","max:10","unique:tags,tag_name"]
+            "new_tag" => ["string","nullable","min:4","max:18","unique:tags,tag_name"]
         ],[
             "new_tag.string" => "Error! new Tag field allow text only!",
             "new_tag.unique" => "Error! This Tag has existed"
