@@ -12341,7 +12341,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -12702,6 +12701,151 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutPage",
   data: function data() {
@@ -12715,9 +12859,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getAbout: function getAbout() {
+      var _this = this;
+
       var url = "/api/getabout";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
+        _this.aboutPage = res.data.about;
+
+        if (_this.aboutPage != null) {
+          _this.isShowDefaultData = false;
+        }
       });
     }
   }
@@ -45078,52 +45229,289 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.isShowDefaultData != true
+      ? _c("section", { staticClass: "section" }, [
+          _c("article", { staticClass: "box" }, [
+            _c("h2", { staticClass: "title has-content-centered" }, [
+              _vm._v(
+                "\n               " +
+                  _vm._s(_vm.aboutPage.p_title) +
+                  " \n           "
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { domProps: { innerHTML: _vm._s(_vm.aboutPage.p_body) } },
+              [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(_vm.aboutPage.p_body) +
+                    "\n           "
+                ),
+              ]
+            ),
+          ]),
+        ])
+      : _c("section", { staticClass: "section" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+        ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "section" }, [
-        _c(
-          "nav",
-          { staticClass: "breadcrumb", attrs: { "aria-label": "breadcrumbs" } },
-          [
-            _c("ul", [
-              _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("Home")])]),
-              _vm._v(" "),
-              _c("li", { staticClass: "is-active" }, [
-                _c("a", { attrs: { href: "#", "aria-current": "page" } }, [
-                  _vm._v("About"),
-                ]),
+    return _c("section", { staticClass: "section" }, [
+      _c(
+        "nav",
+        { staticClass: "breadcrumb", attrs: { "aria-label": "breadcrumbs" } },
+        [
+          _c("ul", [
+            _c("li", [_c("a", { attrs: { href: "/" } }, [_vm._v("Home")])]),
+            _vm._v(" "),
+            _c("li", { staticClass: "is-active" }, [
+              _c("a", { attrs: { href: "#", "aria-current": "page" } }, [
+                _vm._v("About"),
               ]),
             ]),
-          ]
+          ]),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box" }, [
+      _c("h1", { staticClass: "title" }, [
+        _vm._v("\n            see-southern.com\n          "),
+      ]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "subtitle" }, [
+        _vm._v(
+          "\n            see-southern.com has create on Oct 2007              \n          "
         ),
       ]),
       _vm._v(" "),
-      _c("section", { staticClass: "section" }, [
-        _c("div", { staticClass: "mt-4" }, [
-          _c("h1", { staticClass: "title" }, [_vm._v("Medium section")]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "subtitle" }, [
-            _vm._v(
-              "\n            A simple container to divide your page into "
-            ),
-            _c("strong", [_vm._v("sections")]),
-            _vm._v(", like the one you're currently reading.\n          "),
+      _c("div", { staticClass: "content" }, [
+        _c("p", [
+          _vm._v(
+            "\n                when I try to learn to code\n                 in php at my first place the very first \n                "
+          ),
+          _c("strong", [
+            _vm._v('\n                    "Hello world"\n                '),
           ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("this is the default data to show in this page")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "content" }, [
-            _c("p", [
-              _vm._v(
-                "\n                this is the tag in p tag div.content\n            "
-              ),
-            ]),
+          _vm._v(
+            "\n                 line has start written on \n                 "
+          ),
+          _c("strong", [_vm._v("Ubuntu 7.04")]),
+          _vm._v(
+            ' while I am just about to really \n                 have to get my head (my computer) out of my belove \n                 "window XP" as many  people has been try \n                '
+          ),
+          _c("span", { staticClass: "tag is-medium is-warning" }, [
+            _vm._v('\n                    "window Vista"\n                '),
+          ]),
+          _vm._v(
+            " and have to very impress experience on it (you maybe \n                one of them too) so it's the time for me to move on to learn \n                something new \"Ubuntu\" is the very first Linux that I have give \n                it a try and love it at the very first try Ubuntu can cause me \n                a lot of headache but you know? it's some new experience so \n                why not? let do it. \n\n              "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            '\n                    today my computer is fully run "Arch Linux" and I am really \n                    really fall in love with this! it is just my feeling \n                    "like home" again.\n                '
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n                    # I am an Arch Noob.\n                "
+          ),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
+                target: "_blank",
+              },
+            },
+            [
+              _c("img", {
+                staticClass: "responsive",
+                attrs: {
+                  src: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
+                  alt: "farook on year 2021",
+                },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "has-text-centered" }, [
+          _vm._v("\n                    farook on year 2021\n                "),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
+                target: "_blank",
+              },
+            },
+            [
+              _c("img", {
+                staticClass: "responsive",
+                attrs: {
+                  src: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
+                  alt: "farook on year 2011",
+                },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "has-text-centered" }, [
+          _vm._v("\n                    farook on year 2011\n                "),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
+                target: "_blank",
+              },
+            },
+            [
+              _c("img", {
+                staticClass: "responsive",
+                attrs: {
+                  src: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
+                  alt: "farook on year 2009",
+                },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "has-text-centered" }, [
+          _vm._v("\n                    farook on year 2009\n                "),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
+                target: "_blank",
+              },
+            },
+            [
+              _c("img", {
+                staticClass: "responsive",
+                attrs: {
+                  src: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
+                  alt: "farook on year 2007 ",
+                },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "has-text-centered" }, [
+          _vm._v("\n                    farook on year 2007\n                "),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
+                target: "_blank",
+              },
+            },
+            [
+              _c("img", {
+                staticClass: "responsive",
+                attrs: {
+                  src: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
+                  alt: "farook on year 2006",
+                },
+              }),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "has-text-centered" }, [
+          _vm._v("\n                    farook on year 2006\n                "),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns" }, [
+      _c("div", { staticClass: "column" }, [
+        _c("h2", { staticClass: "title" }, [
+          _vm._v(
+            "\n                    How to create my own about page?\n                "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "box" }, [
+          _c("p", { staticClass: "mt-4 mb-2" }, [
+            _vm._v(
+              '\n                        this is the default page if you want to edit this page simply \n                        login with your "admin" credentials select "about" from the \n                        menu then you can add your stuff in the text box then click \n                        save the button that\'s it!\n                    '
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("h2", { staticClass: "title" }, [
+          _vm._v("\n                    Where is this file\n                "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "box" }, [
+          _c("p", [
+            _vm._v(
+              "\n                        to totally edit this file `/resources/js/pages/About.vue` open \n                        you text editor program you will find this section.\n                    "
+            ),
           ]),
         ]),
       ]),
@@ -52196,7 +52584,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
     _c("nav", { staticClass: "level" }, [

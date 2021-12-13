@@ -7,7 +7,6 @@
       <router-view></router-view>
         <footer class="footer">
             <visitor></visitor>
-
         </footer>
   </div>
 </template>

@@ -22,21 +22,3 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2',
     '1');
   
-/* ================= INSERT COMMAND for post id 1 ====================
- * START on  2021-12-07 06:57:31 am
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '2',
-    '2');
- 
- 
- 
- 
-/* ================= INSERT COMMAND for post id 3 ====================
- * START on  2021-12-09 09:36:44 am
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '3',
-    '1');
-  
-          

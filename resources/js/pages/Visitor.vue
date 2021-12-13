@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class="box">
             <h2 class="title">visitors</h2>
         </div>
