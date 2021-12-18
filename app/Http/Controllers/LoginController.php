@@ -69,7 +69,7 @@ class LoginController extends Controller
         $url = '';
         $error = false;
         $token = '';
-
+        $role = '';
         //check user 
         if(!Auth::attempt($valid)):
             

@@ -75,8 +75,9 @@ methods:{
                     this.token = res.token 
                     this.$cookies.set('token',res.token)
                     this.role_user = res.role
+//                    console.log(res)
                     if(res.error != false){
-                     //   console.log(res)
+ //                       console.log(res)
                         return
                     }
                     location.href=res.url

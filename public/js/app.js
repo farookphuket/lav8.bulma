@@ -15504,13 +15504,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.$cookies.set('token', res.token);
 
         _this.role_user = res.role;
+        console.log(res);
 
         if (res.error != false) {
-          //   console.log(res)
+          console.log(res);
           return;
-        }
+        } //location.href=res.url
 
-        location.href = res.url;
       })["catch"](function (err) {
         _this.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err).join(), "\n                    </span>");
       });

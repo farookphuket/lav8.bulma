@@ -22,6 +22,36 @@
 
 
 
+
+
+
+## ================ Important Note 
+
+1. if you change the folder name from "lav8.bulma" to "your.project" make sure 
+you check this! 
+
+- open file /config/sanctum.php and make sure that you have your project 
+folder on the list another wise your login credential will be fail.
+
+    ```
+
+    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
+        '%s%s',
+        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1,
+        lav8.bulma,your.project',
+        env('APP_URL') ? ','.parse_url(env('APP_URL'), PHP_URL_HOST) : ''
+    ))),
+
+
+    ```
+
+
+[change_project_dir]:https://i.ibb.co/PmwSJTv/change-dir-name.png
+
+![change your project dir][change_project_dir]
+
+
+
 ## ================ Admin view user
 
 > this is the admin preview user section I will make more video about this 

@@ -63,6 +63,9 @@ class RegisterController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
         $token_type = "Bearer";
 
+        // make role default to member 
+        $user->role()->attach(2);
+
         //sent email to this user 
         $this->sentUserConfirm();
 
@@ -118,6 +121,8 @@ class RegisterController extends Controller
             ->update([
                 "email_verified_at" => now()
             ]);
+
+            
 
             $url = '/user-has-confirmed';
             // make a backup for this new user 
