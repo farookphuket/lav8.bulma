@@ -87,6 +87,16 @@ class CreatePostsTable extends Migration
                     ->onDelete("cascade");
         });
 
+
+        // comment link table for post 
+        Schema::create('comment_post', function (Blueprint $table) {
+
+            $table->id();
+            $table->foreignId("comment_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("post_id")->constrained()->cascadeOnDelete();
+
+        });
+
     }
 
     /**
@@ -99,6 +109,7 @@ class CreatePostsTable extends Migration
         Schema::dropIfExists('posts');
         Schema::dropIfExists('post_tag');
         Schema::dropIfExists('category_post');
+        Schema::dropIfExists('comment_post');
         Schema::dropIfExists('post_read');
     }
 }

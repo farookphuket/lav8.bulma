@@ -8,6 +8,7 @@ use App\Http\Controllers\Member\ProfileController as MPF;
 use App\Http\Controllers\Member\DashboardController as MHOME;
 use App\Http\Controllers\PostController as Post;
 use App\Http\Controllers\CategoryController as Cat;
+use App\Http\Controllers\CommentController as PCM;
 
 // user role 
 use App\Http\Controllers\RoleController as uRole;
@@ -53,6 +54,10 @@ Route::post('/login',[Login::class,"store"]);
  *
  * */
 Route::get('/getpost',[Post::class,'getPost'])->name('getPost');
+
+// get comment for post 
+Route::get('/getcomment',[PCM::class,"getPostComment"])
+    ->name("getPostComment");
 
 // get about page on 10 Dec 2021
 Route::get('/getabout',[Post::class,'getAbout'])->name('getAbout');
@@ -103,6 +108,8 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
     Route::get('/getpost',[Post::class,'mGetPost'])
         ->name('mGetPost');
 
+    // comment 
+    Route::resource("/comment",PCM::class);
 
     // Tag 
     Route::resource("/tag",Tag::class);

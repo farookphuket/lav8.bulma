@@ -100,7 +100,8 @@
                 </div>
                 <!-- show tag,category div.colums END -->
 
-
+    
+                <comment-list :postId="post_id"></comment-list>
            </article>
         </section>
     </div>
@@ -109,11 +110,16 @@
 
 <script>
 var moment = require('moment')
+import CommentList from './CommentList.vue'
 export default{
 name:"PostView",
+    components:{
+        CommentList,
+    },
          data(){return{
             moment:moment,
             post:'',
+             post_id:'',
             writer_name:'',
             category:'',
             tag:'',
@@ -135,6 +141,7 @@ methods:{
                     this.writer_name = this.post.user.name
                     this.tag = rData.tag 
                     this.category = rData.category
+                    this.post_id = this.post.id
                     this.post_has_read_times = Object.values(rData.read).length
                     document.title = this.post.p_title
                         })

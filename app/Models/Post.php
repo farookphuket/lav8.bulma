@@ -39,6 +39,10 @@ class Post extends Model
     public function read(){
         return $this->belongsToMany(Read::class);
     }
+
+    public function comment(){
+        return $this->belongsToMany(Comment::class);
+    }
     /* ======================= Backup and Custom section =================================
      * 
      * */
