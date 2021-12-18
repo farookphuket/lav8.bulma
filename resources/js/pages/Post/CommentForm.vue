@@ -5,7 +5,7 @@
                 <div class="field">
                     <div class="control">
                         <input v-model="cForm.c_title" class="input" 
-                        type="text" name="" 
+                        type="text" name="" placeholder="Title..."
                         ref="c_title" required>
                     </div>
 

@@ -17393,6 +17393,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 
@@ -17405,6 +17494,16 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   data: function data() {
     return {
       comment_list: '',
+      replyItem: [],
+      reply_list: '',
+      replyId: 0,
+      rForm: new Form({
+        r_title: "",
+        r_body: "",
+        comment_id: ''
+      }),
+      btnReply: true,
+      res_status: '',
       moment: moment,
       post_id: 0,
       editId: 0,
@@ -17441,7 +17540,14 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
         var cm = res.data.comment;
         cm.data.forEach(function (cc) {
           //console.log(cc.pivot.post_id)
-          _this.$cookies.set("current_post_id", cc.pivot.post_id);
+          _this.$cookies.set("current_post_id", cc.pivot.post_id); //console.log(cc.reply)
+
+
+          _this.reply_list = cc.reply;
+          cc.reply.forEach(function (re) {
+            //this.reply_list = re
+            console.log(re);
+          });
         }); //       console.log(res.data)
       });
     },
@@ -17458,6 +17564,36 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     isUserLogin: function isUserLogin() {
       this.isFormOpen = false;
       if (this.$cookies.get("token") != null) this.isFormOpen = true; //console.log(this.$cookies.get("token"))
+    },
+    showReplyForm: function showReplyForm(id) {
+      this.$set(this.replyItem, id, true);
+      this.rForm.comment_id = id;
+      this.btnReply = false;
+    },
+    hideReplyForm: function hideReplyForm(id) {
+      this.btnReply = true;
+      this.$set(this.replyItem, id, false);
+    },
+    saveReply: function saveReply(id) {
+      var _this2 = this;
+
+      var url = '/api/member/reply';
+      var fData = new FormData();
+      fData.append("r_title", this.rForm.r_title);
+      fData.append("r_body", this.rForm.r_body);
+      fData.append("post_id", this.post_id);
+      fData.append("comment_id", this.rForm.comment_id);
+
+      if (id) {
+        fData.append("_method", "PUT");
+        url = "/api/member/reply/".concat(id);
+      }
+
+      axios.post(url, fData).then(function (res) {
+        _this2.res_status = res.data.msg;
+      })["catch"](function (err) {
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                ".concat(Object.values(err.response.data.errors).join(), " \n                </span>");
+      });
     }
   }
 });
@@ -51633,7 +51769,12 @@ var render = function () {
               ],
               ref: "c_title",
               staticClass: "input",
-              attrs: { type: "text", name: "", required: "" },
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "Title...",
+                required: "",
+              },
               domProps: { value: _vm.cForm.c_title },
               on: {
                 input: function ($event) {
@@ -51750,58 +51891,271 @@ var render = function () {
           ]),
           _vm._v(" "),
           _vm._l(_vm.comment_list.data, function (c) {
-            return _c("article", { staticClass: "box" }, [
-              _c("h2", { staticClass: "title" }, [
+            return _c(
+              "article",
+              { staticClass: "box" },
+              [
+                _c("h2", { staticClass: "title" }, [
+                  _c(
+                    "span",
+                    { staticClass: "ml-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "reply" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(c.c_title) +
+                        "\n                "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
                 _c(
-                  "span",
-                  { staticClass: "ml-2" },
-                  [_c("font-awesome-icon", { attrs: { icon: "reply" } })],
-                  1
+                  "div",
+                  {
+                    staticClass: "content",
+                    domProps: { innerHTML: _vm._s(c.c_body) },
+                  },
+                  [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(c.c_body) +
+                        " \n            "
+                    ),
+                  ]
                 ),
                 _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(c.c_title) +
-                      "\n                "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "content",
-                  domProps: { innerHTML: _vm._s(c.c_body) },
-                },
-                [
-                  _vm._v(
-                    "\n                " + _vm._s(c.c_body) + " \n            "
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column" }, [
-                  _c("div", { staticClass: "field is-pulled-right" }, [
-                    _c(
-                      "span",
-                      { staticClass: "ml-2 has-text-info" },
-                      [_c("font-awesome-icon", { attrs: { icon: "user" } })],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(c.user.name) +
-                          "\n                        "
+                _c("div", { staticClass: "columns" }, [
+                  _c("div", { staticClass: "column" }, [
+                    _c("div", { staticClass: "field is-pulled-left pl-2" }, [
+                      _c(
+                        "span",
+                        { staticClass: "mr-2" },
+                        [
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "calendar-day" },
+                          }),
+                        ],
+                        1
                       ),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.moment(c.created_at)) +
+                            "\n                            "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.moment(c.created_at).fromNow()) +
+                            "\n                            "
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "column" }, [
+                    _c("div", { staticClass: "field is-pulled-right" }, [
+                      _c("span", { staticClass: "mr-2" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "is-link is-outlined",
+                            attrs: { href: "" },
+                            on: {
+                              click: function ($event) {
+                                $event.preventDefault()
+                                return _vm.showReplyForm(c.id)
+                              },
+                            },
+                          },
+                          [
+                            _c("font-awesome-icon", {
+                              attrs: { icon: "reply" },
+                            }),
+                          ],
+                          1
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "ml-2 has-text-info" },
+                        [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(c.user.name) +
+                            "\n                        "
+                        ),
+                      ]),
                     ]),
                   ]),
                 ]),
-              ]),
-            ])
+                _vm._v(" "),
+                _c("div", { staticClass: "columns" }, [
+                  _c("div", { staticClass: "column" }, [
+                    _vm.replyItem[c.id]
+                      ? _c("div", [
+                          _c("form", { attrs: { action: "" } }, [
+                            _c("div", { staticClass: "field" }, [
+                              _c("div", { staticClass: "control" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.rForm.r_title,
+                                      expression: "rForm.r_title",
+                                    },
+                                  ],
+                                  ref: "r_title",
+                                  refInFor: true,
+                                  staticClass: "input",
+                                  attrs: { type: "text", name: "" },
+                                  domProps: { value: _vm.rForm.r_title },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.rForm,
+                                        "r_title",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "field" }, [
+                              _c(
+                                "div",
+                                { staticClass: "control" },
+                                [
+                                  _c("jodit-editor", {
+                                    attrs: { height: "250" },
+                                    model: {
+                                      value: _vm.rForm.r_body,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.rForm, "r_body", $$v)
+                                      },
+                                      expression: "rForm.r_body",
+                                    },
+                                  }),
+                                ],
+                                1
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "columns" }, [
+                              _c("div", { staticClass: "column" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "field is-pulled-left" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        domProps: {
+                                          innerHTML: _vm._s(_vm.res_status),
+                                        },
+                                      },
+                                      [_vm._v(_vm._s(_vm.res_status))]
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "column" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "field is-pulled-right" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "button is-outlined is-primary",
+                                        on: {
+                                          click: function ($event) {
+                                            $event.preventDefault()
+                                            return _vm.saveReply(_vm.replyId)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("font-awesome-icon", {
+                                          attrs: { icon: "check" },
+                                        }),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "button is-outlined is-danger",
+                                        on: {
+                                          click: function ($event) {
+                                            $event.preventDefault()
+                                            return _vm.hideReplyForm(c.id)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("font-awesome-icon", {
+                                          attrs: { icon: "times" },
+                                        }),
+                                      ],
+                                      1
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                            ]),
+                          ]),
+                        ])
+                      : _vm._e(),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.reply_list, function (re) {
+                  return _c("article", { staticClass: "box" }, [
+                    _c("h2", { staticClass: "title" }, [
+                      _vm._v(_vm._s(re.r_title)),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "content",
+                        domProps: { innerHTML: _vm._s(re.r_body) },
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(re.r_body) +
+                            "\n                "
+                        ),
+                      ]
+                    ),
+                  ])
+                }),
+              ],
+              2
+            )
           }),
           _vm._v(" "),
           _c(

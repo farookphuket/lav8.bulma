@@ -23,8 +23,31 @@
                 </div>
 
                  <div class="columns">
+                        <div class="column">
+                            <div class="field is-pulled-left pl-2">
+                                <span class="mr-2">
+                                    <font-awesome-icon icon="calendar-day"></font-awesome-icon>
+                                </span>
+                                <span>
+                                    {{moment(c.created_at)}}
+                                </span>
+                                <span class="ml-2">
+                                    {{moment(c.created_at).fromNow()}}
+                                </span>
+                            </div>
+                        </div>
                      <div class="column">
+                        
                         <div class="field is-pulled-right">
+                            <span class="mr-2">
+                                <a class="is-link is-outlined" href="" 
+                                @click.prevent="showReplyForm(c.id)"
+                                >
+                                    <font-awesome-icon icon="reply"></font-awesome-icon>
+                                </a>
+                            </span>
+
+
                             <span class="ml-2 has-text-info">
                                 <font-awesome-icon icon="user"></font-awesome-icon>
                             </span>
@@ -33,7 +56,73 @@
                             </span>
                         </div>
                      </div>
+
+
+
                  </div>
+
+
+                 <div class="columns">
+
+                     <div class="column">
+                        <div v-if="replyItem[c.id]">
+                            <form action="">
+
+                            <div class="field">
+                                <div class="control">
+                                    <input v-model="rForm.r_title" 
+                                    class="input" type="text" name="" 
+                                    ref="r_title">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <jodit-editor 
+                                    v-model="rForm.r_body" 
+                                    height=250></jodit-editor>
+                                </div>    
+                            </div>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <div class="field is-pulled-left">
+                                        <div v-html="res_status">{{res_status}}</div>
+                                    </div>
+                                </div>
+                                <div class="column">
+
+                                    <div class="field is-pulled-right">
+                                        <button class="button is-outlined is-primary" 
+                                        @click.prevent="saveReply(replyId)">
+                                            <font-awesome-icon icon="check"></font-awesome-icon>
+                                        </button>
+                                        <button class="button is-outlined is-danger" 
+                                        @click.prevent="hideReplyForm(c.id)">
+                                            <font-awesome-icon icon="times"></font-awesome-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            </form>
+
+                        </div>
+
+                     </div>
+
+                     
+                 </div>
+
+                <!-- reply list START -->
+                <article class="box" v-for="re in reply_list">
+                    <h2 class="title">{{re.r_title}}</h2>
+                    <div class="content" v-html="re.r_body">
+                        {{re.r_body}}
+                    </div>
+                </article>
+                <!-- reply list End -->
+
             </article>
 
 
@@ -83,6 +172,16 @@ export default{
     },
     data(){return{
         comment_list:'',
+        replyItem:[],
+        reply_list:'',
+        replyId:0,
+        rForm: new Form({
+            r_title:"",
+            r_body:"",
+            comment_id:''
+                }),
+        btnReply:true,
+        res_status:'',
         moment:moment,
         post_id:0,
         editId:0,
@@ -119,6 +218,12 @@ export default{
                     cm.data.forEach((cc)=>{
                         //console.log(cc.pivot.post_id)
                         this.$cookies.set("current_post_id",cc.pivot.post_id)
+                        //console.log(cc.reply)
+                        this.reply_list = cc.reply
+                        cc.reply.forEach((re)=>{
+                            //this.reply_list = re
+                            console.log(re)
+                                })
                     })
 
              //       console.log(res.data)
@@ -138,6 +243,41 @@ export default{
             this.isFormOpen = false
             if(this.$cookies.get("token") != null) this.isFormOpen = true
             //console.log(this.$cookies.get("token"))
+        },
+        showReplyForm(id){
+            this.$set(this.replyItem,id,true)
+            this.rForm.comment_id = id
+            this.btnReply = false 
+
+        },
+        hideReplyForm(id){
+            this.btnReply = true
+            this.$set(this.replyItem,id,false)
+        },
+        saveReply(id){
+            let url = '/api/member/reply'
+            let fData = new FormData()
+
+            fData.append("r_title",this.rForm.r_title)
+            fData.append("r_body",this.rForm.r_body)
+            fData.append("post_id",this.post_id)
+            fData.append("comment_id",this.rForm.comment_id)
+
+
+            if(id){
+                fData.append("_method","PUT")
+                url = `/api/member/reply/${id}`
+            }
+            axios.post(url,fData)
+                .then(res=>{
+                    this.res_status = res.data.msg
+                })
+            .catch(err=>{
+                this.res_status = `<span class="tag is-medium is-danger">
+                ${Object.values(err.response.data.errors).join()} 
+                </span>`
+                    })
+
         },
     },
 }

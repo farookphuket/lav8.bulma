@@ -20,6 +20,16 @@ class CreateCommentsTable extends Migration
             $table->text("c_body");
             $table->timestamps();
         });
+
+
+        Schema::create('comment_reply', function (Blueprint $table) {
+
+            $table->id();
+            $table->foreignId("reply_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("comment_id")->constrained()->cascadeOnDelete();
+
+        });
+
     }
 
     /**
@@ -30,5 +40,6 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
+        Schema::dropIfExists('comment_reply');
     }
 }

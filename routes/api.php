@@ -9,6 +9,7 @@ use App\Http\Controllers\Member\DashboardController as MHOME;
 use App\Http\Controllers\PostController as Post;
 use App\Http\Controllers\CategoryController as Cat;
 use App\Http\Controllers\CommentController as PCM;
+use App\Http\Controllers\ReplyController as PRC; // stand for Public Reply Comment
 
 // user role 
 use App\Http\Controllers\RoleController as uRole;
@@ -58,6 +59,10 @@ Route::get('/getpost',[Post::class,'getPost'])->name('getPost');
 // get comment for post 
 Route::get('/getcomment',[PCM::class,"getPostComment"])
     ->name("getPostComment");
+
+// reply 
+Route::get('/getreply',[PRC::class,"getCommentReply"])
+        ->name("getCommentReply");
 
 // get about page on 10 Dec 2021
 Route::get('/getabout',[Post::class,'getAbout'])->name('getAbout');
@@ -110,6 +115,9 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 
     // comment 
     Route::resource("/comment",PCM::class);
+
+    // reply 
+    Route::resource("/reply",PRC::class);
 
     // Tag 
     Route::resource("/tag",Tag::class);

@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\Post;
 use App\Models\Reply;
-use App\Models\User;
+use App\Models\Comment;
+use Auth;
 use Illuminate\Http\Request;
 
-use Auth;
-use DB;
-
-class CommentController extends Controller
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,20 +19,18 @@ class CommentController extends Controller
         //
     }
 
+    public function getCommentReply(){
+        $comment = Comment::find(request()->comment_id);
 
-    public function getPostComment(){
-        $post = Post::find(request()->post_id);
-
-        $cm = $post->comment()
-                    ->with("user")
-                    ->with("reply")
-                    ->latest()
-                    ->paginate(2);
+        $rp = $comment->reply()
+                        ->latest()
+                        ->get();
 
         return response()->json([
-            "comment" => $cm
+            "reply" => $rp
         ]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -56,43 +50,39 @@ class CommentController extends Controller
     public function store()
     {
         $valid = request()->validate([
-            "c_title" => ["required"],
-            "c_body" => ["required"]
+            "r_title" => ["required"]
         ],
         [
-            "c_title.required" => "Error! the Title is required ,min 18 , max 80"
+            "r_title.required" => "Error! the title is required"
         ]);
 
         $post_id = request()->post_id;
+        $comment_id = request()->comment_id;
 
+        // prepare data 
+        $valid["r_title"] = xx_clean(request()->r_title);
+        $valid["r_body"] = xx_clean(request()->r_body);
         $valid["user_id"] = Auth::user()->id;
-        $valid["c_title"] = xx_clean(request()->c_title);
-        $valid["c_body"] = xx_clean(request()->c_body);
+        // create reply 
+        Reply::create($valid);
 
-        // create the comment
-        Comment::create($valid);
-
-        // get the last insert row
-        $cm = Comment::latest()->first();
-
-        // link the post and comment 
-        $cm->post()->attach($post_id);
+        // get comment 
+        $cm = Comment::find($comment_id);
 
         $msg = "<span class=\"tag is-medium is-success\">
-            Success : your comment {$post_id} has been created!</span>";
+            Success : reply to {$post_id} save!</span>";
         return response()->json([
             "msg" => $msg
         ]);
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Reply $reply)
     {
         //
     }
@@ -100,10 +90,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Reply $reply)
     {
         //
     }
@@ -112,10 +102,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Reply $reply)
     {
         //
     }
@@ -123,10 +113,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Reply $reply)
     {
         //
     }
