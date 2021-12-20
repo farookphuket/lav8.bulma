@@ -101,7 +101,8 @@
                 <!-- show tag,category div.colums END -->
 
     
-                <comment-list :postId="post_id"></comment-list>
+                <comment-list :postId="post_id" 
+                    :post="post"></comment-list>
            </article>
         </section>
     </div>

@@ -15577,6 +15577,8 @@ __webpack_require__.r(__webpack_exports__);
         //console.log(res.data)
         _this.$cookies.set('token', '');
 
+        _this.$cookies.remove("token");
+
         location.href = "/";
       });
     }
@@ -17318,7 +17320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _CommentForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CommentForm.vue */ "./resources/js/pages/Post/CommentForm.vue");
+/* harmony import */ var jodit_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jodit-vue */ "./node_modules/jodit-vue/dist/jodit-vue.esm.js");
+/* harmony import */ var _CommentForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CommentForm.vue */ "./resources/js/pages/Post/CommentForm.vue");
 //
 //
 //
@@ -17422,109 +17425,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
+
+
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CommentList",
   props: ["postId"],
   components: {
-    CommentForm: _CommentForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CommentForm: _CommentForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      comment_list: '',
-      replyItem: [],
-      reply_list: '',
-      replyId: 0,
-      rForm: new Form({
-        r_title: "",
-        r_body: "",
-        comment_id: ''
-      }),
-      btnReply: true,
-      res_status: '',
-      moment: moment,
       post_id: 0,
-      editId: 0,
-      current_post_id: 0,
-      isFormOpen: false,
-      isShowPagination: false
+      comment_list: 0,
+      reply_list: 0,
+      replyItem: [],
+      btnReply: true,
+      rForm: new Form({
+        r_body: '',
+        comment_id: 0
+      }),
+      res_status: '',
+      moment: moment
     };
-  },
-  mounted: function mounted() {
-    this.isUserLogin();
   },
   watch: {
     "postId": function postId(x) {
-      this.getLastEndPoint(x);
+      this.getPostById(x);
     }
   },
+  mounted: function mounted() {},
   methods: {
     getComment: function getComment(page) {
       var _this = this;
 
-      this.isShowPagination = false;
       var url = '';
 
       if (page) {
@@ -17535,65 +17471,23 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       url = this.$cookies.get("pcm_old_page");
       if (!url) url = "/api/getcomment?post_id=".concat(this.post_id);
       axios.get(url).then(function (res) {
+        console.log(res.data);
         _this.comment_list = res.data.comment;
-        if (_this.comment_list.total != 0) _this.isShowPagination = true;
-        var cm = res.data.comment;
-        cm.data.forEach(function (cc) {
-          //console.log(cc.pivot.post_id)
-          _this.$cookies.set("current_post_id", cc.pivot.post_id); //console.log(cc.reply)
-
-
-          _this.reply_list = cc.reply;
-          cc.reply.forEach(function (re) {
-            //this.reply_list = re
-            console.log(re);
-          });
-        }); //       console.log(res.data)
       });
     },
-    getLastEndPoint: function getLastEndPoint(x) {
-      this.post_id = x;
-      this.current_post_id = this.$cookies.get("current_post_id");
-
-      if (this.post_id != this.current_post_id) {
-        this.$cookies.remove("pcm_old_page");
-      }
-
-      this.getComment();
-    },
-    isUserLogin: function isUserLogin() {
-      this.isFormOpen = false;
-      if (this.$cookies.get("token") != null) this.isFormOpen = true; //console.log(this.$cookies.get("token"))
-    },
     showReplyForm: function showReplyForm(id) {
-      this.$set(this.replyItem, id, true);
       this.rForm.comment_id = id;
+      this.$set(this.replyItem, id, true);
       this.btnReply = false;
     },
     hideReplyForm: function hideReplyForm(id) {
-      this.btnReply = true;
       this.$set(this.replyItem, id, false);
+      this.rForm.comment_id = 0;
+      this.btnReply = true;
     },
-    saveReply: function saveReply(id) {
-      var _this2 = this;
-
-      var url = '/api/member/reply';
-      var fData = new FormData();
-      fData.append("r_title", this.rForm.r_title);
-      fData.append("r_body", this.rForm.r_body);
-      fData.append("post_id", this.post_id);
-      fData.append("comment_id", this.rForm.comment_id);
-
-      if (id) {
-        fData.append("_method", "PUT");
-        url = "/api/member/reply/".concat(id);
-      }
-
-      axios.post(url, fData).then(function (res) {
-        _this2.res_status = res.data.msg;
-      })["catch"](function (err) {
-        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                ".concat(Object.values(err.response.data.errors).join(), " \n                </span>");
-      });
+    getPostById: function getPostById(x) {
+      this.post_id = x;
+      this.getComment();
     }
   }
 });
@@ -18115,6 +18009,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _CommentList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CommentList.vue */ "./resources/js/pages/Post/CommentList.vue");
+//
 //
 //
 //
@@ -51865,74 +51760,143 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("comment-form", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.isFormOpen,
-            expression: "isFormOpen",
-          },
-        ],
-        attrs: { postId: _vm.post_id, editId: _vm.editId },
-        on: {
-          getComment: function ($event) {
-            return _vm.getComment($event)
-          },
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "content mt-6 mb-4" },
-        [
-          _c("h2", [
-            _vm._v("comment " + _vm._s(_vm.comment_list.total) + " item(s)."),
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.comment_list.data, function (c) {
-            return _c(
-              "article",
-              { staticClass: "box" },
-              [
-                _c("h2", { staticClass: "title" }, [
+      _vm._l(_vm.comment_list.data, function (cc) {
+        return _c(
+          "article",
+          { staticClass: "box" },
+          [
+            _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(cc.c_title))]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle" }, [
+              _vm._v(" \n            " + _vm._s(cc.user.name)),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "content mb-4 mt-2",
+                domProps: { innerHTML: _vm._s(cc.c_body) },
+              },
+              [_vm._v("\n            " + _vm._s(cc.c_body) + "\n        ")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "field is-pulled-left" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(cc.created_at) +
+                      "\n                "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "field is-pulled-right" }, [
                   _c(
                     "span",
-                    { staticClass: "ml-2" },
-                    [_c("font-awesome-icon", { attrs: { icon: "reply" } })],
+                    { staticClass: "ml-2 has-text-success" },
+                    [_c("font-awesome-icon", { attrs: { icon: "user" } })],
                     1
                   ),
                   _vm._v(" "),
                   _c("span", [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(c.c_title) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(cc.user.name) +
+                        "\n                    "
                     ),
                   ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "ml-2" },
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "quote-left" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "is-link is-outlined",
+                        attrs: { href: "" },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.showReplyForm(cc.id)
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                            reply \n                            "
+                        ),
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "quote-right" },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm.replyItem[cc.id]
+              ? _c("div", { staticClass: "mb-4 mt-4" }, [
+                  _c("div", { staticClass: "field" }, [
+                    _c(
+                      "div",
+                      { staticClass: "control" },
+                      [
+                        _c("jodit-editor", {
+                          model: {
+                            value: _vm.rForm.r_body,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.rForm, "r_body", $$v)
+                            },
+                            expression: "rForm.r_body",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(cc.reply, function (re) {
+              return _c("article", { staticClass: "box" }, [
+                _c("h2", { staticClass: "title" }, [
+                  _vm._v(_vm._s(re.r_title)),
                 ]),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "content",
-                    domProps: { innerHTML: _vm._s(c.c_body) },
+                    staticClass: "content mb-2 mt-2",
+                    domProps: { innerHTML: _vm._s(re.r_body) },
                   },
                   [
                     _vm._v(
                       "\n                " +
-                        _vm._s(c.c_body) +
-                        " \n            "
+                        _vm._s(re.r_body) +
+                        "\n            "
                     ),
                   ]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "columns" }, [
                   _c("div", { staticClass: "column" }, [
-                    _c("div", { staticClass: "field is-pulled-left pl-2" }, [
+                    _c("div", { staticClass: "field is-pulled-right" }, [
                       _c(
                         "span",
-                        { staticClass: "mr-2" },
+                        { staticClass: "ml-2" },
                         [
                           _c("font-awesome-icon", {
                             attrs: { icon: "calendar-day" },
@@ -51941,314 +51905,41 @@ var render = function () {
                         1
                       ),
                       _vm._v(" "),
-                      _c("span", [
+                      _c("span", { staticClass: "mr-2 ml-2" }, [
                         _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.moment(c.created_at)) +
-                            "\n                            "
+                          "\n                            " +
+                            _vm._s(_vm.moment(re.created_at)) +
+                            "\n                        "
                         ),
                       ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.moment(c.created_at).fromNow()) +
-                            "\n                            "
-                        ),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "column" }, [
-                    _c("div", { staticClass: "field is-pulled-right" }, [
-                      _c("span", { staticClass: "mr-2" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "is-link is-outlined",
-                            attrs: { href: "" },
-                            on: {
-                              click: function ($event) {
-                                $event.preventDefault()
-                                return _vm.showReplyForm(c.id)
-                              },
-                            },
-                          },
-                          [
-                            _c("font-awesome-icon", {
-                              attrs: { icon: "reply" },
-                            }),
-                          ],
-                          1
-                        ),
+                      _c("span", [
+                        _vm._v(_vm._s(_vm.moment(re.created_at).fromNow())),
                       ]),
                       _vm._v(" "),
                       _c(
                         "span",
-                        { staticClass: "ml-2 has-text-info" },
+                        { staticClass: "ml-2 mr-2 has-text-info" },
                         [_c("font-awesome-icon", { attrs: { icon: "user" } })],
                         1
                       ),
                       _vm._v(" "),
-                      _c("span", [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(c.user.name) +
-                            "\n                        "
-                        ),
-                      ]),
+                      _c("span", [_vm._v(_vm._s(re.user.name))]),
                     ]),
                   ]),
                 ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "columns" }, [
-                  _c("div", { staticClass: "column" }, [
-                    _vm.replyItem[c.id]
-                      ? _c("div", [
-                          _c("form", { attrs: { action: "" } }, [
-                            _c("div", { staticClass: "field" }, [
-                              _c("div", { staticClass: "control" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.rForm.r_title,
-                                      expression: "rForm.r_title",
-                                    },
-                                  ],
-                                  ref: "r_title",
-                                  refInFor: true,
-                                  staticClass: "input",
-                                  attrs: { type: "text", name: "" },
-                                  domProps: { value: _vm.rForm.r_title },
-                                  on: {
-                                    input: function ($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.rForm,
-                                        "r_title",
-                                        $event.target.value
-                                      )
-                                    },
-                                  },
-                                }),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "field" }, [
-                              _c(
-                                "div",
-                                { staticClass: "control" },
-                                [
-                                  _c("jodit-editor", {
-                                    attrs: { height: "250" },
-                                    model: {
-                                      value: _vm.rForm.r_body,
-                                      callback: function ($$v) {
-                                        _vm.$set(_vm.rForm, "r_body", $$v)
-                                      },
-                                      expression: "rForm.r_body",
-                                    },
-                                  }),
-                                ],
-                                1
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "columns" }, [
-                              _c("div", { staticClass: "column" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "field is-pulled-left" },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        domProps: {
-                                          innerHTML: _vm._s(_vm.res_status),
-                                        },
-                                      },
-                                      [_vm._v(_vm._s(_vm.res_status))]
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "column" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "field is-pulled-right" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "button is-outlined is-primary",
-                                        on: {
-                                          click: function ($event) {
-                                            $event.preventDefault()
-                                            return _vm.saveReply(_vm.replyId)
-                                          },
-                                        },
-                                      },
-                                      [
-                                        _c("font-awesome-icon", {
-                                          attrs: { icon: "check" },
-                                        }),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "button is-outlined is-danger",
-                                        on: {
-                                          click: function ($event) {
-                                            $event.preventDefault()
-                                            return _vm.hideReplyForm(c.id)
-                                          },
-                                        },
-                                      },
-                                      [
-                                        _c("font-awesome-icon", {
-                                          attrs: { icon: "times" },
-                                        }),
-                                      ],
-                                      1
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                            ]),
-                          ]),
-                        ])
-                      : _vm._e(),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.reply_list, function (re) {
-                  return _c("article", { staticClass: "box" }, [
-                    _c("h2", { staticClass: "title" }, [
-                      _vm._v(_vm._s(re.r_title)),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "content",
-                        domProps: { innerHTML: _vm._s(re.r_body) },
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(re.r_body) +
-                            "\n                "
-                        ),
-                      ]
-                    ),
-                  ])
-                }),
-              ],
-              2
-            )
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isShowPagination,
-                  expression: "isShowPagination",
-                },
-              ],
-              staticClass: "box",
-            },
-            [
-              _c(
-                "nav",
-                {
-                  staticClass: "pagination is-rounded",
-                  attrs: { role: "navigation", "aria-label": "pagination" },
-                },
-                [
-                  _c("a", { staticClass: "pagination-previous is-current" }, [
-                    _vm._v("All comment " + _vm._s(_vm.comment_list.total)),
-                  ]),
-                  _vm._v(" "),
-                  _c("a", { staticClass: "pagination-next is-current" }, [
-                    _vm._v("page " + _vm._s(_vm.comment_list.current_page)),
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.comment_list.links, function (ln) {
-                    return _c("ul", { staticClass: "pagination-list" }, [
-                      ln.url != null && ln.active == false
-                        ? _c("li", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "pagination-link",
-                                attrs: {
-                                  "aria-label": "Page 1",
-                                  "aria-current": "page",
-                                },
-                                domProps: { innerHTML: _vm._s(ln.label) },
-                                on: {
-                                  click: function ($event) {
-                                    $event.preventDefault()
-                                    return _vm.getComment(ln.url)
-                                  },
-                                },
-                              },
-                              [_vm._v(_vm._s(ln.label))]
-                            ),
-                          ])
-                        : _c("li", [
-                            ln.active == true
-                              ? _c(
-                                  "a",
-                                  {
-                                    staticClass: "pagination-link is-current",
-                                    attrs: {
-                                      "aria-label": "",
-                                      "aria-current": "page",
-                                    },
-                                    domProps: { innerHTML: _vm._s(ln.label) },
-                                  },
-                                  [_vm._v(_vm._s(ln.label))]
-                                )
-                              : _c(
-                                  "a",
-                                  {
-                                    staticClass: "pagination-link",
-                                    attrs: {
-                                      "aria-label": "",
-                                      "aria-current": "page",
-                                    },
-                                    domProps: { innerHTML: _vm._s(ln.label) },
-                                  },
-                                  [_vm._v(_vm._s(ln.label))]
-                                ),
-                          ]),
-                    ])
-                  }),
-                ],
-                2
-              ),
-            ]
-          ),
-        ],
-        2
-      ),
+              ])
+            }),
+          ],
+          2
+        )
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "content mt-6 mb-4" }, [
+        _vm._v("\n        pagination\n    "),
+      ]),
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -53124,7 +52815,9 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c("comment-list", { attrs: { postId: _vm.post_id } }),
+          _c("comment-list", {
+            attrs: { postId: _vm.post_id, post: _vm.post },
+          }),
         ],
         1
       ),

@@ -52,11 +52,11 @@ class User extends Authenticatable
     }
 
     public function comment(){
-        return $this->hasMany(Comment::class);
+        return $this->belongsToMany(Comment::class)->with("reply");
     }
 
     public function reply(){
-        return $this->hasMany(Reply::class);
+        return $this->belongsToMany(Reply::class);
     }
 
     public function role(){

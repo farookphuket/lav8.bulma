@@ -43,6 +43,10 @@ class Post extends Model
     public function comment(){
         return $this->belongsToMany(Comment::class);
     }
+
+    public function reply(){
+        return $this->belongsToMany(Reply::class);
+    }
     /* ======================= Backup and Custom section =================================
      * 
      * */

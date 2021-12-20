@@ -48,4 +48,48 @@ INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALU
     '4',
     '2021-12-18 10:31:38',
     '2021-12-18 10:31:38');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 2 to read id 5
+ * on 2021-12-19 05:38:38 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '2',
+    '5',
+    '2021-12-19 05:38:38',
+    '2021-12-19 05:38:38');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 1 to read id 6
+ * on 2021-12-19 18:51:52 pm
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '1',
+    '6',
+    '2021-12-19 18:51:52',
+    '2021-12-19 18:51:52');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 1 to read id 7
+ * on 2021-12-20 06:51:29 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '1',
+    '7',
+    '2021-12-20 06:51:29',
+    '2021-12-20 06:51:29');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 2 to read id 8
+ * on 2021-12-20 07:15:14 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '2',
+    '8',
+    '2021-12-20 07:15:14',
+    '2021-12-20 07:15:14');
  

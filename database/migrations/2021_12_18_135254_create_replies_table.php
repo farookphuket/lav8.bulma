@@ -20,6 +20,14 @@ class CreateRepliesTable extends Migration
             $table->text("r_body");
             $table->timestamps();
         });
+
+
+        Schema::create('post_reply', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("post_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("reply_id")->constrained()->cascadeOnDelete();
+        });
+
     }
 
     /**
@@ -30,5 +38,6 @@ class CreateRepliesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('replies');
+        Schema::dropIfExists('post_reply');
     }
 }

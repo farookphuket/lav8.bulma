@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
+use App\Models\Post;
 use App\Models\Comment;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -60,14 +62,20 @@ class ReplyController extends Controller
         $comment_id = request()->comment_id;
 
         // prepare data 
+//        $valid["comment_id"] = $comment_id;
         $valid["r_title"] = xx_clean(request()->r_title);
         $valid["r_body"] = xx_clean(request()->r_body);
         $valid["user_id"] = Auth::user()->id;
         // create reply 
         Reply::create($valid);
 
-        // get comment 
-        $cm = Comment::find($comment_id);
+        // get reply 
+        $re = Reply::latest()->first();
+        $re->comment()->attach($comment_id);
+
+        // get post link
+        $po = Post::find($post_id);
+        $re->post()->attach($po);
 
         $msg = "<span class=\"tag is-medium is-success\">
             Success : reply to {$post_id} save!</span>";

@@ -28,13 +28,15 @@ class CommentController extends Controller
         $post = Post::find(request()->post_id);
 
         $cm = $post->comment()
-                    ->with("user")
-                    ->with("reply")
-                    ->latest()
-                    ->paginate(2);
+                   ->with(["reply" => fn($q) => $q
+                   ->with("user")])
+                ->with("user")
+                ->paginate(2);
+
 
         return response()->json([
-            "comment" => $cm
+            "comment" => $cm,
+
         ]);
     }
     /**

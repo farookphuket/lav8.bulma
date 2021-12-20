@@ -40,6 +40,8 @@ export default{
                      .then(res=>{
                          //console.log(res.data)
                          this.$cookies.set('token','')
+                         this.$cookies.remove("token")
+
                             location.href="/"
                              })
                  },

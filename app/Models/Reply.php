@@ -11,6 +11,7 @@ class Reply extends Model
 
     protected $fillable = [
         "user_id",
+        "comment_id",
         "r_title",
         "r_body"
     ];
@@ -18,6 +19,10 @@ class Reply extends Model
 
     public function comment(){
         return $this->belongsToMany(Comment::class);
+    }
+
+    public function post(){
+        return $this->belongsToMany(Post::class);
     }
 
     public function user(){
