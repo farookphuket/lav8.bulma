@@ -102,7 +102,7 @@
 
     
                 <comment-list :postId="post_id" 
-                    :post="post"></comment-list>
+                    ></comment-list>
            </article>
         </section>
     </div>

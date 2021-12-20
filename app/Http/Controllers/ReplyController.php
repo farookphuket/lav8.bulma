@@ -52,10 +52,12 @@ class ReplyController extends Controller
     public function store()
     {
         $valid = request()->validate([
-            "r_title" => ["required"]
+            "r_title" => ["required"],
+            "r_body" => ["required"]
         ],
         [
-            "r_title.required" => "Error! the title is required"
+            "r_title.required" => "Error! the title is required",
+            "r_body.required" => "Error! Content cannot be empty",
         ]);
 
         $post_id = request()->post_id;

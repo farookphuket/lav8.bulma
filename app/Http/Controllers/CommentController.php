@@ -29,7 +29,8 @@ class CommentController extends Controller
 
         $cm = $post->comment()
                    ->with(["reply" => fn($q) => $q
-                   ->with("user")])
+                   ->with("user") 
+                   ->latest()])
                 ->with("user")
                 ->paginate(2);
 
