@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             PostSeeder::class,
+            CommentSeeder::class,
+            ReplySeeder::class,
             ReadSeeder::class,
             TagSeeder::class,
             VisitorSeeder::class,
@@ -58,6 +60,20 @@ class DatabaseSeeder extends Seeder
         $post_read_file = 'DB/post_read_list.sqlite'; 
         DB::unprepared(file_get_contents($post_read_file));
         $this->command->info("Post Read Link has been Created!!");
+
+
+        // comment link to post
+        Eloquent::unguard();
+        $comment_post_file = 'DB/post_comment_link.sqlite'; 
+        DB::unprepared(file_get_contents($comment_post_file));
+        $this->command->info("Post Comment Link has been Created!!");
+
+
+        // reply link to comment
+        Eloquent::unguard();
+        $comment_reply_file = 'DB/comment_reply_link.sqlite'; 
+        DB::unprepared(file_get_contents($comment_reply_file));
+        $this->command->info("Reply Comment Link has been Created!!");
 
     }
 }

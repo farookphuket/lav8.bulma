@@ -17504,6 +17504,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -51794,7 +51818,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "content mb-6 mt-4" }, [
       _c("form", { attrs: { action: "" } }, [
         _c("div", { staticClass: "field" }, [
           _c("div", { staticClass: "control" }, [
@@ -51905,7 +51929,7 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "box mb-4" }, [
+      _c("div", { staticClass: "box mb-4 mt-4" }, [
         _c("h2", { staticClass: "has-text-centered title" }, [
           _vm._v(
             "\n            Leave comment (" +
@@ -51952,7 +51976,7 @@ var render = function () {
               [_vm._v("\n            " + _vm._s(cc.c_body) + "\n        ")]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "columns is-mobile" }, [
               _c("div", { staticClass: "column" }, [
                 _c("div", { staticClass: "field is-pulled-left" }, [
                   _c(
@@ -52139,6 +52163,7 @@ var render = function () {
                       { staticClass: "control" },
                       [
                         _c("jodit-editor", {
+                          attrs: { height: "450" },
                           model: {
                             value: _vm.rForm.r_body,
                             callback: function ($$v) {
@@ -52151,7 +52176,7 @@ var render = function () {
                       1
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "columns" }, [
+                    _c("div", { staticClass: "columns mt-4 is-mobile" }, [
                       _c("div", { staticClass: "column" }, [
                         _c("div", { staticClass: "field is-pulled-left" }, [
                           _c(
@@ -52236,7 +52261,7 @@ var render = function () {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "columns is-mobile mb-2" }, [
                   _c("div", { staticClass: "column" }, [
                     _c("div", { staticClass: "field is-pulled-right" }, [
                       _c(
@@ -52280,9 +52305,80 @@ var render = function () {
         )
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "content mt-6 mb-4" }, [
-        _vm._v("\n        pagination\n    "),
-      ]),
+      _vm.comment_list.total > 1
+        ? _c("div", { staticClass: "content mt-6 mb-4" }, [
+            _c(
+              "nav",
+              {
+                staticClass: "pagination is-rounded",
+                attrs: { role: "navigation", "aria-label": "pagination" },
+              },
+              [
+                _c("a", { staticClass: "pagination-previous is-current" }, [
+                  _vm._v("All comment " + _vm._s(_vm.comment_list.total)),
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "pagination-next is-current" }, [
+                  _vm._v("page " + _vm._s(_vm.comment_list.current_page)),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.comment_list.links, function (ln) {
+                  return _c("ul", { staticClass: "pagination-list" }, [
+                    ln.url != null && ln.active == false
+                      ? _c("li", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link",
+                              attrs: {
+                                "aria-label": "Page 1",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                              on: {
+                                click: function ($event) {
+                                  $event.preventDefault()
+                                  return _vm.getComment(ln.url)
+                                },
+                              },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          ),
+                        ])
+                      : _c("li", [
+                          ln.active == true
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "pagination-link is-current",
+                                  attrs: {
+                                    "aria-label": "",
+                                    "aria-current": "page",
+                                  },
+                                  domProps: { innerHTML: _vm._s(ln.label) },
+                                },
+                                [_vm._v(_vm._s(ln.label))]
+                              )
+                            : _c(
+                                "a",
+                                {
+                                  staticClass: "pagination-link",
+                                  attrs: {
+                                    "aria-label": "",
+                                    "aria-current": "page",
+                                  },
+                                  domProps: { innerHTML: _vm._s(ln.label) },
+                                },
+                                [_vm._v(_vm._s(ln.label))]
+                              ),
+                        ]),
+                  ])
+                }),
+              ],
+              2
+            ),
+          ])
+        : _vm._e(),
     ],
     2
   )

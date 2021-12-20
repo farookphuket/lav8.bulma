@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="content">
+        <div class="content mb-6 mt-4">
             <form action="">
                 <div class="field">
                     <div class="control">

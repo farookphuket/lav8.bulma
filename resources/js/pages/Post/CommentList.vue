@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <div class="box mb-4">
+        <div class="box mb-4 mt-4">
             <h2 class="has-text-centered title">
                 Leave comment ({{comment_list.total}})
             </h2>
@@ -22,7 +22,7 @@
             </div><!-- end of div for comment body -->
 
             <!-- div.columns show user detail START -->
-            <div class="columns">
+            <div class="columns is-mobile">
                 <div class="column">
                     <div class="field is-pulled-left">
                         <span class="ml-2">
@@ -103,11 +103,12 @@
                <div class="field">
                     <div class="control">
                         <jodit-editor 
-                        v-model="rForm.r_body"></jodit-editor>
+                        v-model="rForm.r_body" 
+                        height=450></jodit-editor>
                     </div>
 
                     <!-- button status on reply form START -->
-                    <div class="columns">
+                    <div class="columns mt-4 is-mobile">
                         <div class="column">
                             <div class="field is-pulled-left">
                                 <div v-html="res_status">
@@ -145,7 +146,7 @@
                 <div class="content mb-2 mt-2" v-html="re.r_body">
                     {{re.r_body}}
                 </div>
-                <div class="columns">
+                <div class="columns is-mobile mb-2">
                     <div class="column">
                         <div class="field is-pulled-right">
                             <span class="ml-2">
@@ -173,8 +174,31 @@
 
 
         <!-- pagination page START -->
-        <div class="content mt-6 mb-4">
-            pagination
+        <div class="content mt-6 mb-4" v-if="comment_list.total > 1">
+            
+                <nav class="pagination is-rounded" role="navigation" 
+                aria-label="pagination">
+                    <a class="pagination-previous is-current">All comment {{comment_list.total}}</a>
+                    <a class="pagination-next is-current">page {{comment_list.current_page}}</a>
+                  <ul class="pagination-list" v-for="ln in comment_list.links">
+                    <li v-if="ln.url != null && ln.active == false">
+                      <a class="pagination-link" 
+                      aria-label="Page 1" aria-current="page" v-html="ln.label" 
+                      @click.prevent="getComment(ln.url)">{{ln.label}}</a>
+                    </li>
+                    <li v-else>
+                      <a class="pagination-link is-current"  v-if="ln.active == true" 
+                      aria-label="" aria-current="page" v-html="ln.label" 
+                      >{{ln.label}}</a>
+
+                      <a class="pagination-link"  v-else 
+                      aria-label="" aria-current="page" v-html="ln.label" 
+                      >{{ln.label}}</a>
+                    </li>
+
+                  </ul>
+                </nav>
+
         </div>
         <!-- pagination page END -->
     </div>

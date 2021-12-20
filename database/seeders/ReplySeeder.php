@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Eloquent;
+use DB;
 class ReplySeeder extends Seeder
 {
     /**
@@ -14,5 +15,10 @@ class ReplySeeder extends Seeder
     public function run()
     {
         //
+        // make Reply table
+        Eloquent::unguard();
+        $path = 'DB/reply_list.sqlite';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info("Reply has been Created!!");
     }
 }

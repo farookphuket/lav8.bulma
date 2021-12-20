@@ -81,6 +81,9 @@ class CommentController extends Controller
         // link the post and comment 
         $cm->post()->attach($post_id);
 
+        // make a backup 
+        Comment::backupComment($cm->id,"insert");
+
         $msg = "<span class=\"tag is-medium is-success\">
             Success : your comment {$post_id} has been created!</span>";
         return response()->json([

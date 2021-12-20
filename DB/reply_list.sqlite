@@ -1,0 +1,13 @@
+ 
+/* ================== INSERT COMMAND FOR reply id 7 =============
+ * on 2021-12-20 18:58:10 pm
+ * */
+INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
+`updated_at`) VALUES(
+    '3',
+    'suse reply 1 on post 1 comment 2',
+    '<p>A one-to-many relationship happens when one item, which we’ll call type A, can be linked to several items of type B, but the opposite doesn’t hold true: an item of type B can only be linked to one item of type A. Transposing this scenario to the current demo application models, A is the list type, and B is the link type.</p>',
+    '2021-12-20 18:58:10',
+    '2021-12-20 18:58:10'
+);
+  

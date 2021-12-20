@@ -75,9 +75,13 @@ class ReplyController extends Controller
         $re = Reply::latest()->first();
         $re->comment()->attach($comment_id);
 
+
         // get post link
         $po = Post::find($post_id);
         $re->post()->attach($po);
+
+        // make a backup for reply 
+        Reply::backupReply($re->id,"insert");
 
         $msg = "<span class=\"tag is-medium is-success\">
             Success : reply to {$post_id} save!</span>";
