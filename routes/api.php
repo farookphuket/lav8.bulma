@@ -162,6 +162,11 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
      *
      * */
 
+    // comment 
+    Route::resource("/comment",PCM::class);
+    Route::get("/getcomment",[PCM::class,"aGetComment"])
+        ->name("aGetComment");
+
     /* ================== Category ============================================
      *
      * */

@@ -13,6 +13,21 @@
 
                     <a class="button is-primary is-block is-alt" href="#" 
                     @click.prevent="showForm = true">New Post</a>
+
+                    <span class="button is-info is-block is-alt mt-2">
+
+                        <router-link
+                          class="nav-link has-text-white"
+                          data-toggle="collapse"
+                          :to="{ name: 'AdminComment' }"
+                        >
+                        <b>
+                          Comment
+                        </b>
+                        </router-link>
+                    </span>
+
+
                     <aside class="mt-4 menu">
                         <p class="title">
                                 Tags

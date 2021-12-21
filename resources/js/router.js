@@ -20,6 +20,7 @@ import MPost from './pages/Member/Post/Post.vue'
 // admin 
 import AdminHome from './pages/Admin/Home.vue'
 import AdminPost from './pages/Admin/Post/Post.vue'
+import AdminComment from './pages/Admin/Post/Comment.vue'
 import AdminUser from './pages/Admin/User/User.vue'
 import AdminAbout from './pages/Admin/About.vue'
 import AdminCategory from './pages/Admin/Category/Category.vue'
@@ -126,6 +127,12 @@ const router = new VueRouter({
             path: '/admin/post',
             name: 'AdminPost',
             component: AdminPost
+        },
+
+        {
+            path: '/admin/comment',
+            name: 'AdminComment',
+            component: AdminComment
         },
 
         {

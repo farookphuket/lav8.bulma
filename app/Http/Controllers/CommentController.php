@@ -41,6 +41,18 @@ class CommentController extends Controller
 
         ]);
     }
+
+    public function aGetComment(){
+        $comment = Comment::latest()
+            ->with(["reply" => fn($q) => 
+            $q->with("user")
+            ->latest()])
+                    ->with("user")
+                    ->paginate(2);
+        return response()->json([
+            "comment" => $comment
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
