@@ -14833,6 +14833,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -17262,42 +17263,68 @@ __webpack_require__.r(__webpack_exports__);
         c_body: ''
       }),
       res_status: '',
-      post_id: 0
+      post_id: 0,
+      comment_id: 0
     };
   },
   mounted: function mounted() {},
   watch: {
     "postId": function postId(x) {
       this.getThePostData(x);
+    },
+    "editId": function editId(x) {
+      this.getEditData(x);
     }
   },
   methods: {
     getThePostData: function getThePostData(x) {
       this.post_id = x;
     },
-    saveC: function saveC(id) {
+    getEditData: function getEditData(x) {
       var _this = this;
 
-      var url = '/api/member/comment';
+      if (x != 0) {
+        this.$refs.c_title.focus();
+        var url = "/api/member/comment/".concat(x);
+        axios.get(url).then(function (res) {
+          //console.log(res.data.comment)
+          var rData = res.data.comment;
+          _this.cForm.c_title = rData.c_title;
+          _this.cForm.c_body = rData.c_body;
+          _this.comment_id = rData.id;
+          alert("comment id ".concat(_this.comment_id));
+        });
+      }
+
+      return;
+    },
+    saveC: function saveC(id) {
+      var _this2 = this;
+
+      var url = "";
       var fData = new FormData();
       fData.append("c_title", this.cForm.c_title);
       fData.append("c_body", this.cForm.c_body);
       fData.append("post_id", this.post_id);
+      fData.append("comment_id", this.comment_id);
 
       if (id && id != 0) {
+        //                alert(`edit comment id ${id}`)
         fData.append("_method", "PUT");
         url = "/api/member/comment/".concat(id);
+      } else {
+        url = '/api/member/comment'; //               alert(`in sert`)
       }
 
       axios.post(url, fData).then(function (res) {
-        _this.res_status = res.data.msg;
+        _this2.res_status = res.data.msg;
         setTimeout(function () {
-          _this.clearForm();
+          _this2.clearForm();
 
-          _this.$emit('getComment');
-        }, 800);
+          _this2.$emit('getComment');
+        }, 1800);
       })["catch"](function (err) {
-        _this.res_status = "<span class=\"tag is-medium is-danger\">\n                        ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                        ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
       });
     },
     clearForm: function clearForm() {
@@ -17528,6 +17555,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17548,6 +17614,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       reply_list: 0,
       reply_id: 0,
       isCommentFormShow: false,
+      isModalShow: '',
       replyItem: [],
       btnReply: true,
       rForm: new Form({
@@ -17587,7 +17654,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       url = this.$cookies.get("pcm_old_page");
       if (!url) url = "/api/getcomment?post_id=".concat(this.post_id);
       axios.get(url).then(function (res) {
-        //console.log(res.data)
+        console.log(res.data);
         _this.comment_list = res.data.comment;
         var c_title = '';
 
@@ -17623,6 +17690,22 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
         _this2.res_status = "<span class=\"tag is-medium is-danger\">\n                ".concat(Object.values(err.response.data.errors).join(), "\n                </span>");
       });
     },
+    delMyReply: function delMyReply(re_id) {
+      var _this3 = this;
+
+      if (re_id && re_id != 0 && confirm("Delete reply id ".concat(re_id, " ?")) == true) {
+        var url = "/api/member/reply/".concat(re_id);
+        axios["delete"](url).then(function (res) {
+          _this3.res_status = res.data.msg;
+          _this3.isModalShow = 'is-active';
+          setTimeout(function () {
+            _this3.isModalShow = '';
+
+            _this3.getComment();
+          }, 2100);
+        });
+      }
+    },
     showReplyForm: function showReplyForm(id) {
       this.rForm.comment_id = id;
       this.$set(this.replyItem, id, true);
@@ -17657,7 +17740,26 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     editComment: function editComment(comment_id) {
       this.editId = comment_id;
     },
-    delComment: function delComment(comment_id) {}
+    delComment: function delComment(comment_id) {
+      var _this4 = this;
+
+      this.res_status = '';
+
+      if (comment_id && comment_id != 0 && confirm("delete comment id ".concat(comment_id) == true)) {
+        var url = "/api/member/comment/".concat(comment_id);
+        axios["delete"](url).then(function (res) {
+          _this4.res_status = res.data.msg;
+          _this4.isModalShow = 'is-active';
+          setTimeout(function () {
+            _this4.isModalShow = '';
+
+            _this4.getComment();
+          }, 1200);
+        });
+      }
+
+      return;
+    }
   }
 });
 
@@ -51889,7 +51991,7 @@ var render = function () {
                   on: {
                     click: function ($event) {
                       $event.preventDefault()
-                      return _vm.saveC(_vm.editId)
+                      return _vm.saveC(_vm.comment_id)
                     },
                   },
                 },
@@ -52080,7 +52182,7 @@ var render = function () {
                           "a",
                           {
                             staticClass:
-                              "button is-info is-outlined \n                        is-rounded",
+                              "button is-info is-outlined \n                        is-rounded is-small",
                             attrs: { href: "" },
                             on: {
                               click: function ($event) {
@@ -52101,7 +52203,7 @@ var render = function () {
                           "a",
                           {
                             staticClass:
-                              "button is-danger is-outlined \n                        is-rounded",
+                              "button is-danger is-outlined \n                        is-rounded is-small",
                             attrs: { href: "" },
                             on: {
                               click: function ($event) {
@@ -52198,7 +52300,7 @@ var render = function () {
                           _c(
                             "button",
                             {
-                              staticClass: "button is-primary",
+                              staticClass: "button is-primary is-outlined",
                               attrs: { type: "submit" },
                               on: {
                                 click: function ($event) {
@@ -52294,7 +52396,31 @@ var render = function () {
                         1
                       ),
                       _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(re.user.name))]),
+                      _vm.user_id != re.user.id
+                        ? _c("span", { staticClass: "has-text-success" }, [
+                            _vm._v(_vm._s(re.user.name)),
+                          ])
+                        : _c("span", { staticClass: "ml-2" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "button is-outlined is-danger \n                            is-small is-rounded",
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.delMyReply(re.id)
+                                  },
+                                },
+                              },
+                              [
+                                _c("font-awesome-icon", {
+                                  attrs: { icon: "times" },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
                     ]),
                   ]),
                 ]),
@@ -52379,6 +52505,52 @@ var render = function () {
             ),
           ])
         : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal", class: { "is-active": _vm.isModalShow } },
+        [
+          _c("div", { staticClass: "modal-background" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+              _vm._v(_vm._s(_vm.res_status)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "modal-close is-large",
+            attrs: { "aria-label": "close" },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                _vm.isModalShow = false
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "field is-pulled-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "button is-success is-outlined",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        _vm.isModalShow = ""
+                      },
+                    },
+                  },
+                  [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+                  1
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
     ],
     2
   )

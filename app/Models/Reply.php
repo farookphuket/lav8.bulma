@@ -66,6 +66,10 @@ INSERT INTO `{$table}`(`user_id`,`r_title`,`r_body`,`created_at`,
     '{$cm->updated_at}'
 );
 ";
+
+        // backup reply link
+        static::backupReplyCommentLink($reply_id);
+
         break;
 case"edit":
     $command = "
@@ -90,8 +94,7 @@ default:
 
         write2text($file,$command);
 
-        // backup reply link
-        static::backupReplyCommentLink($reply_id);
+
 
     }
 

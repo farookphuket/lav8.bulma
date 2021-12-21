@@ -32,6 +32,7 @@ class CommentController extends Controller
                    ->with("user") 
                    ->latest()])
                 ->with("user")
+                ->latest()
                 ->paginate(2);
 
 
@@ -63,7 +64,8 @@ class CommentController extends Controller
             "c_body" => ["required"]
         ],
         [
-            "c_title.required" => "Error! the Title is required ,min 18 , max 80"
+            "c_title.required" => "Error! the Title is required ,min 18 , max 80",
+            "c_body.required" => "Error! the Content is required "
         ]);
 
         $post_id = request()->post_id;
@@ -85,7 +87,7 @@ class CommentController extends Controller
         Comment::backupComment($cm->id,"insert");
 
         $msg = "<span class=\"tag is-medium is-success\">
-            Success : your comment {$post_id} has been created!</span>";
+            Success : your comment has been created!</span>";
         return response()->json([
             "msg" => $msg
         ]);
@@ -100,7 +102,10 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        $cm = Comment::find($comment->id);
+        return response()->json([
+            "comment" => $cm
+        ]);
     }
 
     /**
@@ -121,9 +126,41 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Comment $comment)
     {
-        //
+        
+        $valid = request()->validate([
+            "c_title" => ["required"],
+            "c_body" => ["required"]
+        ],
+        [
+            "c_title.required" => "Error! the Title is required ,min 18 , max 80",
+            "c_body.required" => "Error! the Content is required ",
+        ]);
+
+
+
+        $valid["c_title"] = xx_clean(request()->c_title);
+        $valid["c_body"] = xx_clean(request()->c_body);
+
+        // update the comment
+        Comment::where("id",$comment->id)
+            ->update($valid);
+
+        $cm = Comment::find($comment->id);
+
+
+
+        // make a backup 
+        Comment::backupComment($cm->id,"edit");
+
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : your comment <b class=\"has-text-success\">
+{$cm->id}</b> has been updated!</span>";
+
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 
     /**
@@ -134,6 +171,16 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+
+
+        $re = Comment::find($comment->id);
+        $re->delete();
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : comment id <b class=\"has-text-danger\">
+{$comment->id} </b> has been deleted!</span>";
+
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

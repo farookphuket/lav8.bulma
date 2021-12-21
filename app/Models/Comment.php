@@ -62,6 +62,10 @@ INSERT INTO `{$table}`(`user_id`,`c_title`,`c_body`,`created_at`,
     '{$cm->created_at}',
     '{$cm->updated_at}');
 ";
+
+        // backup comment link
+        static::backupPostCommentLink($comment_id);
+
         break;
 case"edit":
     $command = "
@@ -86,8 +90,6 @@ default:
 
         write2text($file,$command);
 
-        // backup comment link
-        static::backupPostCommentLink($comment_id);
 
     }
 
@@ -107,7 +109,7 @@ default:
         $command = "";
 
         // delete command just to prevent from error 
-        if($cm->count() > 1):
+        if(count($cm) > 1):
             $command .= "
 /* =================== DELETE COMMAND FOR comment id {$comment_id} ============
  * on ".date("Y-m-d H:i:s a")."

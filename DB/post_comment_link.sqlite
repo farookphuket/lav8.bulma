@@ -1,9 +1,14 @@
  
-/* =================== INSERT COMMAND FOR comment id 5 ============
+/* =================== INSERT COMMAND FOR comment id 1 ============
  * on 2021-12-20 18:57:34 pm
  * */
 INSERT INTO `comment_post`(`comment_id`,`post_id`)VALUES(
     '1',
     '1'
 );
+ 
+ 
+ 
+ 
+ 
  

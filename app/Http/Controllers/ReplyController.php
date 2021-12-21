@@ -98,7 +98,10 @@ class ReplyController extends Controller
      */
     public function show(Reply $reply)
     {
-        //
+        $re = Reply::find($reply->id);
+        return response()->json([
+            "reply" => $re
+        ]);
     }
 
     /**
@@ -132,6 +135,13 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
+
+        $re = Reply::find($reply->id);
+        $re->delete();
+        $msg = "<span class=\"tag is-medium is-success\">
+            Success : reply id {$reply->id} has been deleted!</span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

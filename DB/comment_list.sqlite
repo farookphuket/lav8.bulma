@@ -1,5 +1,5 @@
  
-/* ================== INSERT COMMAND FOR comment id 5 =============
+/* ================== INSERT COMMAND FOR comment id 1 =============
  * on 2021-12-20 18:57:34 pm
  * */
 INSERT INTO `comments`(`user_id`,`c_title`,`c_body`,`created_at`,
@@ -11,4 +11,7 @@ INSERT INTO `comments`(`user_id`,`c_title`,`c_body`,`created_at`,
 To get started, you’ll need to create a model and a database table to represent a List of links. Then, you’ll update the existing Link model and table to include the relationship between both models. Because the term List is reserved for PHP internals, you won’t be able to name your new model with that term. You can call this new model LinkList instead.</p>',
     '2021-12-20 18:57:34',
     '2021-12-20 18:57:34');
+  
+ 
+ 
  

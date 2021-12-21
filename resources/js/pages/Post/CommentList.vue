@@ -69,13 +69,13 @@
                         <span class="ml-2 mr-2 pr-2" 
                         v-if="user_id == cc.user_id">
                             <a class="button is-info is-outlined 
-                            is-rounded" href="" 
+                            is-rounded is-small" href="" 
                             @click.prevent="editComment(cc.id)">
                                 <font-awesome-icon icon="edit"></font-awesome-icon>
                             </a>
 
                             <a class="button is-danger is-outlined 
-                            is-rounded" href="" 
+                            is-rounded is-small" href="" 
                             @click.prevent="delComment(cc.id)">
                                 <font-awesome-icon icon="trash"></font-awesome-icon>
                             </a>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="column">
                             <div class="field is-pulled-right">
-                                <button class="button is-primary" 
+                                <button class="button is-primary is-outlined" 
                                 type="submit" 
                                 @click.prevent="saveReply(reply_id)">
                                 <font-awesome-icon icon="check">
@@ -146,6 +146,7 @@
                 <div class="content mb-2 mt-2" v-html="re.r_body">
                     {{re.r_body}}
                 </div>
+
                 <div class="columns is-mobile mb-2">
                     <div class="column">
                         <div class="field is-pulled-right">
@@ -160,10 +161,25 @@
                             <span class="ml-2 mr-2 has-text-info">
                                 <font-awesome-icon icon="user"></font-awesome-icon>
                             </span>
-                            <span>{{re.user.name}}</span>
+                            <span class="has-text-success"
+                            v-if="user_id != re.user.id">{{re.user.name}}</span>
+
+                            <!-- show edit,delete button if this login user match with 
+                            this current user START -->
+                            <span class="ml-2" v-else>
+                                <button class="button is-outlined is-danger 
+                                is-small is-rounded" 
+                                @click.prevent="delMyReply(re.id)">
+                                    <font-awesome-icon icon="times"></font-awesome-icon>
+                                </button>
+                            </span>
+
+                            <!-- show edit,delete button if this login user match with 
+                            this current user START -->
                         </div>
                     </div>
-                </div>
+
+                </div><!-- END of div.columns -->
                 
             </article>
 
@@ -201,6 +217,29 @@
 
         </div>
         <!-- pagination page END -->
+
+        <!-- modal dialog box START -->
+        <div class="modal" :class="{'is-active':isModalShow}">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div v-html="res_status">{{res_status}}</div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" 
+          @click.prevent="isModalShow = false"></button>
+          <div class="columns">
+              <div class="column">
+                <div class="field is-pulled-right">
+                    <button class="button is-success is-outlined" 
+                    @click.prevent="isModalShow = ''">
+                        <font-awesome-icon icon="check"></font-awesome-icon>
+                    </button>
+
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- modal dialog box END -->
+
     </div>
 </template>
 
@@ -222,6 +261,7 @@ export default{
         reply_list:0,
         reply_id:0,
         isCommentFormShow:false,
+        isModalShow:'',
         replyItem:[],
         btnReply:true,
         rForm: new Form({
@@ -259,7 +299,7 @@ export default{
             if(!url) url = `/api/getcomment?post_id=${this.post_id}`
             axios.get(url)
                 .then(res=>{
-                    //console.log(res.data)
+                    console.log(res.data)
                     this.comment_list = res.data.comment
                     let c_title = ''
                     this.comment_list.data.forEach((cc)=>{
@@ -296,6 +336,21 @@ export default{
 
             })
         },
+        delMyReply(re_id){
+            if(re_id && re_id != 0 && 
+                    confirm(`Delete reply id ${re_id} ?`) == true){
+                let url = `/api/member/reply/${re_id}`
+                axios.delete(url)
+                .then(res=>{
+                    this.res_status = res.data.msg 
+                    this.isModalShow = 'is-active'
+                    setTimeout(()=>{
+                        this.isModalShow = ''
+                        this.getComment()
+                            },2100)
+                    })
+            }
+        },
         showReplyForm(id){
             this.rForm.comment_id = id 
             this.$set(this.replyItem,id,true)
@@ -326,10 +381,29 @@ export default{
             this.rForm.reset()
         },
         editComment(comment_id){
-
             this.editId = comment_id
+
         },
-        delComment(comment_id){},
+        delComment(comment_id){
+            this.res_status = ''
+
+            if(comment_id && comment_id != 0 && 
+                    confirm(`delete comment id ${comment_id}` == true)){
+                let url = `/api/member/comment/${comment_id}`
+                axios.delete(url)
+                .then(res=>{
+                    this.res_status = res.data.msg
+                    this.isModalShow = 'is-active'
+
+                    setTimeout(()=>{
+                        this.isModalShow = '' 
+                        this.getComment()
+                            },1200)
+                })
+
+            }
+            return
+        },
     },
 }
 </script>

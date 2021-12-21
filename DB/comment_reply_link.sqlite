@@ -1,9 +1,12 @@
  
-/* =================== INSERT COMMAND FOR reply id 8 ============
+/* =================== INSERT COMMAND FOR reply id 1 ============
  * on 2021-12-20 18:59:24 pm
  * */
 INSERT INTO `comment_reply`(`reply_id`,`comment_id`)VALUES(
     '1',
     '1'
 );
+ 
+ 
+ 
  

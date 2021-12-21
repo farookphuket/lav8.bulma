@@ -1,5 +1,5 @@
  
-/* ================== INSERT COMMAND FOR reply id 7 =============
+/* ================== INSERT COMMAND FOR reply id 1 =============
  * on 2021-12-20 18:58:10 pm
  * */
 INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
@@ -11,3 +11,5 @@ INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
     '2021-12-20 18:58:10'
 );
   
+ 
+ 
