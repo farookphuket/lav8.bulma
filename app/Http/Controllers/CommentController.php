@@ -48,6 +48,7 @@ class CommentController extends Controller
             $q->with("user")
             ->latest()])
                     ->with("user")
+                    ->with("post")
                     ->paginate(2);
         return response()->json([
             "comment" => $comment

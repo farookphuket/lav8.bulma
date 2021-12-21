@@ -11,16 +11,20 @@
             </nav>
 
 
-        <div>
-            <h2>show comment home</h2>
-        </div>
+            <!-- comment list START -->
+            <comment-list></comment-list>
+            <!-- comment list END -->
 
 
     </section>
 
 </template>
 <script>
+import CommentList from './CommentList.vue'
 export default{
-    name:"AdminComment"
+    name:"AdminComment",
+    components:{
+        CommentList,
+    },
 }
 </script>

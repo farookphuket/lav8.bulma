@@ -23,16 +23,16 @@
 
 
             <div class="columns">
-                <div class="column is-8">
+                <div class="column is-3">
                     <div v-html="res_status">{{res_status}}</div>
                 </div>
-                <div class="column is-4">
-                    <div class="is-grouped is-grouped-right">
+                <div class="column is-9">
+                    <div class="field is-pulled-right">
 
-                        <button class="button is-link" 
+                        <button class="button is-link is-outlined is-rounded" 
                         type="submit" 
                         @click.prevent="goLogin">Login</button>
-                        <button class="button is-link is-outlined is-light" 
+                        <button class="button is-link is-outlined is-light is-rounded" 
                         >
                             <router-link :to="{name:'home'}">Cancel</router-link>
                         </button>

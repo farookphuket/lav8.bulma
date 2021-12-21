@@ -15,3 +15,15 @@ To get started, you’ll need to create a model and a database table to represen
  
  
  
+ 
+/* ================== INSERT COMMAND FOR comment id 2 =============
+ * on 2021-12-21 21:03:33 pm
+ * */
+INSERT INTO `comments`(`user_id`,`c_title`,`c_body`,`created_at`,
+`updated_at`) VALUES(
+    '2',
+    'comment from kenny to post 2',
+    '<p>The Kia Telluride has been Edmunds׳ top-rated SUV for two years in a row. This midsize three-row SUV seats up to eight and is the largest in Kia׳s lineup. Our experts have praised the Telluride for its smooth ride quality, luxury-like interior, and a third row that can comfortably accommodate adults. It also comes equipped with plenty of standard features and has the latest in safety technology.</p>',
+    '2021-12-21 21:03:33',
+    '2021-12-21 21:03:33');
+ 

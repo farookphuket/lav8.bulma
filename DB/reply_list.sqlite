@@ -13,3 +13,28 @@ INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
   
  
  
+ 
+/* ================== INSERT COMMAND FOR reply id 2 =============
+ * on 2021-12-21 21:38:58 pm
+ * */
+INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'this is the reply to kenny',
+    '<p>the reply is admin here<br></p>',
+    '2021-12-21 21:38:58',
+    '2021-12-21 21:38:58'
+);
+  
+/* ================== INSERT COMMAND FOR reply id 3 =============
+ * on 2021-12-21 21:40:30 pm
+ * */
+INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
+`updated_at`) VALUES(
+    '1',
+    'this is another reply to kenny',
+    '<p>ahd this is the other reply<br></p>',
+    '2021-12-21 21:40:30',
+    '2021-12-21 21:40:30'
+);
+ 

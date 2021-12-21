@@ -10,3 +10,20 @@ INSERT INTO `comment_reply`(`reply_id`,`comment_id`)VALUES(
  
  
  
+ 
+/* =================== INSERT COMMAND FOR reply id 2 ============
+ * on 2021-12-21 21:38:58 pm
+ * */
+INSERT INTO `comment_reply`(`reply_id`,`comment_id`)VALUES(
+    '2',
+    '2'
+);
+  
+/* =================== INSERT COMMAND FOR reply id 3 ============
+ * on 2021-12-21 21:40:30 pm
+ * */
+INSERT INTO `comment_reply`(`reply_id`,`comment_id`)VALUES(
+    '3',
+    '2'
+);
+ 
