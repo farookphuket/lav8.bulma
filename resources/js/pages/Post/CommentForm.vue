@@ -83,7 +83,7 @@ export default{
                     this.cForm.c_title = rData.c_title 
                     this.cForm.c_body = rData.c_body
                     this.comment_id = rData.id 
-                    alert(`comment id ${this.comment_id}`)
+           //         alert(`comment id ${this.comment_id}`)
                         })
             }
             return

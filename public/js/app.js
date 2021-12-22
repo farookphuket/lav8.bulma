@@ -17756,8 +17756,7 @@ __webpack_require__.r(__webpack_exports__);
           var rData = res.data.comment;
           _this.cForm.c_title = rData.c_title;
           _this.cForm.c_body = rData.c_body;
-          _this.comment_id = rData.id;
-          alert("comment id ".concat(_this.comment_id));
+          _this.comment_id = rData.id; //         alert(`comment id ${this.comment_id}`)
         });
       }
 

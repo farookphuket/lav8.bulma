@@ -13,11 +13,3 @@ INSERT INTO `comment_post`(`comment_id`,`post_id`)VALUES(
  
  
  
-/* =================== INSERT COMMAND FOR comment id 2 ============
- * on 2021-12-21 21:03:33 pm
- * */
-INSERT INTO `comment_post`(`comment_id`,`post_id`)VALUES(
-    '2',
-    '2'
-);
- 
