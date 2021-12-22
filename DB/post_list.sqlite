@@ -44,3 +44,54 @@ INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
   
  
  
+ 
+/* ======================= INSERT COMMAND for id 3 ===================
+ * START on 2021-12-22 10:25:47 am
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'about',
+    'about',
+    '<h2>this is my about page</h2>
+<p>
+    this is my about page I will try
+</p>',
+    '<h2>this is my about page</h2>
+<p>
+    this is my about page I will try
+</p>',
+    '1',
+    '2021-12-22 10:25:47',
+    '2021-12-22 10:25:47');
+  
+/* ======================= INSERT COMMAND for id 4 ===================
+ * START on 2021-12-22 12:03:29 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'about',
+    'about',
+    '<p>this is is about pageWhether it׳s the HP EliteBook 840 Aero G8, the Lenovo ThinkPad X1 Carbon Gen 9, or one of many others, lightweight 14-inch business laptops
+ are the mainstay of traveling executives. According to Asus, that goes 
+for "cloud-first business," too: The Chromebook CX9 (starts at $749.99; 
+$999.99 as tested) can slug it out with any Windows slimline, but it 
+relies on Chrome OS and Google Workspace. Impressively light yet packed 
+with features ranging from a fingerprint reader to Thunderbolt 4 ports, 
+the CX9 is a pricey but strong performer that will please any enterprise
+ that׳s chosen to adopt Chromebooks.<br></p>',
+    '<p>this is is about pageWhether it׳s the HP EliteBook 840 Aero G8, the Lenovo ThinkPad X1 Carbon Gen 9, or one of many others, lightweight 14-inch business laptops
+ are the mainstay of traveling executives. According to Asus, that goes 
+for "cloud-first business," too: The Chromebook CX9 (starts at $749.99; 
+$999.99 as tested) can slug it out with any Windows slimline, but it 
+relies on Chrome OS and Google Workspace. Impressively light yet packed 
+with features ranging from a fingerprint reader to Thunderbolt 4 ports, 
+the CX9 is a pricey but strong performer that will please any enterprise
+ that׳s chosen to adopt Chromebooks.<br></p>',
+    '1',
+    '2021-12-22 12:03:29',
+    '2021-12-22 12:03:29');
+ 

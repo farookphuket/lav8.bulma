@@ -12675,6 +12675,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _FarookAboutPage_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FarookAboutPage.vue */ "./resources/js/pages/FarookAboutPage.vue");
 //
 //
 //
@@ -12707,158 +12708,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutPage",
+  components: {
+    FarookAboutPage: _FarookAboutPage_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       isShowDefaultData: true,
@@ -12898,7 +12753,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AboutForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutForm.vue */ "./resources/js/pages/Admin/AboutForm.vue");
+/* harmony import */ var _FarookAboutPage_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../FarookAboutPage.vue */ "./resources/js/pages/FarookAboutPage.vue");
+/* harmony import */ var _AboutForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutForm.vue */ "./resources/js/pages/Admin/AboutForm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12953,14 +12835,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdminAbout",
   components: {
-    AboutForm: _AboutForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AboutForm: _AboutForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    FarookAboutPage: _FarookAboutPage_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
       isShowDefaultData: true,
+      isEditing: false,
       aboutPage: '',
       editId: 0
     };
@@ -12972,6 +12857,7 @@ __webpack_require__.r(__webpack_exports__);
     getAbout: function getAbout() {
       var _this = this;
 
+      this.isEditing = false;
       this.isShowDefaultData = true;
       var url = "/api/getabout";
       axios.get(url).then(function (res) {
@@ -12987,6 +12873,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     edit: function edit(id) {
       this.editId = id;
+      this.isEditing = true;
     },
     del: function del(id) {
       var _this2 = this;
@@ -13060,6 +12947,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AboutForm",
@@ -13070,7 +12967,8 @@ __webpack_require__.r(__webpack_exports__);
         p_title: 'about',
         p_body: ''
       }),
-      res_status: ''
+      res_status: '',
+      isShowPreview: false
     };
   },
   watch: {
@@ -13086,6 +12984,7 @@ __webpack_require__.r(__webpack_exports__);
       this.res_status = '';
       this.abForm.reset();
       this.abForm.p_title = "about";
+      this.isShowPreview = true;
     },
     getEditData: function getEditData(x) {
       var _this = this;
@@ -15684,6 +15583,205 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     this.user_id = window.user_id;
   },
   methods: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "FarookAboutPage"
 });
 
 /***/ }),
@@ -43121,6 +43219,45 @@ component.options.__file = "resources/js/pages/Admin/Whatnew/WhatnewList.vue"
 
 /***/ }),
 
+/***/ "./resources/js/pages/FarookAboutPage.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/FarookAboutPage.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FarookAboutPage.vue?vue&type=template&id=52601f8f& */ "./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f&");
+/* harmony import */ var _FarookAboutPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FarookAboutPage.vue?vue&type=script&lang=js& */ "./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FarookAboutPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/FarookAboutPage.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Home.vue":
 /*!*************************************!*\
   !*** ./resources/js/pages/Home.vue ***!
@@ -44496,6 +44633,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FarookAboutPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FarookAboutPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FarookAboutPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/Home.vue?vue&type=script&lang=js&":
 /*!**************************************************************!*\
   !*** ./resources/js/pages/Home.vue?vue&type=script&lang=js& ***!
@@ -45317,6 +45470,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WhatnewList_vue_vue_type_template_id_581e5a2e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WhatnewList_vue_vue_type_template_id_581e5a2e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WhatnewList.vue?vue&type=template&id=581e5a2e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Admin/Whatnew/WhatnewList.vue?vue&type=template&id=581e5a2e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FarookAboutPage_vue_vue_type_template_id_52601f8f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FarookAboutPage.vue?vue&type=template&id=52601f8f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f&");
 
 
 /***/ }),
@@ -46618,13 +46788,7 @@ var render = function () {
             ),
           ]),
         ])
-      : _c("section", { staticClass: "section" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-        ]),
+      : _c("section", { staticClass: "section" }, [_c("farook-about-page")], 1),
   ])
 }
 var staticRenderFns = [
@@ -46648,235 +46812,6 @@ var staticRenderFns = [
           ]),
         ]
       ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box" }, [
-      _c("h1", { staticClass: "title" }, [
-        _vm._v("\n            see-southern.com\n          "),
-      ]),
-      _vm._v(" "),
-      _c("h2", { staticClass: "subtitle" }, [
-        _vm._v(
-          "\n            see-southern.com has create on Oct 2007              \n          "
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        _c("p", [
-          _vm._v(
-            "\n                when I try to learn to code\n                 in php at my first place the very first \n                "
-          ),
-          _c("strong", [
-            _vm._v('\n                    "Hello world"\n                '),
-          ]),
-          _vm._v(
-            "\n                 line has start written on \n                 "
-          ),
-          _c("strong", [_vm._v("Ubuntu 7.04")]),
-          _vm._v(
-            ' while I am just about to really \n                 have to get my head (my computer) out of my belove \n                 "window XP" as many  people has been try \n                '
-          ),
-          _c("span", { staticClass: "tag is-medium is-warning" }, [
-            _vm._v('\n                    "window Vista"\n                '),
-          ]),
-          _vm._v(
-            " and have to very impress experience on it (you maybe \n                one of them too) so it's the time for me to move on to learn \n                something new \"Ubuntu\" is the very first Linux that I have give \n                it a try and love it at the very first try Ubuntu can cause me \n                a lot of headache but you know? it's some new experience so \n                why not? let do it. \n\n              "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            '\n                    today my computer is fully run "Arch Linux" and I am really \n                    really fall in love with this! it is just my feeling \n                    "like home" again.\n                '
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n                    # I am an Arch Noob.\n                "
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column" }, [
-        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
-                target: "_blank",
-              },
-            },
-            [
-              _c("img", {
-                staticClass: "responsive",
-                attrs: {
-                  src: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
-                  alt: "farook on year 2021",
-                },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "has-text-centered" }, [
-          _vm._v("\n                    farook on year 2021\n                "),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
-                target: "_blank",
-              },
-            },
-            [
-              _c("img", {
-                staticClass: "responsive",
-                attrs: {
-                  src: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
-                  alt: "farook on year 2011",
-                },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "has-text-centered" }, [
-          _vm._v("\n                    farook on year 2011\n                "),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
-                target: "_blank",
-              },
-            },
-            [
-              _c("img", {
-                staticClass: "responsive",
-                attrs: {
-                  src: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
-                  alt: "farook on year 2009",
-                },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "has-text-centered" }, [
-          _vm._v("\n                    farook on year 2009\n                "),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
-                target: "_blank",
-              },
-            },
-            [
-              _c("img", {
-                staticClass: "responsive",
-                attrs: {
-                  src: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
-                  alt: "farook on year 2007 ",
-                },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "has-text-centered" }, [
-          _vm._v("\n                    farook on year 2007\n                "),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
-                target: "_blank",
-              },
-            },
-            [
-              _c("img", {
-                staticClass: "responsive",
-                attrs: {
-                  src: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
-                  alt: "farook on year 2006",
-                },
-              }),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "has-text-centered" }, [
-          _vm._v("\n                    farook on year 2006\n                "),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column" }, [
-        _c("h2", { staticClass: "title" }, [
-          _vm._v(
-            "\n                    How to create my own about page?\n                "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("p", { staticClass: "mt-4 mb-2" }, [
-            _vm._v(
-              '\n                        this is the default page if you want to edit this page simply \n                        login with your "admin" credentials select "about" from the \n                        menu then you can add your stuff in the text box then click \n                        save the button that\'s it!\n                    '
-            ),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column" }, [
-        _c("h2", { staticClass: "title" }, [
-          _vm._v("\n                    Where is this file\n                "),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("p", [
-            _vm._v(
-              "\n                        to totally edit this file `/resources/js/pages/About.vue` open \n                        you text editor program you will find this section.\n                    "
-            ),
-          ]),
-        ]),
-      ]),
     ])
   },
 ]
@@ -46905,70 +46840,139 @@ var render = function () {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
+    _vm.isShowDefaultData == false && _vm.isEditing == false
+      ? _c("section", [
+          _c("article", { staticClass: "box" }, [
+            _c("div", { staticClass: "columns" }, [
+              _c("div", { staticClass: "column" }, [
+                _c("div", { staticClass: "field is-pulled-right" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-primary is-outlined is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.edit(_vm.aboutPage.id)
+                        },
+                      },
+                    },
+                    [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "button is-warning is-outlined is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.del(_vm.aboutPage.id)
+                        },
+                      },
+                    },
+                    [
+                      _c("font-awesome-icon", { attrs: { icon: "trash" } }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v("use default data"),
+                      ]),
+                    ],
+                    1
+                  ),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { domProps: { innerHTML: _vm._s(_vm.aboutPage.p_body) } },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.aboutPage.p_body) +
+                    "\n            "
+                ),
+              ]
+            ),
+          ]),
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     _c(
       "section",
-      { staticClass: "section" },
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isShowDefaultData,
+            expression: "isShowDefaultData",
+          },
+        ],
+        staticClass: "section",
+      },
       [
-        _vm.isShowDefaultData == false
-          ? _c("div", { staticClass: "mt-4 mb-6" }, [
-              _c("div", { staticClass: "field is-pulled-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "button is-primary",
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.edit(_vm.aboutPage.id)
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field is-pulled-right" }, [
+              _vm.isEditing == false
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "button is-primary is-outlined is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          _vm.isEditing = true
+                        },
                       },
                     },
-                  },
-                  [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "button is-danger",
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.del(_vm.aboutPage.id)
+                    [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+                    1
+                  )
+                : _c(
+                    "button",
+                    {
+                      staticClass: "button is-danger is-outlined is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          _vm.isEditing = false
+                        },
                       },
                     },
-                  },
-                  [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { domProps: { innerHTML: _vm._s(_vm.aboutPage.p_body) } },
-                [_vm._v(_vm._s(_vm.aboutPage.p_body))]
-              ),
-            ])
-          : _c("div", { staticClass: "mt-4 mb-6" }, [
-              _c("h1", { staticClass: "title" }, [_vm._v("Admin Section")]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("this is the default data to show in this page"),
-              ]),
-              _vm._v(" "),
-              _vm._m(2),
+                    [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+                    1
+                  ),
             ]),
+          ]),
+        ]),
         _vm._v(" "),
+        _vm.isEditing != true ? _c("farook-about-page") : _vm._e(),
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isEditing,
+            expression: "isEditing",
+          },
+        ],
+      },
+      [
         _c("about-form", {
           attrs: { editId: _vm.editId },
           on: {
             getAbout: function ($event) {
               return _vm.getAbout($event)
-            },
-            edit: function ($event) {
-              return _vm.edit($event)
             },
           },
         }),
@@ -47002,28 +47006,6 @@ var staticRenderFns = [
       ),
     ])
   },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "subtitle" }, [
-      _vm._v("\n            A simple container to divide your page into "),
-      _c("strong", [_vm._v("sections")]),
-      _vm._v(", like the one you're currently reading.\n          "),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("p", [
-        _vm._v(
-          "\n                this is the tag in p tag div.content\n            "
-        ),
-      ]),
-    ])
-  },
 ]
 render._withStripped = true
 
@@ -47048,6 +47030,23 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.isShowPreview,
+            expression: "isShowPreview",
+          },
+        ],
+        staticClass: "content box mb-6 mt-4",
+        domProps: { innerHTML: _vm._s(_vm.abForm.p_body) },
+      },
+      [_vm._v("\n        " + _vm._s(_vm.abForm.p_body) + " \n    ")]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "box content" }, [
       _c("form", { attrs: { action: "" } }, [
         _c("div", { staticClass: "field" }, [
@@ -47111,7 +47110,8 @@ var render = function () {
               _c(
                 "button",
                 {
-                  staticClass: "button is-primary is-outlined",
+                  staticClass:
+                    "button is-primary is-outlined \n                        is-small is-rounded",
                   on: {
                     click: function ($event) {
                       $event.preventDefault()
@@ -47120,6 +47120,22 @@ var render = function () {
                   },
                 },
                 [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "button is-danger is-outlined \n                        is-small is-rounded",
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.$emit("getAbout")
+                    },
+                  },
+                },
+                [_c("font-awesome-icon", { attrs: { icon: "times" } })],
                 1
               ),
             ]),
@@ -50420,6 +50436,302 @@ var render = function () {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/FarookAboutPage.vue?vue&type=template&id=52601f8f& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "box" }, [
+        _c("h1", { staticClass: "title" }, [
+          _vm._v("\n        see-southern.com\n      "),
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "subtitle" }, [
+          _vm._v(
+            "\n        see-southern.com has create on Oct 2007              \n      "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c("p", [
+            _vm._v(
+              "\n            when I try to learn to code\n             in php at my first place the very first \n            "
+            ),
+            _c("strong", [
+              _vm._v('\n                "Hello world"\n            '),
+            ]),
+            _vm._v("\n             line has start written on \n             "),
+            _c("strong", [_vm._v("Ubuntu 7.04")]),
+            _vm._v(
+              ' while I am just about to really \n             have to get my head (my computer) out of my belove \n             "window XP" as many  people has been try \n            '
+            ),
+            _c("span", { staticClass: "tag is-medium is-warning" }, [
+              _vm._v('\n                "window Vista"\n            '),
+            ]),
+            _vm._v(
+              " and have to very impress experience on it (you maybe \n            one of them too) so it's the time for me to move on to learn \n            something new \"Ubuntu\" is the very first Linux that I have give \n            it a try and love it at the very first try Ubuntu can cause me \n            a lot of headache but you know? it's some new experience so \n            why not? let do it. \n\n          "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              '\n                today my computer is fully run "Arch Linux" and I am really \n                really fall in love with this! it is just my feeling \n                "like home" again.\n            '
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("\n                # I am an Arch Noob.\n            "),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
+                  target: "_blank",
+                },
+              },
+              [
+                _c("img", {
+                  staticClass: "responsive",
+                  attrs: {
+                    src: "https://i.ibb.co/GVgKNzX/farook-year2021.jpg",
+                    alt: "farook on year 2021",
+                  },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v("\n                farook on year 2021\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
+                  target: "_blank",
+                },
+              },
+              [
+                _c("img", {
+                  staticClass: "responsive",
+                  attrs: {
+                    src: "https://i.ibb.co/zxBw2yY/farook-year2011.jpg",
+                    alt: "farook on year 2011",
+                  },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v("\n                farook on year 2011\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
+                  target: "_blank",
+                },
+              },
+              [
+                _c("img", {
+                  staticClass: "responsive",
+                  attrs: {
+                    src: "https://i.ibb.co/18xQmdJ/farook-year2009.jpg",
+                    alt: "farook on year 2009",
+                  },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v("\n                farook on year 2009\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
+                  target: "_blank",
+                },
+              },
+              [
+                _c("img", {
+                  staticClass: "responsive",
+                  attrs: {
+                    src: "https://i.ibb.co/BzZ5HNL/farook-year2007-2.jpg",
+                    alt: "farook on year 2007 ",
+                  },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v("\n                farook on year 2007\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "is-flex is-justify-content-center" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
+                  target: "_blank",
+                },
+              },
+              [
+                _c("img", {
+                  staticClass: "responsive",
+                  attrs: {
+                    src: "https://i.ibb.co/PcS56LN/farook-year2007.jpg",
+                    alt: "farook on year 2006",
+                  },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v("\n                farook on year 2006\n            "),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column" }, [
+          _c("h2", { staticClass: "title" }, [
+            _vm._v(
+              "\n                How to create my own about page?\n            "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box" }, [
+            _c("p", { staticClass: "mt-4 mb-2" }, [
+              _vm._v(
+                '\n                    this is the default page if you want to edit this page simply \n                    login with your "admin" credentials select "about" from the \n                    menu then you can add your stuff in the text box then click \n                    save the button that\'s it!\n                '
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field" }, [
+            _c("figure", { staticClass: "justify-content-center" }, [
+              _c("img", {
+                staticClass: "image",
+                attrs: {
+                  src: "https://i.ibb.co/mhYPRx9/20211222-edit-about-page-1.png",
+                  alt: "",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "has-text-centered" }, [
+              _vm._v(
+                "\n                click the edit button \n                "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "field" }, [
+            _c("figure", { staticClass: "justify-content-center" }, [
+              _c("img", {
+                staticClass: "image",
+                attrs: {
+                  src: "https://i.ibb.co/qN1Grrh/20211222-edit-about-page-2.png",
+                  alt: "",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "has-text-centered" }, [
+              _vm._v(
+                "\n                    edit as you wish then click save button that's it!.\n                "
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("h2", { staticClass: "title" }, [
+            _vm._v("\n                Where is this file\n            "),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box" }, [
+            _c("p", [
+              _vm._v(
+                "\n                    to totally edit this file \n                    `/resources/js/pages/FarookAboutPage.vue` \n                    open you text editor program you will find this section.\n                "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("figure", { staticClass: "image justify-content-center" }, [
+            _c("img", {
+              attrs: {
+                src: "https://i.ibb.co/J3DXJzh/20211222-farook-about-page.png",
+                alt: "farook about page",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "has-text-centered" }, [
+            _vm._v(
+              "\n            the file name `FarookAboutPage.vue`\n            "
+            ),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 

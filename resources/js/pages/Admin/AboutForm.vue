@@ -1,5 +1,9 @@
 <template>
 <div>
+    <div class="content box mb-6 mt-4" v-show="isShowPreview" 
+        v-html="abForm.p_body">
+        {{abForm.p_body}} 
+    </div>
     <div class="box content">
         <form action="">
             <div class="field">
@@ -27,9 +31,15 @@
                 </div>
                 <div class="column is-9">
                     <div class="field is-pulled-right">
-                        <button class="button is-primary is-outlined" 
+                        <button class="button is-primary is-outlined 
+                        is-small is-rounded" 
                         @click.prevent="save(editId)">
                             <font-awesome-icon icon="check"></font-awesome-icon>
+                        </button>
+                        <button class="button is-danger is-outlined 
+                        is-small is-rounded" 
+                        @click.prevent="$emit('getAbout')">
+                            <font-awesome-icon icon="times"></font-awesome-icon>
                         </button>
                     </div>
                 </div>
@@ -53,6 +63,7 @@ abForm: new Form({
    p_body:'',
                 }),
                 res_status:'',
+                isShowPreview : false,
                  }
              },
     watch:{
@@ -68,6 +79,7 @@ methods:{
         this.res_status = ''
         this.abForm.reset()
         this.abForm.p_title = "about"
+        this.isShowPreview = true
     },
     getEditData(x){
         if(x != 0){

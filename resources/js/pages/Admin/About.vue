@@ -10,58 +10,87 @@
                 </li>
               </ul>
             </nav>
-
-
-            
-
     </section>
-    <section class="section">
 
-        <div class="mt-4 mb-6" v-if="isShowDefaultData == false">
-            <div class="field is-pulled-right">
-                <button class="button is-primary" 
-                    @click.prevent="edit(aboutPage.id)">
-                    <font-awesome-icon icon="edit"></font-awesome-icon>
-                </button>
+    <!-- has about data section START -->
+    <section v-if="isShowDefaultData == false && isEditing == false">
 
-                <button class="button is-danger" 
-                    @click.prevent="del(aboutPage.id)">
-                    <font-awesome-icon icon="trash"></font-awesome-icon>
-                </button>
+        <article class="box">
+            <!-- edit ,delete button START --> 
+            <div class="columns">
+                <div class="column">
+                    <div class="field is-pulled-right">
+                        <button class="button is-primary is-outlined is-small" 
+                            @click.prevent="edit(aboutPage.id)">
+                            <font-awesome-icon icon="edit"></font-awesome-icon>
+                        </button>
+
+                        <button class="button is-warning is-outlined is-small" 
+                            @click.prevent="del(aboutPage.id)">
+                            <font-awesome-icon icon="trash"></font-awesome-icon>
+                            <span class="ml-2">use default data</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div v-html="aboutPage.p_body">{{aboutPage.p_body}}</div>
-        </div>
-        <div class="mt-4 mb-6" v-else>
+            <!-- edit ,delete button START --> 
 
-          <h1 class="title">Admin Section</h1>
-          <h2 class="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-          </h2>
-          <p>this is the default data to show in this page</p>
-          <div class="content">
-            <p>
-                this is the tag in p tag div.content
-            </p>
-          </div>
-        </div>
-        <about-form :editId="editId" 
-        @getAbout="getAbout($event)" @edit="edit($event)"></about-form>
+            <div v-html="aboutPage.p_body">
+                {{aboutPage.p_body}}
+            </div>
+        </article>
+
     </section>
+    <!-- has about data section START -->
+
+    <!-- default data section START -->
+    <section class="section" v-show="isShowDefaultData">
+        <!-- button on the right START -->
+        <div class="columns">
+            <div class="column">
+                <div class="field is-pulled-right">
+                    <button class="button is-primary is-outlined is-small" 
+                        @click.prevent="isEditing = true" 
+                        v-if="isEditing == false">
+                        <font-awesome-icon icon="edit"></font-awesome-icon>
+                    </button>
+                    <button class="button is-danger is-outlined is-small" 
+                        @click.prevent="isEditing = false" v-else>
+                        <font-awesome-icon icon="times"></font-awesome-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- button on the right END -->
+        <farook-about-page v-if="isEditing != true"></farook-about-page>
+    </section>
+    <!-- default data section END -->
+
+    <!-- form Section START -->
+    <section v-show="isEditing">
+        <about-form :editId="editId" 
+            @getAbout="getAbout($event)"></about-form>
+    </section>
+    <!-- form Section END -->
+
 </div>
 
 </template>
 
 <script>
+import FarookAboutPage from "../FarookAboutPage.vue"
 import AboutForm from './AboutForm.vue'
 
 export default {
     name:"AdminAbout",
              components:{
                 AboutForm,
+                 FarookAboutPage,
              },
              data(){
                  return{
                     isShowDefaultData:true,
+                     isEditing:false,
                     aboutPage:'',
                     editId:0,
                  }
@@ -71,7 +100,9 @@ export default {
              },
 methods:{
             getAbout(){
+                this.isEditing = false
                 this.isShowDefaultData = true
+
                let url = `/api/getabout` 
                axios.get(url)
                .then(res=>{
@@ -85,7 +116,9 @@ methods:{
             },
             edit(id){
                 this.editId = id
+                this.isEditing = true
             },
+
     del(id){
         if(id && id != 0 && 
             confirm(`this will delete About page content?`) == true){
