@@ -11,7 +11,7 @@
         </nav>
         
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-5">
                 <div class="content">
                     <h2 class="title has-text-centered">{{show_u_name}}'s profile</h2>
                     <h3 class="subtitle">edit my profile</h3>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="column is-8">
+            <div class="column is-6">
                <profile-form @getMyInfo="getMyInfo($event)"></profile-form>
             </div>
         </div>
