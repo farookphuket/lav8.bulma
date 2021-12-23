@@ -119,6 +119,8 @@
 
         </div>
 
+        <!-- How to edit this file START -->
+
         <div class="columns">
             <div class="column">
                 <h2 class="title">
@@ -178,6 +180,90 @@
             </div>
 
         </div>
+        <!-- How to edit this file END -->
+
+
+        <!-- want to support START -->
+        <h2 class="title has-text-centered mt-4">
+            Want to support
+        </h2>
+        <div class="content mb-4">
+           <p class="subtitle">
+                if you like what we do 
+           </p>
+           <p>
+                this will be the way you can sent your 1 US to.
+           </p>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <figure class="justify-content-center">
+                    <img 
+                    src="https://i.ibb.co/JQ3JKJ6/scb-qrcode-24-3-2021.jpg" 
+                    alt="SCB bank">
+                </figure>
+                <p class="pt-2 has-text-centered">
+                    Transfer to SCB Bank
+                </p>
+            </div>
+
+
+            <div class="column">
+                <figure class="justify-content-center">
+                    <img 
+                    src="https://i.ibb.co/dkgFr6T/Krung-Thai-Bank.jpg" 
+                    alt="Krung Thai bank">
+                </figure>
+                <p class="pt-2 has-text-centered">
+                    Transfer to Krung Thai Bank
+                </p>
+            </div>
+
+            <div class="column">
+                <figure class="justify-content-center">
+                    <img 
+                    src="https://i.ibb.co/LCK020c/k-qrcode-24-3-2021.jpg" 
+                    alt="Kasikorn Thai bank">
+                </figure>
+                <p class="pt-2 has-text-centered">
+                    Transfer to Kasikorn Thai Bank
+                </p>
+            </div>
+
+
+            <div class="column">
+                <figure class="justify-content-center">
+                    <img 
+                    src="https://i.ibb.co/7SdYkn8/Screenshot-2021-0329-204110.jpg" 
+                    alt="truemove">
+                </figure>
+                <p class="pt-2 has-text-centered">
+                    by truemove
+                </p>
+            </div>
+            
+            <div class="column">
+                <div class="field">
+
+                    <figure class="justify-content-center">
+                        <img class="image" 
+                        src="https://i.ibb.co/sQwHmxg/2021-03-29-paypal.png" 
+                        alt="pay by paypal">
+
+                    </figure>
+                    <p class="pt-2 has-text-centered">
+
+                        <a 
+                        href="https://paypal.me/farookphuket?country.x=TH&locale.x=th_TH" 
+                        target="_blank" >
+                            paypal
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <!-- want to support END -->
     </div>
 </template>
 <script>

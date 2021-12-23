@@ -15780,6 +15780,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FarookAboutPage"
 });
@@ -50726,6 +50812,119 @@ var staticRenderFns = [
             _vm._v(
               "\n            the file name `FarookAboutPage.vue`\n            "
             ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "title has-text-centered mt-4" }, [
+        _vm._v("\n        Want to support\n    "),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content mb-4" }, [
+        _c("p", { staticClass: "subtitle" }, [
+          _vm._v("\n            if you like what we do \n       "),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n            this will be the way you can sent your 1 US to.\n       "
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "columns" }, [
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "justify-content-center" }, [
+            _c("img", {
+              attrs: {
+                src: "https://i.ibb.co/JQ3JKJ6/scb-qrcode-24-3-2021.jpg",
+                alt: "SCB bank",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2 has-text-centered" }, [
+            _vm._v("\n                Transfer to SCB Bank\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "justify-content-center" }, [
+            _c("img", {
+              attrs: {
+                src: "https://i.ibb.co/dkgFr6T/Krung-Thai-Bank.jpg",
+                alt: "Krung Thai bank",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2 has-text-centered" }, [
+            _vm._v(
+              "\n                Transfer to Krung Thai Bank\n            "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "justify-content-center" }, [
+            _c("img", {
+              attrs: {
+                src: "https://i.ibb.co/LCK020c/k-qrcode-24-3-2021.jpg",
+                alt: "Kasikorn Thai bank",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2 has-text-centered" }, [
+            _vm._v(
+              "\n                Transfer to Kasikorn Thai Bank\n            "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("figure", { staticClass: "justify-content-center" }, [
+            _c("img", {
+              attrs: {
+                src: "https://i.ibb.co/7SdYkn8/Screenshot-2021-0329-204110.jpg",
+                alt: "truemove",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "pt-2 has-text-centered" }, [
+            _vm._v("\n                by truemove\n            "),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column" }, [
+          _c("div", { staticClass: "field" }, [
+            _c("figure", { staticClass: "justify-content-center" }, [
+              _c("img", {
+                staticClass: "image",
+                attrs: {
+                  src: "https://i.ibb.co/sQwHmxg/2021-03-29-paypal.png",
+                  alt: "pay by paypal",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "pt-2 has-text-centered" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "https://paypal.me/farookphuket?country.x=TH&locale.x=th_TH",
+                    target: "_blank",
+                  },
+                },
+                [
+                  _vm._v(
+                    "\n                        paypal\n                    "
+                  ),
+                ]
+              ),
+            ]),
           ]),
         ]),
       ]),
