@@ -14,3 +14,4 @@ INSERT INTO `replies`(`user_id`,`r_title`,`r_body`,`created_at`,
  
  
  
+ 

@@ -19,7 +19,36 @@
                         <p>
                             edit my profile.
                         </p>
+                        <ul class="mt-2">
+                            <li>Change my name</li>
+                            <li>Change my email</li>
+                            <li>Change my password</li>
+                        </ul>
                     </div>
+                </div>
+                <div class="field">
+                    <div class="box">
+
+                        <h2 class="title has-text-centered">
+                            Delete Account
+                        </h2>
+                        <p class="mb-4">
+                            <span class="is-medium warning">
+                                Warning !
+                            </span> this action cannot be undo! once you have click 
+                            the "delete" button your account and all the thing 
+                            that you have been done such as post,comment etc. 
+                            will be erase so please make sure that you have 
+                            backup your important data.
+                        </p>
+                       <a class="button is-block is-danger is-outlined" 
+                          @click.prevent="delMyAccount(user_id)"
+                           :disabled='isDisabled'>
+                            <font-awesome-icon icon="user-times"></font-awesome-icon> 
+                            delete my account
+                       </a>
+                    </div>
+
                 </div>
             </div>
 
@@ -28,6 +57,31 @@
             </div>
         </div>
 
+        <!-- modal START -->
+
+        <div class="modal" :class="{'is-active':isModalShow}">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+              <div class="box">
+                    <div v-html="res_status">{{res_status}}</div>
+              </div>
+
+          </div>
+          <button class="modal-close is-large" aria-label="close" 
+          @click.prevent="isModalShow = false"></button>
+          <div class="columns">
+              <div class="column">
+                <div class="field is-pulled-right">
+                    <button class="button is-success is-outlined" 
+                    @click.prevent="isModalShow = ''">
+                        <font-awesome-icon icon="check"></font-awesome-icon>
+                    </button>
+
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- modal END -->
 </section>
 </template>
 
@@ -41,6 +95,11 @@ export default{
                      show_u_name:'',
                      user_id:'',
                      tk:'',
+                     is_admin:'',
+                     isDisabled:false,
+                     isModalShow:'',
+                     res_status:'',
+
                  }
              },
              components:{
@@ -60,7 +119,14 @@ methods:{
                              headers:{'Authorization':`Basic ${this.tk}`}
                             })
                 .then(res=>{
-                   // console.log(res.data)
+
+                    let rData = res.data
+
+//                    console.log(rData.is_admin)
+                    if(rData.is_admin != 0){
+                        this.isDisabled = true
+                    }
+                    this.user_id = window.user_id
                     this.show_u_name = res.data.name
 
                         })
@@ -71,6 +137,21 @@ methods:{
                     }
                         })
             },
+    delMyAccount(user_id){
+        if(confirm(`Delete your account ${user_id}?`) == true){
+            let url = `/api/member/register/${user_id}`
+            axios.delete(url)
+                .then(res=>{
+                    this.res_status = res.data.msg
+
+                })
+            this.isModalShow = 'is-active'
+            setTimeout(()=>{
+                location.reload()
+            },3500)
+        }
+        return
+    },
         },
 }
 </script>

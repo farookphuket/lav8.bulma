@@ -31,6 +31,8 @@ class ProfileController extends Controller
         $key = request()->conf_pass;
         $valid = request()->validate([
             "conf_pass" => ["required"]
+        ],[
+            "conf_pass.required" => "Error! please Enter your current password"
         ]);
 
         $user = User::where("id",Auth::user()->id)

@@ -131,7 +131,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 
     /* Logout from member */
     Route::delete('/logout',[Login::class,'destroy'])->name('logout');
-                                        });
+
+    // delete account 
+    Route::resource("/register",Regit::class);
+});
 
 
 

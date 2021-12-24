@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 
-
+use Auth;
 use DB;
 
 class RegisterController extends Controller
@@ -147,7 +147,11 @@ class RegisterController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $u = User::find(Auth::user()->id);
+
+        return response()->json([
+            "user" => $u
+        ]);
     }
 
     /**
@@ -181,6 +185,33 @@ class RegisterController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+
+        $u_token = DB::table($this->user_token_table)
+            ->where('tokenable_id',Auth::user()->id)
+            ->get();
+        foreach($u_token as $arr):
+            DB::table($this->user_token_table)
+                ->delete($arr->id);
+        endforeach;
+
+
+        request()->session()->flush();
+
+        $u = User::find(Auth::user()->id);
+        //$u->delete();
+
+
+
+        $msg = "<div class=\"content\">
+            <span class=\"mt-2 mb-2\">
+            We're so sorry to see you go but we have to accept it <br />
+we hope that you will be back again.</span> 
+        <span class=\"tag is-medium is-success\">
+        thank you for join us</span>
+</div>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

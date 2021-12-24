@@ -2,17 +2,20 @@
     <div class="columns is-multiline ">
 
             <div class="column is-3">
+
                     <a class="button is-primary is-block is-alt" href="#" 
                     @click.prevent="showForm = true">New Post</a>
+
+                <!-- side menu left START -->
                     <aside class="mt-4 menu">
                         <p class="title">
                            Menu
                         </p>
-                        <p class="subtitle">
-                            show another menu here
-                        </p>
+
 
                     </aside>
+                <!-- side menu left END -->
+
             </div>
             <div class="column is-9">
 

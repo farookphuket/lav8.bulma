@@ -185,7 +185,24 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
 
+        // get the reply 
+        $cm = Comment::where("id",$comment->id)
+            ->with("reply")
+            ->first();
 
+        $remove = "";
+
+        // we have to make sure that there will be no reply as well
+        if(count($cm->reply) > 0):
+            foreach($cm->reply as $r):
+
+                $remove = $r->id;
+                Reply::destroy($remove);
+            endforeach;
+        endif;
+
+
+        // delete comment
         $re = Comment::find($comment->id);
         $re->delete();
         $msg = "<span class=\"tag is-medium is-success\">
@@ -194,6 +211,7 @@ class CommentController extends Controller
 
         return response()->json([
             "msg" => $msg
+
         ]);
     }
 }
