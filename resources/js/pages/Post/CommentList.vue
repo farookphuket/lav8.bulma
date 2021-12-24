@@ -59,7 +59,7 @@
                             <a class="is-link is-outlined" href="" 
                             @click.prevent="showReplyForm(cc.id)"
                                 >
-                                reply 
+                                reply ({{cc.reply.length}})
                                 <font-awesome-icon icon="quote-right"></font-awesome-icon>
                                 
                             </a>

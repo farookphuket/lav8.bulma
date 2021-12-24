@@ -12304,6 +12304,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdminNav",
   data: function data() {
@@ -15208,6 +15213,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -17210,6 +17218,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "MemberProfile",
@@ -17218,7 +17280,11 @@ __webpack_require__.r(__webpack_exports__);
       myData: '',
       show_u_name: '',
       user_id: '',
-      tk: ''
+      tk: '',
+      is_admin: '',
+      isDisabled: false,
+      isModalShow: '',
+      res_status: ''
     };
   },
   components: {
@@ -17240,7 +17306,13 @@ __webpack_require__.r(__webpack_exports__);
           'Authorization': "Basic ".concat(this.tk)
         }
       }).then(function (res) {
-        // console.log(res.data)
+        var rData = res.data; //                    console.log(rData.is_admin)
+
+        if (rData.is_admin != 0) {
+          _this.isDisabled = true;
+        }
+
+        _this.user_id = window.user_id;
         _this.show_u_name = res.data.name;
       })["catch"](function (err) {
         //console.log(err.response.status)
@@ -17248,6 +17320,22 @@ __webpack_require__.r(__webpack_exports__);
           location.href = '/login';
         }
       });
+    },
+    delMyAccount: function delMyAccount(user_id) {
+      var _this2 = this;
+
+      if (confirm("Delete your account ".concat(user_id, "?")) == true) {
+        var url = "/api/member/register/".concat(user_id);
+        axios["delete"](url).then(function (res) {
+          _this2.res_status = res.data.msg;
+        });
+        this.isModalShow = 'is-active';
+        setTimeout(function () {
+          location.reload();
+        }, 3500);
+      }
+
+      return;
     }
   }
 });
@@ -17440,6 +17528,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         //console.log(Object.values(err.response.data.errors).join())
         _this3.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        setTimeout(function () {
+          _this3.res_status = '';
+        }, 3200);
       });
     },
     profileSave: function profileSave() {
@@ -17459,6 +17550,9 @@ __webpack_require__.r(__webpack_exports__);
         }, 3200);
       })["catch"](function (err) {
         _this4.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err).join(), "</span>");
+        setTimeout(function () {
+          _this4.res_status = '';
+        }, 3200);
       });
     },
     renew: function renew() {
@@ -46163,7 +46257,15 @@ var render = function () {
                       to: { name: "AdminDashboard" },
                     },
                   },
-                  [_vm._v("\n                  Home\n                ")]
+                  [
+                    _c(
+                      "span",
+                      { staticClass: "ml-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "home" } })],
+                      1
+                    ),
+                    _vm._v("\n                  Home\n                "),
+                  ]
                 ),
               ],
               1
@@ -46309,10 +46411,12 @@ var render = function () {
                         },
                       },
                       [
+                        _c("font-awesome-icon", { attrs: { icon: "user" } }),
                         _vm._v(
-                          "\n\n                      Update Profile \n                    "
+                          " \n                      Update Profile \n                    "
                         ),
-                      ]
+                      ],
+                      1
                     ),
                   ],
                   1
@@ -46325,17 +46429,21 @@ var render = function () {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link",
+                        staticClass: "nav-link has-text-success",
                         attrs: {
                           "data-toggle": "collapse",
                           to: { name: "logout" },
                         },
                       },
                       [
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "sign-out-alt" },
+                        }),
                         _vm._v(
                           "\n                      LogOut\n                    "
                         ),
-                      ]
+                      ],
+                      1
                     ),
                   ],
                   1
@@ -50105,12 +50213,6 @@ var staticRenderFns = [
       _c("p", { staticClass: "title" }, [
         _vm._v("\n                       Menu\n                    "),
       ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "subtitle" }, [
-        _vm._v(
-          "\n                        show another menu here\n                    "
-        ),
-      ]),
     ])
   },
 ]
@@ -52789,6 +52891,39 @@ var render = function () {
           _vm._v(" "),
           _vm._m(1),
         ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "box" }, [
+            _c("h2", { staticClass: "title has-text-centered" }, [
+              _vm._v(
+                "\n                            Delete Account\n                        "
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "button is-block is-danger is-outlined",
+                attrs: { disabled: _vm.isDisabled },
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.delMyAccount(_vm.user_id)
+                  },
+                },
+              },
+              [
+                _c("font-awesome-icon", { attrs: { icon: "user-times" } }),
+                _vm._v(
+                  " \n                            delete my account\n                       "
+                ),
+              ],
+              1
+            ),
+          ]),
+        ]),
       ]),
       _vm._v(" "),
       _c(
@@ -52806,6 +52941,54 @@ var render = function () {
         1
       ),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", class: { "is-active": _vm.isModalShow } },
+      [
+        _c("div", { staticClass: "modal-background" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "box" }, [
+            _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+              _vm._v(_vm._s(_vm.res_status)),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "modal-close is-large",
+          attrs: { "aria-label": "close" },
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              _vm.isModalShow = false
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "field is-pulled-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-success is-outlined",
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      _vm.isModalShow = ""
+                    },
+                  },
+                },
+                [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+                1
+              ),
+            ]),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -52841,6 +53024,29 @@ var staticRenderFns = [
           "\n                            edit my profile.\n                        "
         ),
       ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "mt-2" }, [
+        _c("li", [_vm._v("Change my name")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Change my email")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Change my password")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mb-4" }, [
+      _c("span", { staticClass: "is-medium warning" }, [
+        _vm._v(
+          "\n                                Warning !\n                            "
+        ),
+      ]),
+      _vm._v(
+        ' this action cannot be undo! once you have click \n                            the "delete" button your account and all the thing \n                            that you have been done such as post,comment etc. \n                            will be erase so please make sure that you have \n                            backup your important data.\n                        '
+      ),
     ])
   },
 ]
@@ -53017,7 +53223,7 @@ var render = function () {
                 staticClass: "input",
                 attrs: {
                   type: "password",
-                  placeholder: "* Please confirm your current password",
+                  placeholder: "* Please enter your password",
                 },
                 domProps: { value: _vm.pForm.conf_pass },
                 on: {
@@ -53040,7 +53246,7 @@ var render = function () {
                 },
               }),
               _vm._v(" "),
-              _c("p", { staticClass: "tag mt-2 is-medium is-danger" }, [
+              _c("p", { staticClass: "help mt-2 has-text-info" }, [
                 _vm._v(
                   "\n                        please Enter your current password in order to save the \n                        change.\n                    "
                 ),
@@ -53048,18 +53254,11 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "tag is-medium has-text-centered",
-              domProps: { innerHTML: _vm._s(_vm.res_status) },
-            },
-            [
-              _vm._v(
-                "\n                " + _vm._s(_vm.res_status) + "\n            "
-              ),
-            ]
-          ),
+          _c("span", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+            _vm._v(
+              "\n                " + _vm._s(_vm.res_status) + "\n            "
+            ),
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "buttons is-right" }, [
             _c(
@@ -53985,7 +54184,9 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                            reply \n                            "
+                            "\n                            reply (" +
+                              _vm._s(cc.reply.length) +
+                              ")\n                            "
                           ),
                           _c("font-awesome-icon", {
                             attrs: { icon: "quote-right" },

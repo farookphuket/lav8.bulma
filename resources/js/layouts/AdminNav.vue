@@ -24,6 +24,9 @@
                           data-toggle="collapse"
                           :to="{ name: 'AdminDashboard' }"
                         >
+                        <span class="ml-2">
+                            <font-awesome-icon icon="home"></font-awesome-icon>
+                        </span>
                           Home
                         </router-link>
                   </span>
@@ -99,16 +102,18 @@
                               :to="{ name: 'MemberProfile' }"
                             >
 
+                            <font-awesome-icon icon="user"></font-awesome-icon> 
                               Update Profile 
                             </router-link>
                         </span>
 
                         <span class="button is-outlined is-danger">
                             <router-link
-                              class="nav-link"
+                              class="nav-link has-text-success"
                               data-toggle="collapse"
                               :to="{ name: 'logout' }"
                             >
+                            <font-awesome-icon icon="sign-out-alt"></font-awesome-icon>
                               LogOut
                             </router-link>
                         </span>

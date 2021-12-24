@@ -61,18 +61,18 @@
                 <label class="label" for="">Confirm Password</label>
                 <div class="control">
                     <input v-model="pForm.conf_pass" class="input" type="password" 
-                    placeholder="* Please confirm your current password" 
+                    placeholder="* Please enter your password" 
                     ref="conf_pass"
                     @keyup.enter.prevent="sendKey">
 
-                    <p class="tag mt-2 is-medium is-danger">
+                    <p class="help mt-2 has-text-info">
                         please Enter your current password in order to save the 
                         change.
                     </p>
                 </div>
             </div>
 
-            <span class="tag is-medium has-text-centered" v-html="res_status">
+            <span  v-html="res_status">
                 {{res_status}}
             </span>
             <div class="buttons is-right">
@@ -166,6 +166,10 @@ methods:{
                     this.res_status = `<span class="tag is-medium is-danger">
                     ${Object.values(err.response.data.errors).join()}
                     </span>`
+
+                    setTimeout(()=>{
+                        this.res_status = ''
+                    },3200)
                         })
             },
             profileSave(){
@@ -184,6 +188,9 @@ methods:{
                 .catch((err)=>{
                     this.res_status = `<span class="tag is-medium is-danger">
                     ${Object.values(err).join()}</span>`
+                    setTimeout(()=>{
+                        this.res_status = ''
+                    },3200)
                         })
             },
             renew(){
