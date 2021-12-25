@@ -24,13 +24,19 @@
                           data-toggle="collapse"
                           :to="{ name: 'MemberDashboard' }"
                         >
-                          Home
+                        <span class="mr-2">
+                            <font-awesome-icon icon="home"></font-awesome-icon>
+                        </span>
+
                         </router-link>
                   </span>
 
 
                   <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
+                        <span class="mr-2">
+                            <font-awesome-icon icon="folder"></font-awesome-icon>
+                        </span> 
                       Pages
                     </a>
 
@@ -41,6 +47,7 @@
                               data-toggle="collapse"
                               :to="{ name: 'about' }"
                             >
+                            
                               About
                             </router-link>
                         </span>
@@ -70,17 +77,17 @@
                               :to="{ name: 'MemberProfile' }"
                             >
 
-                              Update Profile 
+                              <font-awesome-icon icon="user"></font-awesome-icon>
                             </router-link>
                         </span>
 
-                        <span class="button is-outlined is-warning">
+                        <span class="button is-outlined is-rounded is-warning">
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
                               :to="{ name: 'logout' }"
                             >
-                              LogOut
+                              <font-awesome-icon icon="sign-out-alt"></font-awesome-icon>
                             </router-link>
                         </span>
                     </div>

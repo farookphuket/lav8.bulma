@@ -12525,6 +12525,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "GuestNav",
   data: function data() {
@@ -12552,6 +12555,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16124,6 +16134,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "LoginForm",
   data: function data() {
@@ -16132,6 +16155,8 @@ __webpack_require__.r(__webpack_exports__);
       token: '',
       role_user: '',
       err: false,
+      isError: false,
+      isSuccess: false,
       lForm: new Form({
         email: '',
         password: ''
@@ -16146,6 +16171,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.res_status = '';
+      this.isSuccess = false;
       var url = "/api/login";
       this.lForm.submit('post', url).then(function (res) {
         _this.res_status = res.msg;
@@ -16153,7 +16179,8 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$cookies.set('token', res.token);
 
-        _this.role_user = res.role; //                    console.log(res)
+        _this.role_user = res.role;
+        _this.isSuccess = true; //                    console.log(res)
 
         if (res.error != false) {
           //                       console.log(res)
@@ -16163,6 +16190,13 @@ __webpack_require__.r(__webpack_exports__);
         location.href = res.url;
       })["catch"](function (err) {
         _this.res_status = "<span class=\"tag is-medium is-danger\">\n                    ".concat(Object.values(err).join(), "\n                    </span>");
+        _this.isError = true;
+        setTimeout(function () {
+          _this.res_status = '';
+          _this.isError = false;
+
+          _this.$refs.email.focus();
+        }, 3200);
       });
     },
     getOld: function getOld() {//console.log(this.$cookies.get('token'))
@@ -17231,6 +17265,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
 //
 //
 //
@@ -46470,11 +46508,8 @@ var render = function () {
                   {
                     attrs: { "data-toggle": "collapse", to: { name: "home" } },
                   },
-                  [
-                    _vm._v(
-                      "\n                          Home\n                        "
-                    ),
-                  ]
+                  [_c("font-awesome-icon", { attrs: { icon: "home" } })],
+                  1
                 ),
               ],
               1
@@ -46485,6 +46520,12 @@ var render = function () {
               { staticClass: "navbar-item has-dropdown is-hoverable" },
               [
                 _c("a", { staticClass: "navbar-link" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "folder" } })],
+                    1
+                  ),
                   _vm._v("\n                      Pages\n                    "),
                 ]),
                 _vm._v(" "),
@@ -46544,7 +46585,7 @@ var render = function () {
               _c("div", { staticClass: "buttons" }, [
                 _c(
                   "span",
-                  { staticClass: "button is-primary" },
+                  { staticClass: "button is-warning is-outlined is-rounded" },
                   [
                     _c(
                       "router-link",
@@ -46555,11 +46596,8 @@ var render = function () {
                           to: { name: "register" },
                         },
                       },
-                      [
-                        _vm._v(
-                          "\n                              Register\n                            "
-                        ),
-                      ]
+                      [_c("font-awesome-icon", { attrs: { icon: "plug" } })],
+                      1
                     ),
                   ],
                   1
@@ -46567,7 +46605,7 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "button is-warning" },
+                  { staticClass: "button is-danger is-outlined is-rounded" },
                   [
                     _c(
                       "router-link",
@@ -46578,11 +46616,8 @@ var render = function () {
                           to: { name: "login" },
                         },
                       },
-                      [
-                        _vm._v(
-                          "\n                              Login\n                            "
-                        ),
-                      ]
+                      [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                      1
                     ),
                   ],
                   1
@@ -46688,7 +46723,14 @@ var render = function () {
                       to: { name: "MemberDashboard" },
                     },
                   },
-                  [_vm._v("\n                  Home\n                ")]
+                  [
+                    _c(
+                      "span",
+                      { staticClass: "mr-2" },
+                      [_c("font-awesome-icon", { attrs: { icon: "home" } })],
+                      1
+                    ),
+                  ]
                 ),
               ],
               1
@@ -46699,7 +46741,13 @@ var render = function () {
               { staticClass: "navbar-item has-dropdown is-hoverable" },
               [
                 _c("a", { staticClass: "navbar-link" }, [
-                  _vm._v("\n              Pages\n            "),
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "folder" } })],
+                    1
+                  ),
+                  _vm._v(" \n              Pages\n            "),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "navbar-dropdown" }, [
@@ -46718,7 +46766,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                      About\n                    "
+                            "\n                    \n                      About\n                    "
                           ),
                         ]
                       ),
@@ -46769,11 +46817,8 @@ var render = function () {
                           to: { name: "MemberProfile" },
                         },
                       },
-                      [
-                        _vm._v(
-                          "\n\n                      Update Profile \n                    "
-                        ),
-                      ]
+                      [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                      1
                     ),
                   ],
                   1
@@ -46781,7 +46826,7 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "button is-outlined is-warning" },
+                  { staticClass: "button is-outlined is-rounded is-warning" },
                   [
                     _c(
                       "router-link",
@@ -46793,10 +46838,11 @@ var render = function () {
                         },
                       },
                       [
-                        _vm._v(
-                          "\n                      LogOut\n                    "
-                        ),
-                      ]
+                        _c("font-awesome-icon", {
+                          attrs: { icon: "sign-out-alt" },
+                        }),
+                      ],
+                      1
                     ),
                   ],
                   1
@@ -51240,6 +51286,26 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "box" }, [
     _c("form", { attrs: { action: "" } }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.isError,
+              expression: "isError",
+            },
+          ],
+          staticClass: "mb-4",
+        },
+        [
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+            _vm._v(_vm._s(_vm.res_status)),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "field" }, [
         _c("label", { staticClass: "label", attrs: { for: "" } }, [
           _vm._v("E-mail"),
@@ -51255,6 +51321,7 @@ var render = function () {
                 expression: "lForm.email",
               },
             ],
+            ref: "email",
             staticClass: "input",
             attrs: { type: "text", name: "email", placeholder: "Email..." },
             domProps: { value: _vm.lForm.email },
@@ -51305,10 +51372,25 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column is-3" }, [
-          _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
-            _vm._v(_vm._s(_vm.res_status)),
-          ]),
+        _c("div", { staticClass: "column" }, [
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.isSuccess,
+                  expression: "isSuccess",
+                },
+              ],
+            },
+            [
+              _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+                _vm._v(_vm._s(_vm.res_status)),
+              ]),
+            ]
+          ),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "column is-9" }, [
@@ -51325,16 +51407,27 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("Login")]
+              [
+                _c(
+                  "span",
+                  { staticClass: "mr-2" },
+                  [_c("font-awesome-icon", { attrs: { icon: "sign-in-alt" } })],
+                  1
+                ),
+                _vm._v("\n                    Login\n\n                    "),
+              ]
             ),
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "button is-link is-outlined is-light is-rounded" },
+              { staticClass: "button is-danger is-outlined is-rounded" },
               [
-                _c("router-link", { attrs: { to: { name: "home" } } }, [
-                  _vm._v("Cancel"),
-                ]),
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "home" } } },
+                  [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+                  1
+                ),
               ],
               1
             ),
@@ -52686,7 +52779,7 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-4" }, [
+      _c("div", { staticClass: "column is-5" }, [
         _c("div", { staticClass: "content" }, [
           _c("h2", { staticClass: "title has-text-centered" }, [
             _vm._v(_vm._s(_vm.show_u_name) + "'s profile"),
@@ -52700,7 +52793,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "column is-8" },
+        { staticClass: "column is-6" },
         [
           _c("profile-form", {
             on: {
@@ -52883,7 +52976,7 @@ var render = function () {
             _c(
               "button",
               {
-                staticClass: "button is-link",
+                staticClass: "button is-info  is-outlined is-rounded",
                 attrs: { type: "submit" },
                 on: {
                   click: function ($event) {
@@ -52892,7 +52985,8 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("Save")]
+              [_c("font-awesome-icon", { attrs: { icon: "save" } })],
+              1
             ),
           ]),
         ]),
@@ -52971,7 +53065,8 @@ var render = function () {
             _c(
               "button",
               {
-                staticClass: "button is-primary is-outlined",
+                staticClass:
+                  "button is-primary is-outlined is-small \n                is-rounded",
                 on: {
                   click: function ($event) {
                     $event.preventDefault()
@@ -52979,13 +53074,15 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n                    send\n                ")]
+              [_c("font-awesome-icon", { attrs: { icon: "save" } })],
+              1
             ),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "button is-danger is-outlined",
+                staticClass:
+                  "button is-danger is-outlined is-small \n                is-rounded",
                 on: {
                   click: function ($event) {
                     $event.preventDefault()
@@ -52993,7 +53090,8 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n                    cancel\n                ")]
+              [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+              1
             ),
           ]),
         ]),

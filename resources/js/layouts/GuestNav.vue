@@ -23,7 +23,7 @@
                           data-toggle="collapse"
                           :to="{ name: 'home' }"
                         >
-                          Home
+                          <font-awesome-icon icon="home"></font-awesome-icon>
                         </router-link>
                   </span>
 
@@ -34,6 +34,9 @@
 -->
                   <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
+                        <span class="mr-2">
+                            <font-awesome-icon icon="folder"></font-awesome-icon>
+                        </span>
                       Pages
                     </a>
 
@@ -66,23 +69,23 @@
                     <div class="buttons">
 
 
-                        <span class="button is-primary">
+                        <span class="button is-warning is-outlined is-rounded">
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
                               :to="{ name: 'register' }"
                             >
-                              Register
+                              <font-awesome-icon icon="plug"></font-awesome-icon>
                             </router-link>
                         </span>
 
-                        <span class="button is-warning">
+                        <span class="button is-danger is-outlined is-rounded">
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
                               :to="{ name: 'login' }"
                             >
-                              Login
+                              <font-awesome-icon icon="user"></font-awesome-icon>
                             </router-link>
                         </span>
                     </div>

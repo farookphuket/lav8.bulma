@@ -40,9 +40,11 @@
                 <div class="column is-4">
                     <div class="buttons has-addons is-right">
 
-                        <button class="button is-link" 
+                        <button class="button is-info  is-outlined is-rounded" 
                         type="submit" 
-                        @click.prevent="check">Save</button>
+                        @click.prevent="check">
+                        <font-awesome-icon icon="save"></font-awesome-icon>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -74,14 +76,16 @@
                 {{res_status}}
             </span>
             <div class="buttons is-right">
-                <button class="button is-primary is-outlined" 
+                <button class="button is-primary is-outlined is-small 
+                is-rounded" 
                 @click.prevent="sendKey">
-                    send
+                    <font-awesome-icon icon="save"></font-awesome-icon>
                 </button>
 
-                <button class="button is-danger is-outlined" 
+                <button class="button is-danger is-outlined is-small 
+                is-rounded" 
                 @click.prevent="active=''">
-                    cancel
+                    <font-awesome-icon icon="times"></font-awesome-icon>
                 </button>
             </div>
         </div>
