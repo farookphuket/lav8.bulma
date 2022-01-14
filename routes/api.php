@@ -17,6 +17,7 @@ use App\Http\Controllers\RoleController as uRole;
 use App\Http\Controllers\VisitorController as VISIT;
 use App\Http\Controllers\WhatnewController as WN;
 use App\Http\Controllers\TagController as Tag;
+use App\Http\Controllers\TemplateController as Tem;
 
 
 /* admin route */
@@ -72,6 +73,11 @@ Route::get('/post/{post:slug}',[Post::class,'show']);
 // tag as public
 Route::get("/tag",[Tag::class,"getTag"])->name("getTag");
 
+
+// Template 
+Route::get("/gettemplate",[Tem::class,"getTemplate"])
+    ->name("getTemplate");
+
 // get the post by tag
 Route::get('/postbytag',[Post::class,'postByTag'])->name('postByTag');
 
@@ -121,6 +127,10 @@ Route::prefix("member")->name("member.")->middleware('auth:sanctum')
 
     // Tag 
     Route::resource("/tag",Tag::class);
+
+
+    // Template 
+    Route::resource("/template",Tem::class);
 
     /* ============= member profile 24 Nov 2021 ====================
      * 
@@ -191,5 +201,9 @@ Route::prefix("admin")->name("admin.")->middleware('auth:sanctum')
     // tag 
     Route::resource('/tag',Tag::class);
     Route::get('/gettag',[Tag::class,"mGetTag"])->name("mGetTag");
+
+
+    // Template 
+    Route::resource("/template",Tem::class);
 
 });

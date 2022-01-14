@@ -280,6 +280,13 @@ methods:{
 
 
 
+# Change Log 
+
+## date 14 Jan 2022 
+> added template for easier to prepare data for post.
+
+
+
 
 
 ## ================= date 6 Dec 2021 

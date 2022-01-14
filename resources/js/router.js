@@ -24,6 +24,7 @@ import AdminComment from './pages/Admin/Post/Comment.vue'
 import AdminUser from './pages/Admin/User/User.vue'
 import AdminAbout from './pages/Admin/About.vue'
 import AdminCategory from './pages/Admin/Category/Category.vue'
+import AdminTemplate from './pages/Admin/Template/Template.vue'
 
 
 Vue.use(VueRouter);
@@ -147,6 +148,12 @@ const router = new VueRouter({
             component: AdminCategory
         },
 
+
+        {
+            path: '/admin/template',
+            name: 'AdminTemplate',
+            component: AdminTemplate
+        },
 
         {
             path:'*',
