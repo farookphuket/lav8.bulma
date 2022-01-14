@@ -66,6 +66,17 @@
                             </router-link>
                         </span>
 
+
+                        <span class="navbar-item">
+                            <router-link
+                              class="nav-link"
+                              data-toggle="collapse"
+                              :to="{ name: 'AdminTemplate' }"
+                            >
+                              Template
+                            </router-link>
+                        </span>
+
                         <span class="navbar-item">
                             <router-link
                               class="nav-link"
