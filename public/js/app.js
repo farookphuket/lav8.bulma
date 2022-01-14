@@ -14781,6 +14781,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -14817,12 +14826,12 @@ __webpack_require__.r(__webpack_exports__);
       if (!url) url = "/api/gettemplate";
       axios.get(url).then(function (res) {
         _this.tem_list = res.data.template;
+        _this.tem_num = Object.values(res.data.template.data).length;
       });
       document.title = "Manage Template";
     },
     getRefresh: function getRefresh() {
       this.res_status = '';
-      this.isFormOpen = false;
     }
   }
 });
@@ -14840,13 +14849,113 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var jodit_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jodit-vue */ "./node_modules/jodit-vue/dist/jodit-vue.esm.js");
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "TemplateForm"
+  name: "TemplateForm",
+  props: ["editId"],
+  data: function data() {
+    return {
+      res_status: '',
+      tForm: new Form({
+        t_title: '',
+        t_method: '',
+        t_excerpt: '',
+        t_body: ''
+      })
+    };
+  },
+  watch: {
+    "editId": function editId(x) {
+      this.getEditData(x);
+    }
+  },
+  methods: {
+    getEditData: function getEditData(x) {
+      alert(x);
+    },
+    saveT: function saveT(id) {
+      var _this = this;
+
+      var url = "/api/admin/template";
+      var fData = new FormData();
+      fData.append('t_title', this.tForm.t_title);
+      fData.append('t_method', this.tForm.t_method);
+      fData.append('t_excerpt', this.tForm.t_excerpt);
+      fData.append('t_body', this.tForm.t_body);
+
+      if (id && id != 0) {
+        fData.append("_method", "PUT");
+        url = "/api/admin/template/".concat(id);
+      }
+
+      axios.post(url, fData).then(function (res) {
+        _this.res_status = res.data.msg;
+        setTimeout(function () {
+          _this.$emit('getTemplate');
+        }, 2500);
+      })["catch"](function (err) {
+        _this.res_status = "<span class=\"tag is-medium \n                    is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -14862,6 +14971,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49962,15 +50084,37 @@ var render = function () {
           { staticClass: "column is-9" },
           [
             _c("div", { staticClass: "field is-pulled-right mb-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "button is-primary is-rounded \n                    is-small",
-                },
-                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
-                1
-              ),
+              _vm.isFormOpen == false
+                ? _c(
+                    "button",
+                    {
+                      staticClass:
+                        "button is-primary is-rounded \n                    is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          _vm.isFormOpen = true
+                        },
+                      },
+                    },
+                    [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                    1
+                  )
+                : _c(
+                    "button",
+                    {
+                      staticClass:
+                        "button is-danger is-rounded \n                    is-small",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          _vm.isFormOpen = false
+                        },
+                      },
+                    },
+                    [_c("font-awesome-icon", { attrs: { icon: "times" } })],
+                    1
+                  ),
             ]),
             _vm._v(" "),
             _c("template-form", {
@@ -50059,16 +50203,133 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", [
+      _c("form", { attrs: { action: "" } }, [
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.tForm.t_title,
+                  expression: "tForm.t_title",
+                },
+              ],
+              staticClass: "input",
+              attrs: { type: "text", name: "" },
+              domProps: { value: _vm.tForm.t_title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.tForm, "t_title", $event.target.value)
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c("div", { staticClass: "control" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.tForm.t_method,
+                  expression: "tForm.t_method",
+                },
+              ],
+              staticClass: "input",
+              attrs: { type: "text", name: "" },
+              domProps: { value: _vm.tForm.t_method },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.tForm, "t_method", $event.target.value)
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c(
+            "div",
+            { staticClass: "control" },
+            [
+              _c("jodit-editor", {
+                attrs: { height: "450" },
+                model: {
+                  value: _vm.tForm.t_excerpt,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.tForm, "t_excerpt", $$v)
+                  },
+                  expression: "tForm.t_excerpt",
+                },
+              }),
+            ],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field" }, [
+          _c(
+            "div",
+            { staticClass: "control" },
+            [
+              _c("jodit-editor", {
+                attrs: { height: "450" },
+                model: {
+                  value: _vm.tForm.t_body,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.tForm, "t_body", $$v)
+                  },
+                  expression: "tForm.t_body",
+                },
+              }),
+            ],
+            1
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column is-4" }, [
+            _c("div", { domProps: { innerHTML: _vm._s(_vm.res_status) } }, [
+              _vm._v(_vm._s(_vm.res_status)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column is-8" }, [
+            _c("div", { staticClass: "field is-pulled-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-primary",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function ($event) {
+                      $event.preventDefault()
+                      return _vm.saveT(_vm.editId)
+                    },
+                  },
+                },
+                [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+                1
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h2", [_vm._v("this is the form")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -50091,7 +50352,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("h2", [_vm._v("template list " + _vm._s(_vm.tem_num))])])
+  return _c(
+    "div",
+    [
+      _c("h2", { staticClass: "title has-text-centered" }, [
+        _vm._v("\n    template list " + _vm._s(_vm.tem_num)),
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.tem_list.data, function (tm) {
+        return _vm.tem_list.data != 0
+          ? _c("article", { staticClass: "box content" }, [
+              _c("div", [
+                _c("h2", { staticClass: "title" }, [
+                  _vm._v(_vm._s(tm.t_title)),
+                ]),
+              ]),
+            ])
+          : _c("article", [_c("h2", [_vm._v("no data")])])
+      }),
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

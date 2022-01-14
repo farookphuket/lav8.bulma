@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Template;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class TemplateController extends Controller
 {
     /**
@@ -42,9 +44,38 @@ class TemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $valid = request()->validate([
+            "t_title" => ["required","min:8"]
+        ],
+        [
+            "t_title.required" => "Error! title is required",
+            "t_title.min" => "Error! title is must be greather than 8 chars",
+        ]);
+
+        // preparing data
+        $valid["user_id"] = Auth::user()->id;
+        $valid["t_title"] = xx_clean(request()->t_title);
+        $valid["t_method"] = xx_clean(request()->t_method);
+        $valid["t_excerpt"] = xx_clean(request()->t_excerpt);
+        $valid["t_body"] = xx_clean(request()->t_body);
+
+        // create template
+        Template::create($valid);
+
+        // get the last insert row
+        $t = Template::latest()->first();
+
+        // make a backup to file 
+        Template::backupTemplate($t->id,"insert");
+
+        $msg = "<span class=\"tag is-medium is-success\">
+Success : Template has been created! </span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
+
     }
 
     /**

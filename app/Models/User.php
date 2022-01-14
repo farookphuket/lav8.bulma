@@ -67,6 +67,10 @@ class User extends Authenticatable
         return $this->hasMany(Whatnew::class);
     }
 
+    public function template(){
+        return $this->hasMany(Template::class);
+    }
+
 
     public static function backupUser($user_id,$cmd=false){
         // table 

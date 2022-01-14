@@ -21,8 +21,17 @@
                 <div class="column is-9">
                     <div class="field is-pulled-right mb-4">
                         <button class="button is-primary is-rounded 
-                        is-small">
+                        is-small"  
+                        @click.prevent="isFormOpen=true"  
+                        v-if="isFormOpen == false">
                             <font-awesome-icon icon="plus"></font-awesome-icon>
+                        </button>
+                        <button class="button is-danger is-rounded 
+                        is-small" 
+                        @click.prevent="isFormOpen = false" 
+                        v-else>
+                            <font-awesome-icon 
+                            icon="times"></font-awesome-icon>
                         </button>
                     </div>
 
@@ -76,12 +85,13 @@ methods:{
                 axios.get(url)
                     .then(res=>{
                         this.tem_list = res.data.template
+                        this.tem_num = Object.values(res.data.template.data).length
                             })
                 document.title = `Manage Template`
             },
             getRefresh(){
                 this.res_status = ''
-                this.isFormOpen = false
+
             },
         },
 }
