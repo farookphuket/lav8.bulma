@@ -74,7 +74,8 @@ export default{
 methods:{
             getTemplate(page){
                 this.getRefresh()
-                
+                this.editId = 0 
+
                 let url = ''
                 if(page){
                     url = page 
@@ -92,6 +93,13 @@ methods:{
             getRefresh(){
                 this.res_status = ''
 
+            },
+            edit(id){
+                this.editId = id
+                this.isFormOpen = true
+            },
+            del(id){
+                alert(id)
             },
         },
 }

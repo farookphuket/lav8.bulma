@@ -14815,6 +14815,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.getRefresh();
+      this.editId = 0;
       var url = '';
 
       if (page) {
@@ -14832,6 +14833,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     getRefresh: function getRefresh() {
       this.res_status = '';
+    },
+    edit: function edit(id) {
+      this.editId = id;
+      this.isFormOpen = true;
+    },
+    del: function del(id) {
+      alert(id);
     }
   }
 });
@@ -14850,6 +14858,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var jodit_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jodit-vue */ "./node_modules/jodit-vue/dist/jodit-vue.esm.js");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14929,10 +14942,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getEditData: function getEditData(x) {
-      alert(x);
+      var _this = this;
+
+      if (x != 0) {
+        this.$refs.t_title.focus();
+        var url = "/api/admin/template/".concat(x);
+        axios.get(url).then(function (res) {
+          //console.log(res.data.template)
+          var rData = res.data.template;
+          _this.tForm.t_title = rData.t_title;
+          _this.tForm.t_method = rData.t_method;
+          _this.tForm.t_excerpt = rData.t_excerpt;
+          _this.tForm.t_body = rData.t_body;
+        });
+      }
     },
     saveT: function saveT(id) {
-      var _this = this;
+      var _this2 = this;
 
       var url = "/api/admin/template";
       var fData = new FormData();
@@ -14947,12 +14973,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post(url, fData).then(function (res) {
-        _this.res_status = res.data.msg;
+        _this2.res_status = res.data.msg;
         setTimeout(function () {
-          _this.$emit('getTemplate');
+          _this2.res_status = '';
+
+          _this2.$emit('getTemplate');
         }, 2500);
       })["catch"](function (err) {
-        _this.res_status = "<span class=\"tag is-medium \n                    is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        _this2.res_status = "<span class=\"tag is-medium \n                    is-danger\">\n                    ".concat(Object.values(err.response.data.errors).join(), "\n                    </span>");
+        setTimeout(function () {
+          _this2.res_status = '';
+        }, 3200);
       });
     }
   }
@@ -14971,6 +15002,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50217,8 +50292,9 @@ var render = function () {
                   expression: "tForm.t_title",
                 },
               ],
+              ref: "t_title",
               staticClass: "input",
-              attrs: { type: "text", name: "" },
+              attrs: { type: "text", placeholder: "Enter title...", name: "" },
               domProps: { value: _vm.tForm.t_title },
               on: {
                 input: function ($event) {
@@ -50244,7 +50320,7 @@ var render = function () {
                 },
               ],
               staticClass: "input",
-              attrs: { type: "text", name: "" },
+              attrs: { type: "text", placeholder: "Enter method...", name: "" },
               domProps: { value: _vm.tForm.t_method },
               on: {
                 input: function ($event) {
@@ -50360,11 +50436,90 @@ var render = function () {
       ]),
       _vm._v(" "),
       _vm._l(_vm.tem_list.data, function (tm) {
-        return _vm.tem_list.data != 0
+        return _vm.tem_list.data != ""
           ? _c("article", { staticClass: "box content" }, [
-              _c("div", [
-                _c("h2", { staticClass: "title" }, [
+              _c("div", { staticClass: "mb-4" }, [
+                _c("h2", { staticClass: "title has-text-centered" }, [
                   _vm._v(_vm._s(tm.t_title)),
+                ]),
+                _vm._v(" "),
+                _c("div", { domProps: { innerHTML: _vm._s(tm.t_excerpt) } }, [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(tm.t_excerpt) +
+                      "\n            "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column is-4" }, [
+                  _c(
+                    "span",
+                    [
+                      _c("font-awesome-icon", {
+                        attrs: { icon: "calendar-day" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "tag is-medium" }, [
+                    _vm._v(_vm._s(_vm.moment(tm.created))),
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "tag is-medium" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.moment(tm.created_at).fromNow()) +
+                        "\n                "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column" }, [
+                  _c(
+                    "span",
+                    { staticClass: "mr-2" },
+                    [_c("font-awesome-icon", { attrs: { icon: "user" } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(tm.user.name))]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "filed is-pulled-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "button is-primary \n                    is-rounded is-small",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("edit", tm.id)
+                          },
+                        },
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "edit" } })],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "button is-danger \n                    is-rounded is-small",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.$emit("del", tm.id)
+                          },
+                        },
+                      },
+                      [_c("font-awesome-icon", { attrs: { icon: "trash" } })],
+                      1
+                    ),
+                  ]),
                 ]),
               ]),
             ])

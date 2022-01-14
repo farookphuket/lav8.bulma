@@ -20,7 +20,8 @@ class TemplateController extends Controller
     }
 
     public function getTemplate(){
-        $tm = Template::orderBy('created_at','DESC')
+        $tm = Template::with('user')
+                ->orderBy('created_at','DESC')
                 ->paginate(2);
 
         return response()->json([
@@ -86,7 +87,13 @@ Success : Template has been created! </span>";
      */
     public function show(Template $template)
     {
-        //
+        $tm = Template::with('user')
+                    ->where('id',$template->id)
+                    ->first();
+
+        return response()->json([
+            "template" => $tm
+        ]);
     }
 
     /**
@@ -107,9 +114,40 @@ Success : Template has been created! </span>";
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Template $template)
+    public function update(Template $template)
     {
-        //
+        $tm = Template::find($template->id);
+
+        $valid = request()->validate([
+            "t_title" => ["required","min:8"]
+        ],
+        [
+            "t_title.required" => "Error! title is required",
+            "t_title.min" => "Error! title is must be greather than 8 chars",
+        ]);
+
+        // preparing data
+
+        $valid["t_title"] = xx_clean(request()->t_title);
+        $valid["t_method"] = xx_clean(request()->t_method);
+        $valid["t_excerpt"] = xx_clean(request()->t_excerpt);
+        $valid["t_body"] = xx_clean(request()->t_body);
+        $valid["updated_at"] = now();
+
+        // update template
+        Template::where("id",$template->id)
+                ->update($valid);
+
+
+        // make a backup to file 
+        Template::backupTemplate($tm->id,"edit");
+
+        $msg = "<span class=\"tag is-medium is-success\">
+Success : id {$template->id} has been updated! </span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
+
     }
 
     /**
@@ -120,6 +158,14 @@ Success : Template has been created! </span>";
      */
     public function destroy(Template $template)
     {
-        //
+        $tm = Template::find($template->id);
+        
+        $tm->delete();
+
+        $msg = "<span class=\"tag is-medium is-success\">
+Success : id {$template->id} has been deleted! </span>";
+        return response()->json([
+            "msg" => $msg
+        ]);
     }
 }

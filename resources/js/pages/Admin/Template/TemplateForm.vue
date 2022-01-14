@@ -5,14 +5,19 @@
                 <div class="field">
                    <div class="control">
                         <input v-model="tForm.t_title" 
-                        class="input" type="text" name="">
+                        class="input" type="text" 
+                        placeholder="Enter title..." 
+                        ref="t_title"
+                        name="">
                    </div>
                 </div>
 
                 <div class="field">
                    <div class="control">
                         <input v-model="tForm.t_method" 
-                        class="input" type="text" name="">
+                        class="input" type="text" 
+                        placeholder="Enter method..."
+                        name="">
                    </div>
                 </div>
 
@@ -78,7 +83,19 @@ watch:{
       },
 methods:{
             getEditData(x){
-                alert(x)
+                if(x != 0){
+                    this.$refs.t_title.focus()
+                    let url = `/api/admin/template/${x}`
+                    axios.get(url)
+                    .then(res=>{
+                        //console.log(res.data.template)
+                        let rData = res.data.template
+                        this.tForm.t_title = rData.t_title
+                        this.tForm.t_method = rData.t_method
+                        this.tForm.t_excerpt = rData.t_excerpt
+                        this.tForm.t_body = rData.t_body
+                    })
+                }
             },
             saveT(id){
                 let url = `/api/admin/template`
@@ -97,15 +114,22 @@ methods:{
                     .then(res=>{
                         this.res_status = res.data.msg
                         setTimeout(()=>{
+                            this.res_status = ''
                             this.$emit('getTemplate')
-                                },2500)
-                            })
+                        },2500)
+
+                    })
                 .catch(err=>{
                     this.res_status = `<span class="tag is-medium 
                     is-danger">
                     ${Object.values(err.response.data.errors).join()}
                     </span>`
-                        })
+
+                    setTimeout(()=>{
+                        this.res_status = ''
+                    },3200)
+                })
+
             },
         },
 }
