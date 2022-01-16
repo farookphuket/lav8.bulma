@@ -23,11 +23,31 @@ class TemplateController extends Controller
         $tm = Template::with('user')
                 ->orderBy('created_at','DESC')
                 ->paginate(2);
+        
 
         return response()->json([
             "template" => $tm
         ]);
     }
+
+    public function mGetTemplate(){
+        $tm = Template::with('user')
+                ->where('is_default_template',"!=",0)
+                ->orWhere("user_id",Auth::user()->id)
+                ->get();
+        return response()->json([
+            "template" => $tm
+        ]);
+    }
+    public function aGetTemplate(){
+
+        $tm = Template::with('user')
+                ->get();
+        return response()->json([
+            "template" => $tm
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +68,9 @@ class TemplateController extends Controller
     public function store()
     {
         $valid = request()->validate([
-            "t_title" => ["required","min:8"]
+            "t_title" => ["required","min:8"],
+            "t_method" => ["required"],
+            "t_excerpt" => ["required"] 
         ],
         [
             "t_title.required" => "Error! title is required",

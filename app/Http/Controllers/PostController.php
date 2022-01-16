@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Template;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
@@ -134,13 +135,18 @@ class PostController extends Controller
                     ->orWhere("user_id",Auth::user()->id)
                     ->latest()
                     ->first();
+        $tem = Template::with('user')
+                    ->where("is_default_template","!=",0)
+                    ->orWhere("user_id",Auth::user()->id)
+                    ->get();
 
         return response()->json([
             "post" => $p,
             "meta_title" => $t->p_title,
             "post_with_category" => $cat_with_post,
             "cp" => $cp,
-            "ta" => $ta
+            "ta" => $ta,
+            "template" => $tem
         ]);
     }
 
@@ -150,9 +156,11 @@ class PostController extends Controller
                     ->with('tag')
                     ->orderBy('created_at','DESC')
                     ->paginate(4);
+        $tm = Template::all();
         // return json data
         return response()->json([
-            "post" => $post
+            "post" => $post,
+            "template" => $tm
         ]);
     }
     /**

@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             ReplySeeder::class,
             ReadSeeder::class,
             TagSeeder::class,
+            TemplateSeeder::class,
             VisitorSeeder::class,
             WhatnewSeeder::class,
         ]);

@@ -37,4 +37,15 @@ INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALU
     '3',
     '2021-12-24 09:22:00',
     '2021-12-24 09:22:00');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 2 to read id 4
+ * on 2022-01-16 07:11:08 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '2',
+    '4',
+    '2022-01-16 07:11:08',
+    '2022-01-16 07:11:08');
  

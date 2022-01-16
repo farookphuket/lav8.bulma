@@ -13956,6 +13956,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -13972,6 +13973,7 @@ __webpack_require__.r(__webpack_exports__);
       showForm: false,
       editId: 0,
       postList: '',
+      template_all: '',
       showModal: ''
     };
   },
@@ -13994,8 +13996,9 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('apost_old_page');
       if (!url) url = "/api/admin/getpost";
       axios.get(url).then(function (res) {
-        //console.log(res.data)
+        console.log(res.data);
         _this.postList = res.data.post;
+        _this.template_all = res.data.template;
       });
     },
     closeForm: function closeForm() {
@@ -14170,10 +14173,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostForm",
-  props: ["editId"],
+  props: ["editId", "template_all"],
   data: function data() {
     return {
       res_status: '',
@@ -14182,13 +14216,15 @@ __webpack_require__.r(__webpack_exports__);
       user_select_tag: [],
       tag_with_post: '',
       theSlug: new CustomText(),
+      cat_list: '',
       pForm: new Form({
         p_title: '',
         slug: '',
         p_excerpt: '',
         p_body: '',
         p_is_public: 0,
-        new_tag: ''
+        new_tag: '',
+        category: ''
       })
     };
   },
@@ -14199,6 +14235,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getTag();
+    this.getCategory();
   },
   methods: {
     /*
@@ -14240,7 +14277,16 @@ __webpack_require__.r(__webpack_exports__);
         this.$refs.p_title.focus();
         var url = "/api/admin/post/".concat(x);
         axios.get(url).then(function (res) {
-          var rData = res.data.post;
+          var rData = res.data.post; //console.log(rData)
+          // get the current category 
+
+          rData.category.forEach(function (ca) {
+            console.log(ca);
+
+            if (rData.id == ca.pivot.post_id) {
+              _this.pForm.category = ca.pivot.category_id;
+            }
+          });
           _this.pForm.p_title = rData.p_title;
           _this.pForm.p_excerpt = rData.p_excerpt;
           _this.pForm.p_body = rData.p_body;
@@ -14263,7 +14309,8 @@ __webpack_require__.r(__webpack_exports__);
         p_body: this.pForm.p_body,
         slug: this.pForm.slug,
         p_is_public: this.pForm.p_is_public,
-        tags: this.user_select_tag
+        tags: this.user_select_tag,
+        category: this.pForm.category
       };
 
       if (id) {
@@ -14340,6 +14387,33 @@ __webpack_require__.r(__webpack_exports__);
           }, 5200);
         });
       }
+    },
+    getCategory: function getCategory() {
+      var _this5 = this;
+
+      this.pForm.category = 0;
+      var url = "/api/category";
+      axios.get(url).then(function (res) {
+        _this5.cat_list = res.data.category;
+      });
+    },
+    setCategory: function setCategory() {
+      console.log("category change to ".concat(this.pForm.category));
+    },
+    setTemplate: function setTemplate() {
+      var _this6 = this;
+
+      var url = "/api/admin/template/".concat(this.$refs.template.value);
+      axios.get(url).then(function (res) {
+        //console.log(res.data.template)
+        _this6.$refs.p_title.focus();
+
+        var rData = res.data.template;
+        _this6.pForm.p_title = rData.t_title + " [edit template]";
+        _this6.pForm.p_excerpt = rData.t_excerpt;
+        _this6.pForm.p_body = rData.t_body;
+        _this6.isSlug = true;
+      });
     }
   }
 });
@@ -49089,7 +49163,7 @@ var render = function () {
                 expression: "showForm",
               },
             ],
-            attrs: { editId: _vm.editId },
+            attrs: { editId: _vm.editId, template_all: _vm.template_all },
             on: {
               getPost: function ($event) {
                 return _vm.getPost($event)
@@ -49213,6 +49287,101 @@ var render = function () {
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-content" }, [
         _c("form", { attrs: { action: "" } }, [
+          _c("div", { staticClass: "columns" }, [
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "select" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pForm.category,
+                        expression: "pForm.category",
+                      },
+                    ],
+                    attrs: { name: "" },
+                    on: {
+                      change: [
+                        function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.pForm,
+                            "category",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        function ($event) {
+                          $event.preventDefault()
+                          return _vm.setCategory.apply(null, arguments)
+                        },
+                      ],
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("-- Select Category --"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.cat_list, function (ca) {
+                      return _c("option", { domProps: { value: ca.id } }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(ca.cat_name)
+                        ),
+                      ])
+                    }),
+                  ],
+                  2
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "column" }, [
+              _c("div", { staticClass: "select" }, [
+                _c(
+                  "select",
+                  {
+                    ref: "template",
+                    attrs: { name: "" },
+                    on: {
+                      change: function ($event) {
+                        $event.preventDefault()
+                        return _vm.setTemplate.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("-- Select Template --"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.template_all, function (te) {
+                      return _c("option", { domProps: { value: te.id } }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(te.t_title) +
+                            " \n                                "
+                        ),
+                      ])
+                    }),
+                  ],
+                  2
+                ),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "field" }, [
             _c("div", { staticClass: "control" }, [
               _c("input", {

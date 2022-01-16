@@ -20,6 +20,7 @@ class CreateTemplatesTable extends Migration
             $table->string("t_method");
             $table->text("t_excerpt");
             $table->text("t_body");
+            $table->boolean("is_default_template")->nullable()->default(0);
             $table->timestamps();
         });
     }

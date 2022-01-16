@@ -3,6 +3,37 @@
         <div class="card">
             <div class="card-content">
                 <form action="">
+
+                    <div class="columns">
+                        <!-- select category START -->
+                        <div class="column">
+                            <div class="select">
+                                <select v-model="pForm.category" 
+                                    name="" 
+                                    @change.prevent="setCategory">
+                                    <option value="0">-- Select Category --</option>
+                                    <option :value="ca.id" v-for="ca in cat_list">
+                                    {{ca.cat_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- select category END -->
+                        <!-- Select Template START -->
+                        <div class="column">
+                            <div class="select">
+
+                                <select ref="template" name="" 
+                                    @change.prevent="setTemplate">
+                                    <option value="0">-- Select Template --</option>
+                                    <option :value="te.id" v-for="te in template_all">
+                                    {{te.t_title}} 
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Select Template END -->
+                    </div>
+
                     <div class="field">
                         <div class="control">
                             <input v-model="pForm.p_title" class="input" 
@@ -123,7 +154,7 @@ import JoditEditor from 'jodit-vue'
 
 export default{
     name:"PostForm",
-    props:["editId"],
+    props:["editId","template_all"],
     data(){return{
         res_status:'',
         isSlug:false,
@@ -131,13 +162,16 @@ export default{
         user_select_tag:[],
         tag_with_post:'',
         theSlug:new CustomText(),
+        cat_list:'',
+
         pForm:new Form({
-           p_title:'',
-           slug:'',
-           p_excerpt:'',
-           p_body:'',
-           p_is_public:0,
+            p_title:'',
+            slug:'',
+            p_excerpt:'',
+            p_body:'',
+            p_is_public:0,
             new_tag:'',   
+            category:'',
         }),
     }},
 watch:{
@@ -147,7 +181,7 @@ watch:{
       },
     mounted(){
         this.getTag()
-
+        this.getCategory()
     },
     methods:{
 
@@ -191,6 +225,14 @@ watch:{
                         .then(res=>{
 
                             let rData = res.data.post
+                            //console.log(rData)
+                            // get the current category 
+                            rData.category.forEach((ca)=>{
+                                console.log(ca)
+                                if(rData.id == ca.pivot.post_id){
+                                    this.pForm.category = ca.pivot.category_id
+                                }
+                            })
                             this.pForm.p_title = rData.p_title
                             this.pForm.p_excerpt = rData.p_excerpt
                             this.pForm.p_body = rData.p_body
@@ -200,7 +242,7 @@ watch:{
                                 //console.log(val)
                                 this.user_select_tag.push(val.pivot.tag_id)
                                     })
-                                })
+                            })
                     }
                 },
          saveP(id){
@@ -212,6 +254,7 @@ watch:{
                    slug:this.pForm.slug,
                    p_is_public:this.pForm.p_is_public,
                    tags:this.user_select_tag,
+                    category:this.pForm.category
                 }
             if(id){
                 url = `/api/admin/post/${id}`
@@ -296,6 +339,34 @@ watch:{
                          })
              }
          },
+        getCategory(){
+            this.pForm.category = 0
+            let url = `/api/category`
+            axios.get(url)
+            .then(res=>{
+                this.cat_list = res.data.category
+            })
+        },
+        setCategory(){
+            console.log(`category change to ${this.pForm.category}`)
+
+        },
+
+        setTemplate(){
+
+            let url = `/api/admin/template/${this.$refs.template.value}`
+            axios.get(url)
+                .then(res=>{
+                    //console.log(res.data.template)
+                    this.$refs.p_title.focus()
+                    let rData = res.data.template 
+                    this.pForm.p_title = rData.t_title+" [edit template]"
+                    this.pForm.p_excerpt = rData.t_excerpt 
+                    this.pForm.p_body = rData.t_body
+
+                    this.isSlug = true
+                })
+        },
     },
 }
 </script>

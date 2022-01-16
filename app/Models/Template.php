@@ -13,7 +13,7 @@ class Template extends Model
         "user_id",
         "t_title","t_method",
         "t_excerpt",
-        "t_body"
+        "t_body","is_default_template"
     ];
 
     protected static $template_table = "templates";
@@ -45,12 +45,13 @@ class Template extends Model
  * on ".date("Y-m-d H:i:s a")."
  * */
 INSERT INTO `{$table}`(`user_id`,`t_title`,`t_method`,
-`t_excerpt`,`t_body`,`created_at`,`updated_at`) VALUES(
+`t_excerpt`,`t_body`,`is_default_template`,`created_at`,`updated_at`) VALUES(
     '{$tm->user_id}',
     '{$tm->t_title}',
     '{$tm->t_method}',
     '{$tm->t_excerpt}',
     '{$tm->t_body}',
+    '{$tm->is_default_template}',
     '{$tm->created_at}',
     '{$tm->updated_at}');
 ";
@@ -64,6 +65,7 @@ UPDATE `{$table}` SET t_title='{$tm->t_title}',
 t_method='{$tm->t_method}',
 t_excerpt='{$tm->t_excerpt}',
 t_body='{$tm->t_body}',
+is_default_template='{$tm->is_default_template}'
 updated_at='{$tm->updated_at}' WHERE id='{$id}';
 ";
         break;

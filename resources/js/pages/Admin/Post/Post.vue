@@ -39,6 +39,7 @@
             <div class="column is-9">
 
                     <post-form :editId="editId" 
+                        :template_all="template_all"
                     @getPost="getPost($event)" v-show="showForm" 
                     @closeForm="closeForm($event)"></post-form>
 
@@ -87,6 +88,7 @@ export default{
         showForm:false,
         editId:0,
         postList:'',
+         template_all:'',
         showModal:'',
      }},
      mounted(){
@@ -105,8 +107,9 @@ export default{
             if(!url) url = `/api/admin/getpost`
             axios.get(url)
                 .then(res=>{
-                    //console.log(res.data)
+                    console.log(res.data)
                     this.postList = res.data.post
+                    this.template_all = res.data.template
                         })
         },
         closeForm(){

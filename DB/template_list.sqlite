@@ -3,12 +3,13 @@
  * on 2022-01-14 19:29:02 pm
  * */
 INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
-`t_excerpt`,`t_body`,`created_at`,`updated_at`) VALUES(
+`t_excerpt`,`t_body`,`is_default_template`,`created_at`,`updated_at`) VALUES(
     '1',
     'test template 1',
     'post',
     '<p>this is the template 1<br></p>',
     '<p>this is the template 1<br></p>',
+    '1',
     '2022-01-14 19:29:02',
     '2022-01-14 19:29:02');
   
@@ -17,7 +18,24 @@ INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
  * */
 UPDATE `templates` SET t_title='test template 1 ed',
 t_method='post',
-t_excerpt='<p>this is the template 1<br></p>',
+t_excerpt='<p>this is the template 1</p>
+<p>
+This is the text I insert by hand to file.
+</p>',
 t_body='<p>this is the template 1<br></p>',
 updated_at='2022-01-14 21:04:45' WHERE id='1';
+  
+/* ==================== INSERT COMMAND id 2
+ * on 2022-01-15 14:17:02 pm
+ * */
+INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
+`t_excerpt`,`t_body`,`is_default_template`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'this is template 2',
+    'whatnew',
+    '<p>this is the what new tenmplate<br></p>',
+    '<p>this is the what new tempplate ha ha<br></p>',
+    '1',
+    '2022-01-15 14:17:02',
+    '2022-01-15 14:17:02');
  
