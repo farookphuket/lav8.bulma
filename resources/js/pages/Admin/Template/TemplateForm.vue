@@ -44,6 +44,24 @@
                         <div v-html="res_status">{{res_status}}</div>
                     </div>
                     <div class="column is-8">
+
+                        <div class="field">
+                          <div class="control">
+                            <label class="is-checkbox is-info is-rounded">
+                              <input type="checkbox" 
+                              v-model="tForm.is_default_template">
+                                <span  class="icon is-large checkmark">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                                <span>
+                                    Default Template
+                                </span>
+
+                            </label>
+                          </div>
+
+                        </div>
+
                         <div class="field is-pulled-right">
                             <button class="button is-primary" 
                             type="submit" 
@@ -70,6 +88,7 @@ export default{
         tForm:new Form({
             t_title:'',
             t_method:'',
+            is_default_template:0,
             t_excerpt:'',
             t_body:'',
 
@@ -94,6 +113,9 @@ methods:{
                         this.tForm.t_method = rData.t_method
                         this.tForm.t_excerpt = rData.t_excerpt
                         this.tForm.t_body = rData.t_body
+                        if(rData.is_default_template != 0){
+                            this.tForm.is_default_template = true
+                        }
                     })
                 }
             },

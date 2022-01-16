@@ -14864,6 +14864,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -14878,7 +14898,8 @@ __webpack_require__.r(__webpack_exports__);
       tem_num: '',
       isFormOpen: false,
       res_status: '',
-      editId: 0
+      editId: 0,
+      showModal: ''
     };
   },
   mounted: function mounted() {
@@ -14913,7 +14934,23 @@ __webpack_require__.r(__webpack_exports__);
       this.isFormOpen = true;
     },
     del: function del(id) {
-      alert(id);
+      var _this2 = this;
+
+      this.res_status = '';
+
+      if (id != 0 && confirm("delete template id ".concat(id, "?")) == true) {
+        var url = "/api/admin/template/".concat(id);
+        axios["delete"](url).then(function (res) {
+          _this2.showModal = 'is-active';
+          _this2.res_status = res.data.msg;
+          setTimeout(function () {
+            _this2.res_status = '';
+            _this2.showModal = '';
+
+            _this2.getTemplate();
+          }, 3200);
+        });
+      }
     }
   }
 });
@@ -14994,6 +15031,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "TemplateForm",
@@ -15004,6 +15059,7 @@ __webpack_require__.r(__webpack_exports__);
       tForm: new Form({
         t_title: '',
         t_method: '',
+        is_default_template: 0,
         t_excerpt: '',
         t_body: ''
       })
@@ -15028,6 +15084,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.tForm.t_method = rData.t_method;
           _this.tForm.t_excerpt = rData.t_excerpt;
           _this.tForm.t_body = rData.t_body;
+
+          if (rData.is_default_template != 0) {
+            _this.tForm.is_default_template = true;
+          }
         });
       }
     },
@@ -15076,6 +15136,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17014,6 +17104,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       editId: '',
       postList: '',
+      template_all: '',
       post_with_category: '',
       res_status: '',
       isShowDefaultList: true,
@@ -17044,9 +17135,10 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('mpost_old_page');
       if (!url) url = "/api/member/getpost";
       axios.get(url).then(function (res) {
-        //    console.log(res.data)
+        //console.log(res.data)
         _this.postList = res.data.post;
-        _this.post_with_category = res.data.post_with_category; // show the tag and post
+        _this.post_with_category = res.data.post_with_category;
+        _this.template_all = res.data.template; // show the tag and post
 
         _this.catHasContent = res.data.cp;
         _this.tagHasContent = res.data.ta;
@@ -17262,10 +17354,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostForm",
-  props: ["editId"],
+  props: ["editId", "template_all"],
   data: function data() {
     return {
       isShowSlug: false,
@@ -17416,6 +17525,21 @@ __webpack_require__.r(__webpack_exports__);
       this.pForm.reset();
       this.res_status = '';
       this.user_select_tag = [];
+    },
+    setTemplate: function setTemplate() {
+      var _this6 = this;
+
+      //alert(`the template ${this.$refs.template.value}`)
+      var url = "/api/member/template/".concat(this.$refs.template.value);
+      axios.get(url).then(function (res) {
+        var rData = res.data.template;
+
+        _this6.$refs.p_title.focus();
+
+        _this6.pForm.p_title = rData.t_title + " [Edit Template]";
+        _this6.pForm.p_excerpt = rData.t_excerpt;
+        _this6.isShowSlug = true;
+      });
     }
   }
 });
@@ -50397,6 +50521,49 @@ var render = function () {
         ),
       ]),
     ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", class: { "is-active": _vm.showModal } }, [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-content" }, [
+        _c("div", { staticClass: "content box" }, [
+          _c(
+            "div",
+            {
+              staticClass: "mb-6",
+              domProps: { innerHTML: _vm._s(_vm.res_status) },
+            },
+            [_vm._v(_vm._s(_vm.res_status))]
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "modal-close is-large",
+        attrs: { "aria-label": "close" },
+        on: {
+          click: function ($event) {
+            $event.preventDefault()
+            _vm.showModal = ""
+          },
+        },
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button is-success is-outlined ",
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              _vm.showModal = ""
+            },
+          },
+        },
+        [_c("font-awesome-icon", { attrs: { icon: "check" } })],
+        1
+      ),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -50551,6 +50718,65 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "column is-8" }, [
+            _c("div", { staticClass: "field" }, [
+              _c("div", { staticClass: "control" }, [
+                _c("label", { staticClass: "is-checkbox is-info is-rounded" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.tForm.is_default_template,
+                        expression: "tForm.is_default_template",
+                      },
+                    ],
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      checked: Array.isArray(_vm.tForm.is_default_template)
+                        ? _vm._i(_vm.tForm.is_default_template, null) > -1
+                        : _vm.tForm.is_default_template,
+                    },
+                    on: {
+                      change: function ($event) {
+                        var $$a = _vm.tForm.is_default_template,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.tForm,
+                                "is_default_template",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.tForm,
+                                "is_default_template",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.tForm, "is_default_template", $$c)
+                        }
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                                Default Template\n                            "
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "field is-pulled-right" }, [
               _c(
                 "button",
@@ -50574,7 +50800,16 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-large checkmark" }, [
+      _c("i", { staticClass: "fa fa-check" }),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -50656,6 +50891,24 @@ var render = function () {
                   _vm._v(" "),
                   _c("span", [_vm._v(_vm._s(tm.user.name))]),
                   _vm._v(" "),
+                  tm.is_default_template == 1
+                    ? _c(
+                        "span",
+                        { staticClass: "ml-2 mr-2 tag is-success is-medium" },
+                        [
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "unlock" },
+                          }),
+                        ],
+                        1
+                      )
+                    : _c(
+                        "span",
+                        { staticClass: "ml-2 mr-2 tag is-warning is-medium" },
+                        [_c("font-awesome-icon", { attrs: { icon: "lock" } })],
+                        1
+                      ),
+                  _vm._v(" "),
                   _c("div", { staticClass: "filed is-pulled-right" }, [
                     _c(
                       "button",
@@ -50694,6 +50947,81 @@ var render = function () {
             ])
           : _c("article", [_c("h2", [_vm._v("no data")])])
       }),
+      _vm._v(" "),
+      _vm.tem_list.total > 1
+        ? _c("div", { staticClass: "box mt-4" }, [
+            _c(
+              "nav",
+              {
+                staticClass: "pagination is-rounded",
+                attrs: { role: "navigation", "aria-label": "pagination" },
+              },
+              [
+                _c("a", { staticClass: "pagination-previous is-current" }, [
+                  _vm._v("All post " + _vm._s(_vm.tem_list.total)),
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "pagination-next is-current" }, [
+                  _vm._v("page " + _vm._s(_vm.tem_list.current_page)),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.tem_list.links, function (ln) {
+                  return _c("ul", { staticClass: "pagination-list" }, [
+                    ln.url != null && ln.active == false
+                      ? _c("li", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "pagination-link",
+                              attrs: {
+                                "aria-label": "Page 1",
+                                "aria-current": "page",
+                              },
+                              domProps: { innerHTML: _vm._s(ln.label) },
+                              on: {
+                                click: function ($event) {
+                                  $event.preventDefault()
+                                  return _vm.$emit("getTemplate", ln.url)
+                                },
+                              },
+                            },
+                            [_vm._v(_vm._s(ln.label))]
+                          ),
+                        ])
+                      : _c("li", [
+                          ln.active == true
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "pagination-link is-current",
+                                  attrs: {
+                                    "aria-label": "",
+                                    "aria-current": "page",
+                                  },
+                                  domProps: { innerHTML: _vm._s(ln.label) },
+                                },
+                                [_vm._v(_vm._s(ln.label))]
+                              )
+                            : _c(
+                                "a",
+                                {
+                                  staticClass: "pagination-link",
+                                  attrs: {
+                                    "aria-label": "",
+                                    "aria-current": "page",
+                                  },
+                                  domProps: { innerHTML: _vm._s(ln.label) },
+                                },
+                                [_vm._v(_vm._s(ln.label))]
+                              ),
+                        ]),
+                  ])
+                }),
+              ],
+              2
+            ),
+          ])
+        : _vm._e(),
     ],
     2
   )
@@ -53063,7 +53391,7 @@ var render = function () {
                   expression: "isFormOpen",
                 },
               ],
-              attrs: { editId: _vm.editId },
+              attrs: { editId: _vm.editId, template_all: _vm.template_all },
               on: {
                 getPost: function ($event) {
                   return _vm.getPost($event)
@@ -53284,62 +53612,96 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "mb-6" }, [
       _c("form", { attrs: { action: "" } }, [
-        _c("div", { staticClass: "box" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "select" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pForm.category,
-                    expression: "pForm.category",
-                  },
-                ],
-                ref: "show_cat_list",
-                attrs: { id: "", name: "" },
-                on: {
-                  change: [
-                    function ($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function (o) {
-                          return o.selected
-                        })
-                        .map(function (o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.pForm,
-                        "category",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    },
-                    function ($event) {
-                      $event.preventDefault()
-                      return _vm.setCategory.apply(null, arguments)
+        _c("div", { staticClass: "columns" }, [
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.pForm.category,
+                      expression: "pForm.category",
                     },
                   ],
+                  ref: "show_cat_list",
+                  attrs: { id: "", name: "" },
+                  on: {
+                    change: [
+                      function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.pForm,
+                          "category",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      function ($event) {
+                        $event.preventDefault()
+                        return _vm.setCategory.apply(null, arguments)
+                      },
+                    ],
+                  },
                 },
-              },
-              [
-                _c("option", { attrs: { value: "0" } }, [
-                  _vm._v("--- Select Category ---"),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.cat_list, function (ca) {
-                  return _c("option", { domProps: { value: ca.id } }, [
-                    _vm._v(_vm._s(ca.cat_name)),
-                  ])
-                }),
-              ],
-              2
-            ),
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("--- Select Category ---"),
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.cat_list, function (ca) {
+                    return _c("option", { domProps: { value: ca.id } }, [
+                      _vm._v(_vm._s(ca.cat_name)),
+                    ])
+                  }),
+                ],
+                2
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column" }, [
+            _c("div", { staticClass: "select" }, [
+              _c(
+                "select",
+                {
+                  ref: "template",
+                  attrs: { name: "" },
+                  on: {
+                    change: function ($event) {
+                      $event.preventDefault()
+                      return _vm.setTemplate.apply(null, arguments)
+                    },
+                  },
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("-- Select Template --"),
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.template_all, function (tm) {
+                    return _c("option", { domProps: { value: tm.id } }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(tm.t_title) +
+                          "\n                            "
+                      ),
+                    ])
+                  }),
+                ],
+                2
+              ),
+            ]),
           ]),
         ]),
         _vm._v(" "),
@@ -53399,9 +53761,9 @@ var render = function () {
             _c("div", { staticClass: "control has-background-light pl-2" }, [
               _c("p", { staticClass: "subtitle has-text-success " }, [
                 _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.pForm.slug) +
-                    "  · " +
+                  "\n\n                        " +
+                    _vm._s(_vm.theSlug.thaiSlug(_vm.pForm.p_title)) +
+                    "\n                        · " +
                     _vm._s(_vm.pForm.p_title.length) +
                     " \n                        character(s).\n                    "
                 ),
@@ -53645,7 +54007,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("span", [
                     _vm._v(
@@ -53703,14 +54065,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("p", [_vm._v("please select the category for your post")]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

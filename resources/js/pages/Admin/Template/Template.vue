@@ -49,6 +49,26 @@
 
 
         </section>
+
+        <!-- modal START -->
+
+        <div class="modal" :class="{'is-active':showModal}">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="content box">
+                <div v-html="res_status" class="mb-6">{{res_status}}</div>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" 
+          @click.prevent="showModal = ''"></button>
+
+            <button class="button is-success is-outlined " 
+            @click.prevent="showModal=''">
+                <font-awesome-icon icon="check"></font-awesome-icon>
+            </button>
+
+        </div>
+        <!-- modal END -->
     </div>
 
 </template>
@@ -67,6 +87,7 @@ export default{
                  isFormOpen:false,
                  res_status:'',
                  editId:0,
+                 showModal:'',
              }},
              mounted(){
                  this.getTemplate()
@@ -87,7 +108,7 @@ methods:{
                     .then(res=>{
                         this.tem_list = res.data.template
                         this.tem_num = Object.values(res.data.template.data).length
-                            })
+                    })
                 document.title = `Manage Template`
             },
             getRefresh(){
@@ -99,7 +120,20 @@ methods:{
                 this.isFormOpen = true
             },
             del(id){
-                alert(id)
+                this.res_status = ''
+                if(id != 0 && confirm(`delete template id ${id}?`) == true){
+                    let url = `/api/admin/template/${id}`
+                    axios.delete(url)
+                    .then(res=>{
+                        this.showModal = 'is-active'
+                        this.res_status = res.data.msg
+                        setTimeout(()=>{
+                            this.res_status = ''
+                            this.showModal = ''
+                            this.getTemplate()
+                        },3200)
+                    })
+                }
             },
         },
 }

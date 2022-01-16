@@ -22,4 +22,18 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2',
     '1');
   
-    
+     
+/* ================= INSERT COMMAND for post id 3 ====================
+ * START on  2022-01-16 13:34:46 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '3',
+    '3');
+  
+/* ================= INSERT COMMAND for post id 5 ====================
+ * START on  2022-01-16 17:25:31 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '5',
+    '3');
+ 

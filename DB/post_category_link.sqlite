@@ -20,4 +20,20 @@ INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
 
 
  
-    
+     
+/* ====================== the post id 3 has category id 5 
+ * on 2022-01-16 13:34:46 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '3'
+);
+  
+/* ====================== the post id 5 has category id 5 
+ * on 2022-01-16 17:25:31 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '5'
+);
+ 

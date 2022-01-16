@@ -39,3 +39,32 @@ INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
     '2022-01-15 14:17:02',
     '2022-01-15 14:17:02');
  
+ 
+/* ==================== INSERT COMMAND id 3
+ * on 2022-01-16 15:08:03 pm
+ * */
+INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
+`t_excerpt`,`t_body`,`is_default_template`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'this is new template',
+    'post',
+    '<p>this is the new template for post<br></p>',
+    '<p>this is the new template for post<br></p>',
+    '0',
+    '2022-01-16 15:08:03',
+    '2022-01-16 15:08:03');
+  
+/* ==================== INSERT COMMAND id 4
+ * on 2022-01-16 15:52:13 pm
+ * */
+INSERT INTO `templates`(`user_id`,`t_title`,`t_method`,
+`t_excerpt`,`t_body`,`is_default_template`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'whatnew template 1',
+    'whatnew',
+    '<p>this is the whatnew tempplate<br></p>',
+    '<p>thid is the what new template<br></p>',
+    '0',
+    '2022-01-16 15:52:13',
+    '2022-01-16 15:52:13');
+ 

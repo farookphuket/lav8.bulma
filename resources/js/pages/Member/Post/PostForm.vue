@@ -2,22 +2,37 @@
     <div>
         <div class="mb-6">
             <form action="">
-                <div class="box">
-                    <div class="content">
-                        <p>please select the category for your post</p>
-                    </div>
-                    <div class="select">
-                        <select id="" name="" 
-                        ref="show_cat_list" v-model="pForm.category"
-                        @change.prevent="setCategory">
-                            <option value="0">--- Select Category ---</option>
-                            <option :value="ca.id" 
-                                v-for="ca in cat_list" 
-                                >{{ca.cat_name}}</option>
-                        </select>
-                    </div>
-                </div>
 
+
+                <!-- select template START -->
+                <div class="columns">
+                    <div class="column">
+                        <div class="select">
+                            <select id="" name="" 
+                            ref="show_cat_list" v-model="pForm.category"
+                            @change.prevent="setCategory">
+                                <option value="0">--- Select Category ---</option>
+                                <option :value="ca.id" 
+                                    v-for="ca in cat_list" 
+                                    >{{ca.cat_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="select">
+                            <select ref="template" name="" 
+                                @change.prevent="setTemplate">
+                                <option value="0">-- Select Template --</option>
+                                <option :value="tm.id" v-for="tm in template_all">
+                                {{tm.t_title}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- select template END -->
 
                 <div class="field">
                     <label class="label" for="">Title</label>
@@ -33,7 +48,9 @@
                 <div class="field" v-show="isShowSlug">
                     <div class="control has-background-light pl-2">
                         <p class="subtitle has-text-success ">
-                            {{pForm.slug}}  &middot; {{pForm.p_title.length}} 
+
+                            {{theSlug.thaiSlug(pForm.p_title)}}
+                            &middot; {{pForm.p_title.length}} 
                             character(s).
                         </p>
                     </div>
@@ -155,7 +172,7 @@
 import JoditEditor from 'jodit-vue'
 export default{
     name:"PostForm",
-    props:["editId"],
+    props:["editId","template_all"],
     data(){return{
     isShowSlug:false,
     theSlug:new CustomText(),
@@ -171,7 +188,8 @@ export default{
         category:0,
         new_tag:'',
       }),
-      res_status:'',
+        res_status:'',
+
     }},
 watch:{
           "editId":function(x){
@@ -259,10 +277,10 @@ methods:{
             },
             getSlug(){
                this.isShowSlug = false 
-                   if(this.$refs.p_title.value != ''){
-                        this.isShowSlug = true
-                        this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
-                   }
+               if(this.$refs.p_title.value != ''){
+                    this.isShowSlug = true
+                    this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
+               }
             },
             getTag(){
                 let url = `/api/tag`
@@ -299,7 +317,7 @@ methods:{
                 axios.get(url)
                 .then(res=>{
                     this.cat_list = res.data.category
-                        })
+                })
             },
             setCategory(){
                 //alert(this.$refs.show_cat_list.value)
@@ -311,6 +329,19 @@ methods:{
                 this.pForm.reset()
                 this.res_status = ''
                 this.user_select_tag = []
+            },
+            setTemplate(){
+                //alert(`the template ${this.$refs.template.value}`)
+                let url = `/api/member/template/${this.$refs.template.value}`
+                axios.get(url)
+                .then(res=>{
+                    let rData = res.data.template       
+                    this.$refs.p_title.focus()
+                    this.pForm.p_title = rData.t_title+" [Edit Template]"
+                    this.pForm.p_excerpt = rData.t_excerpt
+
+                    this.isShowSlug = true
+                })
             },
         },
 }

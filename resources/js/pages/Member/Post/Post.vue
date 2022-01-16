@@ -62,7 +62,7 @@
                </div>
                <div class="column is-9">
                     <post-form :editId="editId" v-show="isFormOpen" 
-                    @getPost="getPost($event)" 
+                    @getPost="getPost($event)" :template_all="template_all"
                     @formToggle="formToggle($event)"></post-form>
 
                     <by-tag v-show="isShowByTag" 
@@ -146,6 +146,7 @@ name:"MPost",
          data(){return{
             editId:'',
             postList:'',
+             template_all:'',
             post_with_category:'',
             res_status:'',
             isShowDefaultList:true,
@@ -172,10 +173,11 @@ methods:{
                     if(!url) url = `/api/member/getpost`
                     axios.get(url)
                         .then(res=>{
-                    //    console.log(res.data)
+                        //console.log(res.data)
                         this.postList = res.data.post
                         this.post_with_category = res.data.post_with_category
 
+                        this.template_all = res.data.template
                         // show the tag and post
                         this.catHasContent = res.data.cp 
                         this.tagHasContent = res.data.ta

@@ -79,6 +79,7 @@ class TemplateController extends Controller
 
         // preparing data
         $valid["user_id"] = Auth::user()->id;
+        $valid["is_default_template"] = !request()->is_default_template?0:1;
         $valid["t_title"] = xx_clean(request()->t_title);
         $valid["t_method"] = xx_clean(request()->t_method);
         $valid["t_excerpt"] = xx_clean(request()->t_excerpt);

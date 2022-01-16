@@ -45,3 +45,39 @@ INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
  
  
  
+ 
+/* ======================= INSERT COMMAND for id 3 ===================
+ * START on 2022-01-16 13:34:46 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'test template 1 ed [edit template]',
+    '',
+    '<p>this is the template 1</p>
+<p>
+This is the text I insert by hand to file.
+</p>',
+    '<p>this is the template 1</p><p>test is template<br></p>',
+    '1',
+    '2022-01-16 13:34:46',
+    '2022-01-16 13:34:46');
+  
+/* ======================= INSERT COMMAND for id 5 ===================
+ * START on 2022-01-16 17:25:31 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '2',
+    'test template 1 ed test humm',
+    'test-template-1-ed-test-humm',
+    '<p>this is the template 1</p>
+<p>
+This is the text I insert by hand to file.</p><p><br></p><p>this is hum bu</p>',
+    '<p>thi isnf kslds thisndf</p>',
+    '1',
+    '2022-01-16 17:25:31',
+    '2022-01-16 17:25:31');
+ 

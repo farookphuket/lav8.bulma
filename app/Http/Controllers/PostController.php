@@ -136,6 +136,7 @@ class PostController extends Controller
                     ->latest()
                     ->first();
         $tem = Template::with('user')
+                    ->where("t_method","post")
                     ->where("is_default_template","!=",0)
                     ->orWhere("user_id",Auth::user()->id)
                     ->get();
