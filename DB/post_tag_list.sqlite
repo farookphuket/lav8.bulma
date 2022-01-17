@@ -1,21 +1,14 @@
  
-/* ================= INSERT COMMAND for post id 2 ====================
- * START on  2021-12-02 09:22:34 am
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '1',
-    '1');
  
- 
-/* ================= INSERT COMMAND for post id 2 ====================
+/* ================= INSERT COMMAND for post id 3 ====================
  * START on  2021-12-06 18:27:04 pm
  * */
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '1',
-    '2');
+    '3');
   
  
-/* ================= INSERT COMMAND for post id 4 ====================
+/* ================= INSERT COMMAND for post id 2 ====================
  * START on  2021-12-07 06:56:05 am
  * */
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
@@ -23,17 +16,10 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '1');
   
      
-/* ================= INSERT COMMAND for post id 3 ====================
+/* ================= INSERT COMMAND for post id 2 ====================
  * START on  2022-01-16 13:34:46 pm
  * */
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '3',
-    '3');
+    '2',
+    '2');
   
-/* ================= INSERT COMMAND for post id 5 ====================
- * START on  2022-01-16 17:25:31 pm
- * */
-INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
-    '5',
-    '3');
- 
