@@ -23,3 +23,81 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '2',
     '2');
   
+ 
+/* ================= INSERT COMMAND for post id 3 ====================
+ * START on  2022-01-20 20:30:11 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '3',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 4 ====================
+ * START on  2022-01-20 20:51:32 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '4',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 5 ====================
+ * START on  2022-01-20 21:01:04 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '5',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 6 ====================
+ * START on  2022-01-20 21:04:10 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '6',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 7 ====================
+ * START on  2022-01-20 21:07:06 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '7',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 8 ====================
+ * START on  2022-01-20 21:11:43 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '8',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 9 ====================
+ * START on  2022-01-20 21:15:16 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '9',
+    '1');
+  
+/* ================= INSERT COMMAND for post id 10 ====================
+ * START on  2022-01-20 21:17:42 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '10',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 11 ====================
+ * START on  2022-01-20 21:21:14 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '11',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 12 ====================
+ * START on  2022-01-20 21:23:42 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '12',
+    '2');
+  
+/* ================= INSERT COMMAND for post id 13 ====================
+ * START on  2022-01-20 21:26:14 pm
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '13',
+    '2');
+ 

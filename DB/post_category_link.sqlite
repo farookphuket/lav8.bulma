@@ -19,3 +19,92 @@ INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
     '2'
 );
  
+ 
+/* ====================== the post id 3 has category id 5 
+ * on 2022-01-20 20:30:11 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '3'
+);
+  
+/* ====================== the post id 4 has category id 5 
+ * on 2022-01-20 20:51:32 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '4'
+);
+  
+/* ====================== the post id 5 has category id 5 
+ * on 2022-01-20 21:01:04 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '5'
+);
+  
+/* ====================== the post id 6 has category id 5 
+ * on 2022-01-20 21:04:10 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '6'
+);
+  
+/* ====================== the post id 7 has category id 5 
+ * on 2022-01-20 21:07:06 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '7'
+);
+  
+/* ====================== the post id 8 has category id 5 
+ * on 2022-01-20 21:11:43 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '8'
+);
+  
+/* ====================== the post id 9 has category id 5 
+ * on 2022-01-20 21:15:16 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '9'
+);
+  
+/* ====================== the post id 10 has category id 5 
+ * on 2022-01-20 21:17:42 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '10'
+);
+  
+/* ====================== the post id 11 has category id 5 
+ * on 2022-01-20 21:21:14 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '11'
+);
+  
+/* ====================== the post id 12 has category id 5 
+ * on 2022-01-20 21:23:42 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '12'
+);
+  
+/* ====================== the post id 13 has category id 5 
+ * on 2022-01-20 21:26:14 pm
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '5',
+    '13'
+);
+ 

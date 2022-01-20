@@ -291,14 +291,16 @@ watch:{
          },
          getSlug(){
              this.isSlug = false
-            this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
-            if(this.$refs.p_title.value != '') this.isSlug = true
+             this.pForm.slug = this.theSlug.thaiSlug(this.$refs.p_title.value)
+             if(this.$refs.p_title.value != '') this.isSlug = true
          },
          getClear(){
              this.res_status = ''
-                this.isSlug = false
-            this.user_select_tag = []
+             this.isSlug = false
+             this.user_select_tag = []
              this.pForm.reset()
+             this.pForm.category = 0
+             this.$refs.template.value = 0
          },
          getTag(){
             this.res_status = ''
@@ -348,7 +350,7 @@ watch:{
             })
         },
         setCategory(){
-            console.log(`category change to ${this.pForm.category}`)
+            //console.log(`category change to ${this.pForm.category}`)
 
         },
 
@@ -363,7 +365,6 @@ watch:{
                     this.pForm.p_title = rData.t_title+" [edit template]"
                     this.pForm.p_excerpt = rData.t_excerpt 
                     this.pForm.p_body = rData.t_body
-
                     this.isSlug = true
                 })
         },

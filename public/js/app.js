@@ -14349,6 +14349,8 @@ __webpack_require__.r(__webpack_exports__);
       this.isSlug = false;
       this.user_select_tag = [];
       this.pForm.reset();
+      this.pForm.category = 0;
+      this.$refs.template.value = 0;
     },
     getTag: function getTag() {
       var _this3 = this;
@@ -14398,8 +14400,7 @@ __webpack_require__.r(__webpack_exports__);
         _this5.cat_list = res.data.category;
       });
     },
-    setCategory: function setCategory() {
-      console.log("category change to ".concat(this.pForm.category));
+    setCategory: function setCategory() {//console.log(`category change to ${this.pForm.category}`)
     },
     setTemplate: function setTemplate() {
       var _this6 = this;

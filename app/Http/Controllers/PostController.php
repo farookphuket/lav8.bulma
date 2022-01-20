@@ -32,14 +32,14 @@ class PostController extends Controller
                     ->with('category')
                     ->with('read')
                     ->orderBy('created_at','DESC')
-                    ->paginate(2);
+                    ->paginate(15);
 
         $cat_with_post = Post::has('category')
                                 ->where('p_title','!=','about')
                                 ->where('p_is_public','!=',0)
                                 ->with('category')
                                 ->latest()
-                                ->paginate(4);
+                                ->paginate(15);
         $cp = Category::has('post')
                         ->with('post')
                         ->get();
@@ -73,7 +73,7 @@ class PostController extends Controller
             ->where('p_title','!=','about')
             ])
             ->where('id',request()->tag_id)
-            ->paginate(4);
+            ->paginate(6);
         return response()->json([
             "ta" => $ta
         ]);
@@ -85,7 +85,7 @@ class PostController extends Controller
             $query->where("p_is_public","!=",0)
             ->where("p_title","!=","about")
             ])
-                ->paginate(2);
+                ->paginate(5);
 
 
         return response()->json([
@@ -111,7 +111,7 @@ class PostController extends Controller
                     ->with('read')
                     ->with('category')
                     ->latest()
-                    ->paginate(4);
+                    ->paginate(8);
 
 
         $cat_with_post = Post::where("p_is_public","!=",0)
@@ -156,7 +156,7 @@ class PostController extends Controller
         $post = Post::with('user')
                     ->with('tag')
                     ->orderBy('created_at','DESC')
-                    ->paginate(4);
+                    ->paginate(8);
         $tm = Template::all();
         // return json data
         return response()->json([

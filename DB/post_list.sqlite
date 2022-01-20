@@ -54,6 +54,45 @@ INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
             สั่งซื้อได้ตามร้านหนังสือทั่วไป
         </p>
 
+      <!-- รายชื่อหนังสือ START -->
+      <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+          <p style="color:green;">
+            รายชื่อหนังสือ :
+          </p>
+          <ul>
+              <li>
+                ภาคแรก ๑)
+                <span style="font-weight:bold;color:blue;">
+                    ไพรมหากาฬ
+                </span>
+                ,
+                ๒)ดงมรณะ,
+                ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+              </li>
+              <li>
+                  ภาคจบ
+                ๗)  จอมพราน,
+                ๘) ไอ้งาดำ,
+                ๙)จิตรางคนางค์,
+                ๑๐)นาคเทวี,
+                ๑๑)แต่ปางบรรพ์
+                และ ๑๒)
+
+                มงกุฎไพร
+
+              </li>
+          </ul>
+
+      </div>
+      <!-- รายชื่อหนังสือ END -->
+
+
         <!-- copyright START -->
         <div style="width:100%;background-color:#e7e7e7;
 border:1px dashed #ffe3f4;text-align:center;">
@@ -188,4 +227,2373 @@ margin-top:1em;margin-bottom:1em;text-align:center;">
     '1',
     '2022-01-17 06:16:11',
     '2022-01-17 06:16:11');
+ 
+ 
+/* ======================= INSERT COMMAND for id 3 ===================
+ * START on 2022-01-20 20:30:11 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน ดงมรณะ',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-ดงมรณะ',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/tsOd3oGP_IwJvUS9aPouBiie_GL3ChLTgzvlqkg-DFSydcKYiRGf3hzShqFx4c_WtT6xTiTmGDXvJZ9VRkk7Ds0VEeSZMefpjWk4FuoKEDDtgcdGk4JvEZHres4c5fWcmVcYvtaTiGo=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน ดงมรณะ
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน ดงมรณะ
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ,
+                    ๒)
+                    <span style="font-weight:bold;color:blue;">
+                        ดงมรณะ
+                    </span>
+                    ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 030 to 036
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_30_to_36" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 8 Feb 2021 12:20 a.m.
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 037 to 042
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_037_to_042" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 8 Feb 2021 12:20 a.m.
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 044 to 051
+        </h1>
+        <p class="mt-2 mb-2">
+            คลิปที่ 43 มันสั้นมากๆ เพราะไฟล์เสียไม่สามารถหาได้ครับ
+        </p>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_44_to_51" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update on 19 Sep 2020 using desktop Ubuntu 20.04
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 052 to 058
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_052_058" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            จบตอน "ดงมรณะ" แล้วครับ ตอนต่อไป "จอมผีดิบมันตรัย"
+        </p>
+
+
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_30_to_36/formats=VBR%20MP3&amp;file=/clip_30_to_36.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 30 - 36
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_037_to_042/formats=VBR%20MP3&amp;file=/clip_037_to_042.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 37 - 42
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_44_to_51/formats=VBR%20MP3&amp;file=/clip_44_to_51.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 44 - 51
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_052_058/formats=VBR%20MP3&amp;file=/clip_052_058.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 52 - 58
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area START -->',
+    '1',
+    '2022-01-20 20:30:11',
+    '2022-01-20 20:30:11');
+ 
+ 
+/* ======================= INSERT COMMAND for id 4 ===================
+ * START on 2022-01-20 20:51:32 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน จอมผีดิบมันตรัย',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-จอมผีดิบมันตรัย',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/hdumD-wW2upDVlviK9HFRxsXcT8aCRk5AhcT4IXbWTvEOfD8zfVfJGwgAmXQ8M6KyqOl4FcdV_lAMYvB79TmjhPRTnkWAiL2nAnUfUfvSVHv-HlpbS4C6Rfch10Wcc0Mc-hPHcHu2fA=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน จอมผีดิบมันตรัย
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน จอมผีดิบมันตรัย
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ,
+                    ๒)ดงมรณะ,
+                    ๓)
+                    <span style="font-weight:bold;color:blue;">
+                        จอมผีดิบมันตรัย
+                    </span>
+                    ,
+
+                    ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี
+
+                    และ
+
+                    ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 059 to 066
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_059_to_066" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update on 19 Sep 2020 by desktop computer Ubuntu 20.04
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 067 to 074
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_067_to_074" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update on 19 Sep 2020 by desktop computer Ubuntu 20.04
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 075 to 084
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_075_to_084" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update on 19 Sep 2020 using desktop Ubuntu 20.04
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 085 to 095
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_085_to_095" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมคลิปเสียงไว้เป็นแค่ 4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "จอมผีดิบมันตรัย" แล้วครับ ตอนต่อไป "อาถรรพณ์นิทรานคร"
+        </p>
+
+
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_059_to_066/formats=VBR%20MP3&amp;file=/clip_059_to_066.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 59 - 66
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_067_to_074/formats=VBR%20MP3&amp;amp;file=/clip_067_to_074.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 67 - 74
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_075_to_084/formats=VBR%20MP3&amp;amp;file=/clip_075_to_084.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 75 - 84
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_085_to_095/formats=VBR%20MP3&amp;amp;file=/clip_085_to_095.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 85 - 95
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 20:51:32',
+    '2022-01-20 20:51:32');
+  
+/* ======================= INSERT COMMAND for id 5 ===================
+ * START on 2022-01-20 21:01:04 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน อาถรรพณ์นิทรานคร',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-อาถรรพณ์นิทรานคร',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/YnmtFpAJ37zkuQTcyw-v6KHh07HFJdiFuF6WkTnx3tUX2WIdrY_hwJzGs8jXyrc_-jaY40prXfYaavlH_yoFyNjpgUq5N0yiFIEy1Qbwm_NJ4QsX6CB4WJVXBOsaIlGN8sGmPfo_KAo=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน อาถรรพณ์นิทรานคร
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน อาถรรพณ์นิทรานคร
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ,
+                    ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย,
+                    ๔)
+                    <span style="font-weight:bold;color:blue;">
+                        อาถรรพณ์นิทรานคร
+                    </span>
+                    ,
+                    ๕)ป่าโลกล้านปี
+
+                    และ
+
+                    ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 101 to 107
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/101to107" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 9 ชั่วโมง 58 นาที 20 วินาที
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 108 to 114
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/108to114" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            date on Thu Sep 2019 3:05 a.m. upload this sound clip.
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 115 to 120
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/115to120" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 17 Sep 2020 10:30 p.m.
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 121 to 125
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/121to125" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมคลิปเสียงไว้เป็นแค่ 4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน อาถรรพณ์นิทรานคร แล้วนะครับ ตอนต่อไป ป่าโลกล้านปี
+        </p>
+
+
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/download/101to107/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20101-to-107%20%E0%B8%AD%E0%B8%B2%E0%B8%96%E0%B8%A3%E0%B8%A3%E0%B8%9E%E0%B8%93%E0%B9%8C%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 101 - 107
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/108to114/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20108-to-114%E0%B8%AD%E0%B8%B2%E0%B8%96%E0%B8%A3%E0%B8%A3%E0%B8%9E%E0%B8%93%E0%B9%8C%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 108 - 114
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/115to120/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20115%20-to-120%E0%B8%AD%E0%B8%B2%E0%B8%96%E0%B8%A3%E0%B8%A3%E0%B8%9E%E0%B8%93%E0%B9%8C%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 115 - 120
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/121to125/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20121-to-125%20%E0%B8%AD%E0%B8%B2%E0%B8%96%E0%B8%A3%E0%B8%A3%E0%B8%9E%E0%B8%93%E0%B9%8C%E0%B8%99%E0%B8%B4%E0%B8%97%E0%B8%A3%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3_%E0%B8%88%E0%B8%9A%E0%B8%95%E0%B8%AD%E0%B8%99.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 121 - 125
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:01:04',
+    '2022-01-20 21:01:04');
+  
+/* ======================= INSERT COMMAND for id 6 ===================
+ * START on 2022-01-20 21:04:10 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน ป่าโลกล้านปี',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-ป่าโลกล้านปี',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/ZIgwIy7a236RWNjgleQgOUYd0fNCljhOahL7zEtvgiNV8rc3zPOgUpXl1KDR2dyplSqGHr48c3ItmrA3FEnVwUJidCGq8d8-68fuLvVVQ6aWNDUNYZ3NmnzW8zy_T0XdgC6WlpNqiaI=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน ป่าโลกล้านปี
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน ป่าโลกล้านปี
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ,
+                    ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย,
+                    ๔)อาถรรพณ์นิทรานคร,
+                    ๕)
+                    <span style="font-weight:bold;color:blue;">
+                        ป่าโลกล้านปี
+                    </span>
+                    และ
+                    ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 126 to 131
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/126to131" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 7 ชั่วโมง 40 นาที 35 วินาที
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 132 to 136
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/13213626sep2019" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 6 ชั่วโมง 34 นาที 19 วินาที
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 137 to 160
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/pet_pra_uma_EP1_pa-lok-larn-pee_137-to-160" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last edit 20 Jan 2022 | Archlinux | Laptop
+        </p>
+
+
+    </li>
+    <li>
+
+        <h1 class="title has-text-centered">
+            Clip 161 to 177
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/1611777hrs48min" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 7 ชั่วโมง 48 นาที 02 วินาที
+        </p>
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมคลิปเสียงไว้เป็นแค่ 4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "ป่าโลกล้านปี" แล้วครับ ตอนต่อไป "แงซายจอมจักรา"
+        </p>
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a href="https://archive.org/download/126to131/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20126-to-131%20%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B9%82%E0%B8%A5%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B5%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%A3%E0%B8%81.mp3" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 126 - 131
+            </a>
+
+            <a href="https://archive.org/download/13213626sep2019/132-136_26-sep-2019%20%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B9%82%E0%B8%A5%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B5.mp3" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 132 - 136
+            </a>
+
+
+            <a href="https://archive.org/compress/pet_pra_uma_EP1_pa-lok-larn-pee_137-to-160/formats=VBR%20MP3&amp;file=/pet_pra_uma_EP1_pa-lok-larn-pee_137-to-160.zip" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 137 - 160
+            </a>
+
+            <a href="https://archive.org/download/1611777hrs48min/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%20%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B9%81%E0%B8%A3%E0%B8%81%20%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%20161-177%287hrs48min%29%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B9%82%E0%B8%A5%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B5.mp3" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 161 - 177
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:04:10',
+    '2022-01-20 21:04:10');
+  
+/* ======================= INSERT COMMAND for id 7 ===================
+ * START on 2022-01-20 21:07:06 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน แงซายจอมจักรา',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-แงซายจอมจักรา',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/PZCqZ9vLP61C4BtGxNDSPQFyakMHYgW4C1YBtaWrX7nKtOhcrBJf5MbhGSjebdXzK4rJ9OHFZv9CO4GIhipclLkmNFOLv-bQZOQraNbbBC41gWntTjosEIiD_Kdhht2pGlpfqZ5KdSE=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน แงซายจอมจักรา
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน แงซายจอมจักรา
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ,
+                    ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย,
+                    ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ
+                    ๖)
+                    <span style="font-weight:bold;color:blue;">
+                        แงซายจอมจักรา
+                    </span>
+
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 217 to 237
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/pet-pra-uma_ep1_book6_clip217_to_237" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            เป็นตัวเล่นที่ีมี 3 ไฟล์ร่วมกัน แต่ละไฟล์ยาว 9:55:40 ชั่วโมง,
+            7:27:51 ชั่วโมง และ 8:09:11 ชั่วโมง ตามลำดับ
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 238 to 244
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/238to244" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 8 ชั่วโมง 11 นาที 54 วินาที
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 245 to 249
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/245to249" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 6 ชั่วโมง 17 นาที 54 วินาที
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 250 to 257
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/250-to-257" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-2  has-text-centered">
+            ความยาว 8 ชั่วโมง 18 นาที 18 วินาที
+
+        </p>
+
+
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมคลิปเสียงไว้เป็นแค่ 4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-2 mb-4">
+            จบตอน "แงซายจอมจักรา" แล้วครับ ตอนต่อไป "จอมพราน"
+
+        </p>
+
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/pet-pra-uma_ep1_book6_clip217_to_237/formats=VBR%20MP3&amp;file=/pet-pra-uma_ep1_book6_clip217_to_237.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 217 - 237
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/238to244/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%201-6%20%E0%B9%81%E0%B8%87%E0%B8%8B%E0%B8%B2%E0%B8%A2%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%20238%20-to-244%5B4-12-62%5D.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 238 - 244
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/245to249/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%201-6%20%E0%B9%81%E0%B8%87%E0%B8%8B%E0%B8%B2%E0%B8%A2%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%20245to249_%E0%B8%9A%E0%B8%97%E0%B8%97%E0%B8%B5%E0%B9%88201.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 245 - 249
+            </a>
+
+            <a href="https://archive.org/download/250-to-257/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%201-6%20%E0%B9%81%E0%B8%87%E0%B8%8B%E0%B8%B2%E0%B8%A2%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%20250%20-257%5B20-08-55%5D_%E0%B8%9A%E0%B8%97%E0%B8%97%E0%B8%B5%E0%B9%88207-208.mp3" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 250 - 257
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:07:06',
+    '2022-01-20 21:07:06');
+  
+/* ======================= INSERT COMMAND for id 8 ===================
+ * START on 2022-01-20 21:11:43 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน จอมพราน',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-จอมพราน',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://upload.wikimedia.org/wikipedia/th/8/89/%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B2%E0%B8%99.jpg" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน จอมพราน
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน จอมพราน
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗)
+                    <span style="font-weight:bold;color:blue;">
+                        จอมพราน
+                    </span>
+                    ,
+                    ๘)ไอ้งาดำ,
+                    ๙)จิตรางคนางค์, ๑๐)นาคเทวี, ๑๑)แต่ปางบรรพ์ และ ๑๒)มงกุฎไพร
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 001 to 008
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/2-jom-pran-1-to-8" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 8 ชั่วโมง 16 นาที 53 วินาที
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 009 to 016
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_9_to_16" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 9 ชั่วโมง 09 นาที 16 วินาที
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 017 to 025
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_17_to_25_jom-pran" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            ความยาว 10 ชั่วโมง 51 นาที 27 วินาที เป็นคลิปที่ยาวกว่า 10 ชั่วโมงคลิปแรก
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 026 to 034
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_26_to_34_jom-pran" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+
+        <p class="mt-4 has-text-centered">
+            ความยาว 10 ชั่วโมง 54 นาที 54 วินาที
+        </p>
+
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมคลิปเสียงไว้เป็นแค่ 4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "จอมพราน" แล้วครับ ตอนต่อไป "ไอ้งาดำ"
+        </p>
+
+
+    </li>
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/download/2-jom-pran-1-to-8/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%202-1%20%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B2%E0%B8%99%20001-to-008%5B3-02-63%5D.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 001 - 008
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/clip_9_to_16/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%202-1%20%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B2%E0%B8%99%20009-to-16.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 009 - 016
+            </a>
+
+            <a target="_blank" href="https://archive.org/download/clip_17_to_25_jom-pran/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%202-1%20%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B2%E0%B8%99%20017_to_25.mp3" class="button is-primary">
+                ดาวน์โหลดคลิป 017 - 025
+            </a>
+
+            <a href="https://archive.org/download/clip_26_to_34_jom-pran/%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AD%E0%B8%B8%E0%B8%A1%E0%B8%B2%202-1%20%E0%B8%88%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%A3%E0%B8%B2%E0%B8%99%20clip%2026-to-34%20%5B19-Aug-2020%5D.mp3" target="_blank" class="button is-primary">
+                ดาวน์โหลดคลิป 026 - 034
+            </a>
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:11:43',
+    '2022-01-20 21:11:43');
+  
+/* ======================= INSERT COMMAND for id 9 ===================
+ * START on 2022-01-20 21:15:16 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน ไอ้งาดำ',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-ไอ้งาดำ',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/CrRXpK44IOfSOnjQJ09PvYWy13Amd8ixMR2fXEwrxagFLAjKuJRI1nr7KzLRLqrSFlmkVKL98kFsFrhw5roHNC6W_P2Dl6lFtbV4rijUTVDQ-PXmFL8wMs0EoWAI6gyfYedMmBs6sSY=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน ไอ้งาดำ
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน ไอ้งาดำ
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘)
+                    <span style="font-weight:bold;color:blue;">
+                        ไอ้งาดำ
+                    </span>
+                    ,
+                    ๙)จิตรางคนางค์,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 036 to 050
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/36_to_50_I_nga_dum" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            เป็นคลิปแยกเป็นไฟล์ๆ ไปเพราะว่าได้คลิปเสียงมาไม่ครบ ขาด 35 และ 37
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 052 to 061
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/multi_clip_52_to_61" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            คลิป 51 ไม่ได้หายไปไหนนะครับ แต่พอดีว่ามันเป็นคลิปซ้ำซ้อนกับคลิปที่ 50
+            ผมเลยลบออกแต่ก็ไม่อยากจะทำให้เลขมันเปลี่ยนแปลงจนผมสับสนเอง
+        </p>
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 062 to 072
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/62-to-72_i_nga_dum" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            เป็นคลิปเสียงแบบ หลายคลิปในลิงค์เดียว (multiple file)
+            อีกคลิปเพราะว่ามันยังมีบางคลิปที่หายไป หากแฟนๆ
+            เพชรพระอุมาท่านใดมีไฟลในส่วนที่หายไป ก็รบกวนด้วยนะครับ
+        </p>
+
+
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมลิ้งค์คลิปเสียงไว้เป็นแค่ 3-4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "ไอ้งาดำ" แล้วครับ ตอนต่อไป "จิตรางคนางค์"
+        </p>
+
+    </li>
+
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/36_to_50_I_nga_dum/formats=VBR%20MP3&amp;file=/36_to_50_I_nga_dum.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 036 - 050
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/multi_clip_52_to_61/formats=VBR%20MP3&amp;file=/multi_clip_52_to_61.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 052 - 061
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/62-to-72_i_nga_dum/formats=VBR%20MP3&amp;file=/62-to-72_i_nga_dum.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 062 - 072
+            </a>
+
+
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:15:16',
+    '2022-01-20 21:15:16');
+  
+/* ======================= INSERT COMMAND for id 10 ===================
+ * START on 2022-01-20 21:17:42 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน จิตรางคนางค์',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-จิตรางคนางค์',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/JhiK6fKMX5b4ShZz3Z0vn4K5Bz5Rc6S8FmDogrjoP-NyTTec_QBS-UGNN_8IxOD-v7wRZJIur0ztWuXsE4_yxfvg6FbAVX4PyIrN4u_LaxF5owYdrwcAT1KeLu6R3rLRHjLZiGCzR0c=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน จิตรางคนางค์
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน จิตรางคนางค์
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)
+                    <span style="font-weight:bold;color:blue;">
+                        จิตรางคนางค์
+                    </span>
+                    ,
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 073 to 082
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_73_to_82_" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            กดตัวเล่นเพื่อฟัง ท่านสามารถปิดหน้าจอมือถือได้เลยมันจะเล่นไปเรื่อยๆ น่าจะ 10 ชั่วโมงขึ้นไป
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 083 to 094
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_83_to_94" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Uploaded on 24 Aug 2020 9:42 p.m.
+        </p>
+
+    </li>
+    <li>
+
+        <h1 class="title has-text-centered">
+            Clip 095 to 103
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_95_to_103" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Uploaded on 25 Aug 2020 7:32 p.m. วันนี้คงได้แค่นี้แหละครับ
+            เอาไว้วันอื่นๆ ค่อยมาต่อแล้วกัน
+        </p>
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 104 to 112
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_104_to_112_202008" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Uploaded on 31 Aug 2020 12:35 a.m.
+        </p>
+
+
+        <p class="mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมลิ้งค์คลิปเสียงไว้เป็นแค่ 3-4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "จิตรางคนางค์" แล้วครับ ตอนต่อไป "นาคเทวี"
+        </p>
+
+    </li>
+
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_73_to_82_/formats=VBR%20MP3&amp;file=/clip_73_to_82_.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 073 - 082
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_83_to_94/formats=VBR%20MP3&amp;file=/clip_83_to_94.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 083 - 094
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_95_to_103/formats=VBR%20MP3&amp;file=/clip_95_to_103.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 095 - 103
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_104_to_112_202008/formats=VBR%20MP3&amp;file=/clip_104_to_112_202008.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 104 - 112
+            </a>
+
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:17:42',
+    '2022-01-20 21:17:42');
+  
+/* ======================= INSERT COMMAND for id 11 ===================
+ * START on 2022-01-20 21:21:14 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน นาคเทวี',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-นาคเทวี',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/tSlpB6zR80lE6-nmKRwdoAF22gO99resNEWbhmA-aGOU92AG3HGSX6OrThqd4K6dHTbVsFEKlOC0D9cdiWip6ZTQlddJc4V3_NuuTi_jgGzS9Acb9_Ei1HNOKWoYYqVoHLIv1bCLDGY=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน นาคเทวี
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน นาคเทวี
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+
+                    ๑๐)
+                    <span style="font-weight:bold;color:blue;">
+                        นาคเทวี
+                    </span>
+                    ,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 113 to 124
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_113_to_124" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Last upload 1 Sep 2020 3:25 p.m.
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 125 to 135
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_125_to_135" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            clip part ที่ 2 ของ ตอน นาคเทวี
+        </p>
+
+    </li>
+    <li>
+
+        <h1 class="title has-text-centered">
+            Clip 136 to 144
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_136_to_144" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            clip part ที่ 3 ของ ตอน นาคเทวี date upload 14 Sep 2020 8:35 p.m.
+        </p>
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 145 to 154
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_145_to_154" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+
+        <p class="has-text-centered mt-2 mb-2">
+            เป็นการอัพเดทอีกครั้งเพื่อรวมลิ้งค์คลิปเสียงไว้เป็นแค่ 3-4 คลิปเพื่อความสะดวกในการฟัง
+            ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+            แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+        </p>
+        <p class="mt-4 has-text-centered">
+            จบตอน "นาคเทวี" แล้วครับ ตอนต่อไป "แต่ปางบรรพ์"
+        </p>
+
+    </li>
+
+</ol>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_113_to_124/formats=VBR%20MP3&amp;file=/clip_113_to_124.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 113 - 124
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_125_to_135/formats=VBR%20MP3&amp;file=/clip_125_to_135.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 125 - 135
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_136_to_144/formats=VBR%20MP3&amp;file=/clip_136_to_144.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 136 - 144
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_145_to_154/formats=VBR%20MP3&amp;file=/clip_145_to_154.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 145 - 154
+            </a>
+
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:21:14',
+    '2022-01-20 21:21:14');
+  
+/* ======================= INSERT COMMAND for id 12 ===================
+ * START on 2022-01-20 21:23:42 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน แต่ปางบรรพ์',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-แต่ปางบรรพ์',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/plgpFjWnS669hxrPuEuuqrKeCrzGLuVub5voirlYTD3ToZfg1Hg5j3wsR2euflQLpH3rcerEUxL0IvD6Ou9YYQg6h1CGZch_mSAgsCDsctmLbfYPetFEKtlFlFbrvrdYhzA70PA8jvU=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน แต่ปางบรรพ์
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน แต่ปางบรรพ์
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+
+                    ๑๐)นาคเทวี,
+                    ๑๑)
+                    <span style="font-weight:bold;color:blue;">
+                        แต่ปางบรรพ์
+                    </span>
+
+                    และ ๑๒)
+
+                    มงกุฎไพร
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 155 to 165
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_155_to_165_20200909" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 8 Feb 2021 12:20 a.m.
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 166 to 175
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_166_to_175" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            part 2 uploaded on 15 Sep 2020 8:42 a.m. using Manjaro |
+            Audacity | Asus laptop
+
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 8 Feb 2021 12:20 a.m.
+        </p>
+    </li>
+    <li>
+
+        <h1 class="title has-text-centered">
+            Clip 176 to 185
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_176_to_185" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            part 3 uploaded on 16 Sep 2020 11:38 a.m. using Manjaro |
+            Audacity | Asus laptop
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            Last update from Desktop 17 Sep 2020 10:30 p.m.
+        </p>
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 186 to 194
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_186_to_194" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+
+        <p class="mt-4 has-text-centered">
+            part 4 uploaded on 18 Sep 2020 07:14 a.m. using Manjaro |
+            Audacity | Asus laptop
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            จบตอน "แต่ปางบรรพ์" แล้วครับ ตอนต่อไป "มงกุฎไพร" ซึ่งจะเป็นตอนจบของนิยาย
+        </p>
+
+    </li>
+
+</ol>
+
+<p class="has-text-centered mt-2 mb-2">
+    เป็นการอัพเดทอีกครั้งเพื่อรวมลิ้งค์คลิปเสียงไว้เป็นแค่ 3-4 คลิปเพื่อความสะดวกในการฟัง
+    ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+    แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+</p>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_155_to_165_20200909/formats=VBR%20MP3&amp;file=/clip_155_to_165_20200909.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 155 - 165
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_166_to_175/formats=VBR%20MP3&amp;file=/clip_166_to_175.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 166 - 175
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_176_to_185/formats=VBR%20MP3&amp;file=/clip_176_to_185.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 176 - 185
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_186_to_194/formats=VBR%20MP3&amp;file=/clip_186_to_194.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 186 - 194
+            </a>
+
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:23:42',
+    '2022-01-20 21:23:42');
+  
+/* ======================= INSERT COMMAND for id 13 ===================
+ * START on 2022-01-20 21:26:14 pm
+ * ============================================================================
+ * */
+INSERT INTO `posts`(`user_id`,`p_title`,`slug`,`p_excerpt`,`p_body`,
+`p_is_public`,`created_at`,`updated_at`) VALUES(
+    '1',
+    'หนังสือนิยาย เพชรพระอุมา ตอน มงกุฎไพร',
+    'หนังสือนิยาย-เพชรพระอุมา-ตอน-มงกุฎไพร',
+    '<!-- excerpt area START -->
+<div class="columns">
+    <div class="column">
+        <figure class="justify-content-center">
+            <img src="https://lh3.googleusercontent.com/KYt363OGnTUDl_sPNV7Ju52xZalO-p_3hc_S_7pnxSb-SPoyJXNBi266oPjeZp3N9AbiS5x486rI1kDSOzRgwt7md0pnm8PF-H0oeb9o8tmHcy3Z0E0BVu34lmovgYMNIaYV-WM8uvg=w2400" class="responsive image">
+
+        </figure>
+        <p class="has-text-centered mt-2">
+            ตอน มงกุฎไพร
+        </p>
+    </div>
+    <div class="column">
+        <p class="has-text-centered title">
+            หนังสือนิยายเสียง เพชรพระอุมา ตอน มงกุฎไพร
+        </p>
+
+        <p class="mt-2 mb-2">
+            "เพชรพระอุมา" เป็นบทประพันธ์ของ "พนมเทียน" มีความยาวทั้งสิ้น 48 เล่ม
+            แบ่งออกเป็นสองภาค คือภาคแรกและภาคสมบูรณ์ ภาคละ 24 เล่ม เล่มละ 200 บาท
+            สั่งซื้อได้ตามร้านหนังสือทั่วไป
+        </p>
+
+
+        <!-- รายชื่อหนังสือ START -->
+        <div style="
+          margin-top:2em;
+          margin-bottom:2em;
+          padding:4em;
+          background-color:#ffffff;
+          ">
+            <p style="color:green;">
+                รายชื่อหนังสือ :
+            </p>
+            <ul>
+                <li>
+                    ภาคแรก ๑)ไพรมหากาฬ, ๒)ดงมรณะ,
+                    ๓)จอมผีดิบมันตรัย, ๔)อาถรรพณ์นิทรานคร,
+                    ๕)ป่าโลกล้านปี และ ๖)แงซายจอมจักรา
+                </li>
+                <li>
+                    ภาคจบ
+                    ๗) จอมพราน,
+                    ๘) ไอ้งาดำ,
+                    ๙)จิตรางคนางค์,
+
+                    ๑๐)นาคเทวี,
+                    ๑๑)แต่ปางบรรพ์
+                    และ ๑๒)
+                    <span style="font-weight:bold;color:blue;">
+                        มงกุฎไพร
+                    </span>
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- รายชื่อหนังสือ END -->
+
+
+        <!-- copyright START -->
+        <div style="width:100%;background-color:#e7e7e7;
+border:1px dashed #ffe3f4;text-align:center;">
+            <h2 style="text-align:center;padding:2px;
+margin-top:1em;color:red;">
+                ใช้เพื่อฟังส่วนตัวเท่านั้น
+            </h2>
+            <p style="padding:2px;
+                background-color:#ffffff;
+                border:2px dotted #ff0000;">
+                ไฟล์เสียงเหล่านี้ได้ถูกจัดทำขึ้นด้วยจุดประสงค์เพื่อใช้ในการรับฟังเพื่อความบันเทิง
+                ส่วนตัวเท่านั้น ผู้นำเข้าได้มีการ อุดหนุนผลงานของผู้ประพันธ์ ที่ใช้นามปากกาว่า
+                "พนมเทียน" ครบทุกเล่มแล้ว ผู้นำเข้ามิได้มีเจตนาละเมิดลิขสิทธิ์แต่อย่างใด
+                ผู้นำเข้าไม่ได้มีผลประโยชน์ใดๆ ในด้านการค้า หรือกำไรจากการนำเข้า
+                ไฟล์เสียงเหล่านี้
+                มากไปกว่าการใช้งานเพื่อความบันเทิงโดยส่วนตัวและอยากเก็บผลงานเหล่านี้ไว้
+                เพื่อเปิดฟังส่วนตัวเท่านั้นไม่ได้มีเจตนา แจก จ่าย แต่อย่างใด
+                ทั้งนี้เจ้าของสิขสิทธิ์สามารถเรียกร้องให้ลบไฟล์เสียงเหล่านี้ออกได้ หากผู้ที่อ้าง
+                ว่าเป็นเจ้าของลิขสิทธิ์ สามารถพิสูจน์ได้ว่าเป็นเจ้าของลิขสิทธิ์ตัวจริงตามกฎหมาย
+            </p>
+            <p style="padding:2px;background-color:#ffffff;
+border:2px dotted #ff0000;">
+                หากเจ้าของสิขสิทธิ์(ที่สามารถยืนยันตัวจริงได้) ต้องการให้ลบไฟล์เหล่านี้ที่ท่านมองว่า
+                มันเป็นการละเมิดลิขสิทธิ์ ผู้นำเข้ายินยอมที่จะลบไฟล์เสียงเหล่านี้ทันที
+                <br> กรุณาติดต่อทาง<strong>e-mail :</strong> <em>
+                    <u>admin@farookphuket.com</u></em> หรือ
+                <em><u>admin@see-southern.com</u></em>
+            </p>
+        </div>
+        <!-- Copyright END -->
+
+    </div>
+</div>
+<!-- excerpt area END -->',
+    '<!-- body area START -->
+<ol class="is-lower-roman">
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 195 to 204
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_195_to_204" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update 20 Sep 2020 5:15 p.m. by Ubuntu 20.04
+        </p>
+
+    </li>
+
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 205 to 214
+        </h1>
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_205_to_214" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update 23 Sep 2020 5:15 p.m. by Ubuntu 20.04
+        </p>
+
+
+    </li>
+    <li>
+
+        <h1 class="title has-text-centered">
+            Clip 215 to 224
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_215_to_224" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+        <p class="mt-4 has-text-centered">
+            last update 23 Sep 2020 5:54 p.m. by Ubuntu 20.04
+        </p>
+
+
+    </li>
+    <li>
+        <h1 class="title has-text-centered">
+            Clip 225 to 233
+        </h1>
+
+        <div class="sound-container">
+            <iframe src="https://archive.org/embed/clip_225_to_233" width="100%" height="30" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""><br></iframe>
+        </div>
+
+        <p class="mt-4 has-text-centered">
+            last update 20 Sep 2020 8:47 p.m. by Ubuntu 20.04
+        </p>
+
+        <p class="mt-4 has-text-centered">
+            นิยาย "เพชรพระอุมา" จบบริบูรณ์แล้วครับ หวังอย่างยิ่งว่าท่านจะได้รับควาเพลิดเพลิน
+            ในการรับฟัง และขอได้โปรดอุดหนุนผลงานของ "พนมเทียน" ด้วยครับ
+        </p>
+
+    </li>
+
+</ol>
+
+<p class="has-text-centered mt-2 mb-2">
+    เป็นการอัพเดทอีกครั้งเพื่อรวมลิ้งค์คลิปเสียงไว้เป็นแค่ 3-4 คลิปเพื่อความสะดวกในการฟัง
+    ท่านสามารถปิดหน้าจอมือถือได้โดยที่คลิปจะยังเล่นอยู่ หากต้องการหยุดให้กดปุ่มหยุดเอาไว้
+    แต่อย่าปิดหน้าเวปเพราะว่าหากเปิดขึ้นมาใหม่จะเป็นการเริ่มเล่นใหม่ทั้งหมด
+</p>
+
+<!-- download area START -->
+<div class="cloumns">
+    <div class="column">
+        <div style="border:2px dashed #ff0000;
+background-color:black;padding:5px;">
+            <h1 class="has-text-centered title" style="color:red;">คำเตือน!</h1>
+            <p style="color:white;font-weight:bold;
+margin-top:1em;margin-bottom:1em;text-align:center;">
+                นี่อาจจะเป็นครั้งสุดท้ายของท่านที่จะได้ฟังนิยายจากเวปนี้ "รู้อะไรไม่สู้ รู้แบบนี้"
+                เราเตือนคุณแล้ว เพราะฉะนั้นจัดการตัวเองซะ จงทำในสิ่งที่ต้องทำ
+                มันมีลิ้งค์อยู่ข้างล่างกดสิ "ฟาย"!
+            </p>
+        </div>
+
+    </div>
+    <!-- download link START -->
+    <div class="column">
+        <div class="field is-pulled-right">
+            <a target="_blank" href="https://archive.org/compress/clip_195_to_204/formats=VBR%20MP3&amp;file=/clip_195_to_204.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 195 - 204
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_205_to_214/formats=VBR%20MP3&amp;file=/clip_205_to_214.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 205 - 214
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_215_to_224/formats=VBR%20MP3&amp;file=/clip_215_to_224.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 215 - 224
+            </a>
+
+            <a target="_blank" href="https://archive.org/compress/clip_225_to_233/formats=VBR%20MP3&amp;file=/clip_225_to_233.zip" class="button is-primary">
+                ดาวน์โหลดคลิป 225 - 233
+            </a>
+
+        </div>
+
+
+    </div>
+    <!-- download link END -->
+</div>
+<!-- body area END -->',
+    '1',
+    '2022-01-20 21:26:14',
+    '2022-01-20 21:26:14');
  
