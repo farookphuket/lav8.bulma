@@ -106,7 +106,7 @@
                     <div class="buttons">
 
 
-                        <span class="button is-info is-outlined">
+                        <span class="button is-rounded is-small is-info is-outlined">
                             <router-link
                               class="nav-link"
                               data-toggle="collapse"
@@ -118,7 +118,7 @@
                             </router-link>
                         </span>
 
-                        <span class="button is-outlined is-danger">
+                        <span class="button  is-rounded is-small is-outlined is-danger">
                             <router-link
                               class="nav-link has-text-success"
                               data-toggle="collapse"

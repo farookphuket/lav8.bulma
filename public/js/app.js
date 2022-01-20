@@ -13957,6 +13957,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -13996,7 +13997,7 @@ __webpack_require__.r(__webpack_exports__);
       url = this.$cookies.get('apost_old_page');
       if (!url) url = "/api/admin/getpost";
       axios.get(url).then(function (res) {
-        console.log(res.data);
+        //console.log(res.data)
         _this.postList = res.data.post;
         _this.template_all = res.data.template;
       });
@@ -14009,8 +14010,8 @@ __webpack_require__.r(__webpack_exports__);
       var openUrl = '';
       axios.get(url).then(function (res) {
         var e = res.data.post.slug;
-        openUrl = "/".concat(e);
-        console.log(openUrl);
+        openUrl = "/".concat(e); //console.log(openUrl)
+
         location.href = openUrl;
       });
     },
@@ -47209,7 +47210,10 @@ var render = function () {
               _c("div", { staticClass: "buttons" }, [
                 _c(
                   "span",
-                  { staticClass: "button is-info is-outlined" },
+                  {
+                    staticClass:
+                      "button is-rounded is-small is-info is-outlined",
+                  },
                   [
                     _c(
                       "router-link",
@@ -47234,7 +47238,10 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "span",
-                  { staticClass: "button is-outlined is-danger" },
+                  {
+                    staticClass:
+                      "button  is-rounded is-small is-outlined is-danger",
+                  },
                   [
                     _c(
                       "router-link",
@@ -49309,6 +49316,9 @@ var render = function () {
               },
               openPost: function ($event) {
                 return _vm.openPost($event)
+              },
+              getPost: function ($event) {
+                return _vm.getPost($event)
               },
             },
           }),

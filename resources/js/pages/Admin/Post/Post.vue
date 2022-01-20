@@ -46,7 +46,8 @@
 
                 <post-list :postList="postList" @edit="edit($event)" 
                 @del="del($event)"
-                @openPost="openPost($event)"></post-list>
+                @openPost="openPost($event)" 
+                @getPost="getPost($event)"></post-list>
             </div>
         </div>
 
@@ -107,10 +108,10 @@ export default{
             if(!url) url = `/api/admin/getpost`
             axios.get(url)
                 .then(res=>{
-                    console.log(res.data)
+                    //console.log(res.data)
                     this.postList = res.data.post
                     this.template_all = res.data.template
-                        })
+                })
         },
         closeForm(){
             this.showForm = false
@@ -123,7 +124,7 @@ export default{
 
                 let e = res.data.post.slug
                 openUrl = `/${e}`
-                console.log(openUrl)
+                //console.log(openUrl)
                 location.href=openUrl
                     })
         },
