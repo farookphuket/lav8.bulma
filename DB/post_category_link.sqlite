@@ -107,4 +107,28 @@ INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
     '5',
     '13'
 );
+  
+/* ====================== the post id 14 has category id 6 
+ * on 2022-02-09 11:52:25 am
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '6',
+    '14'
+);
+  
+/* ====================== the post id 14 has category id 6 
+ * on 2022-02-09 11:52:51 am
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '6',
+    '14'
+);
+  
+/* ====================== the post id 14 has category id 6 
+ * on 2022-02-09 11:58:01 am
+ * */
+INSERT INTO `category_post`(`category_id`,`post_id`) VALUES(
+    '6',
+    '14'
+);
  

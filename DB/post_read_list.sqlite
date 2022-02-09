@@ -40,4 +40,37 @@ INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALU
     '6',
     '2022-01-20 21:42:13',
     '2022-01-20 21:42:13');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 5 to read id 7
+ * on 2022-01-21 07:04:58 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '5',
+    '7',
+    '2022-01-21 07:04:58',
+    '2022-01-21 07:04:58');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 14 to read id 8
+ * on 2022-02-09 11:52:43 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '14',
+    '8',
+    '2022-02-09 11:52:43',
+    '2022-02-09 11:52:43');
+  
+/* ========================= INSERT COMMAND ===================================
+ * LINK post id 13 to read id 9
+ * on 2022-02-09 11:53:30 am
+ * */
+INSERT INTO `post_read`(`ip`,`post_id`,`read_id`,`created_at`,`updated_at`) VALUES(
+    '127.0.0.1',
+    '13',
+    '9',
+    '2022-02-09 11:53:30',
+    '2022-02-09 11:53:30');
  

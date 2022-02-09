@@ -100,4 +100,18 @@ INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
 INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
     '13',
     '2');
+    
+/* ================= INSERT COMMAND for post id 14 ====================
+ * START on  2022-02-09 11:52:51 am
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '14',
+    '4');
+  
+/* ================= INSERT COMMAND for post id 14 ====================
+ * START on  2022-02-09 11:58:01 am
+ * */
+INSERT INTO `post_tag`(`post_id`,`tag_id`)VALUES(
+    '14',
+    '4');
  
